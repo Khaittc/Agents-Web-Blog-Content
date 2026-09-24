@@ -83,6 +83,17 @@
       "top_candidates_discovered": [
         "CAN-007"
       ]
+    },
+    {
+      "query_id": "Q-008",
+      "rq_id": "RQ-005",
+      "query": "Technical guide No. 6 Guide to harmonics with AC drives ABB pdf",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T22:38:21+07:00",
+      "result_count": 6,
+      "top_candidates_discovered": [
+        "CAN-008"
+      ]
     }
   ],
   "candidate_sources_evaluated": [
@@ -253,6 +264,30 @@
         "no_dead_or_generic_link": true
       },
       "evaluation_notes": "Nguồn tiếp thị thương mại cấp 3 (Tier 3) không có dữ liệu thí nghiệm định lượng hoặc dẫn chứng kỹ thuật chuyên sâu, không đạt chuẩn chất lượng."
+    },
+    {
+      "candidate_id": "CAN-008",
+      "rq_id": "RQ-005",
+      "title": "Technical guide No. 6: Guide to harmonics with AC drives",
+      "publisher": "ABB Oy, Drives",
+      "url": "https://library.e.abb.com/public/bc35ffb4386c4c039e3a8ec20cef89c5/Technical_guide_No_6_3AFE64292714_RevF_EN.pdf",
+      "canonical_url": "https://library.abb.com/d/3AFE64292714",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "3AFE64292714 Rev F",
+      "source_tier": "Tier 1",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-005",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Tài liệu kỹ thuật chuyên đề chuẩn mực của ABB (Tier 1 OEM Technical Guide) phân tích toàn diện cơ chế phát sinh sóng hài của các cấu hình bộ chỉnh lưu VFD (6 xung, 12 xung, IGBT/AFE), vai trò của cuộn kháng AC/DC, các giải pháp lọc hài (thụ động, tích cực) và ranh giới áp dụng chuẩn IEEE Std 519 tại điểm PCC."
     }
   ]
 }

@@ -85,7 +85,7 @@
         "ABB"
       ],
       "freshness_required": false,
-      "status": "PARTIALLY_ANSWERED"
+      "status": "ANSWERED"
     },
     {
       "rq_id": "RQ-006",
@@ -124,5 +124,5 @@
   ],
   "status": "REVIEW_REQUIRED",
   "created_at": "2026-09-24T21:35:00+07:00",
-  "updated_at": "2026-09-24T22:30:00+07:00"
+  "updated_at": "2026-09-24T22:45:00+07:00"
 }

@@ -10,11 +10,11 @@
     "review_verdict": "NOT_APPLICABLE"
   },
   "evidence_summary": {
-    "total_sources": 4,
-    "tier_1_count": 3,
+    "total_sources": 5,
+    "tier_1_count": 4,
     "tier_2_count": 0,
     "tier_3_count": 1,
-    "high_tier_ratio": 0.75
+    "high_tier_ratio": 0.8
   },
   "sources": [
     {
@@ -224,6 +224,56 @@
           "excerpt": "Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV."
         }
       ]
+    },
+    {
+      "source_id": "SRC-005",
+      "accepted_from_candidate_id": "CAN-008",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "title": "Technical guide No. 6: Guide to harmonics with AC drives",
+      "source_type": "TECH_REPORT",
+      "publisher": "ABB Oy, Drives",
+      "publication_year": 2017,
+      "tier": "TIER_1",
+      "canonical_url": "https://library.abb.com/d/3AFE64292714",
+      "retrieval_url": "https://library.e.abb.com/public/bc35ffb4386c4c039e3a8ec20cef89c5/Technical_guide_No_6_3AFE64292714_RevF_EN.pdf",
+      "access_status": "OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "document_id": "3AFE64292714 Rev F",
+        "technical_scope": "Cơ chế phát sinh sóng hài VFD, so sánh chỉnh lưu 6 xung, 12 xung, AFE, vai trò cuộn kháng DC/AC và ranh giới áp dụng IEEE Std 519 tại PCC"
+      },
+      "locators": [
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. 2 Standards for harmonic limits: IEEE 519, p. 10",
+          "document_page": 10,
+          "pdf_page_index": 10,
+          "verified": true,
+          "excerpt": "The standard does not provide limits for individual equipment, but for individual customers. The customers are categorised by the ratio of available short circuit current (ISC) to their maximum demand load current (IL) at the point of common coupling... Table 2 of the 2014 standard version is sometimes misinterpreted to give limits for the harmonic emissions of a single apparatus by using short circuit ratio (RSC) of the equipment instead of ISC/IL of the whole installation. The limits of the table should not be used this way, since the ratio of the short circuit current to the total demand load current of an installation should always be used."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. 4 Effect of AC drive topology, pp. 16-18",
+          "document_page": 18,
+          "pdf_page_index": 18,
+          "verified": true,
+          "excerpt": "The most common rectifier circuit in 3-phase AC drives is a 6-pulse diode bridge... Supply type and Current THD: 6-pulse rectifier typical 40%, 12-pulse rectifier 10%, IGBT supply unit 4%. Values may vary case by case."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. 4 Using a larger DC or AC choke, p. 13",
+          "document_page": 13,
+          "pdf_page_index": 13,
+          "verified": true,
+          "excerpt": "The harmonics of a voltage source AC drive can be significantly reduced by connecting a large enough choke to its AC input or DC bus... For the first 25 harmonic components the theoretical THD minimum is 29%."
+        }
+      ]
     }
   ],
   "evidences": [
@@ -358,6 +408,28 @@
       "verification_status": "VERIFIED",
       "locator_status": "LOCATOR_VERIFIED",
       "locator": "Ch. Different applications - Crusher and Mill, p. 37"
+    },
+    {
+      "evidence_id": "EVD-013",
+      "rq_id": "RQ-005",
+      "source_id": "SRC-005",
+      "claim": "Sóng hài dòng điện của VFD phụ thuộc vào cấu trúc chỉnh lưu và trang bị cuộn kháng: bộ chỉnh lưu 6 xung có cuộn kháng thường có THDi khoảng 40% (không có cuộn kháng độ méo cao hơn nhiều), bộ chỉnh lưu 12 xung giảm THDi về khoảng 10%, và biến tần sử dụng khối nguồn chủ động IGBT (Active Front End / Low Harmonic Drive) có thể giảm THDi xuống khoảng 4%.",
+      "evidence_excerpt": "The most common rectifier circuit in 3-phase AC drives is a 6-pulse diode bridge... Supply type and Current THD: 6-pulse rectifier typical 40%, 12-pulse rectifier 10%, IGBT supply unit 4%. Values may vary case by case.",
+      "evidence_type": "COMPARISON_POINT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. 4 Effect of AC drive topology, pp. 16-18"
+    },
+    {
+      "evidence_id": "EVD-014",
+      "rq_id": "RQ-005",
+      "source_id": "SRC-005",
+      "claim": "Chuẩn IEEE Std 519 không quy định giới hạn phát xạ sóng hài cho từng thiết bị đơn lẻ mà chỉ áp dụng cho toàn bộ cơ sở của khách hàng tại điểm đấu nối chung (PCC) dựa trên tỷ số dòng ngắn mạch trên dòng phụ tải tổng Isc/IL; việc áp dụng trực tiếp Bảng 2 lên từng thiết bị riêng lẻ là diễn giải sai tiêu chuẩn.",
+      "evidence_excerpt": "The standard does not provide limits for individual equipment, but for individual customers. The customers are categorised by the ratio of available short circuit current (ISC) to their maximum demand load current (IL) at the point of common coupling... Table 2 of the 2014 standard version is sometimes misinterpreted to give limits for the harmonic emissions of a single apparatus by using short circuit ratio (RSC) of the equipment instead of ISC/IL of the whole installation. The limits of the table should not be used this way, since the ratio of the short circuit current to the total demand load current of an installation should always be used.",
+      "evidence_type": "STANDARD_REQUIREMENT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. 2 Standards for harmonic limits: IEEE 519, p. 10"
     }
   ],
   "conflicts": [
@@ -378,11 +450,12 @@
       "source_ids": [
         "SRC-001",
         "SRC-002",
-        "SRC-004"
+        "SRC-004",
+        "SRC-005"
       ],
-      "description": "Mức độ quan ngại về phát sinh sóng hài giữa Soft Starter và VFD đối với chất lượng điện lưới.",
-      "status": "REVIEW_REQUIRED",
-      "resolution": "Rockwell chỉ ra ở chế độ bypass Soft Starter hầu như không phát sinh sóng hài và ABB nhận định sóng hài ít liên quan đối với softstarter trong đa số ứng dụng, trong khi VFD tạo sóng hài liên tục khi hoạt động. Tuy nhiên, chuẩn IEEE Std 519-2022 đánh giá giới hạn biến dạng tại điểm đấu nối chung (PCC) của cả hệ thống chứ không quy định trực tiếp tại cực thiết bị riêng lẻ; do đó sự cần thiết và loại bộ lọc (thụ động/tích cực) phụ thuộc vào độ ngắn mạch của trạm (Isc/IL) và tổng phụ tải phi tuyến của nhà máy, cần tính toán kiểm tra kỹ thuật cụ thể trước khi kết luận."
+      "description": "Mức độ quan ngại về phát sinh sóng hài giữa Soft Starter và VFD đối với chất lượng điện lưới và sự cần thiết của bộ lọc hài theo IEEE Std 519.",
+      "status": "RESOLVED",
+      "resolution": "Giải quyết toàn diện trên 3 bình diện kỹ thuật độc lập: (1) Soft Starter (SRC-001 ABB, SRC-002 Rockwell) chỉ phát sinh sóng hài ngắn hạn (<10% theo Rockwell) trong giai đoạn tăng/giảm tốc điều khiển góc kích thyristor; khi chuyển sang bypass thì dòng tải đi qua tiếp điểm cơ khí nên hầu như không phát sinh sóng hài từ thiết bị. (2) VFD (SRC-005 ABB Tech Guide No. 6) phát sinh dòng điện phi tuyến dạng xung qua bộ chỉnh lưu đầu vào (h = 6k±1); mức méo dòng THDi phụ thuộc cấu trúc drive và cuộn kháng (6 xung có cuộn kháng điển hình ~40%, 12 xung ~10%, Active Front End ~4%, có thể bổ sung lọc thụ động hoặc tích cực AHF), không tồn tại một con số THD cố định cho mọi VFD. (3) Chuẩn IEEE Std 519-2022 (SRC-004, SRC-005) đánh giá giới hạn méo dòng TDD tại điểm đấu nối chung (PCC) của cả hệ thống dựa trên tỷ số Isc/IL, KHÔNG quy định tại cực thiết bị riêng lẻ và KHÔNG bắt buộc mọi VFD phải có bộ lọc; việc trang bị giải pháp xử lý sóng hài là bài toán cấp hệ thống phụ thuộc độ cứng của lưới và tổng phụ tải phi tuyến toàn cơ sở."
     }
   ]
 }

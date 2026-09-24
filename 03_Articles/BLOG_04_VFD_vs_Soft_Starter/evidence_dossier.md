@@ -5,9 +5,9 @@
 **Thể loại Canonical**: `BLOG-T04` (So sánh Kỹ thuật Đa chiều — Comparison)<br>
 **Người thực hiện**: Kỹ sư Nghiên cứu Hệ thống (Research Agent)<br>
 **Ngày xác thực**: 2026-09-24<br>
-**Tổng số nguồn tiếp nhận**: 4 (3 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 75% >= 70%)<br>
+**Tổng số nguồn tiếp nhận**: 5 (4 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 80% >= 70%)<br>
 **Ngoại lệ nguồn hẹp (Source Policy Exception)**: `NONE` (Tuân thủ chính sách mặc định 4–7 nguồn, không yêu cầu ngoại lệ)<br>
-**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005, RQ-006 đạt `PARTIALLY_ANSWERED`, CON-002 trạng thái `REVIEW_REQUIRED`)
+**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005 đạt `ANSWERED`, CON-002 đạt `RESOLVED`, RQ-006 chờ xử lý chuyên đề)
 
 ---
 
@@ -19,7 +19,7 @@
 | `RQ-002` | **HIGH** | Đặc tính định lượng của dòng khởi động cực đại và khả năng sinh mô-men khởi động (quan hệ $T \propto U^2$) của Soft Starter so với VFD và DOL? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-003`, `EVD-004` |
 | `RQ-003` | **HIGH** | Khả năng điều chỉnh và duy trì tốc độ động cơ liên tục trong quá trình làm việc của VFD so với giới hạn tốc độ cố định của Soft Starter sau khởi động? | `ANSWERED` | `SRC-001`, `SRC-003` | `EVD-005` |
 | `RQ-004` | **HIGH** | So sánh tổn hao công suất (Power losses), sinh nhiệt và hiệu suất vận hành giữa VFD (tổn hao IGBT liên tục) và Soft Starter (Bypass contactor triệt tiêu tổn hao)? | `ANSWERED` | `SRC-002`, `SRC-003` | `EVD-006`, `EVD-007` |
-| `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `PARTIALLY_ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004` | `EVD-008`, `EVD-009` |
+| `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004`, `SRC-005` | `EVD-008`, `EVD-009`, `EVD-013`, `EVD-014` |
 | `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `PARTIALLY_ANSWERED` | `SRC-002` | `EVD-010` |
 | `RQ-007` | **HIGH** | Ma trận hướng dẫn và tiêu chí lựa chọn kỹ thuật giữa VFD và Soft Starter cho các nhóm phụ tải công nghiệp điển hình (Bơm, Quạt, Băng tải, Máy nghiền)? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-011`, `EVD-012` |
 
@@ -33,6 +33,7 @@
 | `SRC-002` | *When to use a Soft Starter or an AC Variable Frequency Drive* (Rockwell Automation, Pub. 150-WP007A-EN-P) | `TECH_REPORT` | Tier 1 | [Rockwell Literature](https://rok.auto/literature) | [Direct PDF](https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1, p. 6; Bypass, p. 7; Harmonics, p. 12; Initial Cost & Size, pp. 15-16; Maintenance, p. 17 |
 | `SRC-003` | *Soft starters vs. VFDs: Which one is right for your conveyor motor application?* (Mark Duncan, Schneider Electric) | `WEB_ARTICLE` | Tier 3 | [Schneider Blog](https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | [Schneider Article](https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | `REDIRECTED_OK` | `true` | `true` | `LOCATOR_VERIFIED` | Sections: Benefits, Efficiency comparisons, Harmonics, Application FAQ |
 | `SRC-004` | *IEEE Standard for Harmonic Control in Electric Power Systems* (IEEE Std 519-2022) | `STANDARD` | Tier 1 | [IEEE Standards](https://standards.ieee.org/ieee/519/10540/) | [IEEE Xplore](https://ieeexplore.ieee.org/document/9848440) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1: Voltage Distortion Limits; Table 2: Current Distortion Limits, p. 12 |
+| `SRC-005` | *Technical guide No. 6: Guide to harmonics with AC drives* (ABB Oy, Drives, Doc ID: 3AFE64292714 Rev F) | `TECH_REPORT` | Tier 1 | [ABB Library](https://library.abb.com/d/3AFE64292714) | [Direct PDF](https://library.e.abb.com/public/bc35ffb4386c4c039e3a8ec20cef89c5/Technical_guide_No_6_3AFE64292714_RevF_EN.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. 2 IEEE 519, p. 10; Ch. 4 Drive Topologies & Chokes, pp. 13-18; Ch. 5 Mitigation, pp. 20-22 |
 
 ---
 
@@ -137,6 +138,23 @@
   > *"Crushers and mills usually have constant load curves. These applications can have a very big flywheel and can be a very heavy duty start... Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size."*
 - **Ý nghĩa kỹ thuật**: Đối với các ứng dụng có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), Soft Starter thường được chọn lớn hơn một cấp công suất (one size larger) so với công suất kW của động cơ để đáp ứng điều kiện khởi động nặng.
 
+### `EVD-013`: Méo dòng sóng hài của VFD theo cấu trúc chỉnh lưu và trang bị cuộn kháng
+- **Câu hỏi giải quyết**: `RQ-005`
+- **Nguồn chứng minh**: `SRC-005` (*Technical guide No. 6: Guide to harmonics with AC drives*, ABB Oy, Drives, Tier 1)
+- **Vị trí định vị**: Chương 4: *Effect of AC drive topology*, Trang in: 16-18, Trang PDF: 16-18; và *Using a larger DC or AC choke*, Trang in: 13, Trang PDF: 13
+- **Trích dẫn gốc**:
+  > *"The most common rectifier circuit in 3-phase AC drives is a 6-pulse diode bridge... Supply type and Current THD: 6-pulse rectifier typical 40%, 12-pulse rectifier 10%, IGBT supply unit 4%. Values may vary case by case."*
+  > *"The harmonics of a voltage source AC drive can be significantly reduced by connecting a large enough choke to its AC input or DC bus... For the first 25 harmonic components the theoretical THD minimum is 29%."*
+- **Ý nghĩa kỹ thuật**: Mức độ biến dạng dòng sóng hài ($THD_i$) của VFD phụ thuộc hoàn toàn vào cấu trúc bộ chỉnh lưu đầu vào và giải pháp cuộn kháng đi kèm, không có một con số cố định cho mọi biến tần. Chỉnh lưu 6 xung có cuộn kháng điển hình phát sinh khoảng $40\%$ $THD_i$ (nếu không có cuộn kháng, đỉnh nhọn dòng điện sẽ làm độ méo cao hơn nhiều); chỉnh lưu 12 xung triệt tiêu hài bậc 5, 7 đưa $THD_i$ về khoảng $10\%$; và biến tần nguồn tích cực IGBT (Active Front End / Low Harmonic Drive) triệt tiêu sóng hài chủ động đưa $THD_i$ xuống khoảng $4\%$.
+
+### `EVD-014`: Ranh giới áp dụng chuẩn IEEE Std 519 tại điểm đấu nối chung (PCC)
+- **Câu hỏi giải quyết**: `RQ-005`
+- **Nguồn chứng minh**: `SRC-005` (*Technical guide No. 6: Guide to harmonics with AC drives*, ABB Oy, Drives, Tier 1)
+- **Vị trí định vị**: Chương 2: *Standards for harmonic limits: IEEE 519*, Trang in: 10, Trang PDF: 10
+- **Trích dẫn gốc**:
+  > *"The standard does not provide limits for individual equipment, but for individual customers. The customers are categorised by the ratio of available short circuit current (ISC) to their maximum demand load current (IL) at the point of common coupling... Table 2 of the 2014 standard version is sometimes misinterpreted to give limits for the harmonic emissions of a single apparatus by using short circuit ratio (RSC) of the equipment instead of ISC/IL of the whole installation. The limits of the table should not be used this way, since the ratio of the short circuit current to the total demand load current of an installation should always be used."*
+- **Ý nghĩa kỹ thuật**: Chuẩn IEEE Std 519 quy định giới hạn méo dòng ($TDD$) cho toàn bộ cơ sở của khách hàng tại điểm đấu nối chung (PCC) dựa trên tỷ số dòng ngắn mạch trên dòng phụ tải tổng $I_{sc}/I_L$, không quy định cho từng thiết bị đơn lẻ. Việc áp dụng trực tiếp Bảng 2 lên từng cực của biến tần là diễn giải sai tiêu chuẩn; yêu cầu lắp đặt thêm bộ lọc sóng hài (lọc thụ động, cuộn kháng bổ sung hoặc lọc tích cực AHF) là quyết định ở cấp hệ thống phụ thuộc vào độ cứng của lưới điện và tổng công suất phụ tải phi tuyến tại trạm.
+
 ---
 
 ## 4. PHÂN TÍCH BẤT ĐỒNG & SẮC THÁI KỸ THUẬT (TECHNICAL NUANCE & CONFLICT ANALYSIS)
@@ -152,14 +170,22 @@
   - Nhấn mạnh mối quan hệ phi tuyến $T \approx \left(\frac{U}{U_n}\right)^2 \cdot T_n$. Với tải nặng hoặc tải quán tính lớn, cần đánh giá chọn Soft Starter lớn hơn một cấp công suất (oversizing) hoặc chuyển sang đánh giá VFD / phương pháp truyền động khác nếu tải đòi hỏi mô-men bứt phá cao ngay tại tốc độ $0\text{ rpm}$.
 
 ### `CON-002`: Đánh giá mức độ phát sinh sóng hài và sự cần thiết của bộ lọc hài
-* **Trạng thái**: `REVIEW_REQUIRED`
-* **Các bên liên quan**: ABB (`SRC-001`, p. 68), Rockwell Automation (`SRC-002`, p. 12), và IEEE Std 519-2022 (`SRC-004`, Table 2).
+* **Trạng thái**: `RESOLVED`
+* **Các bên liên quan**: ABB (`SRC-001`, p. 68; `SRC-005`, pp. 10, 13, 16-18), Rockwell Automation (`SRC-002`, p. 12), và IEEE Std 519-2022 (`SRC-004`, Table 2, p. 12).
 * **Nội dung bất đồng/sắc thái**:
-  - Rockwell chỉ ra rằng ở chế độ bypass Soft Starter hầu như không phát sinh sóng hài, và ABB nhận định sóng hài ít liên quan đối với softstarter trong đa số ứng dụng. Trong khi đó, VFD tạo sóng hài liên tục trong suốt quá trình hoạt động.
-  - Tuy nhiên, chuẩn IEEE Std 519-2022 đánh giá giới hạn biến dạng dòng điện (TDD) tại điểm đấu nối chung (PCC) của toàn hệ thống/nhà máy, chứ không áp đặt trực tiếp lên từng thiết bị riêng lẻ. Do đó, sự cần thiết và loại bộ lọc sóng hài (cuộn kháng, lọc thụ động, lọc tích cực) phụ thuộc vào tỷ số ngắn mạch của trạm $I_{sc}/I_L$ và tổng phụ tải phi tuyến, không thể khẳng định mọi VFD đều vi phạm hoặc bắt buộc phải gắn lọc ngoại vi.
-* **Định hướng xử lý cho Drafting Agent**:
-  - Phân tách 2 trạng thái của Soft Starter: giai đoạn tăng tốc có sóng hài ngắn hạn ($< 10\%$), giai đoạn bypass hầu như không phát sinh sóng hài.
-  - Trình bày IEEE Std 519-2022 như chuẩn mực đánh giá tại PCC. Không khẳng định số liệu suy diễn chưa kiểm chứng (như 35%-45% THD-I hay THD = 0%). Chờ Technical Review Gate thẩm định thêm trước khi kết luận về yêu cầu bộ lọc.
+  - Nhận thức phổ biến thường đơn giản hóa thái quá: cho rằng Soft Starter "hoàn toàn không có sóng hài", hoặc gán một con số cố định cho mọi VFD (như "VFD luôn có THD-I 35-45%"), và ngộ nhận rằng chuẩn IEEE Std 519 bắt buộc mọi thiết bị biến tần phải gắn thêm bộ lọc sóng hài ngoại vi.
+  - Cần làm rõ trên 3 bình diện kỹ thuật độc lập dựa trên tài liệu OEM Tier 1 và tiêu chuẩn quốc tế:
+    1. Trạng thái sóng hài của Soft Starter giữa lúc khởi động (ramp) và lúc duy trì (bypass).
+    2. Méo dòng sóng hài của VFD thay đổi theo cấu trúc chỉnh lưu (6-pulse, 12-pulse, AFE) và cuộn kháng (choke).
+    3. Ranh giới áp dụng chuẩn IEEE Std 519-2022 tại điểm đấu nối chung (PCC) của toàn cơ sở chứ không phải tại cực thiết bị riêng lẻ.
+* **Kết luận phân giải (Resolution) & Định hướng xử lý cho Drafting Agent**:
+  - **(A) Harmonic behavior của Soft Starter**: Trong giai đoạn tăng tốc hoặc giảm tốc khi các cặp thyristor (SCR) điều khiển góc kích pha cắt xén điện áp, Soft Starter có phát sinh méo sóng hài dòng điện ngắn hạn ($THD_i < 10\%$ theo số liệu thực nghiệm của Rockwell Automation `SRC-002`, p. 12). Tuy nhiên, khi kết thúc dốc khởi động và đóng contactor bypass (tích hợp hoặc ngoài), toàn bộ dòng tải chạy qua tiếp điểm cơ khí thuần trở, nên ở chế độ xác lập (steady-state bypass) Soft Starter hầu như không tạo ra sóng hài từ bản thân thiết bị (`SRC-001`, `SRC-002`).
+  - **(B) Harmonic behavior của VFD**: VFD chuyển đổi AC-DC-AC phát sinh sóng hài liên tục trong suốt thời gian vận hành do dòng nạp phi tuyến vào tụ DC bus qua bộ chỉnh lưu đầu vào (tạo ra các bậc hài $h = 6k \pm 1$ như bậc 5, 7, 11, 13...). Tuy nhiên, mức độ biến dạng dòng ($THD_i$) phụ thuộc vào cấu hình cụ thể (`SRC-005` ABB Tech Guide No. 6, pp. 13-18):
+    - Chỉnh lưu 6 xung có cuộn kháng AC/DC (choke) điển hình có $THD_i \approx 40\%$ (nếu không có cuộn kháng, đỉnh dòng rất nhọn làm $THD_i$ tăng vọt lên cao hơn nhiều; lý thuyết tối thiểu 25 bậc đầu khi có cuộn kháng lớn là $29\%$).
+    - Chỉnh lưu 12 xung sử dụng biến áp lệch pha $30^\circ$ triệt tiêu hài bậc 5 và 7, đưa $THD_i \approx 10\%$.
+    - Biến tần sử dụng khối nguồn tích cực IGBT (Active Front End - AFE / Low Harmonic Drive) triệt tiêu sóng hài chủ động, đưa $THD_i \approx 4\%$.
+    - Tuyệt đối không được tuyên bố một con số méo hài duy nhất (như "35-45%") đại diện cho toàn bộ chủng loại VFD; cần chỉ rõ giải pháp giảm sóng hài tùy biến: cuộn kháng (AC/DC choke), bộ lọc thụ động (passive filter), bộ lọc tích cực (AHF) hoặc drive đa xung/AFE.
+  - **(C) Ranh giới áp dụng IEEE Std 519-2022**: Chuẩn IEEE Std 519-2022 (Bảng 2, `SRC-004`) và hướng dẫn kỹ thuật của ABB (`SRC-005`, Ch. 2 p. 10) quy định rõ ràng rằng: giới hạn méo dòng ($TDD$) áp dụng cho toàn bộ cơ sở của khách hàng tại Điểm Đấu Nối Chung (PCC - Point of Common Coupling), dựa trên tỷ số dòng ngắn mạch của lưới trên dòng phụ tải tổng cực đại của toàn cơ sở ($I_{sc}/I_L$). Tiêu chuẩn này **không** áp dụng giới hạn trực tiếp lên từng thiết bị riêng vị trí tải. Việc trang bị bộ lọc sóng hài cho VFD là bài toán phân tích chất lượng điện tổng thể ở cấp hệ thống (system-level evaluation), phụ thuộc vào công suất trạm biến áp, độ ngắn mạch và tỷ trọng tải phi tuyến; không phải biến tần nào cũng bắt buộc phải lắp thêm bộ lọc ngoại vi nếu trạm đủ cứng và tổng méo hài tại PCC vẫn thỏa mãn quy chuẩn.
 
 ---
 
@@ -176,21 +202,23 @@ Thực thi theo quy chuẩn Cổng tiếp nhận ứng viên nguồn (Source Acc
 | `CAN-005` | Siemens — *SIRIUS 3RW44 Soft Starters Manual* | SIOS Portal Entry 21772518 | **REJECTED** | `REJECTED_PAYWALL_OR_BOT_BLOCK` | Máy chủ Siemens kích hoạt tường lửa chống bot (WAF) trả về HTTP 403 Forbidden trên crawler tự động. |
 | `CAN-006` | Danfoss — *VLT / MCD Design Guide* | files.danfoss.com/MG90N502.pdf | **REJECTED** | `REJECTED_DEAD_LINK` | Đường dẫn máy chủ cũ trả về HTTP 404 Not Found (link chết), vi phạm ADR-015. |
 | `CAN-007` | Chint Global — *VFD vs Soft Starter Guide* | chintglobal.com blog | **REJECTED** | `REJECTED_TIER3_UNQUALIFIED` | Bài viết tổng hợp thương mại cấp 3 (Tier 3), không có số liệu kỹ thuật hoặc công thức gốc kiểm chứng. |
+| `CAN-008` | ABB Oy — *Technical guide No. 6: Guide to harmonics with AC drives* | Direct PDF (library.e.abb.com) | **ACCEPTED** $\rightarrow$ `SRC-005` | - | Nguồn sơ cấp Tier 1 OEM Technical Guide (Doc ID: 3AFE64292714 Rev F), cung cấp số liệu thực nghiệm méo hài theo cấu trúc VFD (6-pulse, 12-pulse, AFE) và cơ sở ranh giới áp dụng IEEE Std 519 tại PCC. |
 
 ---
 
 ## 6. TỔNG KẾT TRẠNG THÁI NGHIÊN CỨU & CÁC HẠNG MỤC CHỜ THẨM ĐỊNH (RESEARCH SUMMARY & OUTSTANDING ITEMS)
 
-Thu thập chứng cứ nghiên cứu kỹ thuật đã hoàn thành cho tập nguồn tài liệu hiện tại (`SRC-001` đến `SRC-004`).
+Thu thập chứng cứ nghiên cứu kỹ thuật đã hoàn thành cho tập 5 nguồn tài liệu chính thức (`SRC-001` đến `SRC-005`).
 
-### Các hạng mục kỹ thuật chờ xử lý chuyên đề (Outstanding Review Items):
-1. **`RQ-006`** — Khảo sát dữ liệu tươi mới về chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời (`freshness_required: true`, hiện ở trạng thái `PARTIALLY_ANSWERED`).
-2. **`CON-002`** — Thẩm định ranh giới kỹ thuật về phát sinh sóng hài giữa Soft Starter và VFD đối chiếu với chuẩn IEEE Std 519-2022 tại điểm đấu nối chung PCC (`status: REVIEW_REQUIRED`).
+### Tình trạng xử lý các hạng mục chuyên đề (Technical Review Items):
+1. **`CON-002`** — Thẩm định ranh giới kỹ thuật về phát sinh sóng hài giữa Soft Starter và VFD đối chiếu với chuẩn IEEE Std 519-2022 tại điểm đấu nối chung PCC: **ĐÃ GIẢI QUYẾT TOÀN DIỆN (`status: RESOLVED`)** trên cả 3 khía cạnh: (A) Soft Starter ramp vs bypass, (B) Cấu trúc VFD 6-pulse/12-pulse/AFE/choke, (C) Ranh giới hệ thống cấp PCC theo IEEE Std 519-2022.
+2. **`RQ-005`** — Cơ chế phát sinh sóng hài và quy chuẩn IEEE 519-2022: **ĐÃ TRẢ LỜI ĐẦY ĐỦ (`status: ANSWERED`)** với đầy đủ chứng cứ `EVD-008`, `EVD-009`, `EVD-013`, `EVD-014`.
+3. **`RQ-006`** — Khảo sát dữ liệu tươi mới về chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời: **ĐANG CHỜ XỬ LÝ CHUYÊN ĐỀ RIÊNG (`status: PARTIALLY_ANSWERED`, `freshness_required: true`)**.
 
 ### Cam kết tuân thủ quy chuẩn nghiên cứu & kiểm soát tiến trình:
-- [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-004`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
+- [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-005`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
 - [x] Tách biệt độc lập giữa kiểm tra mạng (`HTTP 200` / `REDIRECTED_OK`) và kiểm tra xác thực nội dung (`claim_verified: true`, `content_identity_verified: true`).
-- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB, PDF Rockwell, IEEE 519-2022, bài phân tích Schneider Electric).
-- [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $75\%$ (3/4 nguồn Tier 1, 1/4 nguồn Tier 3), thỏa mãn mục tiêu $\ge 70\%$.
+- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB Softstarter Handbook, PDF Rockwell White Paper, IEEE 519-2022 Standard, PDF ABB Technical Guide No. 6, bài phân tích Schneider Electric).
+- [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $80\%$ (4/5 nguồn Tier 1, 1/5 nguồn Tier 3), thỏa mãn vượt mức mục tiêu $\ge 70\%$.
 - [x] Đã xuất bản song song và đồng bộ 4 tệp cốt lõi: `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md`.
-- [x] **DRAFTING READINESS: NOT READY** — Chưa đủ điều kiện handoff sang khâu Drafting do còn 2 task chuyên đề `RQ-006` và `CON-002` cần xử lý. Dừng kiểm soát tại cửa ải nghiên cứu: tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh và không sinh mã HTML cho đến khi có lệnh điều phối tiếp theo.
+- [x] **DRAFTING READINESS: NOT READY** — Chưa đủ điều kiện handoff sang khâu Drafting do còn task chuyên đề `RQ-006` cần xử lý dữ liệu tươi mới. Dừng kiểm soát tại cửa ải nghiên cứu: tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh và không sinh mã HTML cho đến khi hoàn tất nghiệm thu toàn bộ các câu hỏi nghiên cứu.
