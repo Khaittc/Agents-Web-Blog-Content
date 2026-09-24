@@ -57,16 +57,12 @@
 *Trạng thái*: 🟡 **ĐANG THỰC HIỆN** (Khởi động Tháng 09/2026)
 *Mục tiêu*: Chuyển đổi các quy chuẩn lý thuyết thành các Prompt và Hợp đồng giao tiếp tự động của 5 Subagents.
 
-- [ ] **Định nghĩa 5 Subagents chuyên trách (trong `02_AGENT_TEMPLATES/`)**:
-  - [ ] `research_agent.md`: System prompt, công cụ tìm kiếm, Live URL Check 200, trích xuất locator theo `IEEE-01 v1.1` & `SOURCE_TIER v1.0`.
-  - [ ] `drafting_agent.md`: System prompt, cấu trúc `BLOG-T01`..`T05`, công thức LaTeX SI, trích dẫn bắt buộc ở cuối câu theo `IEEE-02 v1.1`.
-  - [ ] `visual_agent.md`: System prompt, Prompt AI 5 tầng, kích thước 808x500 px, HTML placeholder chống méo dọc theo `IMAGE_SPEC v1.2`.
-  - [ ] `review_agent.md`: System prompt, 4 trụ cột kiểm duyệt độc lập, Gate 5 vị trí cuối câu, kiểm tra responsive song song Laptop & Mobile theo `REVIEW_PROTOCOL v1.1` (ADR-017).
-  - [ ] `publisher_agent.md`: System prompt, đóng gói HTML CKEditor sạch, link `<a>` có `word-break: break-all;`, bảng `min-width`, quản lý `article_status.json` theo `ADR-005` và `ADR-016`.
-- [ ] **Tích hợp Công cụ Ngoài (Tooling Integration)**:
-  - [ ] Kết nối `notebooklm` MCP vào `01_KNOWLEDGE_BASE/` để truy xuất nguồn Tier 1/2 với locator tự động.
-  - [ ] Tích hợp công cụ `generate_image` với quy chuẩn 808x500 px tự động.
-  - [ ] Tạo template kiểm tra tự động mã HTML CKEditor không để lọt thẻ sai quy cách.
+- [x] **Định nghĩa 5 Subagents chuyên trách (trong `02_AGENT_TEMPLATES/`) — ĐÃ HOÀN THÀNH**:
+  - [x] `research_agent.md`: System prompt, công cụ tìm kiếm, Live URL Check 200, trích xuất locator theo `IEEE-01 v1.1` & `SOURCE_TIER v1.0`.
+  - [x] `drafting_agent.md`: System prompt, cấu trúc `BLOG-T01`..`T05`, công thức LaTeX SI, trích dẫn bắt buộc ở cuối câu theo `IEEE-02 v1.1`.
+  - [x] `visual_agent.md`: System prompt, Prompt AI 5 tầng, kích thước 808x500 px, HTML placeholder chống méo dọc theo `IMAGE_SPEC v1.2`.
+  - [x] `review_agent.md`: System prompt, 4 trụ cột kiểm duyệt độc lập, Gate 5 vị trí cuối câu, kiểm tra responsive song song Laptop & Mobile theo `REVIEW_PROTOCOL v1.1` (ADR-017).
+  - [x] `publisher_agent.md`: System prompt, đóng gói HTML CKEditor sạch, link `<a>` có `word-break: break-all;`, bảng `min-width`, quản lý `article_status.json` theo `ADR-005` và `ADR-016`.
 - [ ] **Tích hợp Công cụ Ngoài (Tooling Integration)**:
   - [ ] Kết nối `notebooklm` MCP vào `01_KNOWLEDGE_BASE/` để truy xuất nguồn Tier 1/2 với locator tự động.
   - [ ] Tích hợp công cụ `generate_image` với quy chuẩn 808x500 px tự động.

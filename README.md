@@ -1,0 +1,158 @@
+# ⚡ Autonomous Multi-Agent Technical Blog Production System
+### Hệ Thống AI Đa Tác Tử Sản Xuất Nội Dung Kỹ Thuật Công Nghiệp Chuẩn Quốc Tế (IEEE & Real Group)
+
+[![Platform: Google Antigravity](https://img.shields.io/badge/Platform-Google%20Antigravity-4285F4?logo=google&logoColor=white)](https://github.com/Khaittc/Agents-Web-Blog-Content)
+[![Citation: IEEE Suite v2.0](https://img.shields.io/badge/Citation-IEEE%20Suite%20v2.0-00629B?logo=ieee&logoColor=white)](00_SKILL/IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md)
+[![Responsive: Laptop & Mobile](https://img.shields.io/badge/Responsive-Laptop%20%26%20Mobile%20Verified-brightgreen)](00_SKILL/TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md)
+[![CMS: CKEditor 3.6.6.2 Ready](https://img.shields.io/badge/CMS-CKEditor%203.6.6.2%20Ready-orange)](00_SKILL/REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md)
+[![Phase: 3 Active](https://img.shields.io/badge/Roadmap-Phase%203%20Active-blue)](ROADMAP.md)
+[![License: Proprietary Real Group](https://img.shields.io/badge/License-Real%20Group%20TTC-red)](https://www.real-group.org)
+
+---
+
+## 📌 1. TỔNG QUAN DỰ ÁN (PROJECT OVERVIEW)
+
+**Agents-Web-Blog-Content** là hệ thống AI đa tác tử (Multi-Agent System) tự động hóa toàn diện quy trình sản xuất nội dung bài viết kỹ thuật chuyên sâu trong lĩnh vực **Tự động hóa công nghiệp (Industrial Automation)** và **Kỹ thuật Điện tử - Điện công nghiệp (Electrical & Drive Systems)**.
+
+Hệ thống được phát triển dành riêng cho website kỹ thuật công nghiệp [real-group.org](https://www.real-group.org), tích hợp bộ tiêu chuẩn học thuật quốc tế **IEEE Reference Citation**, hệ thống phân cấp nguồn tin cậy **Source-Tier Hierarchy** và cơ chế tương thích hiển thị đa thiết bị **Dual-Viewport Responsive (Laptop & Mobile)**.
+
+### Mục Tiêu Cốt Lõi:
+1. **Triệt tiêu hoàn toàn ảo giác (Zero Hallucination)**: 100% dữ liệu kỹ thuật, bảng tra, công thức toán và quy trình xử lý lỗi đều được xác thực từ tài liệu chuẩn quốc tế (IEC, IEEE, ISO) và tài liệu kỹ thuật gốc từ nhà sản xuất (ABB, Siemens, Schneider Electric, Danfoss, Mitsubishi).
+2. **Chuẩn hóa Học thuật Khắt khe**: Tự động tra cứu số trang (`p.`, `pp.`), số bảng (`Table`), số mục (`Section`) và kiểm tra tính sống động của URL (`HTTP 200 OK`, Deep-link / Direct PDF).
+3. **Trải nghiệm Đa thiết bị Tối ưu**: Đảm bảo toàn bộ bảng kỹ thuật, hình ảnh minh họa, công thức LaTeX và liên kết tham khảo hiển thị hoàn hảo, không tràn màn hình, không méo tỷ lệ ảnh trên cả Laptop (1366px - 1920px) và Điện thoại di động (375px - 430px).
+4. **Tương thích Tuyệt đối với CMS CKEditor 3.6.6.2**: Xuất bản mã nguồn HTML sạch, sử dụng inline styling an toàn, không chứa class lạ hoặc style xung đột với theme website.
+
+---
+
+## 🏗️ 2. KIẾN TRÚC 5 TÁC TỬ TỰ ĐỘNG (5-STAGE MULTI-AGENT PIPELINE)
+
+Hệ thống vận hành theo cơ chế phân quyền chuyên biệt với 5 Subagents hoạt động theo chuỗi liên hoàn, bảo đảm mọi bài viết đều trải qua các vòng thẩm định kỹ thuật đa tầng trước khi được đóng gói:
+
+```mermaid
+flowchart TD
+    User([Kỹ sư trưởng / Đề bài kỹ thuật]) --> Research[1. Research Agent<br>Kỹ sư Nghiên cứu Chuyên sâu]
+    
+    Research -->|evidence_dossier.md<br>Nguồn Tier 1/2, Locator, Live URL 200| Drafting[2. Drafting Agent<br>Kỹ sư Biên soạn Kỹ thuật]
+    
+    Drafting -->|draft_review_package.md<br>Cấu trúc BLOG-T, LaTeX, Trích dẫn cuối câu| Visual[3. Visual Agent<br>Kỹ sư Đồ họa & AI Prompt]
+    
+    Visual -->|image_specifications.md<br>Prompt AI 5 tầng, 808x500px, Responsive Frame| Review[4. Review Agent<br>Kỹ sư trưởng Phản biện & QA]
+    
+    Review -->|technical_audit_report.md<br>Kiểm toán 4 Trụ cột & Responsive Laptop/Mobile| AuditGate{Đạt Chuẩn<br>Kiểm Định?}
+    
+    AuditGate -- Không Đạt --> Drafting
+    AuditGate -- Đạt Chuẩn (APPROVED) --> Publisher[5. Publisher Agent<br>Kỹ sư Đóng gói & Phát hành]
+    
+    Publisher -->|bai-viet-ckeditor.html<br>article_status.json LOCKED| Output([Website real-group.org<br>CKEditor 3.6.6.2])
+```
+
+### Chi Tiết Nhiệm Vụ 5 Subagents ([02_AGENT_TEMPLATES/](02_AGENT_TEMPLATES/)):
+* 🔬 [**Research Agent**](02_AGENT_TEMPLATES/research_agent.md): Thu thập tài liệu, phân cấp nguồn theo `SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md` (Tier 1 Standards/OEM Manuals, Tier 2 Handbooks/Textbooks). Xác thực đường dẫn trực tiếp (Deep-link / Direct PDF) đạt HTTP 200 theo `IEEE_01 v1.1`.
+* ✍️ [**Drafting Agent**](02_AGENT_TEMPLATES/drafting_agent.md): Biên soạn nội dung theo 5 khuôn mẫu `BLOG-T01` đến `BLOG-T05` (`BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md`), tích hợp công thức LaTeX SI chuẩn (`LATEX_FORMULA_SKILL_v1.0.md`) và tuân thủ nguyên tắc bắt buộc: **vị trí trích dẫn IEEE luôn đặt ở cuối câu** (`IEEE_02 v1.1`).
+* 🎨 [**Visual Agent**](02_AGENT_TEMPLATES/visual_agent.md): Thiết kế sơ đồ khối, lưu đồ thuật toán và sinh Prompt AI 5 tầng theo tỷ lệ chuẩn `808x500 px` (`IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md`). Đóng gói khung hình HTML chống co giãn méo ảnh trên mobile (ADR-010, ADR-016).
+* 🛡️ [**Review Agent**](02_AGENT_TEMPLATES/review_agent.md): Độc lập kiểm toán theo `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md` với 4 Trụ cột: Trích dẫn IEEE, Tính chuẩn xác kỹ thuật & toán học, Văn phong sư phạm công nghiệp, và **Cửa ải Kiểm định Responsive Song song Bắt buộc trên Laptop và Mobile (ADR-017)**.
+* 📦 [**Publisher Agent**](02_AGENT_TEMPLATES/publisher_agent.md): Chuyển hóa toàn bộ bài viết sang mã HTML CKEditor hoàn chỉnh theo `REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md`. Thực thi cơ chế bảo vệ 3 lớp (`article_status.json`, Prompt Guardrail, OS Read-Only flag) theo ADR-005 và ADR-018.
+
+---
+
+## 🌟 3. CÁC QUY CHUẨN KỸ NĂNG CỐT LÕI (CORE SKILLS & STANDARDS)
+
+Hệ thống được xây dựng trên nền tảng các tiêu chuẩn kỹ thuật nghiêm ngặt lưu trữ tại thư mục [00_SKILL/](00_SKILL/):
+
+| Mã Quy Chuẩn | Phiên Bản | Tên Quy Chuẩn & Mô Tả | Điểm Nhấn Đột Phá |
+|---|---|---|---|
+| **BLOG_CONTENT** | `v1.3` | [BLOG_CONTENT_STRUCTURE_STANDARD](00_SKILL/BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md) | Định chuẩn 5 dạng bài kỹ thuật (`BLOG-T01` tới `T05`), bắt buộc tối thiểu 1 hình content kỹ thuật chuyên sâu. |
+| **IEEE_SUITE** | `v2.0` | [IEEE_CITATION_REFERENCE_MASTER_SUITE](00_SKILL/IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md) | Bộ tứ kỹ năng trích dẫn: `IEEE_01` (Nguồn & URL check 200), `IEEE_02` (Trích dẫn cuối câu), `IEEE_03` (Format link CKEditor), `IEEE_04` (6 Cửa ải Audit). |
+| **SOURCE_TIER** | `v1.0` | [SOURCE_TIER_EVIDENCE_WORKFLOW](00_SKILL/SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md) | Phân tầng nguồn chứng cứ kỹ thuật: Tier 1 (IEC, IEEE, OEM Manuals) > Tier 2 (Giáo trình) > Tier 3 (Cổng tin uy tín). |
+| **IMAGE_SPEC** | `v1.2` | [IMAGE_SPECIFICATION_AND_PROMPT_SKILL](00_SKILL/IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md) | Cấu trúc Prompt AI 5 tầng, chuẩn kích thước Featured Image 808x500 px, HTML placeholder chống méo dọc mobile. |
+| **LATEX_MATH** | `v1.0` | [LATEX_FORMULA_SKILL](00_SKILL/LATEX_FORMULA_SKILL_v1.0.md) | Chuẩn hóa công thức vật lý, toán điện tử, hệ đơn vị đo lường quốc tế SI và bảng biến số. |
+| **MASTER_STYLE** | `v1.0` | [REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE](00_SKILL/REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md) | Thiết kế giao diện HTML CKEditor 3.6.6.2, semantic callouts (Lưu ý, Cảnh báo), Typography công nghiệp. |
+| **TECH_REVIEW** | `v1.1` | [TECHNICAL_REVIEW_AUDIT_PROTOCOL](00_SKILL/TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md) | Biên bản kiểm duyệt 4 trụ cột, tích hợp Cửa ải kiểm định hiển thị song song Laptop & Mobile (ADR-017). |
+
+---
+
+## 📱 4. TIÊU CHUẨN HIỂN THỊ ĐA THIẾT BỊ (DUAL-VIEWPORT RESPONSIVE)
+
+Để phục vụ độc giả là kỹ sư, sinh viên và chuyên gia vận hành tra cứu trên cả máy tính xách tay và điện thoại thông minh tại nhà máy, hệ thống áp dụng tiêu chuẩn hiển thị khắt khe:
+
+* 🖼️ **Hình ảnh & Sơ đồ**: Áp dụng container tỷ lệ vàng `max-width: 808px; width: 100%; aspect-ratio: 808 / 500; object-fit: contain;` đảm bảo ảnh hiển thị sắc nét, không bị co kéo, méo hình theo chiều dọc trên điện thoại.
+* 📊 **Bảng Thông Số Kỹ Thuật**: Đóng gói trong thẻ bọc chống tràn `overflow-x: auto; -webkit-overflow-scrolling: touch;` với thuộc tính bảng `min-width: 600px;` giúp xem trọn vẹn dữ liệu nhiều cột trên mobile bằng thao tác vuốt ngang mượt mà.
+* 🔗 **Đường Dẫn Tài Liệu Tham Khảo (URLs)**: Toàn bộ liên kết dài được cấu hình thuộc tính `word-break: break-all; overflow-wrap: anywhere;` ngăn chặn hoàn toàn lỗi vỡ layout hoặc phình ngang màn hình giao diện.
+
+---
+
+## 📚 5. CÁC BÀI VIẾT MẪU ĐÃ NGHIỆM THU (SHOWCASE ARTICLES)
+
+Toàn bộ các bài viết dưới đây đã được Kỹ sư trưởng nghiệm thu thực tế, đăng tải thành công lên website và kích hoạt cơ chế khóa an toàn bất biến (`APPROVED / LOCKED`):
+
+| Mã Bài | Chủ Đề Bài Viết | Dạng Bài | Quy Chuẩn Tiêu Biểu | Trạng Thái |
+|---|---|---|---|---|
+| [**BLOG_01**](03_Articles/BLOG_01_Dong_co_non_tai/) | **Cách phát hiện động cơ điện đang chạy non tải trong nhà máy** | `BLOG-T01` | Baseline, Bảng tính tải trọng, HTML CKEditor chuẩn | 🔒 `APPROVED / LOCKED` |
+| [**BLOG_02**](03_Articles/BLOG_02_He_so_cong_suat_va_Song_hai/) | **Hệ số công suất cos phi và sóng hài bậc cao trong nhà máy** | `BLOG-T01` | Công thức LaTeX biến dạng Fourier, Bảng chuẩn IEEE 519-2022 | 🔒 `APPROVED / LOCKED` |
+| [**BLOG_03**](03_Articles/BLOG_03_Chan_doan_qua_dong_bien_tan/) | **Quy trình 4 bước chẩn đoán và khắc phục lỗi quá dòng (Overcurrent) trên biến tần công nghiệp** | `BLOG-T03` | Cây quyết định, Quy trình đo 6 van IGBT đồng hồ vạn năng, Chuẩn Responsive Mobile & Laptop | 🔒 `APPROVED / LOCKED` |
+
+---
+
+## 📂 6. CƠ CẤU THƯ MỤC DỰ ÁN (PROJECT STRUCTURE)
+
+```text
+Agents-Web-Blog-Content/
+├── README.md                      # [BẠN ĐANG ĐỌC] Giới thiệu tổng quan hệ thống & Kiến trúc
+├── AGENT_GUIDE.md                 # Cẩm nang vận hành bắt buộc dành cho các AI Agent
+├── ROADMAP.md                     # Lộ trình 4 giai đoạn và tiến độ các Milestone
+├── WORKLOG.md                     # Nhật ký làm việc chi tiết, lịch sử phiên & danh mục ADR
+├── walkthrough.md                 # Báo cáo tổng kết tiến độ và nghiệm thu kỹ thuật
+├── 00_SKILL/                      # Kho lưu trữ các bộ quy chuẩn kỹ năng kỹ thuật cốt lõi
+│   ├── archive/                   # Lưu trữ lịch sử các phiên bản cũ (v1.0, v1.1, v1.2)
+│   ├── BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md
+│   ├── IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1.md
+│   ├── IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md
+│   ├── IEEE_03_REFERENCE_NAMING_AND_CKEDITOR_STYLE_SKILL_v1.1.md
+│   ├── IEEE_04_CITATION_AUDIT_PROTOCOL_v1.1.md
+│   ├── IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md
+│   ├── IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md
+│   ├── LATEX_FORMULA_SKILL_v1.0.md
+│   ├── REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md
+│   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md
+│   └── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md
+├── 01_KNOWLEDGE_BASE/             # Kho tài liệu kỹ thuật, tiêu chuẩn gốc, tích hợp NotebookLM
+├── 02_AGENT_TEMPLATES/            # Đặc tả System Prompts & Hợp đồng tương tác 5 Subagents
+│   ├── ARTICLE_LIFECYCLE_AND_APPROVAL_PROTOCOL.md # Vòng đời bài viết & cơ chế khóa an toàn
+│   ├── research_agent.md          # Đặc tả Subagent Nghiên cứu Nguồn
+│   ├── drafting_agent.md          # Đặc tả Subagent Biên soạn Kỹ thuật
+│   ├── visual_agent.md            # Đặc tả Subagent Đồ họa & Prompt AI
+│   ├── review_agent.md            # Đặc tả Subagent Phản biện & Kiểm toán Responsive
+│   └── publisher_agent.md         # Đặc tả Subagent Đóng gói Xuất bản HTML
+├── 03_Articles/                   # Các gói bài viết độc lập (dossier, draft, image, audit, html)
+│   ├── BLOG_01_Dong_co_non_tai/
+│   ├── BLOG_02_He_so_cong_suat_va_Song_hai/
+│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/
+└── 04_PLANS/                      # Kế hoạch thực thi chi tiết theo từng phiên làm việc
+```
+
+---
+
+## 🔒 7. CƠ CHẾ BẢO VỆ BÀI VIẾT 3 LỚP (3-LAYER PROTECTION PROTOCOL)
+
+Nhằm đảm bảo an toàn tuyệt đối cho tài sản nội dung sau khi được Kỹ sư trưởng phê duyệt ([ADR-005](WORKLOG.md#quyet-dinh-kien-truc-adr)), hệ thống áp dụng cơ chế khóa 3 lớp:
+
+1. **Lớp Trạng Thái Máy Đọc (Machine State)**: File `article_status.json` trong mỗi thư mục bài viết được gắn `"status": "APPROVED"` và `"is_locked": true`.
+2. **Lớp Prompt Guardrail (AI Enforcement)**: Toàn bộ AI Agent khi nhận lệnh chỉnh sửa bài viết đã khóa đều **bắt buộc phải từ chối**, chỉ thực hiện khi Kỹ sư trưởng cấp mã lệnh rõ ràng: `UNLOCK [MÃ_BÀI_VIẾT]`.
+3. **Lớp Hệ Điều Hành (OS Read-Only Flag)**: File mã nguồn HTML chính thức được kích hoạt thuộc tính Read-Only của hệ điều hành (`attrib +r`), ngăn chặn mọi hành vi ghi đè hoặc xóa vô tình.
+
+---
+
+## 🚦 8. TIẾN ĐỘ LỘ TRÌNH (ROADMAP PROGRESS)
+
+* ✅ **Phase 1: Baseline & Standards Foundation** (Hoàn thành 09/2026) — Thiết lập bộ quy chuẩn nền tảng, hoàn thành bài viết mẫu `BLOG_01`.
+* ✅ **Phase 2: Stress-test & Standards Expansion** (Hoàn thành 09/2026) — Hoàn thành `BLOG_02`, `BLOG_03`, nâng cấp toàn bộ bộ kỹ năng lên `v1.1` - `v2.0`, ban hành tiêu chuẩn Responsive Laptop & Mobile.
+* 🟡 **Phase 3: Multi-Agent Specification & Tooling** (Đang triển khai Q4/2026) — Đã hoàn thành 5 Subagent Templates; tiếp tục tích hợp MCP Tooling (`notebooklm`, image generator) và thử nghiệm điều phối tự động.
+* ⚪ **Phase 4: Autonomous Pipeline & Publishing** (Dự kiến Q1/2027) — Vận hành pipeline một chạm tự động hóa khép kín và xuất bản trực tiếp lên CMS.
+
+---
+
+## 👥 9. BẢN QUYỀN & LIÊN HỆ
+
+* **Đơn vị chủ quản**: [Real Group](https://www.real-group.org) / Technical Training Center (TTC)
+* **Kỹ sư trưởng & Quản trị dự án**: [Khai TTC](https://github.com/Khaittc)
+* **Nền tảng phát triển**: Google Antigravity Agentic AI Framework

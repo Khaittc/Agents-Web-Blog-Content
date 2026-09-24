@@ -373,7 +373,22 @@
   4. Đóng gói toàn bộ 54 files (bao gồm Master Skills, Agent Templates, Articles BLOG_01 đến BLOG_03, Plans, Guides và Worklog) với commit:
      `feat: initial commit - autonomous multi-agent technical blog production system (Phase 1-3)`.
   5. Liên kết remote `origin https://github.com/Khaittc/Agents-Web-Blog-Content.git` và thực hiện `git push -u origin main` thành công 100%.
-- **Trạng thái kết thúc phiên**: Toàn bộ dự án đã được đồng bộ lên remote GitHub của Kỹ sư trưởng an toàn, sạch sẽ và đầy đủ lịch sử.
+---
+
+### Phiên làm việc: 24/09/2026 (Phiên 19 — Xây Dựng Root README.md Giới Thiệu Toàn Diện Hệ Thống Trên GitHub)
+- **Người thực hiện**: Kỹ sư trưởng & AI Assistant (Antigravity).
+- **Nội dung công việc**:
+  1. Tiếp nhận yêu cầu của Kỹ sư trưởng: Viết thêm file [README.md](file:///d:/Agents_Tools/05_WebsiteTTC/README.md) ở thư mục gốc của project để người dùng truy cập GitHub có thể nắm bắt ngay mục tiêu ứng dụng, kiến trúc và phạm vi triển khai của dự án.
+  2. Xây dựng hoàn chỉnh file [README.md](file:///d:/Agents_Tools/05_WebsiteTTC/README.md) với thiết kế trực quan, chuyên nghiệp chuẩn GitHub:
+     - Hệ thống Badges: Google Antigravity, IEEE Suite v2.0, Dual-Viewport Responsive, CKEditor Ready, Phase 3 Active.
+     - Mục tiêu cốt lõi: 100% Zero Hallucination, trích dẫn học thuật IEEE, hiển thị đa thiết bị Laptop & Mobile, tương thích CMS CKEditor 3.6.6.2.
+     - Sơ đồ kiến trúc Mermaid 5-Stage Multi-Agent Pipeline (Research → Drafting → Visual → Review → Publisher).
+     - Bảng tra cứu các Master Skills trong `00_SKILL/` và chi tiết tiêu chuẩn Responsive Đa thiết bị (ADR-016, ADR-017).
+     - Bảng Showcase 3 bài viết mẫu đã nghiệm thu và khóa an toàn (`BLOG_01`, `BLOG_02`, `BLOG_03`).
+     - Cơ chế bảo vệ bài viết 3 lớp bất biến (ADR-005, ADR-018) và sơ đồ cơ cấu thư mục dự án.
+  3. Cập nhật đồng bộ cây thư mục trong [AGENT_GUIDE.md](file:///d:/Agents_Tools/05_WebsiteTTC/AGENT_GUIDE.md) và trạng thái các đầu việc Phase 3 trong [ROADMAP.md](file:///d:/Agents_Tools/05_WebsiteTTC/ROADMAP.md).
+  4. Đóng gói và đẩy (push) commit mới lên remote GitHub `main`.
+- **Trạng thái kết thúc phiên**: Trang chủ GitHub của dự án hiển thị hoàn hảo, minh bạch toàn bộ ứng dụng và quy trình vận hành.
 
 ---
 
@@ -382,10 +397,11 @@
 Ưu tiên thực hiện trong Phase 3:
 1. [x] **Xây dựng 5 Subagent Templates chuyên trách trong `02_AGENT_TEMPLATES/`**:
    - ĐÃ HOÀN THÀNH: Trọn bộ 5 file đặc tả `research_agent.md`, `drafting_agent.md`, `visual_agent.md`, `review_agent.md`, `publisher_agent.md`.
-2. [x] **Đồng bộ mã nguồn dự án lên GitHub**:
-   - ĐÃ HOÀN THÀNH: Khởi tạo và đẩy toàn bộ project lên `https://github.com/Khaittc/Agents-Web-Blog-Content.git`.
+2. [x] **Đồng bộ mã nguồn dự án lên GitHub & Xây dựng Root README.md**:
+   - ĐÃ HOÀN THÀNH: Khởi tạo, đẩy toàn bộ project và tạo `README.md` chuẩn mực trên `https://github.com/Khaittc/Agents-Web-Blog-Content.git`.
 3. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Tooling & MCP Integration)**:
    - Khảo sát và kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn nguồn tài liệu Tier 1/2 với số trang và bảng tự động.
    - Chuẩn hóa luồng sử dụng tool `invoke_subagent` và `define_subagent` để điều phối tự động 5 agents trực tiếp trong Antigravity.
 4. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
    - Ra đề bài mẫu mới thông qua khung chat Antigravity và cho 5 Subagents tự động thực thi khép kín từ nghiên cứu đến đóng gói xuất bản HTML.
+

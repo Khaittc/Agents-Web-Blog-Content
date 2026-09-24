@@ -38,28 +38,30 @@ BƯỚC 3: Tra cứu 00_SKILL/ và 02_AGENT_TEMPLATES/
 
 ```text
 05_WebsiteTTC/
+├── README.md                  # Giới thiệu tổng quan hệ thống, kiến trúc và ứng dụng trên GitHub
 ├── AGENT_GUIDE.md             # [BẠN ĐANG ĐỌC] Cẩm nang vận hành dành cho Agent
 ├── ROADMAP.md                 # Lộ trình 4 giai đoạn và tiến độ các Milestone
 ├── WORKLOG.md                 # Nhật ký làm việc, các ADR và danh sách việc cần làm
 ├── walkthrough.md             # Báo cáo tổng kết nghiệm thu & tiến độ phiên làm việc gần nhất
 ├── 00_SKILL/                  # Bộ quy chuẩn kỹ năng kỹ thuật cốt lõi
-│   ├── archive/                                      # Thư mục lưu trữ các phiên bản cũ (v1.2, ...)
-│   ├── BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md       # Cấu trúc nội dung 5 loại bài (bắt buộc tối thiểu 1 hình content)
+│   ├── archive/                                      # Thư mục lưu trữ các phiên bản cũ
+│   ├── BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md       # Cấu trúc nội dung 5 loại bài
 │   ├── IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md   # Hệ thống trích dẫn IEEE Master Suite v2.0
-│   │   ├── IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.0.md # Nhận diện nguồn & Live URL check 200
-│   │   ├── IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md               # Đánh số [1], ngoặc rời, locator, vị trí CUỐI CÂU
-│   │   ├── IEEE_03_REFERENCE_NAMING_AND_CKEDITOR_STYLE_SKILL_v1.0.md        # Khuôn mẫu đặt tên & Link bấm được CKEditor
-│   │   └── IEEE_04_CITATION_AUDIT_PROTOCOL_v1.1.md                          # Quy trình kiểm duyệt 6 cửa ải (Gate 1-6 & Cuối câu)
+│   │   ├── IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1.md # Nguồn & Live URL check 200
+│   │   ├── IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md               # Trích dẫn nội văn ở CUỐI CÂU
+│   │   ├── IEEE_03_REFERENCE_NAMING_AND_CKEDITOR_STYLE_SKILL_v1.1.md        # Khuôn mẫu đặt tên & Link bấm được CKEditor
+│   │   └── IEEE_04_CITATION_AUDIT_PROTOCOL_v1.1.md                          # Kiểm duyệt 6 cửa ải & Vị trí cuối câu
 │   ├── LATEX_FORMULA_SKILL_v1.0.md                   # Quy chuẩn công thức toán & SI
 │   ├── REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md # Chuẩn giao diện HTML CKEditor
-│   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md         # Quy trình xác minh nguồn Tier 1-3 & Verified Locator
-│   ├── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.0.md       # Biên bản kiểm duyệt kỹ thuật 4 trụ cột
-│   └── IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.1.md   # Chuẩn đặc tả ảnh, Prompt AI 5 tầng & khung HTML placeholder
+│   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md         # Quy trình xác minh nguồn Tier 1-3
+│   ├── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md       # Kiểm duyệt 4 trụ cột & Responsive Laptop/Mobile (ADR-017)
+│   └── IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md   # Chuẩn đặc tả ảnh, Prompt AI 5 tầng & khung responsive
 ├── 01_KNOWLEDGE_BASE/         # Kho tài liệu kỹ thuật, tiêu chuẩn, PDF (liên kết NotebookLM)
-├── 02_AGENT_TEMPLATES/        # System prompts & Hợp đồng giao tiếp giữa các Subagents
+├── 02_AGENT_TEMPLATES/        # System prompts & Hợp đồng giao tiếp giữa 5 Subagents
 ├── 03_Articles/               # Lưu trữ các bài viết (bản thảo, audit report, HTML cuối)
 │   ├── BLOG_01_Dong_co_non_tai/                      # Bài viết mẫu Baseline đầu tiên (LOCKED)
-│   └── BLOG_02_He_so_cong_suat_va_Song_hai/          # Bài viết mẫu thứ 2 (LOCKED)
+│   ├── BLOG_02_He_so_cong_suat_va_Song_hai/          # Bài viết mẫu thứ 2 (LOCKED)
+│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/          # Bài viết mẫu thứ 3 (LOCKED)
 └── 04_PLANS/                  # Lưu trữ các bản kế hoạch thực thi [yymmdd]_implementation_plan.md
 ```
 
