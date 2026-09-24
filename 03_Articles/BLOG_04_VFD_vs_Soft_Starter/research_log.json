@@ -94,6 +94,17 @@
       "top_candidates_discovered": [
         "CAN-008"
       ]
+    },
+    {
+      "query_id": "Q-009",
+      "rq_id": "RQ-006",
+      "query": "Rockwell Automation DRIVES-TD001 Preventive Maintenance Checklist of Industrial Control and Drive System Equipment pdf",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T23:00:24+07:00",
+      "result_count": 5,
+      "top_candidates_discovered": [
+        "CAN-009"
+      ]
     }
   ],
   "candidate_sources_evaluated": [
@@ -288,6 +299,30 @@
         "no_dead_or_generic_link": true
       },
       "evaluation_notes": "Tài liệu kỹ thuật chuyên đề chuẩn mực của ABB (Tier 1 OEM Technical Guide) phân tích toàn diện cơ chế phát sinh sóng hài của các cấu hình bộ chỉnh lưu VFD (6 xung, 12 xung, IGBT/AFE), vai trò của cuộn kháng AC/DC, các giải pháp lọc hài (thụ động, tích cực) và ranh giới áp dụng chuẩn IEEE Std 519 tại điểm PCC."
+    },
+    {
+      "candidate_id": "CAN-009",
+      "rq_id": "RQ-006",
+      "title": "Preventive Maintenance Checklist of Industrial Control and Drive System Equipment",
+      "publisher": "Rockwell Automation",
+      "url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/td/drives-td001_-en-p.pdf",
+      "canonical_url": "https://literature.rockwellautomation.com/",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "DRIVES-TD001C-EN-P",
+      "source_tier": "Tier 1",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-006",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Tài liệu kỹ thuật hướng dẫn bảo trì định kỳ chính thức (Tier 1 OEM Service Bulletin) từ Rockwell Automation; xác nhận quy trình kiểm tra ban đầu sau 3-4 tháng và hàng năm, bảo dưỡng quạt làm mát cưỡng bức, quy trình kích hoạt lại tụ điện (bus capacitor reforming) khi lưu kho, kiểm tra tiếp điểm cơ khí và công nghệ bảo trì dự đoán."
     }
   ]
 }

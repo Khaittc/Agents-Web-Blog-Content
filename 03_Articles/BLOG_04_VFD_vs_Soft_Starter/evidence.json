@@ -10,11 +10,11 @@
     "review_verdict": "NOT_APPLICABLE"
   },
   "evidence_summary": {
-    "total_sources": 5,
-    "tier_1_count": 4,
+    "total_sources": 6,
+    "tier_1_count": 5,
     "tier_2_count": 0,
     "tier_3_count": 1,
-    "high_tier_ratio": 0.8
+    "high_tier_ratio": 0.833
   },
   "sources": [
     {
@@ -25,6 +25,7 @@
         "RQ-002",
         "RQ-003",
         "RQ-005",
+        "RQ-006",
         "RQ-007"
       ],
       "title": "Softstarter Handbook",
@@ -84,6 +85,14 @@
           "pdf_page_index": 43,
           "verified": true,
           "excerpt": "Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size."
+        },
+        {
+          "locator_type": "TABLE",
+          "locator_value": "Table Comparison between different starting methods, p. 20",
+          "document_page": 20,
+          "pdf_page_index": 26,
+          "verified": true,
+          "excerpt": "Estimated average installation cost: Direct on line: 1; Star-Delta start: 3; Softstarter: 6; Drives: > 12."
         }
       ]
     },
@@ -147,6 +156,14 @@
           "pdf_page_index": 15,
           "verified": true,
           "excerpt": "At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Physical Size, pp. 15-16",
+          "document_page": 15,
+          "pdf_page_index": 15,
+          "verified": true,
+          "excerpt": "Figure 16 and Figure 17 show the relative size difference between a drive and a soft starter, where the soft starter is smaller than the drive. Large-size drives must be mounted in a motor control center-style cabinet, because other devices (for example, isolation, inverters and EMC limiters) are also being mounted along with the drive."
         }
       ]
     },
@@ -272,6 +289,56 @@
           "pdf_page_index": 13,
           "verified": true,
           "excerpt": "The harmonics of a voltage source AC drive can be significantly reduced by connecting a large enough choke to its AC input or DC bus... For the first 25 harmonic components the theoretical THD minimum is 29%."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-006",
+      "accepted_from_candidate_id": "CAN-009",
+      "research_question_ids": [
+        "RQ-006"
+      ],
+      "title": "Preventive Maintenance Checklist of Industrial Control and Drive System Equipment",
+      "source_type": "TECH_REPORT",
+      "publisher": "Rockwell Automation, Inc.",
+      "publication_year": 2019,
+      "tier": "TIER_1",
+      "canonical_url": "https://literature.rockwellautomation.com/",
+      "retrieval_url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/td/drives-td001_-en-p.pdf",
+      "access_status": "OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "publication_code": "DRIVES-TD001C-EN-P",
+        "technical_scope": "Hướng dẫn và danh mục kiểm tra bảo trì định kỳ cho thiết bị điều khiển công nghiệp và hệ thống truyền động VFD: chu kỳ kiểm tra 3-4 tháng và hàng năm, quạt làm mát, kích hoạt lại tụ DC bus, tiếp điểm và công nghệ bảo dưỡng dự đoán."
+      },
+      "locators": [
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Sections Periodic Inspection & Cooling Devices, pp. 1-2",
+          "document_page": 1,
+          "pdf_page_index": 1,
+          "verified": true,
+          "excerpt": "We recommend an initial inspection within 3...4 months after installation. We recommend an annual inspection after initial inspection on an ongoing basis... Inspect blowers and fans that are used for forced air cooling. Replace any that have bent, chipped, missing blades or if the shaft does not turn freely... Clean or change air filters as recommended. Do not use compressed air or similar to clear dust or debris."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Power section components & Predictive maintenance, p. 3",
+          "document_page": 3,
+          "pdf_page_index": 3,
+          "verified": true,
+          "excerpt": "Inspect and clean the power section components (IGBTs, SCRs, and capacitors) as part of the annual clean and inspection cycle... The design life expectancy of the overall components normally exceeds 10 years (in some cases can last 20 years or more) in normal operating environments. The PowerFlex 755T product line has true predictive maintenance capabilities for many components that include all fans, IGBTs, LCL filter capacitors, and bus capacitors."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Bus Capacitor Reforming Guidelines & Contacts, p. 4",
+          "document_page": 4,
+          "pdf_page_index": 4,
+          "verified": true,
+          "excerpt": "Figure 5 - Bus Capacitor Reforming Guidelines... Check contacts for excessive wear and dirt accumulations. Discoloration and slight pitting are acceptable. Do not file contacts. Replace the contacts only after the silver has become badly worn. Always replace contacts in complete sets."
         }
       ]
     }
@@ -430,6 +497,39 @@
       "verification_status": "VERIFIED",
       "locator_status": "LOCATOR_VERIFIED",
       "locator": "Ch. 2 Standards for harmonic limits: IEEE 519, p. 10"
+    },
+    {
+      "evidence_id": "EVD-015",
+      "rq_id": "RQ-006",
+      "source_id": "SRC-002",
+      "claim": "Về kích thước lắp đặt (footprint), Soft Starter có thể tích vật lý nhỏ hơn đáng kể so với VFD trên toàn dải công suất; đối với các biến tần công suất lớn, kích thước thiết bị tăng mạnh và đòi hỏi tủ điện dạng MCC để chứa thêm các thiết bị phụ trợ (cách ly, cuộn kháng, bộ lọc EMC).",
+      "evidence_excerpt": "Figure 16 and Figure 17 show the relative size difference between a drive and a soft starter, where the soft starter is smaller than the drive. Large-size drives must be mounted in a motor control center-style cabinet, because other devices (for example, isolation, inverters and EMC limiters) are also being mounted along with the drive.",
+      "evidence_type": "COMPARISON_POINT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Physical Size, pp. 15-16"
+    },
+    {
+      "evidence_id": "EVD-016",
+      "rq_id": "RQ-006",
+      "source_id": "SRC-001",
+      "claim": "Theo bảng đối chiếu các phương pháp khởi động của ABB, chỉ số chi phí lắp đặt bình quân ước tính của biến tần (Drives > 12) cao gấp đôi so với khởi động mềm (Softstarter = 6) và cao hơn nhiều so với khởi động sao-tam giác (Star-Delta = 3) hoặc trực tiếp (DOL = 1).",
+      "evidence_excerpt": "Estimated average installation cost: Direct on line: 1; Star-Delta start: 3; Softstarter: 6; Drives: > 12.",
+      "evidence_type": "NUMERICAL_VALUE",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Table Comparison between different starting methods, p. 20"
+    },
+    {
+      "evidence_id": "EVD-017",
+      "rq_id": "RQ-006",
+      "source_id": "SRC-006",
+      "claim": "Quy trình bảo trì định kỳ của hệ thống biến tần công nghiệp đòi hỏi kiểm tra ban đầu sau 3-4 tháng và định kỳ hàng năm; các hạng mục bắt buộc gồm kiểm tra quạt làm mát cưỡng bức (thay thế cánh nứt/kẹt, vệ sinh lưới lọc, cấm dùng khí nén), kiểm tra khối công suất bán dẫn/tụ điện, và tuân thủ quy trình kích hoạt lại tụ điện (capacitor reforming) đối với thiết bị lưu kho.",
+      "evidence_excerpt": "We recommend an initial inspection within 3...4 months after installation. We recommend an annual inspection after initial inspection on an ongoing basis... Inspect blowers and fans that are used for forced air cooling... Clean or change air filters as recommended. Do not use compressed air or similar to clear dust or debris... Bus Capacitor Reforming Guidelines.",
+      "evidence_type": "OEM_RECOMMENDATION",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Sections Periodic Inspection, Cooling Devices, Bus Capacitor Reforming, pp. 1-4"
     }
   ],
   "conflicts": [

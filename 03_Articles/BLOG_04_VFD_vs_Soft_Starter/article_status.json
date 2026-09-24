@@ -6,5 +6,5 @@
   "is_locked": false,
   "created_at": "2026-09-24T21:30:00+07:00",
   "evidence_dossier_file": "evidence_dossier.md",
-  "notes": "Bài viết ở trạng thái RESEARCHED. Đã hoàn thành thẩm định chuyên đề CON-002 (Harmonics/IEEE 519, RQ-005: ANSWERED, CON-002: RESOLVED). Đang chờ task chuyên đề RQ-006 (Freshness / CAPEX Research). Chưa đủ điều kiện handoff sang khâu Drafting theo đúng quy định dừng kiểm soát."
+  "notes": "Bài viết ở trạng thái RESEARCHED. Đã hoàn thành toàn diện nghiên cứu 7/7 Research Questions (RQ-001 đến RQ-007: ANSWERED), giải quyết 2/2 xung đột kỹ thuật (CON-001, CON-002: RESOLVED), kế hoạch nghiên cứu đạt COMPLETE với 6 nguồn ổn định (83.3% Tier 1+2). Chưa mở khâu Drafting theo đúng quy định điều phối."
 }

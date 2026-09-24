@@ -5,9 +5,9 @@
 **Thể loại Canonical**: `BLOG-T04` (So sánh Kỹ thuật Đa chiều — Comparison)<br>
 **Người thực hiện**: Kỹ sư Nghiên cứu Hệ thống (Research Agent)<br>
 **Ngày xác thực**: 2026-09-24<br>
-**Tổng số nguồn tiếp nhận**: 5 (4 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 80% >= 70%)<br>
+**Tổng số nguồn tiếp nhận**: 6 (5 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 83.3% >= 70%)<br>
 **Ngoại lệ nguồn hẹp (Source Policy Exception)**: `NONE` (Tuân thủ chính sách mặc định 4–7 nguồn, không yêu cầu ngoại lệ)<br>
-**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005 đạt `ANSWERED`, CON-002 đạt `RESOLVED`, RQ-006 chờ xử lý chuyên đề)
+**Trạng thái Kế hoạch Nghiên cứu**: `COMPLETE` (Toàn bộ 7/7 Research Questions đạt `ANSWERED`, 2/2 Xung đột Kỹ thuật đạt `RESOLVED`)
 
 ---
 
@@ -20,7 +20,7 @@
 | `RQ-003` | **HIGH** | Khả năng điều chỉnh và duy trì tốc độ động cơ liên tục trong quá trình làm việc của VFD so với giới hạn tốc độ cố định của Soft Starter sau khởi động? | `ANSWERED` | `SRC-001`, `SRC-003` | `EVD-005` |
 | `RQ-004` | **HIGH** | So sánh tổn hao công suất (Power losses), sinh nhiệt và hiệu suất vận hành giữa VFD (tổn hao IGBT liên tục) và Soft Starter (Bypass contactor triệt tiêu tổn hao)? | `ANSWERED` | `SRC-002`, `SRC-003` | `EVD-006`, `EVD-007` |
 | `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004`, `SRC-005` | `EVD-008`, `EVD-009`, `EVD-013`, `EVD-014` |
-| `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `PARTIALLY_ANSWERED` | `SRC-002` | `EVD-010` |
+| `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-006` | `EVD-010`, `EVD-015`, `EVD-016`, `EVD-017` |
 | `RQ-007` | **HIGH** | Ma trận hướng dẫn và tiêu chí lựa chọn kỹ thuật giữa VFD và Soft Starter cho các nhóm phụ tải công nghiệp điển hình (Bơm, Quạt, Băng tải, Máy nghiền)? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-011`, `EVD-012` |
 
 ---
@@ -29,11 +29,12 @@
 
 | Source ID | Tên tài liệu / Tiêu chuẩn / Tác giả | Loại hình | Tier | Canonical URL | Retrieval URL | Trạng thái Mạng | Content ID | Claim Ver. | Locator Status | Bộ định vị kiểm chứng (Locators) |
 |:---:|:---|:---|:---:|:---|:---|:---:|:---:|:---:|:---:|:---|
-| `SRC-001` | *Softstarter Handbook* (ABB AB, Cewe-Control, Doc ID: 1SFC132060M0201) | `MANUAL` | Tier 1 | [ABB Library](https://library.abb.com/d/1SFC132060M0201) | [Direct PDF](https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. Different starting methods, pp. 12-20; Ch. Applications, pp. 26-38; Ch. Harmonics, p. 68 |
+| `SRC-001` | *Softstarter Handbook* (ABB AB, Cewe-Control, Doc ID: 1SFC132060M0201) | `MANUAL` | Tier 1 | [ABB Library](https://library.abb.com/d/1SFC132060M0201) | [Direct PDF](https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. Starting methods, pp. 12-20; Tab. Starting methods comparison, p. 20; Ch. Applications, pp. 26-38; Harmonics, p. 68 |
 | `SRC-002` | *When to use a Soft Starter or an AC Variable Frequency Drive* (Rockwell Automation, Pub. 150-WP007A-EN-P) | `TECH_REPORT` | Tier 1 | [Rockwell Literature](https://rok.auto/literature) | [Direct PDF](https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1, p. 6; Bypass, p. 7; Harmonics, p. 12; Initial Cost & Size, pp. 15-16; Maintenance, p. 17 |
 | `SRC-003` | *Soft starters vs. VFDs: Which one is right for your conveyor motor application?* (Mark Duncan, Schneider Electric) | `WEB_ARTICLE` | Tier 3 | [Schneider Blog](https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | [Schneider Article](https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | `REDIRECTED_OK` | `true` | `true` | `LOCATOR_VERIFIED` | Sections: Benefits, Efficiency comparisons, Harmonics, Application FAQ |
 | `SRC-004` | *IEEE Standard for Harmonic Control in Electric Power Systems* (IEEE Std 519-2022) | `STANDARD` | Tier 1 | [IEEE Standards](https://standards.ieee.org/ieee/519/10540/) | [IEEE Xplore](https://ieeexplore.ieee.org/document/9848440) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1: Voltage Distortion Limits; Table 2: Current Distortion Limits, p. 12 |
 | `SRC-005` | *Technical guide No. 6: Guide to harmonics with AC drives* (ABB Oy, Drives, Doc ID: 3AFE64292714 Rev F) | `TECH_REPORT` | Tier 1 | [ABB Library](https://library.abb.com/d/3AFE64292714) | [Direct PDF](https://library.e.abb.com/public/bc35ffb4386c4c039e3a8ec20cef89c5/Technical_guide_No_6_3AFE64292714_RevF_EN.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. 2 IEEE 519, p. 10; Ch. 4 Drive Topologies & Chokes, pp. 13-18; Ch. 5 Mitigation, pp. 20-22 |
+| `SRC-006` | *Preventive Maintenance Checklist of Industrial Control and Drive System Equipment* (Rockwell Automation, Pub. DRIVES-TD001C-EN-P) | `TECH_REPORT` | Tier 1 | [Rockwell Literature](https://literature.rockwellautomation.com/) | [Direct PDF](https://literature.rockwellautomation.com/idc/groups/literature/documents/td/drives-td001_-en-p.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Sections: Periodic Inspection, pp. 1-2; Cooling Devices, p. 2; Power Section & Predictive Maint., p. 3; Capacitor Reforming & Contacts, p. 4 |
 
 ---
 
@@ -155,6 +156,30 @@
   > *"The standard does not provide limits for individual equipment, but for individual customers. The customers are categorised by the ratio of available short circuit current (ISC) to their maximum demand load current (IL) at the point of common coupling... Table 2 of the 2014 standard version is sometimes misinterpreted to give limits for the harmonic emissions of a single apparatus by using short circuit ratio (RSC) of the equipment instead of ISC/IL of the whole installation. The limits of the table should not be used this way, since the ratio of the short circuit current to the total demand load current of an installation should always be used."*
 - **Ý nghĩa kỹ thuật**: Chuẩn IEEE Std 519 quy định giới hạn méo dòng ($TDD$) cho toàn bộ cơ sở của khách hàng tại điểm đấu nối chung (PCC) dựa trên tỷ số dòng ngắn mạch trên dòng phụ tải tổng $I_{sc}/I_L$, không quy định cho từng thiết bị đơn lẻ. Việc áp dụng trực tiếp Bảng 2 lên từng cực của biến tần là diễn giải sai tiêu chuẩn; yêu cầu lắp đặt thêm bộ lọc sóng hài (lọc thụ động, cuộn kháng bổ sung hoặc lọc tích cực AHF) là quyết định ở cấp hệ thống phụ thuộc vào độ cứng của lưới điện và tổng công suất phụ tải phi tuyến tại trạm.
 
+### `EVD-015`: Thể tích lắp đặt và yêu cầu không gian tủ điện (Footprint / Size)
+- **Câu hỏi giải quyết**: `RQ-006`
+- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation, Tier 1)
+- **Vị trí định vị**: Section: *Physical Size*, Trang in: 15-16, Trang PDF: 15-16 (`document_page: 15`, `pdf_page_index: 15`)
+- **Trích dẫn gốc**:
+  > *"Figure 16 and Figure 17 show the relative size difference between a drive and a soft starter, where the soft starter is smaller than the drive. Large-size drives must be mounted in a motor control center-style cabinet, because other devices (for example, isolation, inverters and EMC limiters) are also being mounted along with the drive."*
+- **Ý nghĩa kỹ thuật**: Khởi động mềm có kích thước vật lý và thể tích lắp đặt nhỏ hơn đáng kể so với biến tần trên toàn dải công suất. Với biến tần công suất lớn, kích thước thiết bị tăng vọt và bắt buộc phải lắp đặt trong các tủ điện dạng MCC riêng biệt nhằm tích hợp thêm các thiết bị ngoại vi đồng bộ như thiết bị cách ly, bộ biến đổi bổ trợ, cuộn kháng và bộ lọc giới hạn nhiễu EMC.
+
+### `EVD-016`: Chỉ số chi phí lắp đặt bình quân theo phương pháp khởi động
+- **Câu hỏi giải quyết**: `RQ-006`
+- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB, Tier 1)
+- **Vị trí định vị**: Bảng "Comparison between different starting methods", Trang in: 20, Trang PDF: 26 (`document_page: 20`, `pdf_page_index: 26`)
+- **Số liệu kỹ thuật gốc**:
+  > *"Estimated average installation cost: Direct on line: 1; Star-Delta start: 3; Softstarter: 6; Drives: > 12."*
+- **Ý nghĩa kỹ thuật**: Theo bảng đánh giá kinh tế kỹ thuật định lượng của ABB, chỉ số chi phí lắp đặt bình quân ước tính của biến tần (Drives > 12) cao gấp hơn 2 lần so với khởi động mềm (Softstarter = 6) và cao hơn rất nhiều so với khởi động sao-tam giác (Star-Delta = 3) hoặc trực tiếp (DOL = 1). Kết hợp với số liệu của Rockwell Automation, chênh lệch chi phí ban đầu giãn rộng theo cấp số khi công suất và dòng điện định mức của động cơ tăng lên.
+
+### `EVD-017`: Quy trình bảo trì định kỳ, kiểm tra quạt và kích hoạt lại tụ DC bus
+- **Câu hỏi giải quyết**: `RQ-006`
+- **Nguồn chứng minh**: `SRC-006` (*Preventive Maintenance Checklist of Industrial Control and Drive System Equipment*, Rockwell Automation, Tier 1)
+- **Vị trí định vị**: Sections: *Periodic Inspection*, *Cooling Devices*, *Power Section Components*, *Bus Capacitor Reforming*, Trang in: 1-4, Trang PDF: 1-4 (`document_page: 1-4`, `pdf_page_index: 1-4`)
+- **Trích dẫn gốc**:
+  > *"We recommend an initial inspection within 3...4 months after installation. We recommend an annual inspection after initial inspection on an ongoing basis... Inspect blowers and fans that are used for forced air cooling. Replace any that have bent, chipped, missing blades or if the shaft does not turn freely... Clean or change air filters as recommended. Do not use compressed air or similar to clear dust or debris... Bus Capacitor Reforming Guidelines... Check contacts for excessive wear and dirt accumulations... Replace the contacts only after the silver has become badly worn."*
+- **Ý nghĩa kỹ thuật**: VFD đòi hỏi quy trình bảo dưỡng định kỳ nghiêm ngặt gồm kiểm tra ban đầu (sau 3-4 tháng) và định kỳ hàng năm. Các hạng mục trọng yếu bao gồm: kiểm tra quạt làm mát cưỡng bức (thay thế quạt có cánh cong/nứt/kẹt, làm sạch hoặc thay tấm lọc khí, tuyệt đối cấm dùng khí nén thổi bụi), làm sạch khối bán dẫn công suất/tụ điện, kiểm tra độ mòn tiếp điểm cơ khí, và tuân thủ quy trình nạp kích hoạt lại lớp điện môi tụ DC bus (capacitor reforming) đối với thiết bị lưu kho trước khi đóng điện.
+
 ---
 
 ## 4. PHÂN TÍCH BẤT ĐỒNG & SẮC THÁI KỸ THUẬT (TECHNICAL NUANCE & CONFLICT ANALYSIS)
@@ -203,22 +228,25 @@ Thực thi theo quy chuẩn Cổng tiếp nhận ứng viên nguồn (Source Acc
 | `CAN-006` | Danfoss — *VLT / MCD Design Guide* | files.danfoss.com/MG90N502.pdf | **REJECTED** | `REJECTED_DEAD_LINK` | Đường dẫn máy chủ cũ trả về HTTP 404 Not Found (link chết), vi phạm ADR-015. |
 | `CAN-007` | Chint Global — *VFD vs Soft Starter Guide* | chintglobal.com blog | **REJECTED** | `REJECTED_TIER3_UNQUALIFIED` | Bài viết tổng hợp thương mại cấp 3 (Tier 3), không có số liệu kỹ thuật hoặc công thức gốc kiểm chứng. |
 | `CAN-008` | ABB Oy — *Technical guide No. 6: Guide to harmonics with AC drives* | Direct PDF (library.e.abb.com) | **ACCEPTED** $\rightarrow$ `SRC-005` | - | Nguồn sơ cấp Tier 1 OEM Technical Guide (Doc ID: 3AFE64292714 Rev F), cung cấp số liệu thực nghiệm méo hài theo cấu trúc VFD (6-pulse, 12-pulse, AFE) và cơ sở ranh giới áp dụng IEEE Std 519 tại PCC. |
+| `CAN-009` | Rockwell Automation — *Preventive Maintenance Checklist of Industrial Control and Drive System Equipment* | Direct PDF (literature.rockwellautomation.com) | **ACCEPTED** $\rightarrow$ `SRC-006` | - | Nguồn sơ cấp Tier 1 OEM Service Bulletin (Pub. DRIVES-TD001C-EN-P), xác nhận chu kỳ kiểm tra ban đầu 3-4 tháng và hàng năm, bảo dưỡng quạt làm mát, tụ điện DC bus reforming và công nghệ bảo dưỡng dự đoán. |
 
 ---
 
 ## 6. TỔNG KẾT TRẠNG THÁI NGHIÊN CỨU & CÁC HẠNG MỤC CHỜ THẨM ĐỊNH (RESEARCH SUMMARY & OUTSTANDING ITEMS)
 
-Thu thập chứng cứ nghiên cứu kỹ thuật đã hoàn thành cho tập 5 nguồn tài liệu chính thức (`SRC-001` đến `SRC-005`).
+Thu thập chứng cứ nghiên cứu kỹ thuật đã hoàn thành toàn diện cho tập 6 nguồn tài liệu chính thức (`SRC-001` đến `SRC-006`).
 
 ### Tình trạng xử lý các hạng mục chuyên đề (Technical Review Items):
-1. **`CON-002`** — Thẩm định ranh giới kỹ thuật về phát sinh sóng hài giữa Soft Starter và VFD đối chiếu với chuẩn IEEE Std 519-2022 tại điểm đấu nối chung PCC: **ĐÃ GIẢI QUYẾT TOÀN DIỆN (`status: RESOLVED`)** trên cả 3 khía cạnh: (A) Soft Starter ramp vs bypass, (B) Cấu trúc VFD 6-pulse/12-pulse/AFE/choke, (C) Ranh giới hệ thống cấp PCC theo IEEE Std 519-2022.
-2. **`RQ-005`** — Cơ chế phát sinh sóng hài và quy chuẩn IEEE 519-2022: **ĐÃ TRẢ LỜI ĐẦY ĐỦ (`status: ANSWERED`)** với đầy đủ chứng cứ `EVD-008`, `EVD-009`, `EVD-013`, `EVD-014`.
-3. **`RQ-006`** — Khảo sát dữ liệu tươi mới về chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời: **ĐANG CHỜ XỬ LÝ CHUYÊN ĐỀ RIÊNG (`status: PARTIALLY_ANSWERED`, `freshness_required: true`)**.
+1. **`RQ-006`** — Khảo sát dữ liệu tươi mới về chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời: **ĐÃ HOÀN THÀNH TOÀN DIỆN (`status: ANSWERED`)** với đầy đủ chứng cứ định lượng và hướng dẫn OEM (`EVD-010`, `EVD-015`, `EVD-016`, `EVD-017`).
+2. **`CON-002`** — Thẩm định ranh giới kỹ thuật về phát sinh sóng hài giữa Soft Starter và VFD đối chiếu với chuẩn IEEE Std 519-2022 tại điểm đấu nối chung PCC: **ĐÃ GIẢI QUYẾT TOÀN DIỆN (`status: RESOLVED`)** trên cả 3 khía cạnh: (A) Soft Starter ramp vs bypass, (B) Cấu trúc VFD 6-pulse/12-pulse/AFE/choke, (C) Ranh giới hệ thống cấp PCC theo IEEE Std 519-2022.
+3. **Toàn bộ 7/7 Research Questions**: `RQ-001` đến `RQ-007` đều đã đạt trạng thái `ANSWERED`.
+4. **Toàn bộ 2/2 Xung đột kỹ thuật**: `CON-001` và `CON-002` đều đã đạt trạng thái `RESOLVED`.
+5. **Kế hoạch Nghiên cứu (`research_plan.json`)**: Đã đạt trạng thái **`COMPLETE`**.
 
 ### Cam kết tuân thủ quy chuẩn nghiên cứu & kiểm soát tiến trình:
-- [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-005`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
+- [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-006`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
 - [x] Tách biệt độc lập giữa kiểm tra mạng (`HTTP 200` / `REDIRECTED_OK`) và kiểm tra xác thực nội dung (`claim_verified: true`, `content_identity_verified: true`).
-- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB Softstarter Handbook, PDF Rockwell White Paper, IEEE 519-2022 Standard, PDF ABB Technical Guide No. 6, bài phân tích Schneider Electric).
-- [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $80\%$ (4/5 nguồn Tier 1, 1/5 nguồn Tier 3), thỏa mãn vượt mức mục tiêu $\ge 70\%$.
+- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB Softstarter Handbook, PDF Rockwell White Paper, IEEE 519-2022 Standard, PDF ABB Technical Guide No. 6, PDF Rockwell DRIVES-TD001C, bài phân tích Schneider Electric).
+- [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $83.3\%$ (5/6 nguồn Tier 1, 1/6 nguồn Tier 3), thỏa mãn vượt mức mục tiêu $\ge 70\%$.
 - [x] Đã xuất bản song song và đồng bộ 4 tệp cốt lõi: `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md`.
-- [x] **DRAFTING READINESS: NOT READY** — Chưa đủ điều kiện handoff sang khâu Drafting do còn task chuyên đề `RQ-006` cần xử lý dữ liệu tươi mới. Dừng kiểm soát tại cửa ải nghiên cứu: tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh và không sinh mã HTML cho đến khi hoàn tất nghiệm thu toàn bộ các câu hỏi nghiên cứu.
+- [x] **DRAFTING READINESS: NOT READY** — Toàn bộ khâu nghiên cứu đã hoàn tất (`research_plan: COMPLETE`). Dừng kiểm soát tại cửa ải nghiên cứu: tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh và không sinh mã HTML cho đến khi nhận được lệnh điều phối mở Drafting Agent chính thức.

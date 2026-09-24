@@ -102,7 +102,7 @@
         "Schneider Electric"
       ],
       "freshness_required": true,
-      "status": "PARTIALLY_ANSWERED"
+      "status": "ANSWERED"
     },
     {
       "rq_id": "RQ-007",
@@ -122,7 +122,7 @@
       "status": "ANSWERED"
     }
   ],
-  "status": "REVIEW_REQUIRED",
+  "status": "COMPLETE",
   "created_at": "2026-09-24T21:35:00+07:00",
-  "updated_at": "2026-09-24T22:45:00+07:00"
+  "updated_at": "2026-09-24T23:05:00+07:00"
 }
