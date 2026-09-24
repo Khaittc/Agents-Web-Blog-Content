@@ -7,7 +7,7 @@
 **Ngày xác thực**: 2026-09-24<br>
 **Tổng số nguồn tiếp nhận**: 4 (3 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 75% >= 70%)<br>
 **Ngoại lệ nguồn hẹp (Source Policy Exception)**: `NONE` (Tuân thủ chính sách mặc định 4–7 nguồn, không yêu cầu ngoại lệ)<br>
-**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005 đạt `PARTIALLY_ANSWERED`, CON-002 trạng thái `REVIEW_REQUIRED`)
+**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005, RQ-006 đạt `PARTIALLY_ANSWERED`, CON-002 trạng thái `REVIEW_REQUIRED`)
 
 ---
 
@@ -20,7 +20,7 @@
 | `RQ-003` | **HIGH** | Khả năng điều chỉnh và duy trì tốc độ động cơ liên tục trong quá trình làm việc của VFD so với giới hạn tốc độ cố định của Soft Starter sau khởi động? | `ANSWERED` | `SRC-001`, `SRC-003` | `EVD-005` |
 | `RQ-004` | **HIGH** | So sánh tổn hao công suất (Power losses), sinh nhiệt và hiệu suất vận hành giữa VFD (tổn hao IGBT liên tục) và Soft Starter (Bypass contactor triệt tiêu tổn hao)? | `ANSWERED` | `SRC-002`, `SRC-003` | `EVD-006`, `EVD-007` |
 | `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `PARTIALLY_ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004` | `EVD-008`, `EVD-009` |
-| `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `ANSWERED` | `SRC-002` | `EVD-010` |
+| `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `PARTIALLY_ANSWERED` | `SRC-002` | `EVD-010` |
 | `RQ-007` | **HIGH** | Ma trận hướng dẫn và tiêu chí lựa chọn kỹ thuật giữa VFD và Soft Starter cho các nhóm phụ tải công nghiệp điển hình (Bơm, Quạt, Băng tải, Máy nghiền)? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-011`, `EVD-012` |
 
 ---
@@ -179,12 +179,18 @@ Thực thi theo quy chuẩn Cổng tiếp nhận ứng viên nguồn (Source Acc
 
 ---
 
-## 6. CAM KẾT TUÂN THỦ QUY CHUẨN NGHIÊN CỨU
+## 6. TỔNG KẾT TRẠNG THÁI NGHIÊN CỨU & CÁC HẠNG MỤC CHỜ THẨM ĐỊNH (RESEARCH SUMMARY & OUTSTANDING ITEMS)
 
+Thu thập chứng cứ nghiên cứu kỹ thuật đã hoàn thành cho tập nguồn tài liệu hiện tại (`SRC-001` đến `SRC-004`).
+
+### Các hạng mục kỹ thuật chờ xử lý chuyên đề (Outstanding Review Items):
+1. **`RQ-006`** — Khảo sát dữ liệu tươi mới về chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời (`freshness_required: true`, hiện ở trạng thái `PARTIALLY_ANSWERED`).
+2. **`CON-002`** — Thẩm định ranh giới kỹ thuật về phát sinh sóng hài giữa Soft Starter và VFD đối chiếu với chuẩn IEEE Std 519-2022 tại điểm đấu nối chung PCC (`status: REVIEW_REQUIRED`).
+
+### Cam kết tuân thủ quy chuẩn nghiên cứu & kiểm soát tiến trình:
 - [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-004`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
 - [x] Tách biệt độc lập giữa kiểm tra mạng (`HTTP 200` / `REDIRECTED_OK`) và kiểm tra xác thực nội dung (`claim_verified: true`, `content_identity_verified: true`).
 - [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB, PDF Rockwell, IEEE 519-2022, bài phân tích Schneider Electric).
 - [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $75\%$ (3/4 nguồn Tier 1, 1/4 nguồn Tier 3), thỏa mãn mục tiêu $\ge 70\%$.
-- [x] Đã phát hiện và lập biên bản phân tích $2$ bất đồng/sắc thái kỹ thuật (`CON-001: RESOLVED`, `CON-002: REVIEW_REQUIRED`) để định hướng cho Drafting Agent và Technical Review Gate.
-- [x] Đã xuất bản song song và đồng bộ 4 tệp cốt lõi: `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md` bên trong thư mục `03_Articles/BLOG_04_VFD_vs_Soft_Starter/`.
-- [x] **DỪNG KIỂM SOÁT TẠI CỬA ẢI NGHIÊN CỨU**: Tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh (`image_specifications.md`) và không sinh mã HTML cho đến khi có lệnh điều phối tiếp theo.
+- [x] Đã xuất bản song song và đồng bộ 4 tệp cốt lõi: `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md`.
+- [x] **DRAFTING READINESS: NOT READY** — Chưa đủ điều kiện handoff sang khâu Drafting do còn 2 task chuyên đề `RQ-006` và `CON-002` cần xử lý. Dừng kiểm soát tại cửa ải nghiên cứu: tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh và không sinh mã HTML cho đến khi có lệnh điều phối tiếp theo.

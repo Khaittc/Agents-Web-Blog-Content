@@ -102,12 +102,13 @@ Quy tắc logic đã được xác lập:
 ## 6. ĐỒNG BỘ KẾ HOẠCH NGHIÊN CỨU & VÒNG ĐỜI BÀI VIẾT
 
 1. **`research_plan.json`**:
-   - `RQ-006` (Chi phí CAPEX và bảo trì vòng đời): Chuyển `freshness_required: true` (yêu cầu cập nhật mới do đặc thù giá cả thiết bị và công nghệ linh kiện thay đổi theo chu kỳ).
+   - `RQ-006` (Chi phí CAPEX và bảo trì vòng đời): `freshness_required: true`, chuyển trạng thái sang `PARTIALLY_ANSWERED` do bằng chứng hiện tại (EVD-010 từ Rockwell WP 2014) mới chỉ cung cấp so sánh định tính về xu hướng chi phí và bảo trì định kỳ năm thứ 3, chưa đủ số liệu hiện hành về CAPEX định lượng, footprint theo từng dải công suất và đơn giá đương đại.
    - `RQ-005` (Sóng hài theo IEEE 519): Chuyển trạng thái sang `PARTIALLY_ANSWERED` do `CON-002` đang ở trạng thái `REVIEW_REQUIRED`.
-   - Trạng thái kế hoạch tổng thể `status`: Đặt là `REVIEW_REQUIRED` để báo hiệu hội đồng kỹ thuật cần rà soát điểm sóng hài trước khi mở cổng Drafting.
+   - Trạng thái kế hoạch tổng thể `status`: Đặt là `REVIEW_REQUIRED` để báo hiệu hội đồng kỹ thuật cần rà soát chuyên đề trước khi mở cổng Drafting.
 2. **`article_status.json`**:
-   - Thay thế giá trị không quy chuẩn `"status": "RESEARCH_COMPLETE"` bằng trạng thái chuẩn vòng đời: `"status": "RESEARCHED"`.
+   - Giữ trạng thái canonical: `"status": "RESEARCHED"`.
    - Giữ nguyên cờ bảo vệ `"is_locked": false`.
+   - Ghi chú `notes` phản ánh rõ ràng: Research artifacts đã hoàn thành cho tập nguồn hiện hữu nhưng đang chờ 2 task chuyên đề RQ-006 và CON-002; chưa đủ điều kiện handoff sang Drafting.
 
 ---
 
@@ -193,7 +194,38 @@ RUNNING LOCKED ARTICLE INTEGRITY VERIFICATION (PHASE 2.5.1 CI)
 
 ## 10. ĐÁNH GIÁ CHUNG & BƯỚC TIẾP THEO
 
-- Giai đoạn **RESEARCH EVIDENCE QUALITY PATCH** cho `BLOG_04` đã hoàn tất xuất sắc $100\%$ các mục tiêu chất lượng.
-- Các tập tin cốt lõi gồm `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md` đạt sự đồng bộ và chuẩn xác hoàn toàn.
+```text
+BLOG_04 RESEARCH EVIDENCE PATCH: PASS
+
+Research Quality State:
+REVIEW_REQUIRED
+
+Drafting Readiness:
+NOT READY
+
+Outstanding Items:
+- RQ-006 — Dedicated freshness/CAPEX review required
+- CON-002 — Dedicated harmonics/IEEE 519 technical review required
+```
+
+- Các tập tin cốt lõi gồm `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md` đạt sự đồng bộ và chuẩn xác hoàn toàn về mặt cấu trúc và phân hạng.
 - Hệ thống CI đã được nâng cấp thêm Gate 8 và Gate 9, bảo đảm tính bền vững cho toàn bộ các bài viết tương lai trong repository.
-- **NGUYÊN TẮC DỪNG KIỂM SOÁT**: Quá trình dừng ngay tại mốc kết thúc Research Evidence Patch. Tuyệt đối không tự ý tiến hành soạn thảo nội dung bài viết (`draft_review_package.md`), không sinh hình ảnh và không tạo mã HTML khi chưa có chỉ thị chính thức từ User.
+- **NGUYÊN TẮC DỪNG KIỂM SOÁT**: Quá trình dừng ngay tại mốc kết thúc Research Pre-Review Consistency Patch. Tuyệt đối không tự ý tiến hành soạn thảo nội dung bài viết (`draft_review_package.md`), không sinh hình ảnh và không tạo mã HTML khi chưa có chỉ thị chính thức từ User.
+
+---
+
+## RESEARCH READINESS SUMMARY
+
+```text
+Evidence structure: PASS
+Source traceability: PASS
+Claim-strength audit: PASS
+Source-tier normalization: PASS
+Lifecycle consistency: PASS
+
+RQ-006: PARTIALLY_ANSWERED
+CON-002: REVIEW_REQUIRED
+
+Research Plan: REVIEW_REQUIRED
+Drafting Readiness: NOT READY
+```
