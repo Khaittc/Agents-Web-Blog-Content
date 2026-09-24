@@ -1,0 +1,514 @@
+<!--
+BLOG TYPE: BLOG-T02 — How-to / Measurement
+
+1. TIÊU ĐỀ:
+Cách phát hiện động cơ điện đang chạy non tải trong nhà máy
+
+2. META TITLE:
+Động cơ chạy non tải: Cách đo hệ số tải và đánh giá dưới 50%
+
+3. KEYWORD TAG:
+động cơ chạy non tải; đo tải động cơ; motor load factor; động cơ quá cỡ; motor oversizing; hiệu suất động cơ; power factor; VFD; tiết kiệm năng lượng động cơ
+
+4. DESCRIPTION TAG:
+Hướng dẫn đo và xác định hệ số tải động cơ, nhận diện motor thường xuyên vận hành dưới khoảng 50% tải và đánh giá phương án giữ nguyên, tối ưu hoặc thay thế.
+
+5. FEATURED IMAGE:
+Filename: dong-co-chay-non-tai-nha-may-808x500.jpg
+Size: 808 x 500 px
+ALT: Kỹ sư đánh giá tải động cơ điện bằng thiết bị đo công suất trong nhà máy
+Purpose: Minh họa bối cảnh khảo sát tải động cơ và quản lý năng lượng trong nhà máy
+Image Prompt: Industrial electrical motor in a clean manufacturing plant, three-phase power analyzer connected at a motor feeder cabinet, energy monitoring context, realistic industrial engineering photography, no people required, no readable labels, no fake numerical gauges, no wiring diagram, professional blue-gray industrial tone, 808x500 composition
+
+6. MÔ TẢ:
+Bài viết trình bày cách thu thập dữ liệu, đo công suất điện đầu vào và ước tính hệ số tải của động cơ cảm ứng trong nhà máy. Trọng tâm là nhận diện tình trạng vận hành non tải kéo dài, hiểu đúng ý nghĩa của mốc khoảng 50% tải và lựa chọn phương án xử lý dựa trên dữ liệu thay vì chỉ nhìn vào dòng điện.
+-->
+
+<div style="font-family:Arial, Helvetica, sans-serif;font-size:16px;line-height:1.7;color:#243447;">
+
+  <p style="font-size:17px;margin:0 0 16px 0;">
+    Động cơ điện chạy non tải thường khó nhận biết chỉ bằng quan sát. Một motor vẫn có thể chạy ổn định, dòng điện không quá thấp và không phát sinh alarm nhưng công suất cơ mà tải thực sự yêu cầu lại thấp hơn đáng kể so với công suất định mức của motor.
+  </p>
+
+  <p style="margin:0 0 16px 0;">
+    Sai lầm thường gặp là lấy dòng điện đo được chia cho dòng định mức rồi xem kết quả đó là phần trăm tải. Cách này chỉ có giá trị sàng lọc trong một số vùng tải và trở nên kém tin cậy khi tải giảm thấp. Khi có thể, nên ưu tiên đo <strong>công suất tác dụng ba pha (kW)</strong>, sau đó đối chiếu với dữ liệu nameplate và hiệu suất của motor.
+  </p>
+
+  <p style="margin:0 0 20px 0;">
+    Bài viết tập trung vào cách xác định hệ số tải, cách nhận diện motor thường xuyên vận hành dưới khoảng 50% tải và cách quyết định giữa các phương án: giữ nguyên, điều chỉnh chế độ vận hành, dùng VFD khi phù hợp, thay đổi truyền động hoặc thay motor có công suất phù hợp hơn.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">1. Động cơ chạy non tải là gì?</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Hệ số tải của động cơ biểu thị mức công suất cơ mà motor đang cung cấp so với công suất đầu ra định mức trên nameplate. Về nguyên tắc:
+  </p>
+
+  <div style="background:#eef5fa;border:1px solid #c9dae6;padding:14px 16px;margin:14px 0;text-align:center;font-size:18px;">
+    <strong>Load Factor (%) = Công suất cơ thực tế / Công suất cơ định mức × 100</strong>
+  </div>
+
+  <p style="margin:0 0 14px 0;">
+    Motor được xem là <em>underloaded</em> khi tải thực tế nằm trong vùng mà việc giảm tải tiếp tục làm hiệu suất hoặc đặc tính vận hành suy giảm đáng kể. Vì đặc tuyến hiệu suất thay đổi theo kích thước và thiết kế motor, không nên dùng một con số duy nhất để định nghĩa mọi trường hợp.
+  </p>
+
+  <div style="background:#eef5fa;border-left:4px solid #2f6f9f;padding:14px 16px;margin:20px 0;">
+    <strong style="color:#1f5273;">Technical Note:</strong><br>
+    Tài liệu của U.S. Department of Energy (DOE) cho biết nhiều động cơ công nghiệp được thiết kế để vận hành trong vùng khoảng 50% đến 100% tải định mức, với hiệu suất cực đại thường ở gần 75% tải. Tuy nhiên, vùng hiệu suất tốt của từng motor có thể khác nhau, đặc biệt giữa motor công suất nhỏ và motor công suất lớn.
+  </div>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">2. Vì sao cần phát hiện động cơ vận hành non tải?</h2>
+
+  <p style="margin:0 0 12px 0;">
+    Mục tiêu của việc khảo sát không phải là tìm tất cả motor có tải thấp để thay ngay, mà là xác định những motor đang không phù hợp với nhu cầu thực tế của hệ thống.
+  </p>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li>Hiệu suất của một số motor giảm rõ hơn khi tải xuống thấp.</li>
+    <li>Power factor thường giảm khi motor vận hành nhẹ tải, làm tăng dòng phản kháng trong hệ thống điện.</li>
+    <li>Motor quá cỡ có thể là dấu hiệu hệ thống đã thay đổi so với điều kiện thiết kế ban đầu.</li>
+    <li>Với motor chạy nhiều giờ mỗi năm, chênh lệch hiệu suất nhỏ cũng có thể ảnh hưởng đáng kể đến điện năng tiêu thụ tích lũy.</li>
+    <li>Khảo sát tải cung cấp dữ liệu để quyết định có nên giữ nguyên, tối ưu hệ thống truyền động hay thay motor.</li>
+  </ul>
+
+  <p style="margin:0 0 18px 0;">
+    Quan trọng hơn, <strong>tải dưới 50% không đồng nghĩa với việc phải thay motor</strong>. DOE lưu ý rằng việc đánh giá motor quá cỡ cần xét đồng thời tải thực tế, hiệu suất tại điểm tải, tốc độ motor hiện tại, tốc độ motor dự kiến thay thế và hiệu quả kinh tế.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">3. Những dữ liệu cần thu thập trước khi đánh giá</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Một kết luận đáng tin cậy cần kết hợp dữ liệu nameplate, dữ liệu điện đo được và điều kiện vận hành thực tế của máy.
+  </p>
+
+  <div style="overflow-x:auto;margin:14px 0 20px 0;">
+    <table style="width:100%;border-collapse:collapse;min-width:760px;">
+      <thead>
+        <tr style="background:#eaf2f7;">
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Nhóm dữ liệu</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Thông số cần thu thập</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Mục đích</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;"><strong>Nameplate</strong></td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">kW hoặc hp, điện áp, dòng định mức, hiệu suất, PF, rpm, tần số</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Làm mốc so sánh với trạng thái vận hành</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;"><strong>Electrical measurement</strong></td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">kW, V, A, PF của ba pha</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Ước tính tải và kiểm tra chất lượng vận hành điện</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;"><strong>Operating profile</strong></td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Giờ chạy, thời gian ở từng chế độ, start/stop, tải cực đại</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Phân biệt non tải tạm thời và non tải kéo dài</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;"><strong>Process data</strong></td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Lưu lượng, áp suất, sản lượng, tốc độ, trạng thái valve/damper nếu liên quan</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Liên kết tải điện với nhu cầu công nghệ</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;"><strong>Mechanical system</strong></td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Coupling, pulley, gearbox, pump, fan, compressor hoặc cơ cấu máy</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Đánh giá nguyên nhân motor bị chọn quá lớn hoặc vận hành sai điểm thiết kế</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">4. Các phương pháp xác định hệ số tải</h2>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">4.1. Đánh giá bằng công suất điện đo được</h3>
+
+  <p style="margin:0 0 14px 0;">
+    Khi có thiết bị đo công suất, phương pháp dựa trên <strong>input kW</strong> nên được ưu tiên. Power analyzer có thể đo trực tiếp công suất tác dụng ba pha trong lúc motor đang chạy, sau đó giá trị này được so sánh với công suất điện đầu vào tại tải định mức.
+  </p>
+
+  <p style="margin:0 0 14px 0;">
+    Phương pháp này phù hợp cho khảo sát hiện trường vì nó sử dụng công suất thực mà motor đang nhận, thay vì suy tải chỉ từ ampere.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">4.2. Ước tính từ dòng điện</h3>
+
+  <p style="margin:0 0 14px 0;">
+    Khi không có số đo kW, dòng điện có thể dùng để sàng lọc. Tuy nhiên, dòng motor không tỷ lệ trực tiếp với tải trên toàn bộ dải vận hành vì motor cảm ứng vẫn cần dòng từ hóa ngay cả khi tải cơ nhỏ.
+  </p>
+
+  <p style="margin:0 0 14px 0;">
+    DOE cho biết quan hệ giữa dòng và tải còn gần tuyến tính xuống khoảng 50% tải, nhưng dưới vùng này đường cong dòng trở nên phi tuyến rõ hơn. Vì vậy, <strong>không nên dùng tỷ lệ I đo / I định mức để kết luận một motor đang ở 30%, 40% hay một mức tải thấp cụ thể</strong>.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">4.3. Đánh giá từ công suất cơ hoặc dữ liệu quá trình</h3>
+
+  <p style="margin:0 0 14px 0;">
+    Nếu hệ thống có đo torque và speed trên trục, công suất cơ có thể được xác định trực tiếp và so sánh với công suất định mức. Đây là cách đánh giá gần với định nghĩa hệ số tải nhất.
+  </p>
+
+  <p style="margin:0 0 18px 0;">
+    Nếu không có torque sensor, dữ liệu quá trình như lưu lượng, áp suất, sản lượng hoặc tốc độ vẫn rất hữu ích để xác nhận điều kiện tải, nhưng không nên tự quy đổi thành phần trăm tải nếu không có đặc tính thiết bị hoặc mô hình kỹ thuật phù hợp.
+  </p>
+
+  <!-- IMAGE_1: Technical Figure — Sơ đồ vị trí thu thập dữ liệu: nguồn 3 pha/MCC → power analyzer → motor → coupling/gearbox → tải; chỉ rõ kW, V, A, PF và process data. Không dùng AI để tạo số liệu hoặc sơ đồ đấu dây chi tiết. -->
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">5. Công thức và cách tính hệ số tải</h2>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">5.1. Tính công suất điện đầu vào ba pha</h3>
+
+  <p style="margin:0 0 14px 0;">
+    Với hệ thống ba pha và các giá trị RMS đại diện cho ba pha, công suất điện đầu vào có thể được tính:
+  </p>
+
+  <div style="background:#eef5fa;border:1px solid #c9dae6;padding:14px 16px;margin:14px 0;text-align:center;font-size:18px;">
+    <strong>P<sub>i</sub> = √3 × V × I × PF / 1000</strong>
+  </div>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li><strong>P<sub>i</sub></strong>: công suất điện đầu vào ba pha, kW.</li>
+    <li><strong>V</strong>: điện áp RMS dây-dây, V.</li>
+    <li><strong>I</strong>: dòng điện RMS, A.</li>
+    <li><strong>PF</strong>: power factor, dạng số thập phân.</li>
+  </ul>
+
+  <p style="margin:0 0 18px 0;">
+    Nếu power analyzer có khả năng đọc trực tiếp tổng kW ba pha, nên sử dụng giá trị đo trực tiếp thay cho việc tự tính từ các giá trị trung bình, đặc biệt khi tải hoặc điện áp giữa các pha không cân bằng.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">5.2. Xác định công suất điện đầu vào tại tải định mức</h3>
+
+  <p style="margin:0 0 14px 0;">
+    Nếu nameplate ghi công suất cơ đầu ra định mức bằng kW và hiệu suất full-load:
+  </p>
+
+  <div style="background:#eef5fa;border:1px solid #c9dae6;padding:14px 16px;margin:14px 0;text-align:center;font-size:18px;">
+    <strong>P<sub>ir</sub> = P<sub>rated</sub> / η<sub>FL</sub></strong>
+  </div>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li><strong>P<sub>ir</sub></strong>: công suất điện đầu vào tại full load, kW.</li>
+    <li><strong>P<sub>rated</sub></strong>: công suất cơ định mức trên nameplate, kW.</li>
+    <li><strong>η<sub>FL</sub></strong>: hiệu suất tại full load, dạng số thập phân.</li>
+  </ul>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">5.3. Ước tính hệ số tải từ input kW</h3>
+
+  <div style="background:#eef5fa;border:1px solid #c9dae6;padding:14px 16px;margin:14px 0;text-align:center;font-size:18px;">
+    <strong>Load (%) ≈ P<sub>i</sub> / P<sub>ir</sub> × 100</strong>
+  </div>
+
+  <p style="margin:0 0 14px 0;">
+    Đây là phương pháp phù hợp để sàng lọc motor quá cỡ khi có dữ liệu kW. Nếu cần đánh giá chính xác hơn ở vùng tải thấp, nên sử dụng thêm dữ liệu <strong>part-load efficiency</strong> từ nhà sản xuất hoặc nguồn dữ liệu đáng tin cậy, vì hiệu suất không phải là hằng số trên toàn bộ dải tải.
+  </p>
+
+  <div style="background:#fff7e8;border-left:4px solid #d59020;padding:14px 16px;margin:20px 0;">
+    <strong style="color:#8a5a0a;">Giới hạn áp dụng:</strong><br>
+    Kết quả tính từ input kW là giá trị ước tính tải. Độ chính xác phụ thuộc vào độ chính xác của thiết bị đo, dữ liệu hiệu suất, điều kiện điện áp và mức độ đại diện của thời điểm đo đối với chu kỳ vận hành thực tế.
+  </div>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">5.4. Khi chỉ có số đo dòng điện</h3>
+
+  <p style="margin:0 0 14px 0;">
+    DOE đưa ra phương pháp tỷ lệ dòng có bù điện áp:
+  </p>
+
+  <div style="background:#eef5fa;border:1px solid #c9dae6;padding:14px 16px;margin:14px 0;text-align:center;font-size:18px;">
+    <strong>Load (%) ≈ (I / I<sub>r</sub>) × (V / V<sub>r</sub>) × 100</strong>
+  </div>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li><strong>I</strong>: dòng RMS đo được.</li>
+    <li><strong>I<sub>r</sub></strong>: dòng full-load trên nameplate.</li>
+    <li><strong>V</strong>: điện áp RMS đo được.</li>
+    <li><strong>V<sub>r</sub></strong>: điện áp định mức.</li>
+  </ul>
+
+  <p style="margin:0 0 18px 0;">
+    Công thức này chỉ nên dùng khi không có kW và phải hiểu rõ giới hạn: dưới khoảng 50% tải, dòng điện không còn là chỉ báo tốt để xác định load factor.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">6. Ví dụ tính toán từ dữ liệu đo</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Ví dụ dưới đây sử dụng bộ số liệu đo được công bố trong tài liệu <em>Determining Electric Motor Load and Efficiency</em> của U.S. Department of Energy cho một motor 40 hp, 1.800 rpm.
+  </p>
+
+  <div style="overflow-x:auto;margin:14px 0 20px 0;">
+    <table style="width:100%;border-collapse:collapse;min-width:650px;">
+      <thead>
+        <tr style="background:#eaf2f7;">
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Thông số đo</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Pha / cặp pha 1</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Pha / cặp pha 2</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Pha / cặp pha 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Voltage</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">467 V</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">473 V</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">469 V</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Current</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">36 A</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">38 A</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">37 A</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Power Factor</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">0,75</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">0,78</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">0,76</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin:0 0 10px 0;">Giá trị trung bình được tài liệu tính:</p>
+
+  <div style="background:#f6f8fa;border:1px solid #d7e0e7;padding:12px 16px;margin:10px 0 14px 0;font-family:Consolas,'Courier New',monospace;overflow-x:auto;">
+    V = 469,7 V<br>
+    I = 37 A<br>
+    PF = 0,763
+  </div>
+
+  <p style="margin:0 0 10px 0;">Công suất điện đầu vào:</p>
+
+  <div style="background:#f6f8fa;border:1px solid #d7e0e7;padding:12px 16px;margin:10px 0 14px 0;font-family:Consolas,'Courier New',monospace;overflow-x:auto;">
+    P<sub>i</sub> = 469,7 × 37 × 0,763 × √3 / 1000<br>
+    P<sub>i</sub> = 22,9 kW
+  </div>
+
+  <p style="margin:0 0 18px 0;">
+    Để chuyển 22,9 kW thành phần trăm tải, cần biết <strong>công suất điện đầu vào tại full load P<sub>ir</sub></strong> của chính motor đó, được xác định từ công suất định mức và hiệu suất full-load. Không nên tự điền một giá trị hiệu suất giả định nếu nameplate hoặc dữ liệu nhà sản xuất chưa được xác nhận.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">7. Làm thế nào nhận diện motor thường xuyên vận hành dưới tải?</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Một snapshot trong vài phút chỉ mô tả trạng thái tại thời điểm đo. Nếu máy có chu kỳ tải thay đổi, kết luận từ một phép đo duy nhất có thể sai.
+  </p>
+
+  <p style="margin:0 0 10px 0;">Nên xây dựng <strong>operating load profile</strong> bằng cách:</p>
+
+  <ol style="margin:0 0 20px 24px;padding:0;">
+    <li style="margin-bottom:8px;">Ghi kW, V, A và PF theo thời gian bằng power logger.</li>
+    <li style="margin-bottom:8px;">Đồng bộ thời gian đo với trạng thái sản xuất hoặc chế độ vận hành của máy.</li>
+    <li style="margin-bottom:8px;">Xác định tải nền, tải bình thường, tải cực đại và các khoảng thời gian không tải.</li>
+    <li style="margin-bottom:8px;">Tính tỷ lệ thời gian motor ở từng vùng tải.</li>
+    <li>Đánh giá dữ liệu trong một chu kỳ sản xuất đủ đại diện trước khi kết luận motor bị oversize.</li>
+  </ol>
+
+  <p style="margin:0 0 18px 0;">
+    Cách tiếp cận này giúp phân biệt hai trường hợp rất khác nhau: motor chỉ xuống tải thấp trong một công đoạn ngắn, và motor dành phần lớn thời gian làm việc ở tải thấp do công suất đã chọn lớn hơn nhu cầu thực tế.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">8. Động cơ vận hành dưới khoảng 50% tải nên được đánh giá như thế nào?</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Mốc khoảng 50% có giá trị như một <strong>điểm cảnh báo để điều tra</strong>, không phải ngưỡng tự động thay motor. DOE chỉ ra rằng hiệu suất của nhiều motor tương đối ổn định từ full load xuống khoảng 50%, sau đó có thể giảm nhanh hơn; mức giảm phụ thuộc mạnh vào kích thước và thiết kế motor.
+  </p>
+
+  <p style="margin:0 0 12px 0;">Khi phát hiện motor thường xuyên dưới khoảng 50%, cần kiểm tra:</p>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li>Part-load efficiency của motor hiện tại.</li>
+    <li>Power factor tại các mức tải thực tế.</li>
+    <li>Thời gian motor thực sự ở vùng tải thấp.</li>
+    <li>Tải cực đại và mức tải khi khởi động hoặc tăng tốc.</li>
+    <li>Mức biến thiên tải trong chu kỳ sản xuất.</li>
+    <li>Yêu cầu độ tin cậy và tính liên tục của quá trình.</li>
+    <li>Tốc độ full-load của motor hiện tại và motor thay thế.</li>
+    <li>Khả năng thay đổi nhu cầu công nghệ trong tương lai.</li>
+    <li>Chi phí đầu tư, downtime và điện năng tiết kiệm có thể đạt được.</li>
+  </ul>
+
+  <div style="background:#fff7e8;border-left:4px solid #d59020;padding:14px 16px;margin:20px 0;">
+    <strong style="color:#8a5a0a;">Không nhầm threshold với quyết định:</strong><br>
+    Một motor dưới 50% tải không mặc nhiên là motor cần thay. Motor công suất lớn có thể vẫn duy trì hiệu suất tốt ở tải thấp hơn so với motor công suất nhỏ. Phải kiểm tra dữ liệu hiệu suất của chính motor hoặc model tương ứng.
+  </div>
+
+  <!-- IMAGE_2: Technical Figure — Load profile theo thời gian kết hợp vùng dưới 50% tải; minh họa khác biệt giữa low-load tạm thời và low-load kéo dài. Không đưa số liệu giả định nếu chưa có dataset thực tế. -->
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">9. Vì sao động cơ bị chọn quá lớn?</h2>
+
+  <p style="margin:0 0 12px 0;">
+    Khi một motor được xác nhận vận hành non tải kéo dài, cần tìm nguyên nhân trước khi lựa chọn giải pháp. Một số tình huống cần kiểm tra trong hồ sơ thiết kế và lịch sử thay đổi thiết bị gồm:
+  </p>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li>Motor được chọn để đáp ứng một điều kiện peak chỉ xuất hiện không thường xuyên.</li>
+    <li>Nhu cầu process hiện tại thấp hơn điều kiện thiết kế ban đầu.</li>
+    <li>Pump, fan, compressor hoặc cơ cấu máy đã được thay đổi nhưng motor vẫn giữ nguyên.</li>
+    <li>Tỷ số truyền, pulley hoặc gearbox đã thay đổi.</li>
+    <li>Biên dự phòng ban đầu lớn hơn nhu cầu vận hành thực tế.</li>
+  </ul>
+
+  <p style="margin:0 0 18px 0;">
+    Xác định đúng nguyên nhân giúp tránh thay motor nhưng vẫn giữ nguyên một vấn đề hệ thống, ví dụ pump chạy sai điểm, fan bị điều tiết bằng damper hoặc truyền động cơ khí không còn phù hợp với tốc độ yêu cầu.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">10. Các phương án xử lý</h2>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">10.1. Giữ nguyên động cơ</h3>
+
+  <p style="margin:0 0 18px 0;">
+    Giữ nguyên là phương án hợp lý khi motor vẫn có hiệu suất part-load chấp nhận được, tải thấp chỉ xuất hiện trong một phần chu kỳ, tải cực đại đòi hỏi công suất hiện tại hoặc thời gian hoàn vốn của phương án thay thế không phù hợp.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">10.2. Điều chỉnh chế độ vận hành</h3>
+
+  <p style="margin:0 0 18px 0;">
+    Nếu motor có nhiều thời gian chạy nhưng thiết bị không tạo ra giá trị process tương ứng, cần xem xét logic start/stop, sequencing giữa các máy song song, khoảng thời gian chạy chờ và các interlock công nghệ. Mục tiêu là giảm thời gian chạy không cần thiết trước khi đầu tư phần cứng mới.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">10.3. Sử dụng VFD khi phù hợp với loại tải</h3>
+
+  <p style="margin:0 0 18px 0;">
+    Với các hệ thống có nhu cầu lưu lượng hoặc tốc độ thay đổi, variable speed control có thể là phương án phù hợp. Đặc biệt với pump và fan, cần đánh giá VFD ở cấp hệ thống thay vì chỉ nhìn vào motor. VFD không phải giải pháp mặc định cho mọi trường hợp non tải; tải constant-torque, yêu cầu tốc độ cố định hoặc duty đặc biệt cần được đánh giá riêng.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">10.4. Điều chỉnh tỷ số truyền hoặc cơ cấu truyền động</h3>
+
+  <p style="margin:0 0 18px 0;">
+    Với hệ truyền động dùng pulley, belt hoặc gearbox, có thể đánh giá lại tỷ số truyền khi tốc độ thực tế của máy khác nhu cầu công nghệ. Với pump hoặc fan, thay đổi tốc độ có thể làm thay đổi đáng kể công suất tải, vì vậy phải kiểm tra đặc tính hệ thống trước khi thực hiện.
+  </p>
+
+  <h3 style="font-size:19px;color:#184f73;margin:24px 0 10px 0;">10.5. Thay motor công suất phù hợp hơn</h3>
+
+  <p style="margin:0 0 12px 0;">
+    Downsizing chỉ nên thực hiện sau khi đã xác nhận motor hiện tại thực sự quá cỡ trong điều kiện vận hành đại diện.
+  </p>
+
+  <p style="margin:0 0 10px 0;">Motor thay thế cần được kiểm tra tối thiểu theo các yếu tố:</p>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li>Maximum continuous load.</li>
+    <li>Starting torque và acceleration requirement.</li>
+    <li>Duty cycle và số lần khởi động.</li>
+    <li>Khả năng chịu quá tải ngắn hạn nếu ứng dụng yêu cầu.</li>
+    <li>Full-load speed.</li>
+    <li>Hiệu suất tại điểm tải dự kiến.</li>
+    <li>Khả năng tương thích với VFD nếu có.</li>
+    <li>Điều kiện môi trường và phương pháp làm mát.</li>
+  </ul>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">11. Khi nào không nên thay motor chỉ vì tải thấp?</h2>
+
+  <p style="margin:0 0 12px 0;">Không nên đưa ra quyết định chỉ từ một giá trị load factor thấp nếu:</p>
+
+  <ul style="margin:0 0 18px 22px;padding:0;">
+    <li>Máy có peak load cao nhưng thời gian xuất hiện ngắn.</li>
+    <li>Ứng dụng yêu cầu starting torque hoặc acceleration torque lớn.</li>
+    <li>Tải thay đổi mạnh theo từng batch hoặc từng công thức sản xuất.</li>
+    <li>Motor là một phần của hệ thống critical và việc thay đổi cần đánh giá reliability riêng.</li>
+    <li>Nhà máy có kế hoạch tăng công suất process đã được phê duyệt.</li>
+    <li>Chênh lệch điện năng giữa motor hiện tại và motor thay thế không đủ bù chi phí đầu tư, lắp đặt và downtime.</li>
+    <li>Motor thay thế có tốc độ full-load khác và sự thay đổi tốc độ có thể làm thay đổi tải của pump, fan hoặc máy dẫn động.</li>
+  </ul>
+
+  <p style="margin:0 0 18px 0;">
+    Tài liệu DOE về motor quá cỡ nhấn mạnh rằng một thay đổi nhỏ về full-load speed của motor thay thế có thể làm thay đổi tải và điện năng tiêu thụ của thiết bị dẫn động, đặc biệt đối với centrifugal pump và fan. Vì vậy, so sánh chỉ dựa trên kW nameplate là chưa đủ.
+  </p>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">12. Checklist khảo sát motor tại nhà máy</h2>
+
+  <div style="overflow-x:auto;margin:14px 0 20px 0;">
+    <table style="width:100%;border-collapse:collapse;min-width:780px;">
+      <thead>
+        <tr style="background:#eaf2f7;">
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Hạng mục</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Nội dung kiểm tra</th>
+          <th style="border:1px solid #ccd8e0;padding:10px;text-align:left;color:#184f73;">Kết quả cần ghi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Nameplate</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">kW/hp, V, A, η, PF, rpm, Hz</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Rated values</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Electrical measurement</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">kW, V, A, PF ba pha</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Measured values</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Load factor</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Tính từ input kW hoặc phương pháp phù hợp</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Estimated load %</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Load profile</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Theo dõi đủ chu kỳ vận hành</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Thời gian ở từng vùng tải</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Process demand</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Lưu lượng, áp suất, sản lượng, speed hoặc trạng thái công nghệ</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Actual process requirement</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Mechanical transmission</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Coupling, pulley, belt, gearbox</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Tỷ số truyền / tình trạng</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Peak / starting condition</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Peak load, start torque, acceleration</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Giới hạn bắt buộc của motor</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Candidate action</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Giữ nguyên / tối ưu vận hành / VFD / truyền động / thay motor</td>
+          <td style="border:1px solid #d7e0e7;padding:10px;">Phương án cần phân tích tiếp</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMAGE_3: Technical Figure — Decision workflow: Measure → Build load profile → Confirm underload → Check peak/start/process → Keep / Optimize operation / VFD / Transmission change / Right-size motor. -->
+
+  <div style="background:#fff1f0;border-left:4px solid #b8443c;padding:14px 16px;margin:22px 0;">
+    <strong style="color:#8e302b;">Warning — An toàn đo điện:</strong><br>
+    Phép đo kW, điện áp và dòng điện tại MCC hoặc panel có thể yêu cầu thao tác gần phần mang điện. Chỉ người có năng lực và được ủy quyền mới được thực hiện. Thiết bị đo, probe và phương pháp làm việc phải phù hợp với mức điện áp, môi trường và quy trình an toàn điện của nhà máy.
+  </div>
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:34px 0 14px 0;">13. Kết luận</h2>
+
+  <p style="margin:0 0 14px 0;">
+    Cách đáng tin cậy để phát hiện động cơ chạy non tải là kết hợp <strong>dữ liệu nameplate, đo công suất tác dụng ba pha và load profile theo thời gian</strong>. Dòng điện vẫn hữu ích cho sàng lọc, nhưng không nên được xem là tỷ lệ trực tiếp với tải, đặc biệt khi motor đã xuống dưới khoảng 50% tải.
+  </p>
+
+  <p style="margin:0 0 14px 0;">
+    Nếu motor thường xuyên vận hành ở vùng tải thấp, bước tiếp theo không phải là thay motor ngay mà là xác định nguyên nhân và kiểm tra toàn bộ motor-driven system. Tùy đặc tính ứng dụng, phương án phù hợp có thể là giữ nguyên, thay đổi chế độ vận hành, dùng VFD, điều chỉnh truyền động hoặc right-size motor.
+  </p>
+
+  <p style="margin:0 0 18px 0;">
+    Quyết định cuối cùng nên dựa trên tải cực đại, duty cycle, hiệu suất part-load, tốc độ, yêu cầu khởi động, nhu cầu process và hiệu quả kinh tế của từng phương án.
+  </p>
+
+  <hr style="border:0;border-top:1px solid #d4dde4;margin:32px 0 24px 0;">
+
+  <h2 style="font-size:24px;line-height:1.35;color:#28658c;margin:0 0 14px 0;">14. Tài liệu tham khảo</h2>
+
+  <ol style="margin:0 0 20px 24px;padding:0;">
+    <li style="margin-bottom:10px;">
+      U.S. Department of Energy — <em>Determining Electric Motor Load and Efficiency</em>.
+    </li>
+    <li style="margin-bottom:10px;">
+      U.S. Department of Energy — <em>Replacing an Oversized and Underloaded Electric Motor</em>.
+    </li>
+    <li style="margin-bottom:10px;">
+      U.S. Department of Energy — <em>Premium Efficiency Motor Selection and Application Guide: A Guidebook for Industry</em>.
+    </li>
+    <li>
+      U.S. Department of Energy / Better Plants — <em>Motor Systems</em>.
+    </li>
+  </ol>
+
+</div>

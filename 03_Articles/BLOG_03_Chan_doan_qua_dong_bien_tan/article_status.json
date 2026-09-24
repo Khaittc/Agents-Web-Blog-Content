@@ -1,0 +1,19 @@
+{
+  "article_id": "BLOG_03",
+  "title": "Quy trình 4 bước chẩn đoán và khắc phục lỗi quá dòng (Overcurrent) trên biến tần công nghiệp",
+  "category": "BLOG-T03",
+  "status": "APPROVED",
+  "is_locked": true,
+  "created_at": "2026-09-24T10:00:00+07:00",
+  "submitted_for_review_at": "2026-09-24T10:02:00+07:00",
+  "approved_at": "2026-09-24T15:05:00+07:00",
+  "approved_by": "Kỹ sư trưởng",
+  "html_file": "bai-viet-chan-doan-qua-dong-bien-tan-ckeditor.html",
+  "review_package_file": "draft_review_package.md",
+  "evidence_dossier_file": "evidence_dossier.md",
+  "audit_report_file": "technical_audit_report.md",
+  "image_specifications_file": "image_specifications.md",
+  "content_images_count": 2,
+  "audit_result": "PASS",
+  "notes": "Bài viết mẫu stress-test thứ 3 dạng Troubleshooting (BLOG-T03) đã được Kỹ sư trưởng chính thức nghiệm thu và phê duyệt khóa an toàn (ADR-005). Bài viết đáp ứng 100% các tiêu chuẩn: IEEE Modular Suite v2.0 (link trực tiếp Deep Link / Direct PDF theo ADR-015), Image Spec v1.2, và chuẩn hiển thị Responsive Đa thiết bị Laptop & Mobile (ADR-016 & ADR-017)."
+}

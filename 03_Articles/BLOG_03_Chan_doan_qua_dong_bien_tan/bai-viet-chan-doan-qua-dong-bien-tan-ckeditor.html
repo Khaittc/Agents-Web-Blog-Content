@@ -1,0 +1,343 @@
+<div style="font-family:Arial, Helvetica, sans-serif;font-size:16px;line-height:1.7;color:#243447;">
+
+    <p style="margin:0 0 16px 0;">Trong các dây chuyền sản xuất công nghiệp hiện đại, biến tần (Variable Frequency Drive &mdash; VFD) đóng vai trò là &ldquo;trái tim&rdquo; điều khiển tốc độ và mô-men xoắn của toàn bộ hệ thống động cơ điện xoay chiều. Tuy nhiên, trong quá trình vận hành liên tục dưới môi trường công nghiệp khắc nghiệt, lỗi <strong>Quá dòng (Overcurrent)</strong> luôn là một trong những sự cố phổ biến và tiềm ẩn nguy cơ phá hủy thiết bị nghiêm trọng nhất.</p>
+
+    <p style="margin:0 0 16px 0;">Khi biến tần phát hiện dòng điện ngõ ra vượt quá ngưỡng an toàn, bộ vi xử lý điều khiển sẽ khóa xung kích ngõ ra tức thì và hiển thị các mã lỗi đặc trưng: Siemens báo <strong>F30001 / F0001</strong>, Yaskawa báo <strong>oC</strong>, ABB ghi nhận <strong>Fault 2310</strong>, Danfoss cảnh báo <strong>Alarm 13</strong>, Schneider Electric thông báo <strong>OCF</strong>, còn Mitsubishi ghi nhận <strong>E.OC1 / E.OC2 / E.OC3</strong> [2, Fault 2310, p. 504], [3, Diagnostics, p. 512], [4, Sec. 5.1, p. 342].</p>
+
+    <p style="margin:0 0 16px 0;">Phản xạ sai lầm phổ biến nhất của các kỹ thuật viên vận hành là vội vã nhấn nút <strong>RESET</strong> để cố gắng khởi động lại dây chuyền. Nếu sự cố bắt nguồn từ hiện tượng ngắn mạch cáp ngõ ra hoặc chập cuộn dây động cơ, việc cố tình cấp điện lại mà không kiểm tra sẽ lập tức phá hủy hoàn toàn khối van bán dẫn công suất IGBT (Insulated Gate Bipolar Transistor), gây tổn thất hàng chục đến hàng trăm triệu đồng chi phí thay thế linh kiện [2, Fault 2310, p. 504], [7, Sec. 3.2].</p>
+
+    <p style="margin:0 0 16px 0;">Để xử lý triệt để sự cố mà không gây rủi ro nổ thiết bị, kỹ sư bảo trì cần tiếp cận theo phương pháp tư duy cô lập có hệ thống: đi từ các thành phần cơ khí bên ngoài, đo kiểm tra cáp dẫn &amp; động cơ, rà soát cài đặt tham số truyền động và cuối cùng mới kiểm tra phần cứng điện tử công suất bên trong biến tần [2, Group 23, p. 195], [6].</p>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">1. Phân loại điều kiện phát sinh lỗi quá dòng</h2>
+
+    <p style="margin:0 0 16px 0;">Để định vị nhanh khu vực gặp sự cố, kỹ sư bảo trì cần xác định chính xác thời điểm biến tần nhảy lỗi quá dòng xảy ra ở giai đoạn nào trong chu trình vận hành [4, Sec. 5.1, p. 342]:</p>
+
+    <ul style="margin:0 0 16px 24px;padding:0;">
+        <li style="margin-bottom:10px;"><strong>Quá dòng ngay khi vừa cấp lệnh chạy (Fault on Run command / Immediate Trip)</strong>: Biến tần vừa nhận lệnh Run là nhảy lỗi tức thì trong vài mili-giây. Dấu hiệu này chỉ ra ngắn mạch trực tiếp giữa các pha ngõ ra (U-V, V-W, W-U), cáp động cơ chạm đất trực tiếp, hoặc một trong các van công suất IGBT bên trong biến tần đã bị đánh thủng từ trước [2, Fault 2310, p. 504], [7, Sec. 3.2].</li>
+        <li style="margin-bottom:10px;"><strong>Quá dòng trong quá trình tăng tốc (Overcurrent during Acceleration)</strong>: Động cơ nhích quay được vài vòng hoặc đạt tần số thấp (5 Hz &ndash; 20 Hz) rồi mới báo lỗi. Tình huống này thường do thời gian tăng tốc cài đặt quá ngắn so với quán tính tải, tải cơ khí bị kẹt nặng, hoặc tham số bù mô-men khởi động (Torque Boost) bị chỉnh lên quá cao làm bão hòa mạch từ [4, Tab. 5.1, p. 342].</li>
+        <li style="margin-bottom:10px;"><strong>Quá dòng trong quá trình giảm tốc (Overcurrent during Deceleration)</strong>: Biến tần báo lỗi khi nhận lệnh dừng hoặc giảm tốc độ đột ngột. Nguyên nhân do quán tính tải kéo động cơ quay nhanh hơn tốc độ từ trường quay, động cơ chuyển sang chế độ máy phát trả năng lượng về thanh cái DC Bus trong khi hệ thống không có điện trở xả hãm hoặc thời gian giảm tốc quá gấp [3, Diagnostics, p. 512].</li>
+        <li style="margin-bottom:10px;"><strong>Quá dòng ngẫu nhiên khi đang chạy tải ổn định (Overcurrent at Steady-State)</strong>: Hệ thống đang chạy bình thường thì đột ngột ngắt bảo vệ. Hiện tượng này thường do phụ tải bị sốc tải cơ học đột ngột (kẹt đá, nghẹt cánh bơm) hoặc lớp men cách điện cuộn dây động cơ bị suy giảm gây phóng hồ quang vi mô khi gặp nhiệt độ cao và rung động [1, Sec. 5.2, p. 20], [5, pp. 1–2].</li>
+    </ul>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">2. Bảng đối chiếu mã lỗi quá dòng của các thương hiệu biến tần phổ biến</h2>
+
+    <p style="margin:0 0 16px 0;">Mỗi thương hiệu thiết bị tự động hóa quy định mã ký hiệu và ngưỡng dòng ngắt bảo vệ phần cứng riêng biệt trong cẩm nang hướng dẫn kỹ thuật của họ [2, Fault 2310, p. 504], [3, Diagnostics, p. 512], [4, Sec. 5.1, p. 342]:</p>
+
+    <div style="text-align:right;font-size:12px;color:#94a3b8;margin-bottom:4px;font-style:italic;">(Cuộn ngang trên điện thoại để xem trọn vẹn bảng)</div>
+    <div style="margin:0 0 24px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <table style="width:100%;min-width:680px;border-collapse:collapse;text-align:left;font-size:14px;line-height:1.5;">
+            <thead>
+                <tr style="background-color:#0f2b46;color:#ffffff;">
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Thương hiệu</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Dòng biến tần tiêu biểu</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Mã lỗi hiển thị</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Định nghĩa kỹ thuật trong sổ tay</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Ngưỡng ngắt bảo vệ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Siemens</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Sinamics G120, S120, G120C</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">F30001 / F0001</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Power unit: Overcurrent (Dòng ngõ ra vượt ngưỡng ngắt an toàn)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 200% &ndash; 250%</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Yaskawa</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">GA700, A1000, V1000</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">oC</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Overcurrent: Output current exceeded hardware trip level</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 200% dòng đỉnh</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">ABB</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">ACS580, ACS880, ACS355</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">Fault 2310</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Overcurrent: Output current exceeded internal fault threshold</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 220% cực đại</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Schneider Electric</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Altivar Process ATV630, ATV930</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">OCF</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Overcurrent Fault: Excessive current detected on output phases</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 200% định mức</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Danfoss</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">VLT AutomationDrive FC 302, FC 102</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">Alarm 13</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Overcurrent: Inverter peak current limit exceeded</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 200% dòng đỉnh</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Mitsubishi</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">FR-A800, FR-F800, FR-E700</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#b91c1c;">E.OC1 / E.OC2 / E.OC3</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Overcurrent shut-off during accel / constant speed / decel</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">&gt; 200% danh định</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- IMAGE_1: Technical Figure — Lưu đồ cây quyết định chẩn đoán lỗi OC -->
+    <div style="margin:28px 0;text-align:center;">
+        <img src="/UserFile/editor/images/hinh-1-luu-do-cay-quyet-dinh-chan-doan-loi-qua-dong-bien-tan.png" alt="Lưu đồ cây quyết định 4 bước chẩn đoán và cô lập lỗi quá dòng biến tần công nghiệp từ cơ khí đến mạch IGBT" style="display:block;margin:0 auto;max-width:100%;width:100%;height:auto!important;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e2e8f0;" />
+        <p style="font-size:14px;color:#64748b;margin:8px 0 0 0;font-style:italic;">
+            <strong>Hình 1:</strong> Lưu đồ cây quyết định 4 bước cô lập và xử lý sự cố lỗi quá dòng biến tần (Troubleshooting Decision Tree) từ tải cơ khí đến linh kiện bán dẫn công suất IGBT.
+        </p>
+    </div>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">3. Quy trình 4 bước cô lập và đo kiểm sự cố chuẩn kỹ thuật</h2>
+
+    <p style="margin:0 0 16px 0;">Để tránh tình trạng phỏng đoán mò mẫm, kỹ sư hiện trường bắt buộc phải tuân thủ nghiêm ngặt quy trình cô lập 4 tầng được chuẩn hóa theo logic từ ngoài vào trong [2, Group 23, p. 195], [6]:</p>
+
+    <h3 style="font-size:18px;color:#1e3a8a;margin:24px 0 12px 0;line-height:1.4;">Bước 1: Cô lập cơ khí và phụ tải truyền động</h3>
+
+    <p style="margin:0 0 16px 0;">Trước khi can thiệp vào hệ thống điện, kỹ sư phải xác định sự cố có bắt nguồn từ phần cơ khí hay không:</p>
+
+    <ol style="margin:0 0 16px 24px;padding:0;">
+        <li style="margin-bottom:8px;">Thực hiện khóa hãm an toàn LOTO (Lockout/Tagout) ngắt nguồn điện cấp cho tủ điều khiển.</li>
+        <li style="margin-bottom:8px;">Tháo khớp nối trục (Coupling) hoặc tháo dây curoa truyền động giữa động cơ và cơ cấu chấp hành.</li>
+        <li style="margin-bottom:8px;">Dùng tay quay thử trục động cơ và trục máy công tác:
+            <ul style="margin:6px 0 6px 20px;">
+                <li>Nếu trục quay nặng nề, phát ra tiếng cọ sát hoặc bị bó cứng hoàn toàn, nguyên nhân là kẹt ổ bi bạc đạn, vỡ hộp số hoặc nghẹt dị vật cơ khí.</li>
+                <li>Nếu cơ khí quay nhẹ nhàng, trơn tru, tiến hành chạy thử động cơ ở trạng thái không tải. Nếu động cơ vận hành ổn định mà không báo lỗi, sự cố hoàn toàn bắt nguồn từ phụ tải công nghệ bị quá tải khi làm việc [4, Sec. 5.1, p. 342].</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3 style="font-size:18px;color:#1e3a8a;margin:24px 0 12px 0;line-height:1.4;">Bước 2: Đo kiểm tra hệ thống cáp điện và cuộn dây động cơ</h3>
+
+    <p style="margin:0 0 16px 0;">Khi cơ khí đã được xác nhận bình thường, kỹ sư chuyển sang đo kiểm chất lượng điện khí của cáp lực và cuộn dây động cơ [1, Sec. 5.2, p. 20], [6]:</p>
+
+    <p style="margin:0 0 12px 0;"><strong>1. Đo cân bằng điện trở thuần giữa các pha:</strong> Dùng đồng hồ vạn năng kỹ thuật số (DMM) chuyển sang thang đo điện trở nhỏ (\(\Omega\)). Đo điện trở giữa từng cặp pha: \(R_{U-V}\), \(R_{V-W}\), \(R_{W-U}\). Độ lệch điện trở giữa các pha không được vượt quá 2% theo công thức chuẩn hóa [1, Sec. 5.2, p. 20]:</p>
+
+    <div style="margin:18px 0;text-align:center;overflow-x:auto;">
+        \begin{equation}
+        \Delta R = \frac{R_{\text{max}} - R_{\text{min}}}{R_{\text{avg}}} \times 100\% \le 2.0\%
+        \end{equation}
+    </div>
+
+    <p style="margin:0 0 16px 0;">Nếu một cặp pha có giá trị điện trở giảm mạnh đột biến so với các cặp còn lại, cuộn dây động cơ đã bị chạm chập giữa các vòng dây (Turn-to-turn short circuit) [1, Sec. 5.2, p. 20].</p>
+
+    <p style="margin:0 0 12px 0;"><strong>2. Đo điện trở cách điện bằng máy Megger:</strong> Bắt buộc phải tháo rời 3 đầu cáp động cơ ra khỏi các cọc đấu \(U, V, W\) của biến tần trước khi đo Megger. Chọn điện áp thử nghiệm **500V DC** (đối với lưới hạ thế 380V&ndash;415V). Thực hiện đo cách điện giữa từng pha với vỏ tiếp địa PE và giữa các pha với nhau. Đối chiếu ngưỡng đạt chuẩn theo tiêu chuẩn quốc tế IEEE Std 43-2013 [1, Tab. 4, p. 20]:</p>
+
+    <div style="margin:18px 0;text-align:center;overflow-x:auto;">
+        \begin{equation}
+        R_{\text{insulation}} \ge 5.0\text{ M}\Omega
+        \end{equation}
+    </div>
+
+    <p style="margin:0 0 16px 0;">Đối với động cơ vận hành tốt trong công nghiệp, giá trị điện trở cách điện lý tưởng thường lớn hơn \(50\text{ M}\Omega\) đến hàng trăm \(\text{M}\Omega\). Nếu đo được dưới \(1\text{ M}\Omega\), động cơ đã bị nhiễm ẩm, bám bụi than dẫn điện hoặc lớp men cách điện bị đánh thủng do gai điện áp phản xạ dV/dt [1, Tab. 4, p. 20], [5, pp. 1–2].</p>
+
+    <h3 style="font-size:18px;color:#1e3a8a;margin:24px 0 12px 0;line-height:1.4;">Bước 3: Rà soát và tinh chỉnh các tham số truyền động</h3>
+
+    <p style="margin:0 0 16px 0;">Nếu cả cơ khí và động cơ đều đạt chỉ tiêu kỹ thuật, nguyên nhân nằm ở việc cài đặt tham số vận hành chưa tương thích với đặc tính tải [2, Group 23, p. 195], [4, Sec. 5.1, p. 342]:</p>
+
+    <ul style="margin:0 0 16px 24px;padding:0;">
+        <li style="margin-bottom:10px;"><strong>Thời gian tăng tốc (\(t_a\) / Acceleration Time)</strong>: Khi động cơ tăng tốc từ 0 đến tần số định mức, mối quan hệ giữa thời gian tăng tốc tối thiểu, mô-men gia tốc và mô-men quán tính tổng của hệ thống được xác định bằng công thức cơ học [2, Group 23, p. 195]:
+            <div style="margin:14px 0;text-align:center;overflow-x:auto;">
+                \begin{equation}
+                t_a = \frac{J_{\Sigma} \cdot \Delta \omega}{M_{\text{acc}}} = \frac{J_{\Sigma} \cdot \left(\frac{2\pi \cdot \Delta n}{60}\right)}{M_m - M_c}
+                \end{equation}
+            </div>
+            Trong đó \(J_{\Sigma}\) là mô-men quán tính tổng (\(\text{kg}\cdot\text{m}^2\)), \(M_m\) là mô-men động cơ (\(\text{N}\cdot\text{m}\)), và \(M_c\) là mô-men cản (\(\text{N}\cdot\text{m}\)). Cài đặt \(t_a\) quá ngắn khiến dòng gia tốc quán tính vượt ngưỡng ngắt của biến tần. Giải pháp là tăng thời gian tăng tốc hoặc chuyển sang đường dốc chữ S [2, Group 23, p. 195], [4, Tab. 5.1, p. 342].
+        </li>
+        <li style="margin-bottom:10px;"><strong>Bù áp khởi động (Torque Boost / Voltage Boost)</strong>: Nếu cài đặt thông số bù áp ở tần số thấp lên quá cao (vượt quá 5%&ndash;10%), lõi từ động cơ sẽ bị đẩy sâu vào vùng bão hòa từ, làm dòng điện không tải tăng vọt và ngắt biến tần ngay khi vừa nhích lệnh chạy [3, Diagnostics, p. 512], [4, Tab. 5.1, p. 342].</li>
+        <li style="margin-bottom:10px;"><strong>Nhận dạng động cơ (Motor Auto-tuning)</strong>: Luôn chạy chức năng nhận dạng động cơ tự động ở trạng thái tách tải để biến tần đo chính xác điện trở stator \(R_s\), điện kháng tản \(X_\sigma\) và hằng số thời gian rotor [2, Group 23, p. 195].</li>
+    </ul>
+
+    <h3 style="font-size:18px;color:#1e3a8a;margin:24px 0 12px 0;line-height:1.4;">Bước 4: Kiểm tra khối công suất IGBT biến tần</h3>
+
+    <p style="margin:0 0 16px 0;">Khi đã ngắt hoàn toàn cáp động cơ, nếu cấp lệnh chạy mà biến tần vẫn báo lỗi Overcurrent tức thì, 95% khả năng khối bán dẫn công suất IGBT hoặc mạch kích lái Gate Driver đã bị đánh thủng [2, Fault 2310, p. 504], [7, Sec. 3.2].</p>
+
+    <!-- IMAGE_2: Technical Figure — Sơ đồ đo kiểm phân cực 6 van IGBT -->
+    <div style="margin:28px 0;text-align:center;">
+        <img src="/UserFile/editor/images/hinh-2-so-do-do-kiem-tra-6-van-igbt-bien-tan-dong-ho-vom.png" alt="Sơ đồ nguyên lý đo kiểm tra 6 van bán dẫn IGBT biến tần bằng thang đo Diode của đồng hồ vạn năng kỹ thuật số" style="display:block;margin:0 auto;max-width:100%;width:100%;height:auto!important;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e2e8f0;" />
+        <p style="font-size:14px;color:#64748b;margin:8px 0 0 0;font-style:italic;">
+            <strong>Hình 2:</strong> Phương pháp đo kiểm tra phân cực thuận và phân cực nghịch của 6 van IGBT nghịch lưu thông qua đi-ốt xả ngược (Freewheeling Diode) bằng thang đo Diode của đồng hồ VOM.
+        </p>
+    </div>
+
+    <p style="margin:0 0 16px 0;">Kỹ sư tiến hành kiểm tra tình trạng sống/chết của khối IGBT bằng thang đo Diode của đồng hồ vạn năng số (DMM) thông qua các đi-ốt xả ngược (Freewheeling Diodes) tích hợp song song nghịch bên trong từng van [7, Sec. 3.2]:</p>
+
+    <div style="text-align:right;font-size:12px;color:#94a3b8;margin-bottom:4px;font-style:italic;">(Cuộn ngang trên điện thoại để xem trọn vẹn bảng)</div>
+    <div style="margin:0 0 24px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <table style="width:100%;min-width:720px;border-collapse:collapse;text-align:left;font-size:14px;line-height:1.5;">
+            <thead>
+                <tr style="background-color:#0f2b46;color:#ffffff;">
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Bước</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Que Đỏ (+) đặt tại</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Que Đen (-) đặt tại</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Chiều phân cực</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Điện áp chuẩn bình thường</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Kết luận hỏng hóc nếu sai lệch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">1</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc ngõ ra \(U, V, W\)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc nguồn <code>DC+</code></td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">Thuận van trên</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#16a34a;">0.30 V &ndash; 0.70 V</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu \(\approx 0.00\text{ V}\) là van IGBT trên bị chập nổ; nếu hiện <code>OL</code> là đứt mạch [7, Sec. 3.2].</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">2</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc nguồn <code>DC+</code></td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc ngõ ra \(U, V, W\)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">Nghịch van trên</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#16a34a;">OL (Vô cùng lớn)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu có sụt áp bất kỳ hoặc phát còi thông mạch là IGBT bị rò thủng tiếp giáp [7, Sec. 3.2].</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">3</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc nguồn <code>DC-</code></td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc ngõ ra \(U, V, W\)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">Thuận van dưới</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#16a34a;">0.30 V &ndash; 0.70 V</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu \(\approx 0.00\text{ V}\) là van IGBT dưới bị đánh thủng ngắn mạch [7, Sec. 3.2].</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">4</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc ngõ ra \(U, V, W\)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cọc nguồn <code>DC-</code></td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;">Nghịch van dưới</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;color:#16a34a;">OL (Vô cùng lớn)</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu phát hiện thông mạch là IGBT bị rò điện nghiêm trọng [7, Sec. 3.2].</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin:0 0 16px 0;">Sụt áp phân cực thuận trên cả 6 van bán dẫn phải đồng đều nhau với độ lệch không vượt quá \(0.05\text{ V}\). Nếu bất kỳ van nào có điện áp sụt bằng 0V ở cả hai chiều đo, khối IGBT của pha đó đã bị chập nổ phần cứng và cần được thay thế [7, Sec. 3.2].</p>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">4. Cảnh báo an toàn điện bắt buộc khi xử lý sự cố biến tần</h2>
+
+    <p style="margin:0 0 16px 0;">Trong quá trình bảo dưỡng và chẩn đoán biến tần công nghiệp, nguy cơ tai nạn điện giật chết người luôn hiện hữu nếu kỹ sư chủ quan [2, Fault 2310, p. 504], [6]:</p>
+
+    <div style="background-color:#fff1f2;border-left:4px solid #e11d48;padding:16px 20px;margin:24px 0;border-radius:0 4px 4px 0;">
+        <p style="margin:0 0 6px 0;font-weight:bold;color:#9f1239;font-size:15px;">CẢNH BÁO NGUY HIỂM CHẾT NGƯỜI TỪ ĐIỆN ÁP DC BUS</p>
+        <p style="margin:0;font-size:15px;color:#881337;">
+            Khối tụ điện lưu trữ năng lượng trên thanh cái DC Bus của biến tần hạ thế 380V/400V luôn tích tụ mức điện áp một chiều cực kỳ nguy hiểm từ <strong>560V DC đến 800V DC</strong>. Ngay cả khi đã ngắt aptomat nguồn cấp vào tủ điện, dàn tụ điện vẫn duy trì điện tích này trong thời gian dài. Kỹ sư bắt buộc phải chờ tối thiểu <strong>15 phút</strong> sau khi ngắt điện, và luôn dùng đồng hồ vạn năng đo kiểm tra trực tiếp điện áp giữa hai cực <code>DC+</code> và <code>DC-</code> đạt mức dưới <strong>50V DC</strong> trước khi chạm tay vào bất kỳ cầu đấu lực nào.
+        </p>
+    </div>
+
+    <div style="background-color:#f0f9ff;border-left:4px solid #0284c7;padding:16px 20px;margin:24px 0;border-radius:0 4px 4px 0;">
+        <p style="margin:0 0 6px 0;font-weight:bold;color:#0369a1;font-size:15px;">LƯU Ý KỸ THUẬT QUAN TRỌNG KHI SỬ DỤNG MÁY MEGGER</p>
+        <p style="margin:0;font-size:15px;color:#0c4a6e;">
+            Tuyệt đối không bao giờ sử dụng đồng hồ đo cách điện Megger với điện áp 500V hoặc 1000V DC để đo trực tiếp vào các cọc ngõ ra (U, V, W) hoặc cọc nguồn của biến tần. Xung điện áp cao từ máy đo cách điện sẽ phá hủy vĩnh viễn các linh kiện bán dẫn nhạy cảm và làm nổ khối diode bảo vệ ngõ ra. Bắt buộc phải tháo rời toàn bộ các đầu cáp lực ra khỏi biến tần trước khi tiến hành đo điện trở cách điện của cáp và động cơ [1, Sec. 5.2, p. 20], [6].
+        </p>
+    </div>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">5. Checklist xử lý sự cố nhanh dành cho kỹ sư bảo trì tại hiện trường</h2>
+
+    <p style="margin:0 0 16px 0;">Bảng kiểm tra dưới đây tóm tắt các thao tác cốt lõi theo thứ tự ưu tiên thực thi để hỗ trợ xử lý sự cố nhanh chóng trong ca trực vận hành [2, Fault 2310, p. 504], [4, Sec. 5.1, p. 342], [6]:</p>
+
+    <div style="text-align:right;font-size:12px;color:#94a3b8;margin-bottom:4px;font-style:italic;">(Cuộn ngang trên điện thoại để xem trọn vẹn bảng)</div>
+    <div style="margin:0 0 24px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <table style="width:100%;min-width:680px;border-collapse:collapse;text-align:left;font-size:14px;line-height:1.5;">
+            <thead>
+                <tr style="background-color:#0f2b46;color:#ffffff;">
+                    <th style="padding:12px;border:1px solid #cbd5e1;text-align:center;">Thứ tự</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Hạng mục kiểm tra</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Thao tác kỹ thuật chi tiết</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Tiêu chuẩn đạt yêu cầu</th>
+                    <th style="padding:12px;border:1px solid #cbd5e1;">Hành động khắc phục khi không đạt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">1</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Mã lỗi hiển thị</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Ghi nhận chính xác mã lỗi trên màn hình (F0001, oC, Fault 2310, OCF) và thời điểm xuất hiện lỗi.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Xác định lỗi xảy ra khi Accel, Decel hay đang chạy đều.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Tra cứu cẩm nang hướng dẫn của hãng sản xuất để khoanh vùng [2, Fault 2310, p. 504], [4, Sec. 5.1, p. 342].</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">2</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">An toàn LOTO</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cắt nguồn điện AC, khóa thẻ an toàn LOTO, đo kiểm tra điện áp DC Bus dưới 50V.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">\(V_{DC} &lt; 50\text{ V DC}\) an toàn sinh mạng.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Chờ tụ xả điện qua điện trở xả nội bộ, không chạm tay vào thanh cái.</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">3</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Cơ khí tải</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Tháo khớp nối trục, dùng tay quay thử trục động cơ và trục máy công tác.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Trục quay êm ái, trơn tru, không có tiếng cọ sát.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Xử lý kẹt bạc đạn, căn chỉnh đồng trục hoặc thông tắc đường ống công nghệ.</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">4</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Cân bằng trở cuộn dây</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Tháo cáp khỏi biến tần, dùng VOM đo điện trở thuần giữa các pha \(U-V, V-W, W-U\).</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Độ lệch giữa các pha \(\Delta R \le 2.0\%\).</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu lệch lớn, động cơ bị chạm chập vòng dây; cần quấn lại cuộn dây [1, Sec. 5.2, p. 20].</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">5</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Cách điện cuộn dây</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Dùng máy Megger 500V DC đo cách điện giữa các pha với vỏ tiếp địa PE.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Điện trở cách điện \(R_{\text{ins}} \ge 5.0\text{ M}\Omega\) theo IEEE Std 43.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Sấy động cơ nếu nhiễm ẩm; thay cáp điện lực nếu bị dập nát, rò đất [1, Tab. 4, p. 20].</td>
+                </tr>
+                <tr style="background-color:#f8fafc;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">6</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Tham số biến tần</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Kiểm tra thời gian tăng tốc \(t_a\) (p1120 / C1-01) và mức bù áp Torque Boost.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Cài đặt gia tốc phù hợp quán tính tải; Boost \(\le 3\% - 5\%\).</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Tăng thời gian tăng tốc lên 1.5 đến 2 lần; chuyển sang đường dốc chữ S [2, Group 23, p. 195], [4, Tab. 5.1, p. 342].</td>
+                </tr>
+                <tr style="background-color:#ffffff;">
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;text-align:center;font-weight:bold;">7</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;font-weight:bold;">Đo van IGBT</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Dùng thang đo Diode của VOM đo sụt áp thuận/nghịch 6 van nghịch lưu.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Sụt áp thuận \(0.3\text{V} - 0.7\text{V}\); phân cực nghịch báo <code>OL</code> cả 6 van.</td>
+                    <td style="padding:10px 12px;border:1px solid #e2e8f0;">Nếu sụt áp = 0V hoặc thông mạch, gửi biến tần đi thay thế khối IGBT mới [7, Sec. 3.2].</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">Kết luận</h2>
+
+    <p style="margin:0 0 16px 0;">Sự cố lỗi quá dòng trên biến tần công nghiệp hoàn toàn tuân theo các quy luật vật lý và đặc tính cơ điện rõ ràng. Việc trang bị cho đội ngũ kỹ sư bảo trì một quy trình chẩn đoán 4 bước có kỷ luật không chỉ giúp rút ngắn thời gian dừng máy (Downtime) từ nhiều giờ xuống còn vài chục phút, mà còn bảo vệ an toàn cho khối bán dẫn công suất IGBT có giá trị kinh tế cao [2, Fault 2310, p. 504], [6], [7, Sec. 3.2].</p>
+
+    <p style="margin:0 0 16px 0;">Khi biến tần báo lỗi Overcurrent, quy tắc vàng đầu tiên là <strong>tuyệt đối không nhấn Reset để khởi động lại ngay lập tức</strong>. Hãy luôn bắt đầu từ việc cô lập tải cơ khí, đo kiểm tra độ cân bằng và độ cách điện của cuộn dây động cơ theo chuẩn IEEE Std 43, rà soát thời gian tăng tốc và đặc tuyến mô-men xoắn, trước khi đưa ra kết luận về tình trạng phần cứng của khối nghịch lưu IGBT [1, Tab. 4, p. 20], [2, Group 23, p. 195], [7, Sec. 3.2].</p>
+
+    <h2 style="font-size:22px;color:#0f2b46;margin:32px 0 16px 0;padding-bottom:8px;border-bottom:2px solid #e2e8f0;line-height:1.4;">Tài liệu tham khảo</h2>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [1] <em>IEEE Recommended Practice for Testing Insulation Resistance of Electric Machinery</em>, IEEE Std 43-2013 (Revision of IEEE Std 43-2000), 2014, doi: 10.1109/IEEESTD.2014.6754111. [Online]. Available: <a href="https://ieeexplore.ieee.org/document/6754111" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://ieeexplore.ieee.org/document/6754111</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [2] <em>ACS880 Primary Control Program Firmware Manual</em>, ABB Oy, Helsinki, Finland, Doc. 3AUA0000085967 Rev. X, 2023. [Online]. Available: <a href="https://search.abb.com/library/Download.aspx?DocumentID=3AUA0000085967&amp;LanguageCode=en&amp;DocumentPartId=1&amp;Action=Launch" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://search.abb.com/library/Download.aspx?DocumentID=3AUA0000085967&amp;LanguageCode=en&amp;DocumentPartId=1&amp;Action=Launch</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [3] <em>Altivar Process ATV600 Variable Speed Drives Programming Manual</em>, Schneider Electric, Rueil-Malmaison, France, Doc. EAV64318, 2021. [Online]. Available: <a href="https://download.se.com/files?p_Doc_Ref=EAV64318&amp;p_enDocType=User+guide" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://download.se.com/files?p_Doc_Ref=EAV64318&amp;p_enDocType=User+guide</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [4] <em>YASKAWA AC Drive GA700 High Performance Type Technical Manual</em>, Yaskawa Electric Corporation, Kitakyushu, Japan, Doc. SIEP C710617 01, 2022. [Online]. Available: <a href="https://www.yaskawa.com/products/drives/industrial-ac-drives/general-purpose-drives/ga700-drive" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://www.yaskawa.com/products/drives/industrial-ac-drives/general-purpose-drives/ga700-drive</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [5] U.S. Department of Energy Advanced Manufacturing Office, &ldquo;Minimize Adverse Motor and Adjustable Speed Drive Interactions,&rdquo; Washington, DC, USA, <em>Improving Motor and Drive System Performance: A Sourcebook for Industry</em>, Motor Systems Tip Sheet 15, 2014. [Online]. Available: <a href="https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [6] Fluke Corporation, &ldquo;Guide to Insulation Resistance Testing,&rdquo; <em>Fluke Electrical Resources</em>, 2023. [Online]. Available: <a href="https://www.fluke.com/en-us/learn/blog/insulation-testers/use-insulation-resistance-testing-data-to-avert-unexpected-downtime" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://www.fluke.com/en-us/learn/blog/insulation-testers/use-insulation-resistance-testing-data-to-avert-unexpected-downtime</a>
+    </div>
+
+    <div style="padding-left:28px;text-indent:-28px;margin-bottom:12px;line-height:1.6;font-size:14px;word-break:break-word;overflow-wrap:anywhere;">
+        [7] A. Wintrich, U. Nicolai, W. Tursky, and T. Reimann, <em>Application Manual Power Semiconductors</em>, 2nd ed. Ilmenau, Germany: ISLE Verlag, 2015, ISBN: 978-3-938843-83-3. [Online]. Available: <a href="https://www.semikron-danfoss.com/service-support/application-support.html" target="_blank" rel="noopener noreferrer" style="color:#005a9c;text-decoration:underline;word-break:break-all;">https://www.semikron-danfoss.com/service-support/application-support.html</a>
+    </div>
+
+</div>
