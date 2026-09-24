@@ -1,0 +1,36 @@
+{
+  "article_id": "BLOG_04",
+  "research_status": "PASS",
+  "research_plan_status": "COMPLETE",
+  "source_count": {
+    "total": 6,
+    "tier_1": 5,
+    "tier_2": 0,
+    "tier_3": 1,
+    "high_tier_ratio": 0.833
+  },
+  "evidence_count": 17,
+  "resolved_conflicts": [
+    "CON-001",
+    "CON-002"
+  ],
+  "open_conflicts": [],
+  "known_limitations": [
+    "Dữ liệu so sánh chi phí (SRC-001 ABB 2011, SRC-002 Rockwell 2014) mang tính chất định tính cấu trúc thiết bị và phản ánh bối cảnh lịch sử công nghệ, không phản ánh đơn giá thương mại biến động năm 2026.",
+    "Nguồn SRC-003 là bài viết chuyên gia cấp 3 (Tier 3 OEM Expert Blog) của Schneider Electric, chỉ dùng làm nguồn bổ trợ kinh nghiệm thực tiễn về ứng dụng băng tải và tổn hao bypass contactor.",
+    "Các nguồn từ Siemens (CAN-005) và Danfoss (CAN-006) bị loại bỏ do rào cản kỹ thuật WAF bot block và link chết; phạm vi đã được bù đắp trọn vẹn bằng các tài liệu Tier 1 chuẩn mực từ ABB và Rockwell Automation."
+  ],
+  "drafting_constraints": [
+    "Ranh giới chuẩn IEEE Std 519-2022 áp dụng nghiêm ngặt tại Điểm Đấu Nối Chung (PCC) cho toàn bộ cơ sở của khách hàng theo tỷ số Isc/IL, KHÔNG áp dụng tại cực thiết bị riêng lẻ; Drafting Agent TUYỆT ĐỐI KHÔNG tuyên bố chuẩn IEEE 519 quy định giới hạn méo dòng riêng cho từng VFD hoặc bắt buộc mọi VFD phải lắp bộ lọc.",
+    "KHÔNG ĐƯỢC tuyên bố một con số độ méo sóng hài duy nhất (ví dụ: '35-45%') đại diện cho toàn bộ chủng loại VFD; phải nêu rõ độ méo THDi phụ thuộc cấu trúc bộ chỉnh lưu (6-pulse điển hình ~40% có cuộn kháng, 12-pulse ~10%, Active Front End ~4%) và trang bị cuộn kháng AC/DC.",
+    "Sóng hài của Soft Starter chỉ phát sinh ngắn hạn trong giai đoạn tăng/giảm tốc (<10%) khi SCR điều khiển góc kích pha; ở chế độ xác lập đóng bypass hầu như không phát sinh sóng hài; Drafting Agent KHÔNG ĐƯỢC mô tả Soft Starter gây ô nhiễm sóng hài liên tục.",
+    "Dữ liệu chi phí từ ABB (2011 index) và Rockwell Automation (2014) chỉ được sử dụng ở chế độ định tính (qualitative-only) và bối cảnh lịch sử công nghệ; Drafting Agent TUYỆT ĐỐI KHÔNG trích dẫn đơn giá tiền mặt tuyệt đối, không coi tỷ lệ lịch sử là giá thị trường năm 2026, và không tự tạo hệ số chi phí võ đoán.",
+    "TUYỆT ĐỐI KHÔNG đưa ra nhận định mang tính phổ quát rằng Khởi động mềm luôn có thể giảm dòng khởi động xuống mức rất thấp mà vẫn khởi động êm mọi loại tải; phải nhấn mạnh quan hệ phi tuyến mô-men T tỉ lệ với bình phương điện áp và yêu cầu chọn tăng cấp công suất (oversizing) hoặc chuyển sang dùng VFD cho tải nặng.",
+    "Nguồn blog Schneider Electric (SRC-003) là Tier 3 bổ trợ; các nhận định về mô-men tại tốc độ 0 và tổn hao bypass phải được trình bày trong phạm vi ứng dụng thực tiễn, không thay thế cho các nguyên lý cơ bản đã xác lập bởi nguồn Tier 1.",
+    "Phải duy trì mã định danh nguồn ổn định (Stable Source ID: SRC-001 đến SRC-006) trong toàn bộ các bảng ánh xạ Claim-Source Map; số thứ tự trích dẫn IEEE [1]..[n] chỉ được gán theo thứ tự xuất hiện cuối cùng trong bài viết."
+  ],
+  "handoff_ready": true,
+  "approved_by": "Lead Quality & Architecture Engineer",
+  "approval_date": "2026-09-24T23:25:00+07:00",
+  "notes": "Nghiên cứu hoàn tất 7/7 Research Questions (100% ANSWERED), 2/2 Xung đột kỹ thuật (100% RESOLVED), 17 chứng cứ định lượng và trích dẫn trực tiếp đã xác thực locator. Đáp ứng đầy đủ tiêu chí Final Research Gate, phê duyệt chuyển giao sang khâu thẩm định kỹ thuật (TECH_REVIEW)."
+}

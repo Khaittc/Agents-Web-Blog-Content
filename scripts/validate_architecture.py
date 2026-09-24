@@ -29,6 +29,7 @@ REQUIRED_CONTRACTS = [
     "audit.schema.json",
     "revision_request.schema.json",
     "article_manifest.schema.json",
+    "research_handoff.schema.json",
 ]
 
 CANONICAL_TAXONOMY = {

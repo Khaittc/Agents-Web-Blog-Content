@@ -1,4 +1,4 @@
-﻿# MACHINE-READABLE CONTRACTS (INTER-AGENT SCHEMAS)
+# MACHINE-READABLE CONTRACTS (INTER-AGENT SCHEMAS)
 **Mã thư mục**: `02_AGENT_TEMPLATES/contracts/`
 **Phiên bản**: 1.0 (Phase 2.5 Architecture Hardening)
 **Mục đích**: Chuẩn hóa giao diện dữ liệu máy đọc (Machine-Readable Artifacts) trao đổi giữa 5 Subagents, đảm bảo tính chặt chẽ, dễ kiểm định và không phụ thuộc vào văn bản tự do.
@@ -15,6 +15,7 @@
 | [`audit.schema.json`](audit.schema.json) | **Review Agent** | Drafting, Visual, Publisher, Human | Báo cáo kiểm định độc lập cho 2 cửa ải: **Technical Review Gate** và **Presentation & Responsive Review Gate**. |
 | [`revision_request.schema.json`](revision_request.schema.json) | **Review Agent** | Assigned Agent (Research/Drafting/Visual/Publisher) | Danh sách yêu cầu hiệu chỉnh có cấu trúc, giới hạn phạm vi sửa đổi (scope-limited, cấm viết lại toàn bài), tối đa 3 vòng lặp tự động trước khi chuyển cho con người. |
 | [`article_manifest.schema.json`](article_manifest.schema.json) | **Publisher / Packaging Agent** | Review, Human Approver | Bản kê khai đóng gói phát hành gồm đường dẫn HTML, mã băm toàn vẹn SHA-256, danh mục hình ảnh và hướng dẫn đăng tải thủ công lên CMS. |
+| [`research_handoff.schema.json`](research_handoff.schema.json) | **Research Agent** | Drafting Agent, Review | Hợp đồng bàn giao kết quả nghiên cứu (Final Research Gate) với các ràng buộc cấm đoán (constraints) và kiểm định gates. |
 
 ---
 

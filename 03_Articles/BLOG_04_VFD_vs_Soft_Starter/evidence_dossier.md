@@ -121,7 +121,7 @@
 - **Vị trí định vị**: Section: *Initial Cost & Maintenance*, Trang in: 15-17, Trang PDF: 15-17
 - **Trích dẫn gốc**:  
   > *"At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive... on a drive operating 24 hours per day, in year 3, you should replace cooling fans and inspect DC bus capacitors."*
-- **Ý nghĩa kỹ thuật**: Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter. Ngoài ra, VFD yêu cầu quy trình bảo trì định kỳ nghiêm ngặt hơn như thay quạt làm mát ở năm thứ 3 và kiểm tra tụ DC bus.
+- **Ý nghĩa kỹ thuật**: Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter. *(Lưu ý bắt buộc cho Drafting: Dữ liệu này phản ánh định tính xu hướng tương đối dựa trên bối cảnh lịch sử công nghệ năm 2014 của Rockwell Automation, tuyệt đối không được tự ý quy đổi thành đơn giá thương mại hoặc bảng giá cố định năm 2026)*. Ngoài ra, VFD yêu cầu quy trình bảo trì định kỳ nghiêm ngặt hơn như thay quạt làm mát ở năm thứ 3 và kiểm tra tụ DC bus.
 
 ### `EVD-011`: Triệt tiêu hiện tượng búa nước trong ứng dụng bơm ly tâm
 - **Câu hỏi giải quyết**: `RQ-007`
@@ -170,7 +170,7 @@
 - **Vị trí định vị**: Bảng "Comparison between different starting methods", Trang in: 20, Trang PDF: 26 (`document_page: 20`, `pdf_page_index: 26`)
 - **Số liệu kỹ thuật gốc**:
   > *"Estimated average installation cost: Direct on line: 1; Star-Delta start: 3; Softstarter: 6; Drives: > 12."*
-- **Ý nghĩa kỹ thuật**: Theo bảng đánh giá kinh tế kỹ thuật định lượng của ABB, chỉ số chi phí lắp đặt bình quân ước tính của biến tần (Drives > 12) cao gấp hơn 2 lần so với khởi động mềm (Softstarter = 6) và cao hơn rất nhiều so với khởi động sao-tam giác (Star-Delta = 3) hoặc trực tiếp (DOL = 1). Kết hợp với số liệu của Rockwell Automation, chênh lệch chi phí ban đầu giãn rộng theo cấp số khi công suất và dòng điện định mức của động cơ tăng lên.
+- **Ý nghĩa kỹ thuật**: Theo bảng đối chiếu phương pháp khởi động của ABB (2011), chỉ số chi phí lắp đặt bình quân ước tính theo trọng số tương đối (ước tính định tính lịch sử: DOL = 1, Star-Delta = 3, Softstarter = 6, Drives > 12) cho thấy biến tần có chi phí cấu trúc lắp đặt tương đối cao gấp đôi khởi động mềm và cao hơn nhiều so với khởi động sao-tam giác hoặc trực tiếp. *(Lưu ý bắt buộc cho Drafting: Chỉ số này phản ánh tương quan cấu trúc thiết bị và bối cảnh chi phí lịch sử năm 2011, không được coi là đơn giá thương mại hay tỷ lệ cố định hiện hành năm 2026; Drafting Agent chỉ được trình bày dưới dạng so sánh cấu trúc định tính)*. Kết hợp với số liệu của Rockwell Automation, chênh lệch chi phí ban đầu giãn rộng theo cấp số khi công suất và dòng điện định mức của động cơ tăng lên.
 
 ### `EVD-017`: Quy trình bảo trì định kỳ, kiểm tra quạt và kích hoạt lại tụ DC bus
 - **Câu hỏi giải quyết**: `RQ-006`

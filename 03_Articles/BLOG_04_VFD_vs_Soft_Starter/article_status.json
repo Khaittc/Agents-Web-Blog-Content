@@ -2,9 +2,9 @@
   "article_id": "BLOG_04",
   "title": "VFD và Soft Starter: So sánh Nguyên lý, Dòng khởi động, Điều khiển Tốc độ và Phạm vi Ứng dụng",
   "category": "BLOG-T04",
-  "status": "RESEARCHED",
+  "status": "TECH_REVIEW",
   "is_locked": false,
   "created_at": "2026-09-24T21:30:00+07:00",
   "evidence_dossier_file": "evidence_dossier.md",
-  "notes": "Bài viết ở trạng thái RESEARCHED. Đã hoàn thành toàn diện nghiên cứu 7/7 Research Questions (RQ-001 đến RQ-007: ANSWERED), giải quyết 2/2 xung đột kỹ thuật (CON-001, CON-002: RESOLVED), kế hoạch nghiên cứu đạt COMPLETE với 6 nguồn ổn định (83.3% Tier 1+2). Chưa mở khâu Drafting theo đúng quy định điều phối."
+  "notes": "Bài viết đạt chuẩn Final Research Gate và chuyển sang trạng thái TECH_REVIEW. Toàn bộ 7/7 Research Questions (RQ-001 đến RQ-007: ANSWERED), 2/2 xung đột kỹ thuật (CON-001, CON-002: RESOLVED), kế hoạch nghiên cứu đạt COMPLETE với 6 nguồn ổn định (83.3% Tier 1+2). Đã phê duyệt hợp đồng chuyển giao research_handoff.json với đầy đủ drafting constraints trước khi mở khâu soạn thảo."
 }

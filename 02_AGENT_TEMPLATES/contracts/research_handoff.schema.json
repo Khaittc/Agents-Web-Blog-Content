@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResearchHandoffSchema",
+  "description": "Canonical machine-readable contract for Research-to-Drafting handoff approval",
+  "type": "object",
+  "required": [
+    "article_id",
+    "research_status",
+    "research_plan_status",
+    "source_count",
+    "evidence_count",
+    "resolved_conflicts",
+    "known_limitations",
+    "drafting_constraints",
+    "handoff_ready"
+  ],
+  "properties": {
+    "article_id": {
+      "type": "string",
+      "description": "Article identifier, e.g., BLOG_04"
+    },
+    "research_status": {
+      "type": "string",
+      "description": "Final research gate status",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "research_plan_status": {
+      "type": "string",
+      "description": "Status of the associated research plan",
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "REVIEW_REQUIRED",
+        "COMPLETE"
+      ]
+    },
+    "source_count": {
+      "type": "object",
+      "description": "Source counts and tier breakdown",
+      "required": [
+        "total",
+        "tier_1",
+        "tier_2",
+        "tier_3",
+        "high_tier_ratio"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tier_1": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tier_2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tier_3": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_tier_ratio": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_count": {
+      "type": "integer",
+      "description": "Total number of verified evidence items",
+      "minimum": 1
+    },
+    "resolved_conflicts": {
+      "type": "array",
+      "description": "List of conflict IDs successfully resolved",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_conflicts": {
+      "type": "array",
+      "description": "List of unresolved or open conflicts",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "description": "Documented scope boundaries and data limitations",
+      "items": {
+        "type": "string"
+      }
+    },
+    "drafting_constraints": {
+      "type": "array",
+      "description": "Explicit constraints and forbidden practices for Drafting Agent",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoff_ready": {
+      "type": "boolean",
+      "description": "Whether the research package is cleared for drafting handoff"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "Entity or role approving the handoff"
+    },
+    "approval_date": {
+      "type": "string",
+      "description": "Timestamp of gate approval"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional gate approval notes"
+    }
+  },
+  "additionalProperties": false
+}

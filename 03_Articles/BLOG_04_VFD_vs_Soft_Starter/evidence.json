@@ -5,7 +5,7 @@
   "source_policy_exception": {
     "source_policy_exception": false,
     "exception_type": "NONE",
-    "reason": "Chủ đề so sánh kỹ thuật diện rộng (BLOG-T04) tuân thủ chính sách mặc định 4-7 nguồn, đạt tỷ lệ Tier 1 + Tier 2 là 75% (>= 70%), không yêu cầu ngoại lệ nguồn hẹp.",
+    "reason": "Chủ đề so sánh kỹ thuật diện rộng (BLOG-T04) tuân thủ chính sách mặc định 4-7 nguồn, đạt tỷ lệ Tier 1 + Tier 2 là 83.3% (>= 70%), không yêu cầu ngoại lệ nguồn hẹp.",
     "approved_by_review_gate": false,
     "review_verdict": "NOT_APPLICABLE"
   },
@@ -447,7 +447,7 @@
       "evidence_id": "EVD-010",
       "rq_id": "RQ-006",
       "source_id": "SRC-002",
-      "claim": "Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter; ngoài ra VFD yêu cầu bảo trì định kỳ như thay quạt làm mát và kiểm tra tụ DC bus.",
+      "claim": "Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter (lưu ý: dữ liệu định tính theo bối cảnh lịch sử công nghệ 2014 của Rockwell, phản ánh xu hướng quan hệ tương đối chứ không dùng làm đơn giá thương mại hiện hành); ngoài ra VFD yêu cầu bảo trì định kỳ như thay quạt làm mát và kiểm tra tụ DC bus.",
       "evidence_excerpt": "At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive... in year 3, you should replace cooling fans and inspect DC bus capacitors.",
       "evidence_type": "COMPARISON_POINT",
       "verification_status": "VERIFIED",
@@ -513,9 +513,9 @@
       "evidence_id": "EVD-016",
       "rq_id": "RQ-006",
       "source_id": "SRC-001",
-      "claim": "Theo bảng đối chiếu các phương pháp khởi động của ABB, chỉ số chi phí lắp đặt bình quân ước tính của biến tần (Drives > 12) cao gấp đôi so với khởi động mềm (Softstarter = 6) và cao hơn nhiều so với khởi động sao-tam giác (Star-Delta = 3) hoặc trực tiếp (DOL = 1).",
+      "claim": "Theo bảng đối chiếu các phương pháp khởi động của ABB (2011), chỉ số chi phí lắp đặt bình quân ước tính theo trọng số tương đối (ước tính định tính lịch sử: DOL = 1, Star-Delta = 3, Softstarter = 6, Drives > 12) cho thấy biến tần có chi phí cấu trúc lắp đặt tương đối cao gấp đôi khởi động mềm; dữ liệu này mang tính đối chiếu định tính kiến trúc thiết bị, không phản ánh đơn giá tuyệt đối hay tỷ lệ thương mại cố định hiện hành.",
       "evidence_excerpt": "Estimated average installation cost: Direct on line: 1; Star-Delta start: 3; Softstarter: 6; Drives: > 12.",
-      "evidence_type": "NUMERICAL_VALUE",
+      "evidence_type": "COMPARISON_POINT",
       "verification_status": "VERIFIED",
       "locator_status": "LOCATOR_VERIFIED",
       "locator": "Table Comparison between different starting methods, p. 20"
