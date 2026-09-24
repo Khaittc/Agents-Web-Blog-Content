@@ -1,4 +1,4 @@
-﻿# NHẬT KÝ LÀM VIỆC DỰ ÁN (WORKLOG)
+# NHẬT KÝ LÀM VIỆC DỰ ÁN (WORKLOG)
 **Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **File này dùng để**: Cung cấp bức tranh toàn cảnh tức thì cho bất kỳ Agent nào tiếp quản dự án mà **không cần đọc lại toàn bộ lịch sử trò chuyện**.
 
@@ -101,6 +101,20 @@
     3. **Cửa ải Khớp Tiêu đề Nội dung (Content Title Verification Gate)**: Agent bắt buộc phải kiểm tra tiêu đề trang web (`<title>`, `<h1>`, `Content-Disposition`) để bảo đảm trang đích khớp 100% với tên tài liệu đang trích dẫn.
     4. **Nâng cấp Kỹ năng & Lưu trữ (ADR-009)**: Di chuyển `IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.0.md` vào `00_SKILL/archive/` và ban hành `IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1.md`.
     5. **Khắc phục Toàn bộ 7 Link của BLOG_03**: Cập nhật đồng bộ các đường dẫn trực tiếp trên `evidence_dossier.md`, `draft_review_package.md`, `bai-viet-chan-doan-qua-dong-bien-tan-ckeditor.html` và `technical_audit_report.md`.
+- **ADR-024: Chính sách Nguồn Mặc định & Ngoại lệ Thẩm quyền Cao (Authoritative-Source Exception)**
+  - Mặc định: Khuyến nghị 4–7 nguồn kỹ thuật, tỷ lệ Tier 1 + Tier 2 ưu tiên $\ge 70\%$ cho các bài tổng quan, so sánh, hướng dẫn kỹ thuật chung.
+  - Ngoại lệ: Cho phép 1–3 nguồn đối với chủ đề chuyên sâu, phạm vi hẹp (mã lỗi chuyên biệt Siemens/ABB, thông số OEM, điều khoản chuẩn IEC/IEEE) khi nguồn sơ cấp đã đủ thẩm quyền tối cao.
+  - Bắt buộc kích hoạt cờ máy đọc `source_policy_exception` trong `evidence.json`. Technical Review Gate có thẩm quyền `APPROVE_EXCEPTION` hoặc `REJECT_EXCEPTION`.
+  - Tuyệt đối không dùng số lượng nguồn làm thước đo chất lượng bài viết.
+- **ADR-025: Chuẩn hóa Ngữ nghĩa Kiểm chứng URL & Tách bạch Canonical URL vs Retrieval URL**
+  - Chuẩn hóa `access_status`: `OK`, `REDIRECTED_OK`, `ACCESS_RESTRICTED`, `AUTH_REQUIRED`, `NOT_FOUND`, `NETWORK_ERROR`, `UNKNOWN`.
+  - Phân tách rõ ràng: `canonical_url` (landing page chính thức, ổn định cho Reference List) và `retrieval_url` (URL thực tế Agent dùng để tải tài liệu / PDF).
+  - Chính sách PDF: Ưu tiên landing page chính thức ổn định kết hợp link PDF trực tiếp tải về; không bắt buộc link direct PDF tạm thời nếu dễ hỏng.
+  - Tách bạch 4 cấp độ: `URL access ≠ Content identity verified ≠ Claim verified ≠ Locator status`.
+- **ADR-026: Tự động hóa Kiểm định Kiến trúc CI & Giám sát Toàn vẹn Mã băm SHA-256 (GitHub Actions & Standalone Scripts)**
+  - Thiết lập `.github/workflows/architecture-validation.yml` trên nhánh `main` kích hoạt khi push và PR.
+  - Xây dựng `scripts/validate_architecture.py` (kiểm định 6 JSON Schemas, Canonical Taxonomy, Stable Source IDs, Hợp đồng bắt buộc, Human-only Publishing, Two-Gate Pipeline).
+  - Xây dựng `scripts/verify_locked_articles.py` (kiểm chứng toàn vẹn SHA-256 của các bài viết `APPROVED / LOCKED` và xác thực commit provenance).
 
 ---
 
@@ -422,13 +436,40 @@
 
 ---
 
+### Phiên làm việc: 24/09/2026 (Phiên 21 — Phase 2.5.1: Kiểm Tra Toàn Diện & Tự Động Hóa CI Kiến Trúc)
+- **Người thực hiện**: Kỹ sư trưởng & AI Assistant (Antigravity).
+- **Nội dung công việc**:
+  1. **Thiết Lập Hệ Thống GitHub Actions CI (ADR-026)**:
+     - Tạo mới [.github/workflows/architecture-validation.yml](file:///d:/Agents_Tools/05_WebsiteTTC/.github/workflows/architecture-validation.yml) kích hoạt khi push và pull_request trên nhánh `main`.
+     - Chạy song song 3 chốt chặn: Kiến trúc tự động, Toàn vẹn mã băm bài viết đã khóa, và `git diff --check`.
+  2. **Xây Dựng Bộ Script Kiểm Định Độc Lập (Python Standard Library)**:
+     - [scripts/validate_architecture.py](file:///d:/Agents_Tools/05_WebsiteTTC/scripts/validate_architecture.py): Kiểm định 6 JSON Schemas máy đọc, Canonical Blog Taxonomy (`BLOG-T01`..`BLOG-T05`), Stable Source ID (`SRC-xxx`), Hợp đồng bắt buộc, Human-only Publishing và Two-Gate Pipeline consistency.
+     - [scripts/verify_locked_articles.py](file:///d:/Agents_Tools/05_WebsiteTTC/scripts/verify_locked_articles.py): Kiểm chứng mã băm SHA-256 thực tế của toàn bộ bài viết `APPROVED / LOCKED` (`BLOG_01`, `BLOG_02`, `BLOG_03`) đối chiếu với `approved_content_sha256` và xác thực commit provenance.
+  3. **Chuẩn Hóa Chính Sách Nguồn & Ngoại Lệ Thẩm Quyền Cao (ADR-024)**:
+     - Cập nhật chính sách mặc định (khuyến nghị 4–7 nguồn, Tier 1+2 $\ge 70\%$).
+     - Thiết lập cơ chế ngoại lệ thẩm quyền cao (1–3 nguồn) cho chủ đề hẹp (mã lỗi cụ thể, thông số OEM đơn lẻ, điều khoản tiêu chuẩn cụ thể) kèm cờ máy đọc `source_policy_exception` trong `evidence.schema.json`.
+     - Phân quyền cho Technical Review Gate: `APPROVE_EXCEPTION` hoặc `REJECT_EXCEPTION`. Xóa bỏ quan niệm "nhiều nguồn = bài tốt hơn".
+  4. **Chuẩn Hóa Ngữ Nghĩa Kiểm Chứng URL & Tách Bạch Đường Dẫn (ADR-025)**:
+     - Chuẩn hóa 7 trạng thái mạng: `OK`, `REDIRECTED_OK`, `ACCESS_RESTRICTED`, `AUTH_REQUIRED`, `NOT_FOUND`, `NETWORK_ERROR`, `UNKNOWN`.
+     - Bổ sung `canonical_url` (landing page chính thức cho References) và `retrieval_url` (link tải file/PDF thực tế) vào `evidence.schema.json`.
+     - Chính sách PDF: Ưu tiên landing page chính thức ổn định, cho phép kết hợp link PDF trực tiếp tải về nếu đã xác minh danh tính tài liệu.
+     - Tách bạch 4 cấp độ: `URL access ≠ Content identity ≠ Claim verified ≠ Locator status`.
+  5. **Cập Nhật Đồng Bộ Tài Liệu**:
+     - Cập nhật `00_SKILL/SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md`, `00_SKILL/TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md`, `02_AGENT_TEMPLATES/research_agent.md`, `02_AGENT_TEMPLATES/review_agent.md`, `README.md`, `ROADMAP.md`, `AGENT_GUIDE.md`.
+     - Bảo đảm nguyên vẹn 100% nội dung HTML và assets của `BLOG_01`, `BLOG_02`, `BLOG_03`.
+- **Trạng thái kết thúc phiên**: Toàn bộ các tiêu chí nghiệm thu của Phase 2.5 và Phase 2.5.1 đều đạt kết quả PASS 100%. Phase 2.5 chính thức KHÓA ĐÓNG HOÀN TOÀN (FULLY CLOSED). Hệ thống sẵn sàng tuyệt đối để bước vào Phase 3 (Tooling Integration).
+
+---
+
 ## 4. DANH SÁCH HÀNH ĐỘNG TIẾP THEO (NEXT ACTION ITEMS)
 
 Ưu tiên thực hiện tiếp theo (Phase 3):
 1. [x] **Phase 2.5: Multi-Agent Architecture Hardening**:
    - ĐÃ HOÀN THÀNH: Canonical Taxonomy, Stable Source IDs, 6 JSON Schemas, 2-Gate Pipeline, Packaging role, Content Hash SHA-256.
-2. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Phase 3 Tooling Integration)**:
+2. [x] **Phase 2.5.1: Final Architecture Validation & CI Hardening**:
+   - ĐÃ HOÀN THÀNH: GitHub Actions CI workflow, Python validation scripts, Source policy exception, URL verification semantics, Content Hash SHA-256 verified.
+3. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Phase 3 Tooling Integration)**:
    - Khảo sát và kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn nguồn tài liệu Tier 1/2 với số trang và bảng tự động.
    - Chuẩn hóa luồng sử dụng tool `invoke_subagent` và `define_subagent` để điều phối tự động 5 agents trực tiếp trong Antigravity.
-3. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
+4. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
    - Ra đề bài mẫu mới thông qua khung chat Antigravity và cho 5 Subagents tự động thực thi khép kín từ nghiên cứu đến đóng gói xuất bản HTML.

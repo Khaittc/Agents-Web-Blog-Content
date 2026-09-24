@@ -1,0 +1,35 @@
+name: Architecture Validation CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Multi-Agent Architecture & Content Integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Architecture CI Validation
+        run: |
+          python scripts/validate_architecture.py
+
+      - name: Run Locked Article Content Integrity Check
+        run: |
+          python scripts/verify_locked_articles.py
+
+      - name: Check Git Diff and Whitespace
+        run: |
+          git diff --check

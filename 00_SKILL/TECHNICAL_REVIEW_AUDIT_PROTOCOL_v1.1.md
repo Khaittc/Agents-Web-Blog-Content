@@ -1,4 +1,4 @@
-﻿# QUY CHUẨN KIỂM DUYỆT VÀ PHẢN BIỆN KỸ THUẬT (TECHNICAL REVIEW & AUDIT PROTOCOL)
+# QUY CHUẨN KIỂM DUYỆT VÀ PHẢN BIỆN KỸ THUẬT (TECHNICAL REVIEW & AUDIT PROTOCOL)
 **Version**: 1.1
 **Trạng thái**: Áp dụng bắt buộc cho Tech Review Agent, Drafting Agent và Publisher Agent
 **Ngày ban hành**: 24/09/2026
@@ -66,11 +66,15 @@ Drafting Agent Hoàn thành Bản thảo & Claim Map
 
 ---
 
-### TRỤ CỘT 1: CITATION AUDIT (Theo IEEE Master Suite v2.0)
+### TRỤ CỘT 1: CITATION & SOURCE POLICY AUDIT (Theo IEEE Master Suite v2.0 & ADR-024)
 
+- [ ] **Thẩm tra Chính sách Nguồn & Ngoại lệ Thẩm quyền Cao (Source Policy Check - ADR-024)**:
+  - Mặc định: Đạt 4–7 nguồn kỹ thuật, tỷ lệ Tier 1 + Tier 2 ưu tiên $\ge 70\%$.
+  - Nếu sử dụng 1–3 nguồn: Bắt buộc có cờ `source_policy_exception` trong `evidence.json`. Review Agent thẩm định tính chuyên sâu hẹp và thẩm quyền nguồn sơ cấp để ban hành phán quyết: `APPROVE_EXCEPTION` hoặc `REJECT_EXCEPTION`.
+  - Không dùng số lượng nguồn làm thang điểm chất lượng bài viết (chất lượng đánh giá theo tính thẩm quyền, độ xác thực, độ tươi mới và độ bao phủ luận điểm).
 - [ ] **Nhận định Đúng Loại Tài liệu (Source Type Classification Check - IEEE-01 v1.1)**:
-  - Phân loại và gán nhãn đúng 1 trong 10 loại hình kỹ thuật trong `evidence_dossier.md`: `STANDARD`, `MANUAL`, `JOURNAL_PAPER`, `CONF_PAPER`, `BLOG_POST`, `WEB_ARTICLE`, `TECH_REPORT`, `BOOK`, `DATASHEET`, `THESIS`.
-  - Cửa ải Điều hướng Trực tiếp (ADR-015): 100% link phải là Deep Link hoặc Direct PDF, cấm link trang chủ hoặc link tìm kiếm chung chung.
+  - Phân loại và gán nhãn đúng hệ thống phân loại nguồn mở trong `evidence_dossier.md` và `evidence.json`.
+  - Cửa ải Điều hướng Trực tiếp (ADR-015): 100% link phải mở đúng tài liệu (Deep Link / Direct PDF / Launch URL), cấm link trang chủ hoặc link tìm kiếm chung chung. Tách bạch `canonical_url` và `retrieval_url`.
 - [ ] **Cấu trúc Đặt tên Chuẩn IEEE theo Từng Loại (IEEE-03 v1.1)**:
   - `STANDARD`: *Tên tiêu chuẩn in nghiêng* đứng đầu, mã hiệu, năm. Cấm đặt tên tổ chức lên trước.
   - `MANUAL`: *Tên sổ tay in nghiêng* đứng đầu, tên hãng, địa điểm, năm. Cấm đặt tên hãng lên trước.

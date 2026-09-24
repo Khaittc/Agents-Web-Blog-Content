@@ -1,4 +1,4 @@
-﻿# LỘ TRÌNH PHÁT TRIỂN HỆ THỐNG (ROADMAP)
+# LỘ TRÌNH PHÁT TRIỂN HỆ THỐNG (ROADMAP)
 **Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **Mục tiêu**: Tự động hóa khép kín từ nghiên cứu tài liệu, thẩm định kỹ thuật, tạo hình ảnh đến xuất bản bài viết lên website `real-group.org` (CKEditor 3.6.6.2).
 
@@ -11,14 +11,17 @@
 | **Phase 1** | Baseline & Standards Foundation | ✅ **HOÀN THÀNH** | 09/2026 |
 | **Phase 2** | Stress-test & Standards Expansion | ✅ **HOÀN THÀNH** | 09/2026 |
 | **Phase 2.5** | Multi-Agent Architecture Hardening | ✅ **HOÀN THÀNH** | 09/2026 |
-| **Phase 3** | Tooling Integration (MCP & Visual) | 🟡 **CHUẨN BỊ TRIỂN KHAI** | Q4/2026 |
+| **Phase 2.5.1** | Final Architecture Validation & CI Hardening | ✅ **HOÀN THÀNH** | 09/2026 |
+| **Phase 3** | Tooling Integration (MCP & Visual) | 🟡 **SẴN SÀNG KHỞI ĐỘNG** | Q4/2026 |
 | **Phase 4** | Autonomous Pipeline & Human Publishing | ⚪ **DỰ KIẾN** | Q1/2027 |
 
 > [!IMPORTANT]
-> **Vị trí hiện tại của dự án**: Đã hoàn tất xuất sắc **Phase 2.5 (Multi-Agent Architecture Hardening)**.
+> **Vị trí hiện tại của dự án**: Đã hoàn tất xuất sắc **Phase 2.5 & Phase 2.5.1 (Final Architecture Validation & CI Hardening)**.
 > - Toàn bộ 5 Subagents đã được tái cấu trúc ranh giới trách nhiệm (Ownership Boundaries), thiết lập thư mục hợp đồng máy đọc `02_AGENT_TEMPLATES/contracts/`, phân tách 2 Cổng Kiểm định độc lập (Technical Review Gate & Presentation Gate), ban hành nguồn chuẩn duy nhất `BLOG_TAXONOMY_CANONICAL_v1.0.md`, quy chuẩn Stable Source ID (`SRC-xxx`), và cơ chế bảo vệ mã băm toàn vẹn SHA-256 (`approved_content_sha256`).
+> - Thiết lập hệ thống CI tự động hóa (`.github/workflows/architecture-validation.yml`, `scripts/validate_architecture.py`, `scripts/verify_locked_articles.py`) khóa chặt cấu trúc, schemas và tính toàn vẹn của các bài viết đã duyệt.
+> - Chuẩn hóa chính sách nguồn: Khuyến nghị 4–7 nguồn mặc định, mở ngoại lệ 1–3 nguồn thẩm quyền cao cho chủ đề hẹp (ADR-024) và tách bạch hoàn toàn ngữ nghĩa kiểm chứng URL (`canonical_url`, `retrieval_url`, `access_status`) (ADR-025).
 > - Khẳng định nguyên tắc bất biến: **Subagents chỉ đóng gói giao phẩm xuất bản sẵn sàng (Packaging); Con người (Kỹ sư trưởng) là người phê duyệt và tự tay đăng tải lên CMS**.
-> - Sẵn sàng bước vào **Phase 3 (Tooling Integration)**.
+> - **Phase 2.5 chính thức KHÓA ĐÓNG HOÀN TOÀN (FULLY CLOSED)**. Hệ thống sẵn sàng tuyệt đối để bước vào **Phase 3 (Tooling Integration)**.
 
 ---
 
@@ -72,6 +75,21 @@
 
 ---
 
+### Giai đoạn 2.5.1: Kiểm Tra Toàn Diện & Tự Động Hóa CI Kiến Trúc (Phase 2.5.1 — Final Architecture Validation & CI Hardening)
+*Trạng thái*: ✅ **ĐÃ HOÀN THÀNH** (Tháng 09/2026)
+*Mục tiêu*: Thiết lập hệ thống GitHub Actions CI kiểm tra tự động kiến trúc, kiểm tra toàn vẹn bài viết đã khóa bằng SHA-256, chuẩn hóa chính sách ngoại lệ nguồn thẩm quyền cao và ngữ nghĩa kiểm chứng URL trước khi mở Phase 3.
+
+- [x] **Architecture CI Workflow**: Thiết lập `.github/workflows/architecture-validation.yml` chạy trên push và PR vào nhánh `main`.
+- [x] **Architecture Validation Script**: `scripts/validate_architecture.py` kiểm định JSON Schemas, Canonical Taxonomy, Stable Source IDs, Hợp đồng bắt buộc, Human-only Publishing và Two-Gate Pipeline.
+- [x] **Locked Content Integrity Script**: `scripts/verify_locked_articles.py` kiểm chứng toàn vẹn SHA-256 của toàn bộ bài viết đã phê duyệt (`BLOG_01`, `BLOG_02`, `BLOG_03`).
+- [x] **Source Policy & Authoritative Exception (ADR-024)**: Mặc định 4–7 nguồn ($\ge 70\%$ Tier 1+2); cho phép ngoại lệ 1–3 nguồn thẩm quyền cao cho chủ đề hẹp với cờ máy đọc `source_policy_exception` và cửa ải phê duyệt của Review Agent.
+- [x] **URL Verification Semantics (ADR-025)**: Chuẩn hóa `access_status` (7 trạng thái), phân tách `canonical_url` và `retrieval_url`, chính sách PDF trực tiếp, và tách bạch 4 cấp độ kiểm chứng độc lập.
+- [x] **Two-Gate Pipeline & Human-Only Publishing Consistency**: Đồng bộ hóa tuyệt đối tài liệu hoạt động, đảm bảo pipeline 2 cổng độc lập và nguyên tắc chỉ con người đăng bài lên CMS.
+
+> [!NOTE]
+> **Kết luận**: Toàn bộ tiêu chí nghiệm thu của Phase 2.5 và Phase 2.5.1 đã đạt 100% PASS. Phase 2.5 chính thức KHÓA ĐÓNG HOÀN TOÀN (FULLY CLOSED). Hệ thống sẵn sàng tuyệt đối để bước vào **Phase 3 (Tooling Integration)**.
+
+---
 
 ### Giai đoạn 3: Định nghĩa Chuyên biệt Subagent & Tích hợp Công cụ (Phase 3)
 *Trạng thái*: 🟡 **ĐANG THỰC HIỆN** (Khởi động Tháng 09/2026)

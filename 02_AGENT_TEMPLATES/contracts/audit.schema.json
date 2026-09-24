@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "AuditReportSchema",
   "description": "Machine-readable contract for audit verdicts produced by Review Agent across Technical and Presentation gates",

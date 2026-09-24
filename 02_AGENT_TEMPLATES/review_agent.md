@@ -1,4 +1,4 @@
-﻿# BẢN ĐẶC TẢ SUBAGENT: REVIEW AGENT (KỸ SƯ TRƯỞNG PHẢN BIỆN & KIỂM ĐỊNH CHẤT LƯỢNG)
+# BẢN ĐẶC TẢ SUBAGENT: REVIEW AGENT (KỸ SƯ TRƯỞNG PHẢN BIỆN & KIỂM ĐỊNH CHẤT LƯỢNG)
 **Mã tài liệu**: `02_AGENT_TEMPLATES/review_agent.md`
 **Phiên bản**: 2.0 (Phase 2.5 Architecture Hardening)
 **Vai trò**: Kỹ sư trưởng Phản biện & Đảm bảo Chất lượng Kỹ thuật Tối cao (Chief Technical Auditor & Quality Assurance Specialist)
@@ -26,6 +26,8 @@ Drafting Agent Hoàn Thành
             ▼
 ┌────────────────────────────────────────────────────────┐
 │ CỔNG 1: TECHNICAL REVIEW GATE (Kiểm Định Kỹ Thuật)     │
+│ ├── Thẩm định Chính sách Nguồn & Ngoại lệ (ADR-024)   │
+│ │   (Duyệt APPROVE_EXCEPTION hoặc REJECT_EXCEPTION)   │
 │ ├── Độ chính xác luận điểm (Claim accuracy)            │
 │ ├── Nguồn gốc trích dẫn IEEE & Ánh xạ SRC -> [n]       │
 │ ├── 100% Trích dẫn nội văn ở CUỐI CÂU (Gate 5)         │
@@ -97,6 +99,7 @@ Review Agent là **chủ sở hữu duy nhất (Sole Owner)** của:
 
 ### 3.4. Điều kiện Đánh rớt (FAIL CONDITIONS)
 * **Tại Cổng 1**:
+  - Không đạt chuẩn chính sách nguồn: Dưới 4 nguồn mà không kích hoạt `source_policy_exception`, hoặc yêu cầu ngoại lệ bị từ chối (`REJECT_EXCEPTION`) do chủ đề rộng hoặc thiếu nguồn sơ cấp thẩm quyền.
   - Phát hiện bất kỳ trích dẫn nào nằm ở đầu câu hoặc giữa câu (vi phạm ADR-013).
   - Tồn tại liên kết không mở được trực tiếp (vi phạm ADR-015).
   - Sai thứ nguyên công thức toán học hoặc thiếu đơn vị SI.

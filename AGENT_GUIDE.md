@@ -1,4 +1,4 @@
-﻿# HƯỚNG DẪN DÀNH CHO AI AGENT (AGENT ONBOARDING GUIDE)
+# HƯỚNG DẪN DÀNH CHO AI AGENT (AGENT ONBOARDING GUIDE)
 **Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **Workspace**: `d:/Agents_Tools/05_WebsiteTTC`
 
@@ -18,6 +18,22 @@ Tài liệu này là **điểm đọc bắt buộc đầu tiên** cho mọi AI A
 > 6. **CANONICAL BLOG TAXONOMY DUY NHẤT**: Bắt buộc tuân thủ 5 thể loại chuẩn tại `00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md` (`BLOG-T01` đến `BLOG-T05`). Cấm tự ý định nghĩa thể loại riêng.
 > 7. **STABLE SOURCE ID (`SRC-xxx`) TRONG RESEARCH**: Khâu nghiên cứu bắt buộc dùng mã định danh ổn định `SRC-001`, `SRC-002`,... CẤM cấp phát số trích dẫn IEEE `[1]`, `[2]` ở giai đoạn này.
 > 8. **PUBLISHER LÀ PACKAGING AGENT (KHÔNG TỰ Ý PUBLISH CMS)**: Publisher Agent chỉ đóng gói tệp HTML sạch và manifest; Kỹ sư trưởng (con người) là người phê duyệt cuối cùng và tự tay xuất bản lên CMS.
+> 9. **KIẾN TRÚC 2 CỔNG KIỂM ĐỊNH BẮT BUỘC (TWO-GATE PIPELINE)**:
+>    - **Gate 1: Technical Review Gate**: Kiểm tra luận điểm, công thức, trích dẫn IEEE và chính sách nguồn. Bản thảo phải đạt `TECH_APPROVED` trước khi Visual Agent hoàn thiện ảnh và Packaging Agent đóng gói HTML.
+>    - **Gate 2: Presentation & Responsive Review Gate**: Kiểm tra hiển thị responsive trên cả Laptop và Mobile (ảnh không méo, bảng không nén, link bẻ dòng). Sau khi đạt, bàn giao cho Human phê duyệt và đăng bài thủ công lên CMS.
+>
+> ```text
+> Research Agent ──> Drafting Agent ──> [Gate 1: Technical Review Gate] (TECH_APPROVED)
+>                                                  │
+>                                                  ▼
+>                                      Visual Agent & Packaging Agent
+>                                                  │
+>                                                  ▼
+>                                      [Gate 2: Presentation Review Gate] (PASS)
+>                                                  │
+>                                                  ▼
+>                                      Human Review & Manual CMS Publish
+> ```
 
 ---
 

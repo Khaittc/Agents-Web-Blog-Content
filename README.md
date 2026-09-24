@@ -1,11 +1,12 @@
-﻿# ⚡ Autonomous Multi-Agent Technical Blog Production System
+# ⚡ Autonomous Multi-Agent Technical Blog Production System
 ### Hệ Thống AI Đa Tác Tử Sản Xuất Nội Dung Kỹ Thuật Công Nghiệp Chuẩn Quốc Tế (IEEE & Real Group)
 
 [![Platform: Google Antigravity](https://img.shields.io/badge/Platform-Google%20Antigravity-4285F4?logo=google&logoColor=white)](https://github.com/Khaittc/Agents-Web-Blog-Content)
+[![CI: Architecture Validated](https://img.shields.io/badge/CI-Architecture%20Validated-brightgreen?logo=githubactions&logoColor=white)](.github/workflows/architecture-validation.yml)
 [![Citation: IEEE Suite v2.0](https://img.shields.io/badge/Citation-IEEE%20Suite%20v2.0-00629B?logo=ieee&logoColor=white)](00_SKILL/IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md)
 [![Responsive: Laptop & Mobile](https://img.shields.io/badge/Responsive-Laptop%20%26%20Mobile%20Verified-brightgreen)](00_SKILL/TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md)
 [![CMS: CKEditor 3.6.6.2 Ready](https://img.shields.io/badge/CMS-CKEditor%203.6.6.2%20Ready-orange)](00_SKILL/REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md)
-[![Phase: 3 Active](https://img.shields.io/badge/Roadmap-Phase%203%20Active-blue)](ROADMAP.md)
+[![Phase: 3 Ready](https://img.shields.io/badge/Roadmap-Phase%203%20Ready-blue)](ROADMAP.md)
 [![License: Proprietary Real Group](https://img.shields.io/badge/License-Real%20Group%20TTC-red)](https://www.real-group.org)
 
 ---
@@ -139,7 +140,12 @@ Agents-Web-Blog-Content/
 │   ├── BLOG_01_Dong_co_non_tai/   # BLOG-T02 (LOCKED)
 │   ├── BLOG_02_He_so_cong_suat_va_Song_hai/ # BLOG-T01 (LOCKED)
 │   └── BLOG_03_Chan_doan_qua_dong_bien_tan/ # BLOG-T03 (LOCKED)
-└── 04_PLANS/                      # Kế hoạch thực thi chi tiết theo từng phiên làm việc
+├── 04_PLANS/                      # Kế hoạch thực thi chi tiết theo từng phiên làm việc
+├── .github/workflows/             # GitHub Actions CI Workflows
+│   └── architecture-validation.yml # Tự động kiểm định kiến trúc & toàn vẹn SHA-256
+└── scripts/                       # Bộ công cụ kiểm định tự động hóa độc lập
+    ├── validate_architecture.py   # Script kiểm tra JSON schemas, taxonomy, contracts
+    └── verify_locked_articles.py  # Script kiểm tra mã băm SHA-256 bài viết đã khóa
 ```
 
 
@@ -159,8 +165,10 @@ Nhằm đảm bảo an toàn tuyệt đối cho tài sản nội dung sau khi đ
 
 * ✅ **Phase 1: Baseline & Standards Foundation** (Hoàn thành 09/2026) — Thiết lập bộ quy chuẩn nền tảng, hoàn thành bài viết mẫu `BLOG_01`.
 * ✅ **Phase 2: Stress-test & Standards Expansion** (Hoàn thành 09/2026) — Hoàn thành `BLOG_02`, `BLOG_03`, nâng cấp toàn bộ bộ kỹ năng lên `v1.1` - `v2.0`, ban hành tiêu chuẩn Responsive Laptop & Mobile.
-* 🟡 **Phase 3: Multi-Agent Specification & Tooling** (Đang triển khai Q4/2026) — Đã hoàn thành 5 Subagent Templates; tiếp tục tích hợp MCP Tooling (`notebooklm`, image generator) và thử nghiệm điều phối tự động.
-* ⚪ **Phase 4: Autonomous Pipeline & Publishing** (Dự kiến Q1/2027) — Vận hành pipeline một chạm tự động hóa khép kín và xuất bản trực tiếp lên CMS.
+* ✅ **Phase 2.5: Multi-Agent Architecture Hardening** (Hoàn thành 09/2026) — Chuẩn hóa Canonical Taxonomy, Stable Source ID (`SRC-xxx`), 6 JSON Schemas, Two-Gate Pipeline, cơ chế bảo vệ mã băm SHA-256.
+* ✅ **Phase 2.5.1: Final Architecture Validation & CI Hardening** (Hoàn thành 09/2026) — Tự động hóa GitHub Actions CI (`validate_architecture.py`, `verify_locked_articles.py`), hoàn thiện chính sách ngoại lệ nguồn thẩm quyền cao và ngữ nghĩa kiểm chứng URL.
+* 🟡 **Phase 3: Tooling Integration (MCP & Visual)** (Sẵn sàng khởi động Q4/2026) — Khảo sát và tích hợp MCP Tooling (`notebooklm`), image generator và điều phối tự động 5 subagents.
+* ⚪ **Phase 4: Autonomous Pipeline & Manual CMS Publishing** (Dự kiến Q1/2027) — Vận hành pipeline một chạm tự động hóa khép kín và quy trình Kỹ sư trưởng nghiệm thu đăng tải thủ công lên CMS.
 
 ---
 

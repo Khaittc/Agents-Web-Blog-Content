@@ -1,4 +1,4 @@
-﻿# QUY TRÌNH PHÂN TẦNG VÀ THẨM ĐỊNH BẰNG CHỨNG KỸ THUẬT (SOURCE TIER & EVIDENCE WORKFLOW)
+# QUY TRÌNH PHÂN TẦNG VÀ THẨM ĐỊNH BẰNG CHỨNG KỸ THUẬT (SOURCE TIER & EVIDENCE WORKFLOW)
 Version: 1.0
 Trạng thái: Áp dụng chính thức cho Research & Evidence Agent
 Phạm vi: Toàn bộ bài viết kỹ thuật (Blog / Solution) cho Real Group (`real-group.org`)
@@ -92,11 +92,82 @@ Theo chuẩn [IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md](file:///d:/Age
    - Chương / Mục: `Sec. 3.2`
    - Bảng số liệu: `Tab. 4`
    - Công thức: `eq. (3)`
-3. **Trường hợp chưa xác minh được trang cụ thể**: Đánh dấu cờ `LOCATOR_NOT_CHECKED` trong `evidence.json`. Drafting Agent khi đó chỉ được phép dùng trích dẫn số `[n]` đơn thuần ở cuối câu, **tuyệt đối không được tự suy đoán số trang**.
+3. **Phân loại trạng thái Locator**:
+   - `LOCATOR_VERIFIED`: Đã kiểm tra đối chiếu trực tiếp số trang/bảng/chương trong tài liệu gốc.
+   - `LOCATOR_UNAVAILABLE`: Tài liệu không có số trang cố định (bài web, datasheet dạng trang đơn).
+   - `LOCATOR_NOT_CHECKED`: Chưa kiểm chứng số trang; chỉ cho phép trích dẫn `[n]` ở cuối câu.
+   - `LOCATOR_CONFLICT`: Số trang hoặc bảng có sự mâu thuẫn giữa các phiên bản tài liệu.
 
 ---
 
-## 5. HỒ SƠ BẰNG CHỨNG SONG HÀNH (EVIDENCE DOSSIER & EVIDENCE.JSON)
+## 5. CHÍNH SÁCH SỐ LƯỢNG NGUỒN & NGOẠI LỆ THẨM QUYỀN CAO (SOURCE COUNT POLICY & EXCEPTION)
+
+### 5.1. Chính sách Mặc định (Default Policy)
+- **Số lượng khuyến nghị**: 4–7 nguồn kỹ thuật.
+- **Tỷ lệ ưu tiên Tier 1 + Tier 2**: $\ge 70\%$.
+- **Phạm vi áp dụng**:
+  - Bài tổng quan kỹ thuật (Overview).
+  - So sánh công nghệ / thiết bị (Comparison).
+  - Giải thích kỹ thuật diện rộng (Broad Technical Explanation).
+  - Chủ đề đa hãng / đa giải pháp (Multi-vendor Topics).
+  - Hướng dẫn thực hành kỹ thuật chung (General Engineering Guide).
+
+### 5.2. Ngoại lệ Nguồn Thẩm quyền Cao cho Chủ đề Hẹp (Authoritative-Source Exception)
+Cho phép sử dụng **1–3 nguồn kỹ thuật** nếu chủ đề mang tính chuyên sâu, phạm vi hẹp và một hoặc vài nguồn sơ cấp (primary sources) đã đủ thẩm quyền tối cao:
+- **Ví dụ áp dụng**:
+  - Mã lỗi chuyên biệt của một dòng biến tần (ví dụ: mã lỗi F0001 / Fault 2310 trên Siemens / ABB).
+  - Thông số cài đặt hoặc tham số cụ thể của thiết bị OEM.
+  - Quy trình thử nghiệm hoặc đóng điện của một hãng sản xuất duy nhất.
+  - Một điều khoản hoặc bảng tra cứu cụ thể trong tiêu chuẩn quốc tế IEC / IEEE.
+
+### 5.3. Cửa ải Phê duyệt Ngoại lệ (Exception Approval Gate)
+Research Agent chỉ được kích hoạt ngoại lệ nếu thỏa mãn đầy đủ 5 điều kiện:
+1. Chủ đề thực sự mang tính hẹp và chuyên biệt.
+2. Có ít nhất một nguồn sơ cấp thẩm quyền cao (Tier 1 hoặc Tier 2 từ chính hãng phát hành).
+3. Nguồn trực tiếp chứng minh và hỗ trợ 100% các luận điểm kỹ thuật chính.
+4. Ghi rõ lý do kích hoạt ngoại lệ trong hồ sơ `evidence.json`.
+5. Được **Cổng Kiểm Định Kỹ Thuật (Technical Review Gate)** thẩm tra và chấp thuận (`APPROVE_EXCEPTION`). Nếu Review Agent từ chối (`REJECT_EXCEPTION`), Research Agent phải bổ sung nguồn theo vòng lặp hiệu chỉnh (`REVISION_REQUESTED`).
+
+### 5.4. Không dùng Số lượng Nguồn làm Thước đo Chất lượng
+Tuyệt đối xóa bỏ quan niệm "nhiều nguồn hơn = bài viết tốt hơn". Chất lượng nghiên cứu được đánh giá dựa trên:
+- **Tính thẩm quyền (Authority)**: Phù hợp cấp độ Tier 1/Tier 2.
+- **Tính xác đáng (Relevance)**: Trọng tâm, phục vụ trực tiếp đề tài.
+- **Độ bao phủ luận điểm (Claim Coverage)**: Mọi thông số đều có bằng chứng.
+- **Độ cập nhật (Freshness)**: Phiên bản tài liệu đang có hiệu lực.
+- **Kiểm chứng độc lập (Verification)**: Đã đối chiếu văn bản gốc.
+- **Giải quyết xung đột (Conflict Resolution)**: Luận giải rõ ràng nếu có khác biệt.
+
+---
+
+## 6. NGỮ NGHĨA KIỂM CHỨNG URL & LIÊN KẾT TÀI LIỆU (URL VERIFICATION SEMANTICS)
+
+### 6.1. Tách bạch Trạng thái Truy cập Mạng (Network Access Status)
+Không đồng nhất `HTTP 200` với "Nguồn đã kiểm chứng". Chuẩn hóa danh mục `access_status`:
+- `OK`: Kết nối trực tiếp thành công (HTTP 2xx).
+- `REDIRECTED_OK`: Yêu cầu chuyển hướng (HTTP 301/302) đến đúng trang chính thức và trả về HTTP 2xx.
+- `ACCESS_RESTRICTED`: Bị giới hạn truy cập theo vùng hoặc tường lửa.
+- `AUTH_REQUIRED`: Yêu cầu đăng nhập tài khoản / phân quyền kỹ thuật.
+- `NOT_FOUND`: Liên kết hỏng hoặc không tồn tại (HTTP 404).
+- `NETWORK_ERROR`: Lỗi phân giải DNS hoặc ngắt kết nối mạng.
+- `UNKNOWN`: Chưa thực hiện gửi yêu cầu kiểm tra mạng.
+
+### 6.2. Phân biệt Canonical URL vs Retrieval URL
+Mỗi nguồn trong `evidence.json` bắt buộc phân tách 2 loại địa chỉ:
+- **`canonical_url`**: URL chính thức, ổn định, định danh tài liệu (landing page sản phẩm, cổng thư viện tiêu chuẩn) dùng cho Danh mục Tài liệu tham khảo công khai.
+- **`retrieval_url`**: URL thực tế mà Agent đã truy cập để tải hoặc đọc nội dung (direct link PDF tạm thời, link download portal, tài liệu lưu trữ).
+
+### 6.3. Chính sách Tệp PDF Trực tiếp (Direct PDF Policy)
+- Không ép buộc mọi trường hợp phải là link PDF trực tiếp nếu link đó dễ hết hạn hoặc không ổn định.
+- Ưu tiên `canonical_url` dẫn tới trang thông tin chính thống của tài liệu nếu trang đó hiển thị rõ thông tin định danh và cho phép tải tài liệu.
+- Cho phép kết hợp `canonical_url` (landing page) + `retrieval_url` (link PDF trực tiếp) với điều kiện đã xác minh danh tính tài liệu (`content_identity_verified = true`).
+
+### 6.4. Kiểm chứng Danh tính Nội dung & Thẩm định Luận điểm
+- **`content_identity_verified = true`**: Chỉ đánh dấu khi đã đối chiếu tối thiểu: Tiêu đề tài liệu, Nhà xuất bản/Hãng chế tạo, Mã hiệu tài liệu, Phiên bản/Revision, Năm phát hành. Tuyệt đối không đánh dấu chỉ vì URL chứa từ khóa.
+- **`claim_verified = true`**: Chỉ đánh dấu khi Agent đã thực sự đọc nội dung bên trong nguồn và xác nhận nguồn hỗ trợ luận điểm kỹ thuật. Tuyệt đối không dựa vào tóm tắt Google Snippet, kết quả tìm kiếm sơ lược hay tên tệp.
+
+---
+
+## 7. HỒ SƠ BẰNG CHỨNG SONG HÀNH (EVIDENCE DOSSIER & EVIDENCE.JSON)
 
 Research Agent bắt buộc phải tạo song song:
 1. **`evidence.json`**: Tệp dữ liệu máy đọc canonical tuân thủ `02_AGENT_TEMPLATES/contracts/evidence.schema.json`.
@@ -115,19 +186,22 @@ Research Agent bắt buộc phải tạo song song:
 # EVIDENCE DOSSIER — [MÃ BÀI VIẾT]
 
 ## 1. Danh sách Nguồn Ổn định (Stable Source Registry)
-| Source ID | Phân tầng | Loại hình (Source Type) | Chuẩn trích dẫn IEEE chính thức (Official IEEE Reference) | Năm | Link Trực tiếp (Verified URL) | Trạng thái Mạng | Content ID | Claim Verified | Locator Verified |
-|:---:|:---:|:---|:---|:---:|:---|:---:|:---:|:---:|:---:|
-| `SRC-001` | Tier 1 | `STANDARD` | *IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE Std 519-2022, 2022. | 2022 | `https://...` | HTTP 200 OK | YES | YES | YES (Tab. 1, p. 12) |
-| `SRC-002` | Tier 1 | `MANUAL` | *Electrical Installation Guide: According to IEC International Standards*, Schneider Electric, 2018. | 2018 | `https://...` | HTTP 200 OK | YES | YES | YES (Sec. 3, p. 45) |
-| `SRC-003` | Tier 2 | `TECH_REPORT` | “Improving motor and drive system performance: A sourcebook for industry,” US DOE, Rep. DOE/GO-102014-4421, 2014. | 2014 | `https://...` | HTTP 200 OK | YES | YES | YES (p. 24) |
-| `SRC-004` | Tier 3 | `BLOG_POST` | J. Smith, “Understanding total harmonic distortion in industrial power,” *Schneider Electric Blog*, 2023. | 2023 | `https://...` | HTTP 200 OK | YES | YES | NO (LOCATOR_NOT_CHECKED) |
+| Source ID | Phân tầng | Loại hình (Source Type) | Chuẩn trích dẫn IEEE chính thức (Official IEEE Reference) | Năm | Canonical URL | Retrieval URL | Trạng thái Mạng | Content ID | Claim Verified | Locator Status | Bộ định vị kiểm chứng (Locators) |
+|:---:|:---:|:---|:---|:---:|:---|:---|:---:|:---:|:---:|:---:|:---|
+| `SRC-001` | Tier 1 | `STANDARD` | *IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE Std 519-2022, 2022. | 2022 | `https://ieeexplore...` | `https://ieeexplore...` | OK | YES | YES | LOCATOR_VERIFIED | Tab. 1, p. 12 |
+| `SRC-002` | Tier 1 | `MANUAL` | *ACS880 Primary control program Firmware manual*, ABB, 2024. | 2024 | `https://search.abb.com/...` | `https://search.abb.com/...` | OK | YES | YES | LOCATOR_VERIFIED | Fault 2310, p. 504 |
 
 ## 2. Bảng Trích xuất Dữ liệu (Fact Registry)
 | Fact ID | Tuyên bố / Số liệu / Công thức | Nguồn (Source ID) & Locator | Tier | Trạng thái Thẩm định |
 |:---:|:---|:---|:---:|:---:|
 | F01 | Công thức tính hệ số tải từ công suất thực P_in | `SRC-002`, p. 2, eq. (2) | Tier 2 | VERIFIED |
-| F02 | Hiệu suất động cơ duy trì gần như phẳng từ 50% đến 100% | `SRC-003`, p. 24 | Tier 2 | VERIFIED |
+| F02 | Ngưỡng quá dòng cắt phần cứng tức thời | `SRC-002`, p. 504 | Tier 1 | VERIFIED |
 
-## 3. Các Xung đột Đã xử lý (Resolved Conflicts)
+## 3. Ngoại lệ Nguồn Thẩm quyền Cao (nếu có)
+- Trạng thái ngoại lệ: [ENABLED / NONE]
+- Lý do: [Giải trình căn cứ kỹ thuật]
+- Phán quyết Cổng Kỹ thuật: [PENDING / APPROVE_EXCEPTION / REJECT_EXCEPTION]
+
+## 4. Các Xung đột Đã xử lý (Resolved Conflicts)
 - Ghi nhận xung đột và lý do chọn số liệu.
 ```

@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "EvidenceDossierSchema",
   "description": "Canonical machine-readable contract for research evidence collected by Research Agent",
@@ -21,6 +21,52 @@
     "researcher": {
       "type": "string",
       "default": "research_agent"
+    },
+    "source_policy_exception": {
+      "type": "object",
+      "description": "Machine-readable exception for narrow technical topics where 1-3 primary authoritative sources suffice (ADR-024)",
+      "required": [
+        "source_policy_exception",
+        "exception_type",
+        "reason",
+        "approved_by_review_gate"
+      ],
+      "properties": {
+        "source_policy_exception": {
+          "type": "boolean",
+          "description": "Flag indicating an authoritative-source exception is requested"
+        },
+        "exception_type": {
+          "type": "string",
+          "description": "Category of exception",
+          "enum": [
+            "NARROW_AUTHORITATIVE_TOPIC",
+            "SINGLE_OEM_PROCEDURE",
+            "SPECIFIC_STANDARD_CLAUSE",
+            "NONE"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "description": "Detailed justification explaining why 1-3 primary sources are authoritative and sufficient"
+        },
+        "approved_by_review_gate": {
+          "type": "boolean",
+          "description": "Whether the Technical Review Gate approved this exception"
+        },
+        "review_verdict": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "APPROVE_EXCEPTION",
+            "REJECT_EXCEPTION"
+          ]
+        },
+        "review_notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
     },
     "evidence_summary": {
       "type": "object",
@@ -65,7 +111,8 @@
           "title",
           "publisher",
           "tier",
-          "url",
+          "canonical_url",
+          "retrieval_url",
           "access_status",
           "content_identity_verified",
           "claim_verified",
@@ -121,30 +168,51 @@
           "url": {
             "type": "string",
             "format": "uri",
-            "description": "Direct link, deep link, or direct PDF download (ADR-015)"
+            "description": "Direct link or primary reference URL (backwards-compatible alias)"
+          },
+          "canonical_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Stable official canonical URL used for the public Reference List"
+          },
+          "retrieval_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Actual URL used by Agent to retrieve document or direct PDF"
           },
           "access_status": {
             "type": "string",
-            "description": "Network accessibility status (HTTP 200 = OK, but does NOT imply claim verified)",
+            "description": "Network accessibility status (HTTP access separated from content verification)",
             "enum": [
               "OK",
-              "UNREACHABLE",
-              "RESTRICTED",
-              "NEEDS_AUTHENTICATION",
-              "NOT_CHECKED"
+              "REDIRECTED_OK",
+              "ACCESS_RESTRICTED",
+              "AUTH_REQUIRED",
+              "NOT_FOUND",
+              "NETWORK_ERROR",
+              "UNKNOWN"
             ]
           },
           "content_identity_verified": {
             "type": "boolean",
-            "description": "Whether page title/content matches the claimed publication identity"
+            "description": "Whether title, publisher, doc number, version, and year match the claimed publication identity"
           },
           "claim_verified": {
             "type": "boolean",
-            "description": "Whether the specific technical claim is verified against source text"
+            "description": "Whether specific technical claims are verified against the actual text read by the Agent"
           },
           "locator_verified": {
             "type": "boolean",
             "description": "Whether specific page, table, section, or equation locator has been physically checked"
+          },
+          "locator_status": {
+            "type": "string",
+            "enum": [
+              "LOCATOR_VERIFIED",
+              "LOCATOR_UNAVAILABLE",
+              "LOCATOR_NOT_CHECKED",
+              "LOCATOR_CONFLICT"
+            ]
           },
           "verification_date": {
             "type": "string",
