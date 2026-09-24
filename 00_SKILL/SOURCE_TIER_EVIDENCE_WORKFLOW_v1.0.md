@@ -1,6 +1,6 @@
-# QUY TRÌNH PHÂN TẦNG VÀ THẨM ĐỊNH BẰNG CHỨNG KỸ THUẬT (SOURCE TIER & EVIDENCE WORKFLOW)
-Version: 1.0  
-Trạng thái: Áp dụng chính thức cho Research & Evidence Agent  
+﻿# QUY TRÌNH PHÂN TẦNG VÀ THẨM ĐỊNH BẰNG CHỨNG KỸ THUẬT (SOURCE TIER & EVIDENCE WORKFLOW)
+Version: 1.0
+Trạng thái: Áp dụng chính thức cho Research & Evidence Agent
 Phạm vi: Toàn bộ bài viết kỹ thuật (Blog / Solution) cho Real Group (`real-group.org`)
 
 ---
@@ -85,37 +85,48 @@ Khi xuất hiện sự khác biệt về số liệu, công thức hoặc ngư�
 
 ## 4. QUY TRÌNH XÁC MINH SỐ ĐỊNH VỊ (VERIFIED LOCATOR PROTOCOL)
 
-Theo chuẩn [IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.0.md):
+Theo chuẩn [IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/IEEE_02_IN_TEXT_CITATION_AND_LOCATOR_SKILL_v1.1.md):
 1. **Không trích dẫn chung chung**: Một cuốn sách 500 trang hoặc tiêu chuẩn 100 trang không được trích dẫn chỉ bằng tên tài liệu nếu tuyên bố mang tính định lượng cụ thể.
-2. **Cấu trúc Locator hợp lệ**:
-   - Số trang: `[1, p. 45]` hoặc `[1, pp. 45–48]`
-   - Chương / Mục: `[2, Sec. 3.2]`
-   - Bảng số liệu: `[3, Tab. 4]`
-   - Công thức: `[1, eq. (3)]`
-3. **Trường hợp chưa xác minh được trang cụ thể**: Chỉ ghi trích dẫn số `[1]` và đánh dấu cờ `LOCATOR_PENDING` trong báo cáo bằng chứng nội bộ để Tech Review Agent rà soát.
+2. **Cấu trúc Locator hợp lệ trong hồ sơ nghiên cứu**:
+   - Số trang: `p. 45` hoặc `pp. 45–48`
+   - Chương / Mục: `Sec. 3.2`
+   - Bảng số liệu: `Tab. 4`
+   - Công thức: `eq. (3)`
+3. **Trường hợp chưa xác minh được trang cụ thể**: Đánh dấu cờ `LOCATOR_NOT_CHECKED` trong `evidence.json`. Drafting Agent khi đó chỉ được phép dùng trích dẫn số `[n]` đơn thuần ở cuối câu, **tuyệt đối không được tự suy đoán số trang**.
 
 ---
 
-## 5. HỒ SƠ BẰNG CHỨNG (EVIDENCE DOSSIER CONTRACT)
+## 5. HỒ SƠ BẰNG CHỨNG SONG HÀNH (EVIDENCE DOSSIER & EVIDENCE.JSON)
 
-Trước khi chuyển sang khâu viết, Research Agent phải tạo file `evidence_dossier.md` trong thư mục bài viết với cấu trúc bắt buộc có trường **Loại hình tài liệu (Source Type)** và **Trạng thái URL** tuân thủ [IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.0.md):
+Research Agent bắt buộc phải tạo song song:
+1. **`evidence.json`**: Tệp dữ liệu máy đọc canonical tuân thủ `02_AGENT_TEMPLATES/contracts/evidence.schema.json`.
+2. **`evidence_dossier.md`**: Báo cáo tổng hợp bằng chứng kỹ thuật dành cho Kỹ sư trưởng đọc và thẩm định.
+
+> [!IMPORTANT]
+> **QUY TẮC STABLE SOURCE ID & TÁCH BẠCH HTTP 200 (PHASE 2.5 ARCHITECTURE HARDENING)**:
+> 1. **STABLE SOURCE ID (`SRC-xxx`)**: Nghiên cứu chỉ cấp phát mã định danh ổn định `SRC-001`, `SRC-002`, `SRC-003`,... Tuyệt đối KHÔNG gán số trích dẫn IEEE `[1]`, `[2]` ở giai đoạn này. Số IEEE sẽ do Drafting Agent gán dựa trên thứ tự xuất hiện đầu tiên trong bài viết.
+> 2. **TÁCH BẠCH KIỂM CHỨNG**:
+>    ```text
+>    URL ACCESS (HTTP 200) ≠ CONTENT IDENTITY ≠ CLAIM VERIFIED ≠ LOCATOR VERIFIED
+>    ```
+>    HTTP 200 chỉ chứng minh đường truyền mạng hoạt động, **KHÔNG ĐƯỢC COI HTTP 200 LÀ BẰNG CHỨNG NỘI DUNG CLAIM ĐÃ ĐÚNG**. Phải có xác nhận đối chiếu văn bản gốc.
 
 ```markdown
 # EVIDENCE DOSSIER — [MÃ BÀI VIẾT]
 
-## 1. Danh sách Nguồn (Source Registry)
-| ID | Phân tầng | Loại hình (Source Type) | Chuẩn trích dẫn IEEE chính thức (Official IEEE Reference) | Năm | Định danh / Mã chuẩn |
-|---|---|---|---|---|---|
-| [1] | Tier 1 | `STANDARD` | *IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE Std 519-2022, 2022. | 2022 | IEEE Std 519-2022 |
-| [2] | Tier 1 | `MANUAL` | *Electrical Installation Guide: According to IEC International Standards*, Schneider Electric, Rueil-Malmaison, France, 2018. | 2018 | Schneider Tech Guide |
-| [3] | Tier 2 | `TECH_REPORT` | “Improving motor and drive system performance: A sourcebook for industry,” US Department of Energy (DOE), Washington, DC, USA, Rep. DOE/GO-102014-4421, 2014. | 2014 | DOE/GO-102014-4421 |
-| [4] | Tier 3 | `BLOG_POST` | J. Smith, “Understanding total harmonic distortion in industrial power,” *Schneider Electric Blog*, Oct. 15, 2023. Accessed: Mar. 10, 2026. [Online]. Available: URL | 2023 | Blog kỹ thuật hãng |
+## 1. Danh sách Nguồn Ổn định (Stable Source Registry)
+| Source ID | Phân tầng | Loại hình (Source Type) | Chuẩn trích dẫn IEEE chính thức (Official IEEE Reference) | Năm | Link Trực tiếp (Verified URL) | Trạng thái Mạng | Content ID | Claim Verified | Locator Verified |
+|:---:|:---:|:---|:---|:---:|:---|:---:|:---:|:---:|:---:|
+| `SRC-001` | Tier 1 | `STANDARD` | *IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE Std 519-2022, 2022. | 2022 | `https://...` | HTTP 200 OK | YES | YES | YES (Tab. 1, p. 12) |
+| `SRC-002` | Tier 1 | `MANUAL` | *Electrical Installation Guide: According to IEC International Standards*, Schneider Electric, 2018. | 2018 | `https://...` | HTTP 200 OK | YES | YES | YES (Sec. 3, p. 45) |
+| `SRC-003` | Tier 2 | `TECH_REPORT` | “Improving motor and drive system performance: A sourcebook for industry,” US DOE, Rep. DOE/GO-102014-4421, 2014. | 2014 | `https://...` | HTTP 200 OK | YES | YES | YES (p. 24) |
+| `SRC-004` | Tier 3 | `BLOG_POST` | J. Smith, “Understanding total harmonic distortion in industrial power,” *Schneider Electric Blog*, 2023. | 2023 | `https://...` | HTTP 200 OK | YES | YES | NO (LOCATOR_NOT_CHECKED) |
 
 ## 2. Bảng Trích xuất Dữ liệu (Fact Registry)
-| ID | Tuyên bố / Số liệu / Công thức | Nguồn & Locator | Tier | Trạng thái Thẩm định |
-|---|---|---|---|---|
-| F01 | Công thức tính hệ số tải từ công suất thực P_in | [2, p. 2, eq. (2)] | Tier 2 | VERIFIED |
-| F02 | Hiệu suất động cơ duy trì gần như phẳng từ 50% đến 100% | [2, p. 1] & [1, p. 14] | Tier 1/2 | VERIFIED |
+| Fact ID | Tuyên bố / Số liệu / Công thức | Nguồn (Source ID) & Locator | Tier | Trạng thái Thẩm định |
+|:---:|:---|:---|:---:|:---:|
+| F01 | Công thức tính hệ số tải từ công suất thực P_in | `SRC-002`, p. 2, eq. (2) | Tier 2 | VERIFIED |
+| F02 | Hiệu suất động cơ duy trì gần như phẳng từ 50% đến 100% | `SRC-003`, p. 24 | Tier 2 | VERIFIED |
 
 ## 3. Các Xung đột Đã xử lý (Resolved Conflicts)
 - Ghi nhận xung đột và lý do chọn số liệu.

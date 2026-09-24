@@ -1,0 +1,208 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EvidenceDossierSchema",
+  "description": "Canonical machine-readable contract for research evidence collected by Research Agent",
+  "type": "object",
+  "required": [
+    "article_id",
+    "generated_at",
+    "sources",
+    "evidence_summary"
+  ],
+  "properties": {
+    "article_id": {
+      "type": "string",
+      "description": "Article identifier, e.g., BLOG_04"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "researcher": {
+      "type": "string",
+      "default": "research_agent"
+    },
+    "evidence_summary": {
+      "type": "object",
+      "required": [
+        "total_sources",
+        "tier_1_count",
+        "tier_2_count",
+        "tier_3_count",
+        "high_tier_ratio"
+      ],
+      "properties": {
+        "total_sources": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tier_1_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tier_2_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tier_3_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_tier_ratio": {
+          "type": "number",
+          "description": "Ratio of Tier 1 + Tier 2 sources (target >= 0.70)"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Array of verified technical sources with Stable Source IDs",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_type",
+          "title",
+          "publisher",
+          "tier",
+          "url",
+          "access_status",
+          "content_identity_verified",
+          "claim_verified",
+          "locator_verified",
+          "verification_date"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "description": "Stable Source ID formatted as SRC-xxx (NEVER use IEEE numbers at research stage)",
+            "pattern": "^SRC-[0-9]{3,}$"
+          },
+          "source_type": {
+            "type": "string",
+            "description": "Open taxonomy of source types with review fallback",
+            "enum": [
+              "STANDARD",
+              "MANUAL",
+              "JOURNAL_PAPER",
+              "CONF_PAPER",
+              "BLOG_POST",
+              "WEB_ARTICLE",
+              "TECH_REPORT",
+              "BOOK",
+              "DATASHEET",
+              "THESIS",
+              "DATASET",
+              "PREPRINT",
+              "PATENT",
+              "LEGAL",
+              "VIDEO",
+              "OTHER_IEEE_SUPPORTED",
+              "SOURCE_TYPE_REVIEW_REQUIRED"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "publication_year": {
+            "type": "integer"
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "TIER_1",
+              "TIER_2",
+              "TIER_3"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct link, deep link, or direct PDF download (ADR-015)"
+          },
+          "access_status": {
+            "type": "string",
+            "description": "Network accessibility status (HTTP 200 = OK, but does NOT imply claim verified)",
+            "enum": [
+              "OK",
+              "UNREACHABLE",
+              "RESTRICTED",
+              "NEEDS_AUTHENTICATION",
+              "NOT_CHECKED"
+            ]
+          },
+          "content_identity_verified": {
+            "type": "boolean",
+            "description": "Whether page title/content matches the claimed publication identity"
+          },
+          "claim_verified": {
+            "type": "boolean",
+            "description": "Whether the specific technical claim is verified against source text"
+          },
+          "locator_verified": {
+            "type": "boolean",
+            "description": "Whether specific page, table, section, or equation locator has been physically checked"
+          },
+          "verification_date": {
+            "type": "string",
+            "description": "Date when the source was verified (YYYY-MM-DD)"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional bibliographic fields (authors, standard number, edition, DOI)",
+            "additionalProperties": true
+          },
+          "locators": {
+            "type": "array",
+            "description": "Verified locators within the source",
+            "items": {
+              "type": "object",
+              "required": [
+                "locator_type",
+                "locator_value",
+                "verified"
+              ],
+              "properties": {
+                "locator_type": {
+                  "type": "string",
+                  "enum": [
+                    "PAGE",
+                    "SECTION",
+                    "TABLE",
+                    "EQUATION",
+                    "FAULT_CODE",
+                    "GENERAL"
+                  ]
+                },
+                "locator_value": {
+                  "type": "string",
+                  "description": "e.g., 'p. 45', 'Sec. 2.1', 'Tab. 4', 'Fault 2310'"
+                },
+                "verified": {
+                  "type": "boolean"
+                },
+                "excerpt": {
+                  "type": "string",
+                  "description": "Verbatim quote or data point from the locator"
+                }
+              }
+            }
+          },
+          "supported_claims": {
+            "type": "array",
+            "description": "List of technical statements or claims supported by this source",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

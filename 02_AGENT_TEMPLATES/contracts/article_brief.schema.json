@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArticleBrief",
+  "description": "Schema for article briefs initiating the technical blog production workflow",
+  "type": "object",
+  "required": [
+    "article_id",
+    "topic",
+    "blog_type",
+    "technical_focus",
+    "target_audience",
+    "required_components",
+    "status"
+  ],
+  "properties": {
+    "article_id": {
+      "type": "string",
+      "description": "Unique article identifier, e.g., BLOG_04_Bien_tan_va_dong_co",
+      "pattern": "^BLOG_[0-9]{2}(_[A-Za-z0-9_]+)?$"
+    },
+    "article_slug": {
+      "type": "string",
+      "description": "URL-friendly slug for the article"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Full topic or title assignment of the technical article"
+    },
+    "blog_type": {
+      "type": "string",
+      "description": "Canonical blog type strictly referenced from 00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md",
+      "enum": [
+        "BLOG-T01",
+        "BLOG-T02",
+        "BLOG-T03",
+        "BLOG-T04",
+        "BLOG-T05"
+      ]
+    },
+    "technical_focus": {
+      "type": "array",
+      "description": "Key technical aspects, physics principles, or standards to be addressed",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "target_audience": {
+      "type": "array",
+      "description": "Target readers, e.g., plant engineers, maintenance technicians, automation students",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "required_components": {
+      "type": "array",
+      "description": "Mandatory article elements (e.g., worked examples, decision trees, LaTeX formulas)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Initial brief status",
+      "enum": [
+        "DRAFT"
+      ],
+      "default": "DRAFT"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the brief was created"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Initiator name or role (e.g., Lead Engineer, Orchestrator)"
+    }
+  },
+  "additionalProperties": false
+}

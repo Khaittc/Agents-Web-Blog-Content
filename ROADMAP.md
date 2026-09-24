@@ -1,5 +1,5 @@
-# LỘ TRÌNH PHÁT TRIỂN HỆ THỐNG (ROADMAP)
-**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)  
+﻿# LỘ TRÌNH PHÁT TRIỂN HỆ THỐNG (ROADMAP)
+**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **Mục tiêu**: Tự động hóa khép kín từ nghiên cứu tài liệu, thẩm định kỹ thuật, tạo hình ảnh đến xuất bản bài viết lên website `real-group.org` (CKEditor 3.6.6.2).
 
 ---
@@ -10,14 +10,15 @@
 |---|---|---|---|
 | **Phase 1** | Baseline & Standards Foundation | ✅ **HOÀN THÀNH** | 09/2026 |
 | **Phase 2** | Stress-test & Standards Expansion | ✅ **HOÀN THÀNH** | 09/2026 |
-| **Phase 3** | Multi-Agent Specification & Tooling | 🟡 **ĐANG THỰC HIỆN** | Q4/2026 |
-| **Phase 4** | Autonomous Pipeline & Publishing | ⚪ **DỰ KIẾN** | Q1/2027 |
+| **Phase 2.5** | Multi-Agent Architecture Hardening | ✅ **HOÀN THÀNH** | 09/2026 |
+| **Phase 3** | Tooling Integration (MCP & Visual) | 🟡 **CHUẨN BỊ TRIỂN KHAI** | Q4/2026 |
+| **Phase 4** | Autonomous Pipeline & Human Publishing | ⚪ **DỰ KIẾN** | Q1/2027 |
 
 > [!IMPORTANT]
-> **Vị trí hiện tại của dự án**: Đang ở bước chuyển giao từ **Phase 2** sang **Phase 3**. 
-> - Toàn bộ 3 bài viết kiểm nghiệm mẫu (`BLOG_01`, `BLOG_02`, `BLOG_03`) đại diện cho 3 thể loại bài viết kỹ thuật cốt lõi đã được Kỹ sư trưởng chính thức nghiệm thu và kích hoạt cơ chế khóa an toàn (`APPROVED / LOCKED`, Read-Only flag).
-> - Bộ quy chuẩn kỹ năng đã hoàn thiện toàn diện với các quyết định kiến trúc: **ADR-012** (IEEE Modular Suite v2.0), **ADR-013** (Trích dẫn bắt buộc ở cuối câu), **ADR-014** (Lưu trữ 100% tệp trong project), **ADR-015** (Link trực tiếp Deep-link / Direct PDF), **ADR-016** (Tiêu chuẩn Responsive Laptop & Mobile), và **ADR-017** (Cửa ải kiểm định hiển thị song song Laptop & Mobile).
-> - Nhiệm vụ trọng tâm hiện tại: **Định nghĩa chuyên biệt 5 Subagents trong `02_AGENT_TEMPLATES/`** để chuẩn bị tự động hóa hoàn toàn quy trình sản xuất bài viết.
+> **Vị trí hiện tại của dự án**: Đã hoàn tất xuất sắc **Phase 2.5 (Multi-Agent Architecture Hardening)**.
+> - Toàn bộ 5 Subagents đã được tái cấu trúc ranh giới trách nhiệm (Ownership Boundaries), thiết lập thư mục hợp đồng máy đọc `02_AGENT_TEMPLATES/contracts/`, phân tách 2 Cổng Kiểm định độc lập (Technical Review Gate & Presentation Gate), ban hành nguồn chuẩn duy nhất `BLOG_TAXONOMY_CANONICAL_v1.0.md`, quy chuẩn Stable Source ID (`SRC-xxx`), và cơ chế bảo vệ mã băm toàn vẹn SHA-256 (`approved_content_sha256`).
+> - Khẳng định nguyên tắc bất biến: **Subagents chỉ đóng gói giao phẩm xuất bản sẵn sàng (Packaging); Con người (Kỹ sư trưởng) là người phê duyệt và tự tay đăng tải lên CMS**.
+> - Sẵn sàng bước vào **Phase 3 (Tooling Integration)**.
 
 ---
 
@@ -30,7 +31,7 @@
 - [x] Xây dựng [IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md) (Bộ 4 Sub-Skills: IEEE-01 Nhận diện & URL check 200, IEEE-02 Trích dẫn nội văn, IEEE-03 Đặt tên & Link bấm được CKEditor, IEEE-04 Biên bản kiểm duyệt 6 cửa ải).
 - [x] Xây dựng [LATEX_FORMULA_SKILL_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/LATEX_FORMULA_SKILL_v1.0.md) chuẩn hóa công thức toán học và đơn vị SI.
 - [x] Xây dựng [REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md) chuẩn hóa HTML CKEditor inline, semantic callouts và khoảng trắng.
-- [x] Tạo bài viết kiểm nghiệm thực tế đầu tiên làm baseline: [Cách phát hiện động cơ điện đang chạy non tải trong nhà máy](file:///d:/Agents_Tools/05_WebsiteTTC/03_Articles/BLOG_01_Dong_co_non_tai/bai-viet-dong-co-chay-non-tai-ckeditor.html) (✅ **APPROVED / LOCKED**).
+- [x] Tạo bài viết kiểm nghiệm thực tế đầu tiên làm baseline: [Cách phát hiện động cơ điện đang chạy non tải trong nhà máy](file:///d:/Agents_Tools/05_WebsiteTTC/03_Articles/BLOG_01_Dong_co_non_tai/bai-viet-dong-co-chay-non-tai-ckeditor.html) — dạng `BLOG-T02` (✅ **APPROVED / LOCKED**).
 - [x] Tái cấu trúc không gian làm việc (`00_SKILL`, `01_KNOWLEDGE_BASE`, `02_AGENT_TEMPLATES`, `03_Articles`).
 
 ---
@@ -52,6 +53,25 @@
   - `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1`.
 
 ---
+
+### Giai đoạn 2.5: Củng Cố Kiến Trúc & Hợp Đồng Đa Agent (Phase 2.5 — Architecture Hardening)
+*Trạng thái*: ✅ **ĐÃ HOÀN THÀNH** (Tháng 09/2026)
+*Mục tiêu*: Khóa chặt các lỗ hổng kiến trúc, chuẩn hóa giao diện máy đọc (JSON schemas), tách bạch 2 cổng kiểm định và xác lập ranh giới trách nhiệm đơn quyền trước khi tích hợp công cụ ngoài.
+
+- [x] **Canonical BLOG Taxonomy thống nhất**: Ban hành [BLOG_TAXONOMY_CANONICAL_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md) làm nguồn chuẩn duy nhất cho 5 thể loại (`BLOG-T01` đến `BLOG-T05`); sửa mọi mapping sai lệch trong tài liệu.
+- [x] **Stable Source IDs**: Research Agent chuyển đổi 100% sang mã định danh ổn định `SRC-001`, `SRC-002`,... Tuyệt đối không cấp số IEEE `[n]` ở khâu nghiên cứu.
+- [x] **Machine-readable Contracts**: Thiết lập thư mục `02_AGENT_TEMPLATES/contracts/` với 6 JSON Schemas: `article_brief`, `evidence`, `claim_source_map`, `audit`, `revision_request`, `article_manifest`.
+- [x] **Claim-Source Mapping**: Drafting Agent xuất tệp canonical `claim_source_map.json` mapping từng claim với `SRC-xxx` và gán số IEEE theo thứ tự xuất hiện đầu tiên.
+- [x] **Structured Revision Loop**: Review Agent phát hành `revision_request.json` giới hạn đúng phạm vi lỗi, tối đa 3 vòng lặp tự động trước khi chuyển cho con người.
+- [x] **Technical Review Gate (Cổng 1)**: Tách bạch cổng kiểm định chuyên môn kỹ thuật, toán học và trích dẫn cuối câu (chạy ngay sau Drafting).
+- [x] **Presentation & Responsive Review Gate (Cổng 2)**: Tách bạch cổng kiểm định hiển thị song song Laptop & Mobile (chạy sau khi Packaging Agent đóng gói HTML).
+- [x] **Human-only Final Publishing**: Định vị Publisher Agent là Packaging Agent (chỉ đóng gói tệp); quyền phê duyệt và đăng bài lên CMS thuộc về Kỹ sư trưởng.
+- [x] **Integrity Hash**: Bổ sung `approved_content_sha256` và `approved_commit_sha` vào `article_status.json` để kiểm tra toàn vẹn tự động (`INTEGRITY_WARNING` nếu sai lệch).
+- [x] **Agent Ownership Boundaries**: Cập nhật trọn bộ 5 Agent Templates với các mục INPUT, OUTPUT, READ-ONLY, WRITABLE, FAIL CONDITIONS, HANDOFF CONDITIONS rõ ràng.
+- [x] **Documentation Consistency Pass**: Rà soát và cập nhật đồng bộ toàn bộ tài liệu dự án, bảo vệ nguyên vẹn các bài viết đã duyệt.
+
+---
+
 
 ### Giai đoạn 3: Định nghĩa Chuyên biệt Subagent & Tích hợp Công cụ (Phase 3)
 *Trạng thái*: 🟡 **ĐANG THỰC HIỆN** (Khởi động Tháng 09/2026)

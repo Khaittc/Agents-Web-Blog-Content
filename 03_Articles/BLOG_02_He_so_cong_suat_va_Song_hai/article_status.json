@@ -1,4 +1,4 @@
-{
+﻿{
   "article_id": "BLOG_02",
   "title": "Hệ số công suất cos phi và sóng hài trong nhà máy: Phân biệt bản chất và giải pháp xử lý triệt để",
   "category": "BLOG-T01",
@@ -6,6 +6,8 @@
   "is_locked": true,
   "approved_by": "Engineer_Lead",
   "approved_at": "2026-09-23T23:30:00+07:00",
+  "approved_content_sha256": "EA014519FE1783FA72E7ED954ABACC3750F8F37E040DC0C5A3C895074C652696",
+  "approved_commit_sha": "fb92e7b1c4e1ca73caea7508412ac6954596e191",
   "created_at": "2026-09-23T21:50:00+07:00",
   "submitted_for_review_at": "2026-09-23T22:42:00+07:00",
   "html_file": "bai-viet-he-so-cong-suat-va-song-hai-ckeditor.html",

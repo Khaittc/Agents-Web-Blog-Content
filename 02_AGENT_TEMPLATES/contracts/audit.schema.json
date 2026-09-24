@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuditReportSchema",
+  "description": "Machine-readable contract for audit verdicts produced by Review Agent across Technical and Presentation gates",
+  "type": "object",
+  "required": [
+    "article_id",
+    "gate",
+    "verdict",
+    "audited_at",
+    "checks",
+    "summary"
+  ],
+  "properties": {
+    "article_id": {
+      "type": "string"
+    },
+    "gate": {
+      "type": "string",
+      "enum": [
+        "TECHNICAL_REVIEW_GATE",
+        "PRESENTATION_REVIEW_GATE"
+      ]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "REVISION_REQUIRED",
+        "FAIL"
+      ]
+    },
+    "audited_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "auditor": {
+      "type": "string",
+      "default": "review_agent"
+    },
+    "summary": {
+      "type": "string",
+      "description": "High-level summary of the audit findings and verdict justification"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "check_id",
+          "name",
+          "result"
+        ],
+        "properties": {
+          "check_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "details": {
+            "type": "string"
+          },
+          "laptop_status": {
+            "type": "string"
+          },
+          "mobile_status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "revision_request_file": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Path to revision_request.json if verdict is REVISION_REQUIRED"
+    }
+  },
+  "additionalProperties": false
+}

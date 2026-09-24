@@ -1,4 +1,4 @@
-{
+﻿{
   "article_id": "BLOG_03",
   "title": "Quy trình 4 bước chẩn đoán và khắc phục lỗi quá dòng (Overcurrent) trên biến tần công nghiệp",
   "category": "BLOG-T03",
@@ -8,6 +8,8 @@
   "submitted_for_review_at": "2026-09-24T10:02:00+07:00",
   "approved_at": "2026-09-24T15:05:00+07:00",
   "approved_by": "Kỹ sư trưởng",
+  "approved_content_sha256": "BF8BF18B11DDA71D3E3FCF31EAC05635113451C8009B83B44C7F635E4F327DC1",
+  "approved_commit_sha": "fb92e7b1c4e1ca73caea7508412ac6954596e191",
   "html_file": "bai-viet-chan-doan-qua-dong-bien-tan-ckeditor.html",
   "review_package_file": "draft_review_package.md",
   "evidence_dossier_file": "evidence_dossier.md",

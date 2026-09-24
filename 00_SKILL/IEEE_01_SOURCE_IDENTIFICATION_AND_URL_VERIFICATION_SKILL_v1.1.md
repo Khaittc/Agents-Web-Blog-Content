@@ -1,10 +1,10 @@
-# QUY CHUẨN NHẬN DIỆN NGUỒN TÀI LIỆU & XÁC THỰC URL ĐIỀU HƯỚNG TRỰC TIẾP (IEEE-01: SOURCE IDENTIFICATION & DIRECT LIVE URL VERIFICATION SKILL)
-**Version**: 1.1  
-**Mã tài liệu**: `IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1`  
-**Thuộc bộ**: Hệ thống Trích dẫn IEEE Chuẩn hóa (IEEE Modular Citation Suite v2.0)  
-**Agent áp dụng chính**: **Research Agent** (bắt buộc cho mọi khâu thu thập dữ liệu)  
-**Trạng thái**: Áp dụng chính thức  
-**Ngày ban hành**: 24/09/2026  
+﻿# QUY CHUẨN NHẬN DIỆN NGUỒN TÀI LIỆU & XÁC THỰC URL ĐIỀU HƯỚNG TRỰC TIẾP (IEEE-01: SOURCE IDENTIFICATION & DIRECT LIVE URL VERIFICATION SKILL)
+**Version**: 1.1
+**Mã tài liệu**: `IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1`
+**Thuộc bộ**: Hệ thống Trích dẫn IEEE Chuẩn hóa (IEEE Modular Citation Suite v2.0)
+**Agent áp dụng chính**: **Research Agent** (bắt buộc cho mọi khâu thu thập dữ liệu)
+**Trạng thái**: Áp dụng chính thức
+**Ngày ban hành**: 24/09/2026
 **Lịch sử nâng cấp**: Nâng cấp từ `v1.0` (ADR-015) nhằm giải quyết triệt để lỗi link chỉ mở trang chủ/trang tìm kiếm chung chung hoặc sai lệch bài viết. Bổ sung bắt buộc Cửa ải Điều hướng Trực tiếp (Direct Content Navigation & Deep-Linking Gate) và Cửa ải Khớp Tiêu đề Nội dung (Content Title Verification Gate).
 
 ---
@@ -37,7 +37,7 @@ Tài liệu tham khảo là nền tảng sống còn của bài viết kỹ thu�
 
 ---
 
-## 2. MA TRẬN NHẬN DIỆN 10 LOẠI HÌNH TÀI LIỆU KỸ THUẬT
+## 2. MA TRẬN NHẬN DIỆN LOẠI HÌNH TÀI LIỆU KỸ THUẬT (OPEN SOURCE TAXONOMY)
 
 Trước khi trích dẫn, Research Agent bắt buộc phải xác định chính xác bản chất của nguồn tài liệu, không được quy đồng mọi trang web thành "Website" hay mọi file PDF thành "Report":
 
@@ -53,6 +53,8 @@ Trước khi trích dẫn, Research Agent bắt buộc phải xác định chín
 | **`BOOK`** | Sách giáo trình, sách chuyên khảo kỹ thuật | Có nhà xuất bản (Publisher), nơi xuất bản, năm, tên tác giả, số hiệu ISBN. | Sách *Application Manual Power Semiconductors* (ISLE Verlag, ISBN 978-3-938843-83-3) |
 | **`DATASHEET`** | Bảng thông số kỹ thuật sản phẩm của nhà sản xuất | Tài liệu ngắn (1–8 trang) chứa bảng thông số định mức, mã sản phẩm (Part Number), bản vẽ kích thước. | Datasheet tụ bù Enerlux, datasheet biến tần Danfoss VLT |
 | **`THESIS`** | Luận văn thạc sĩ hoặc luận án tiến sĩ | Đề tài nghiên cứu học thuật, có tên trường đại học, học vị (M.S. thesis / Ph.D. dissertation), năm. | Ph.D. dissertation, Dept. Elect. Eng., Univ. of Wisconsin |
+| **`DATASET` / `PREPRINT` / `PATENT` / `LEGAL` / `VIDEO` / `OTHER_IEEE_SUPPORTED`** | Các nguồn học thuật và định dạng số phụ trợ | Dữ liệu đo kiểm thực nghiệm, bằng sáng chế, quy chuẩn pháp lý hoặc video mô phỏng chính hãng. | US Patent, IEEE Dataport |
+| **`SOURCE_TYPE_REVIEW_REQUIRED`** | Nguồn chưa xác định chắc chắn loại hình | Áp dụng khi chưa thể phân loại rạch ròi. **BẮT BUỘC** gán nhãn này để Tech Review Agent rà soát, tuyệt đối không được đoán mò. | Nguồn hỗn hợp, brochure kỹ thuật lai catalogue |
 
 ---
 
@@ -97,14 +99,20 @@ Chỉ các nguồn đã vượt qua cả Bước 2 và Bước 3 mới được 
 
 ---
 
-## 4. BẢNG MẪU ĐẦU RA BẮT BUỘC TRONG `evidence_dossier.md`
+## 4. BẢNG MẪU ĐẦU RA BẮT BUỘC TRONG `evidence_dossier.md` VÀ `evidence.json`
+
+> [!IMPORTANT]
+> **QUY TẮC STABLE SOURCE ID (PHASE 2.5 ARCHITECTURE HARDENING)**:
+> Mọi nguồn tài liệu trong hồ sơ nghiên cứu BẮT BUỘC sử dụng Stable Source ID: `SRC-001`, `SRC-002`, `SRC-003`,...
+> **TUYỆT ĐỐI KHÔNG** gán số trích dẫn IEEE `[1]`, `[2]` ở giai đoạn này. Số IEEE sẽ do Drafting Agent gán dựa trên thứ tự xuất hiện đầu tiên trong bài viết.
+> **TÁCH BẠCH KIỂM CHỨNG**: `HTTP 200 OK` chỉ chứng minh URL truy cập được (Access Status: OK), không được coi là chứng cứ nội dung claim đã đúng.
 
 Mọi tệp `evidence_dossier.md` do Research Agent bàn giao phải có cấu trúc cột như sau:
 
 ```markdown
-| Mã Ref | Phân cấp Tier | Loại hình (Source Type) | Tên tài liệu / Tiêu đề | Cơ quan / Tác giả | Năm / Bản | Mã tài liệu / DOI / ISBN | URL Trực tuyến (Đã test HTTP 200 & Direct Link) | Trạng thái URL |
-|:---:|:---|:---:|:---|:---|:---:|:---|:---|:---:|
-| **[1]** | Tier 1 | `STANDARD` | *IEEE Recommended Practice for Testing Insulation Resistance of Electric Machinery* | IEEE Power and Energy Society | 2014 | IEEE Std 43-2013 / DOI: 10.1109/IEEESTD.2014.6754111 | `https://ieeexplore.ieee.org/document/6754111` | ✅ HTTP 200 OK (Deep Link) |
-| **[2]** | Tier 1 | `MANUAL` | *ACS880 Primary Control Program Firmware Manual* | ABB Oy, Helsinki, Finland | 2023 | 3AUA0000085967 Rev. X | `https://search.abb.com/library/Download.aspx?DocumentID=3AUA0000085967&LanguageCode=en&DocumentPartId=1&Action=Launch` | ✅ HTTP 200 OK (Direct Launch) |
-| **[3]** | Tier 1 | `MANUAL` | *Altivar Process ATV600 Variable Speed Drives Programming Manual* | Schneider Electric | 2021 | EAV64318 | `https://download.se.com/files?p_Doc_Ref=EAV64318&p_enDocType=User+guide` | ✅ HTTP 200 OK (Direct PDF) |
+| Source ID | Phân cấp Tier | Loại hình (Source Type) | Tên tài liệu / Tiêu đề | Cơ quan / Tác giả | Năm / Bản | Mã tài liệu / DOI / ISBN | URL Trực tuyến (Đã test HTTP 200 & Direct Link) | Trạng thái Mạng | Content ID | Claim Verified | Locator Verified |
+|:---:|:---|:---:|:---|:---|:---:|:---|:---|:---:|:---:|:---:|:---|
+| `SRC-001` | Tier 1 | `STANDARD` | *IEEE Recommended Practice for Testing Insulation Resistance of Electric Machinery* | IEEE Power and Energy Society | 2014 | IEEE Std 43-2013 / DOI: 10.1109/IEEESTD.2014.6754111 | `https://ieeexplore.ieee.org/document/6754111` | HTTP 200 OK | YES | YES | YES (Tab. 4, p. 20) |
+| `SRC-002` | Tier 1 | `MANUAL` | *ACS880 Primary Control Program Firmware Manual* | ABB Oy, Helsinki, Finland | 2023 | 3AUA0000085967 Rev. X | `https://search.abb.com/library/Download.aspx?DocumentID=3AUA0000085967&LanguageCode=en&DocumentPartId=1&Action=Launch` | HTTP 200 OK | YES | YES | YES (Fault 2310, p. 504) |
+| `SRC-003` | Tier 1 | `MANUAL` | *Altivar Process ATV600 Variable Speed Drives Programming Manual* | Schneider Electric | 2021 | EAV64318 | `https://download.se.com/files?p_Doc_Ref=EAV64318&p_enDocType=User+guide` | HTTP 200 OK | YES | YES | YES (Sec. 5, p. 88) |
 ```

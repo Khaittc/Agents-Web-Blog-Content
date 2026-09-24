@@ -1,5 +1,5 @@
-# NHẬT KÝ LÀM VIỆC DỰ ÁN (WORKLOG)
-**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)  
+﻿# NHẬT KÝ LÀM VIỆC DỰ ÁN (WORKLOG)
+**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **File này dùng để**: Cung cấp bức tranh toàn cảnh tức thì cho bất kỳ Agent nào tiếp quản dự án mà **không cần đọc lại toàn bộ lịch sử trò chuyện**.
 
 ---
@@ -392,16 +392,43 @@
 
 ---
 
-## 4. DANH SÁCH HÀNH ĐỘNG TIẾP THEO (NEXT ACTION ITEMS — PHASE 3)
+### Phiên làm việc: 24/09/2026 (Phiên 20 — Phase 2.5: Củng Cố Toàn Diện Kiến Trúc & Hợp Đồng Đa Agent)
+- **Người thực hiện**: Kỹ sư trưởng & AI Assistant (Antigravity).
+- **Nội dung công việc**:
+  1. **Chốt Canonical Blog Taxonomy Duy Nhất (ADR-019)**:
+     - Ban hành tệp nguồn chuẩn duy nhất [00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md](file:///d:/Agents_Tools/05_WebsiteTTC/00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md) cho 5 thể loại (`BLOG-T01` đến `BLOG-T05`).
+     - Đính chính metadata bên ngoài: `BLOG_01` là `BLOG-T02 — How-to / Measurement` (nội dung bài viết được giữ nguyên vẹn 100%).
+     - Đồng bộ taxonomy trên `README.md`, `AGENT_GUIDE.md`, `ROADMAP.md` và toàn bộ 5 Agent Templates.
+  2. **Quy Chuẩn Stable Source ID & Tách Bạch Kiểm Chứng (ADR-020)**:
+     - Nghiên cứu chỉ cấp phát mã nguồn ổn định `SRC-001`, `SRC-002`,... Tuyệt đối KHÔNG cấp số IEEE `[1]`, `[2]` ở khâu nghiên cứu.
+     - Số IEEE chỉ do Drafting Agent gán dựa trên thứ tự xuất hiện đầu tiên trong bài viết.
+     - Tách bạch 4 cấp độ: `URL access (HTTP 200) ≠ Content identity ≠ Claim verified ≠ Locator verified`. HTTP 200 không chứng minh claim đã đúng.
+     - Mở rộng phân loại nguồn: Cho phép 16 loại tài liệu IEEE + `SOURCE_TYPE_REVIEW_REQUIRED`.
+  3. **Thiết Lập Hệ Thống Hợp Đồng Máy Đọc (Contracts Schema - ADR-021)**:
+     - Xây dựng thư mục [02_AGENT_TEMPLATES/contracts/](file:///d:/Agents_Tools/05_WebsiteTTC/02_AGENT_TEMPLATES/contracts/) gồm 6 schemas: `article_brief.schema.json`, `evidence.schema.json`, `claim_source_map.schema.json`, `audit.schema.json`, `revision_request.schema.json`, `article_manifest.schema.json`.
+     - Phân định nguyên tắc Đơn Chủ Sở Hữu (Single Ownership) cho từng artifact.
+  4. **Kiến Trúc 2 Cổng Kiểm Định Tách Bạch & Vòng Lặp Có Cấu Trúc (ADR-022)**:
+     - Tách Review thành 2 cổng: **Cổng 1 (Technical Review Gate)** chạy ngay sau Drafting (chỉ kiểm toán luận điểm, trích dẫn cuối câu, toán SI; không kiểm responsive) và **Cổng 2 (Presentation & Responsive Review Gate)** chạy sau khi đóng gói HTML (kiểm responsive Laptop & Mobile song song).
+     - Visual Agent chỉ hoàn thiện ảnh khi Technical Gate đạt `TECH_APPROVED`.
+     - Quy chế hiệu chỉnh có cấu trúc qua `revision_request.json`: giới hạn đúng phạm vi (scope-limited, cấm viết lại toàn bài), tối đa 3 vòng lặp tự động trước khi chuyển cho con người (`ESCALATED_TO_HUMAN`).
+  5. **Giới Hạn Trách Nhiệm Packaging & Khóa Mã Băm Toàn Vẹn SHA-256 (ADR-023)**:
+     - Định vị Publisher Agent là Packaging Agent (chỉ đóng gói tệp HTML sạch và manifest; tuyệt đối KHÔNG tự ý xuất bản lên CMS).
+     - Quyền duyệt và đăng bài lên CMS thuộc về Kỹ sư trưởng (Human Approver & Publisher).
+     - Bổ sung `approved_content_sha256` và `approved_commit_sha` vào `article_status.json` cho cả 3 bài viết đã duyệt (`BLOG_01`, `BLOG_02`, `BLOG_03`), bảo đảm không có bất kỳ thay đổi nào làm trôi dạt mã băm nội dung HTML đã khóa.
+  6. **Cập Nhật Toàn Bộ 5 Agent Templates**:
+     - Quy định rõ: `INPUT`, `OUTPUT`, `READ-ONLY INPUTS`, `WRITABLE OUTPUTS`, `FAIL CONDITIONS`, `HANDOFF CONDITIONS`.
+     - Thiết lập quy tắc: Toàn bộ thư mục `00_SKILL/` là Read-Only đối với các Agent viết bài.
+- **Trạng thái kết thúc phiên**: Hoàn thành xuất sắc 100% mục tiêu của Phase 2.5, hệ thống multi-agent đã được củng cố kiến trúc vững chắc, sẵn sàng bước vào Phase 3.
 
-Ưu tiên thực hiện trong Phase 3:
-1. [x] **Xây dựng 5 Subagent Templates chuyên trách trong `02_AGENT_TEMPLATES/`**:
-   - ĐÃ HOÀN THÀNH: Trọn bộ 5 file đặc tả `research_agent.md`, `drafting_agent.md`, `visual_agent.md`, `review_agent.md`, `publisher_agent.md`.
-2. [x] **Đồng bộ mã nguồn dự án lên GitHub & Xây dựng Root README.md**:
-   - ĐÃ HOÀN THÀNH: Khởi tạo, đẩy toàn bộ project và tạo `README.md` chuẩn mực trên `https://github.com/Khaittc/Agents-Web-Blog-Content.git`.
-3. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Tooling & MCP Integration)**:
+---
+
+## 4. DANH SÁCH HÀNH ĐỘNG TIẾP THEO (NEXT ACTION ITEMS)
+
+Ưu tiên thực hiện tiếp theo (Phase 3):
+1. [x] **Phase 2.5: Multi-Agent Architecture Hardening**:
+   - ĐÃ HOÀN THÀNH: Canonical Taxonomy, Stable Source IDs, 6 JSON Schemas, 2-Gate Pipeline, Packaging role, Content Hash SHA-256.
+2. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Phase 3 Tooling Integration)**:
    - Khảo sát và kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn nguồn tài liệu Tier 1/2 với số trang và bảng tự động.
    - Chuẩn hóa luồng sử dụng tool `invoke_subagent` và `define_subagent` để điều phối tự động 5 agents trực tiếp trong Antigravity.
-4. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
+3. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
    - Ra đề bài mẫu mới thông qua khung chat Antigravity và cho 5 Subagents tự động thực thi khép kín từ nghiên cứu đến đóng gói xuất bản HTML.
-

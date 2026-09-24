@@ -1,5 +1,5 @@
-# HƯỚNG DẪN DÀNH CHO AI AGENT (AGENT ONBOARDING GUIDE)
-**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)  
+﻿# HƯỚNG DẪN DÀNH CHO AI AGENT (AGENT ONBOARDING GUIDE)
+**Dự án**: Hệ thống Tự động hóa Đa Agent Sản xuất Nội dung Kỹ thuật (Real Group / TTC)
 **Workspace**: `d:/Agents_Tools/05_WebsiteTTC`
 
 Tài liệu này là **điểm đọc bắt buộc đầu tiên** cho mọi AI Agent (chính hoặc subagent) khi được khởi tạo trong không gian làm việc này.
@@ -14,6 +14,10 @@ Tài liệu này là **điểm đọc bắt buộc đầu tiên** cho mọi AI A
 > 2. **CẤM TUYỆT ĐỐI LƯU RA NGOÀI**: Nghiêm cấm lưu trữ bất kỳ tệp tin dự án nào ra ngoài phạm vi thư mục project (như AppData, thư mục tạm `%TEMP%`, thư mục `brain/` của AI, Desktop, hoặc các folder cha).
 > 3. **CƠ CHẾ ĐỒNG BỘ NỘI BỘ BẮT BUỘC**: Nếu bất kỳ công cụ nền tảng nào tự động sinh file ra vùng đệm/brain của AI, Agent **BẮT BUỘC PHẢI SAO CHÉP HOẶC GHI NGAY MỘT BẢN HOÀN CHỈNH VÀO THƯ MỤC PROJECT** (`d:/Agents_Tools/05_WebsiteTTC/`) để Kỹ sư trưởng và hệ thống Git quản lý tập trung toàn diện tài sản dự án.
 > 4. Tuyệt đối không xóa các tài liệu chuẩn trong `00_SKILL/` trừ khi có lệnh nâng cấp phiên bản cụ thể từ người dùng (tuân thủ quy trình lưu trữ phiên bản ADR-009).
+> 5. **TIÊU CHUẨN TRONG `00_SKILL/` LÀ READ-ONLY**: Các Subagent trong quy trình sản xuất bài viết (Research, Drafting, Visual, Review, Publisher) **TUYỆT ĐỐI KHÔNG ĐƯỢC PHÉP TỰ Ý SỬA ĐỔI TÀI LIỆU TIÊU CHUẨN**. Chỉ các tác vụ Kiến trúc / Bảo trì hệ thống mới được phép cập nhật.
+> 6. **CANONICAL BLOG TAXONOMY DUY NHẤT**: Bắt buộc tuân thủ 5 thể loại chuẩn tại `00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md` (`BLOG-T01` đến `BLOG-T05`). Cấm tự ý định nghĩa thể loại riêng.
+> 7. **STABLE SOURCE ID (`SRC-xxx`) TRONG RESEARCH**: Khâu nghiên cứu bắt buộc dùng mã định danh ổn định `SRC-001`, `SRC-002`,... CẤM cấp phát số trích dẫn IEEE `[1]`, `[2]` ở giai đoạn này.
+> 8. **PUBLISHER LÀ PACKAGING AGENT (KHÔNG TỰ Ý PUBLISH CMS)**: Publisher Agent chỉ đóng gói tệp HTML sạch và manifest; Kỹ sư trưởng (con người) là người phê duyệt cuối cùng và tự tay xuất bản lên CMS.
 
 ---
 
@@ -40,11 +44,12 @@ BƯỚC 3: Tra cứu 00_SKILL/ và 02_AGENT_TEMPLATES/
 05_WebsiteTTC/
 ├── README.md                  # Giới thiệu tổng quan hệ thống, kiến trúc và ứng dụng trên GitHub
 ├── AGENT_GUIDE.md             # [BẠN ĐANG ĐỌC] Cẩm nang vận hành dành cho Agent
-├── ROADMAP.md                 # Lộ trình 4 giai đoạn và tiến độ các Milestone
+├── ROADMAP.md                 # Lộ trình phát triển hệ thống và tiến độ các Milestone
 ├── WORKLOG.md                 # Nhật ký làm việc, các ADR và danh sách việc cần làm
 ├── walkthrough.md             # Báo cáo tổng kết nghiệm thu & tiến độ phiên làm việc gần nhất
-├── 00_SKILL/                  # Bộ quy chuẩn kỹ năng kỹ thuật cốt lõi
+├── 00_SKILL/                  # Bộ quy chuẩn kỹ năng kỹ thuật cốt lõi (READ-ONLY cho writer agents)
 │   ├── archive/                                      # Thư mục lưu trữ các phiên bản cũ
+│   ├── BLOG_TAXONOMY_CANONICAL_v1.0.md               # Nguồn chuẩn duy nhất phân loại bài viết
 │   ├── BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md       # Cấu trúc nội dung 5 loại bài
 │   ├── IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md   # Hệ thống trích dẫn IEEE Master Suite v2.0
 │   │   ├── IEEE_01_SOURCE_IDENTIFICATION_AND_URL_VERIFICATION_SKILL_v1.1.md # Nguồn & Live URL check 200
@@ -53,15 +58,28 @@ BƯỚC 3: Tra cứu 00_SKILL/ và 02_AGENT_TEMPLATES/
 │   │   └── IEEE_04_CITATION_AUDIT_PROTOCOL_v1.1.md                          # Kiểm duyệt 6 cửa ải & Vị trí cuối câu
 │   ├── LATEX_FORMULA_SKILL_v1.0.md                   # Quy chuẩn công thức toán & SI
 │   ├── REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md # Chuẩn giao diện HTML CKEditor
-│   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md         # Quy trình xác minh nguồn Tier 1-3
-│   ├── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md       # Kiểm duyệt 4 trụ cột & Responsive Laptop/Mobile (ADR-017)
+│   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md         # Quy trình xác minh nguồn Tier 1-3 & Stable Source ID
+│   ├── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md       # Kiểm duyệt 2 Cổng & Responsive Laptop/Mobile (ADR-017)
 │   └── IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md   # Chuẩn đặc tả ảnh, Prompt AI 5 tầng & khung responsive
 ├── 01_KNOWLEDGE_BASE/         # Kho tài liệu kỹ thuật, tiêu chuẩn, PDF (liên kết NotebookLM)
 ├── 02_AGENT_TEMPLATES/        # System prompts & Hợp đồng giao tiếp giữa 5 Subagents
+│   ├── contracts/             # Các JSON Schemas máy đọc chuẩn mực giữa các Subagents
+│   │   ├── article_brief.schema.json
+│   │   ├── evidence.schema.json
+│   │   ├── claim_source_map.schema.json
+│   │   ├── audit.schema.json
+│   │   ├── revision_request.schema.json
+│   │   └── article_manifest.schema.json
+│   ├── ARTICLE_LIFECYCLE_AND_APPROVAL_PROTOCOL.md    # Vòng đời 10 bước, khóa mã băm toàn vẹn SHA-256
+│   ├── research_agent.md      # Đặc tả Subagent Nghiên cứu Nguồn
+│   ├── drafting_agent.md      # Đặc tả Subagent Biên soạn Kỹ thuật
+│   ├── visual_agent.md        # Đặc tả Subagent Đồ họa & Prompt AI
+│   ├── review_agent.md        # Đặc tả Subagent Phản biện & Kiểm toán 2 Cổng
+│   └── publisher_agent.md     # Đặc tả Subagent Đóng gói Ấn phẩm (Packaging Agent)
 ├── 03_Articles/               # Lưu trữ các bài viết (bản thảo, audit report, HTML cuối)
-│   ├── BLOG_01_Dong_co_non_tai/                      # Bài viết mẫu Baseline đầu tiên (LOCKED)
-│   ├── BLOG_02_He_so_cong_suat_va_Song_hai/          # Bài viết mẫu thứ 2 (LOCKED)
-│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/          # Bài viết mẫu thứ 3 (LOCKED)
+│   ├── BLOG_01_Dong_co_non_tai/                      # BLOG-T02 (LOCKED)
+│   ├── BLOG_02_He_so_cong_suat_va_Song_hai/          # BLOG-T01 (LOCKED)
+│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/          # BLOG-T03 (LOCKED)
 └── 04_PLANS/                  # Lưu trữ các bản kế hoạch thực thi [yymmdd]_implementation_plan.md
 ```
 

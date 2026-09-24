@@ -1,8 +1,8 @@
-# QUY CHUẨN KIỂM DUYỆT VÀ PHẢN BIỆN KỸ THUẬT (TECHNICAL REVIEW & AUDIT PROTOCOL)
-**Version**: 1.1  
-**Trạng thái**: Áp dụng bắt buộc cho Tech Review Agent, Drafting Agent và Publisher Agent  
-**Ngày ban hành**: 24/09/2026  
-**Thay thế**: `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.0.md` (Đã lưu trữ tại `00_SKILL/archive/`)  
+﻿# QUY CHUẨN KIỂM DUYỆT VÀ PHẢN BIỆN KỸ THUẬT (TECHNICAL REVIEW & AUDIT PROTOCOL)
+**Version**: 1.1
+**Trạng thái**: Áp dụng bắt buộc cho Tech Review Agent, Drafting Agent và Publisher Agent
+**Ngày ban hành**: 24/09/2026
+**Thay thế**: `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.0.md` (Đã lưu trữ tại `00_SKILL/archive/`)
 **Căn cứ pháp lý & kỹ thuật**:
 - `BLOG_CONTENT_STRUCTURE_STANDARD_v1.3.md`
 - `IEEE_CITATION_REFERENCE_MASTER_SUITE_v2.0.md` (Bộ 4 Sub-Skills IEEE-01 đến IEEE-04)
@@ -26,26 +26,42 @@ Tech Review Agent hoạt động hoàn toàn độc lập với Drafting Agent. 
 
 ---
 
-## 2. 4 TRỤ CỘT KIỂM DUYỆT (4 AUDIT PILLARS)
+## 2. KIẾN TRÚC 2 CỔNG KIỂM ĐỊNH ĐỘC LẬP (TWO-GATE AUDIT ARCHITECTURE)
 
-Mọi bài viết trước khi xuất xưởng bắt buộc phải vượt qua 4 ma trận kiểm tra:
+Nhằm tối ưu hóa luồng kiểm duyệt, tránh lãng phí thời gian tạo đồ họa khi bản thảo kỹ thuật chưa đạt chuẩn, quy trình kiểm duyệt được chia tách thành **2 CỔNG ĐỘC LẬP TÁCH BẠCH**:
 
 ```text
+Drafting Agent Hoàn thành Bản thảo & Claim Map
+                     │
+                     ▼
 ┌────────────────────────────────────────────────────────┐
-│ 1. CITATION AUDIT (Kiểm duyệt Trích dẫn & Nguồn IEEE) │
-└───────────────────────────┬────────────────────────────┘
-                            ▼
+│ CỔNG 1: TECHNICAL REVIEW GATE (Kiểm Định Chuyên Môn)   │
+│ ├── Trụ cột 1: Citation Audit (IEEE, Gate 5 Cuối câu)  │
+│ ├── Trụ cột 2: Formula Audit (LaTeX & Đơn vị SI)       │
+│ └── Trụ cột 3: Claim & Logic Audit (Khớp evidence.json)│
+│ (LƯU Ý: KHÔNG kiểm tra responsive tại Cổng 1)          │
+└────────────────────────────┬───────────────────────────┘
+                             │ PASS (TECH_APPROVED)
+                             ▼
+              Visual Agent (Hoàn thiện ảnh)
+                             │
+                             ▼
+              Packaging Agent (HTML Packaging & Manifest)
+                             │
+                             ▼
 ┌────────────────────────────────────────────────────────┐
-│ 2. FORMULA AUDIT (Kiểm duyệt Công thức Toán & LaTeX)  │
-└───────────────────────────┬────────────────────────────┘
-                            ▼
-┌────────────────────────────────────────────────────────┐
-│ 3. CLAIM & LOGIC AUDIT (Kiểm duyệt Logic & Ngữ cảnh)  │
-└───────────────────────────┬────────────────────────────┘
-                            ▼
-┌────────────────────────────────────────────────────────┐
-│ 4. PRESENTATION & RESPONSIVE AUDIT (Laptop & Mobile)   │
-└────────────────────────────────────────────────────────┘
+│ CỔNG 2: PRESENTATION & RESPONSIVE REVIEW GATE          │
+│ └── Trụ cột 4: Presentation & Responsive Audit         │
+│     ├── Hiển thị Laptop (>= 1200px)                    │
+│     ├── Hiển thị Mobile Smartphone (360px - 480px)     │
+│     ├── Chống méo dọc ảnh (height: auto !important)    │
+│     ├── Bảng chống nén ép (overflow-x + min-width)     │
+│     ├── Link tham khảo không tràn viền (word-break)    │
+│     └── Vệ sinh mã nguồn sạch tuyệt đối (Output Clean) │
+└────────────────────────────┬───────────────────────────┘
+                             │ PASS
+                             ▼
+            Human Review & Manual CMS Publish
 ```
 
 ---
@@ -146,41 +162,48 @@ Tech Review Agent **BẮT BUỘC** phải rà soát mã HTML CKEditor trên cả
 
 ---
 
-## 3. ĐÁNH GIÁ VÀ RA QUYẾT ĐỊNH (AUDIT DECISION)
+## 3. ĐÁNH GIÁ, VÒNG LẶP HIỆU CHỈNH VÀ RA QUYẾT ĐỊNH (AUDIT DECISIONS & REVISION LOOP)
 
-Kết quả kiểm duyệt chỉ có 1 trong 3 trạng thái:
+### 3.1. Phán quyết tại từng Cổng Kiểm định
+Tại mỗi cổng (`TECHNICAL_REVIEW_GATE` hoặc `PRESENTATION_REVIEW_GATE`), Review Agent xuất ra 1 trong 3 trạng thái:
+1. **`PASS` (ĐẠT)**: 100% tiêu chí của cổng đạt chuẩn. Cho phép chuyển sang công đoạn tiếp theo.
+2. **`REVISION_REQUIRED` (YÊU CẦU HIỆU CHỈNH)**: Phát hiện sai lệch cần sửa đổi. Bắt buộc lập tệp `revision_request.json`.
+3. **`FAIL` (TỪ CHỐI)**: Vi phạm nghiêm trọng không thể khắc phục nhanh. Yêu cầu làm lại công đoạn.
 
-1. **PASS (ĐẠT)**: Toàn bộ 4 trụ cột đều đạt, bao gồm 100% tiêu chí hiển thị trên cả Laptop và Mobile. Cho phép chuyển sang khâu xuất bản HTML.
-2. **REVISION_REQUIRED (YÊU CẦU HIỆU CHỈNH)**: Có từ 1 đến 3 lỗi nhỏ (ví dụ: thiếu `word-break: break-all;` trên link tham khảo, thiếu `min-width` trên 1 bảng, câu chữ hơi hướng quảng cáo). Trả về cho Drafting Agent chỉnh sửa cụ thể.
-3. **FAIL (TỪ CHỐI)**: Có lỗi nghiêm trọng (sai công thức toán học, trích dẫn số liệu bịa đặt, ảnh bị méo dọc trên mobile, vỡ layout màn hình). Yêu cầu soạn thảo lại.
+### 3.2. Quy chế Vòng lặp Hiệu chỉnh có Cấu trúc (`revision_request.json`)
+Khi ra phán quyết `REVISION_REQUIRED`, Review Agent bắt buộc tạo tệp `revision_request.json` tuân thủ `02_AGENT_TEMPLATES/contracts/revision_request.schema.json`:
+- **Giới hạn phạm vi (Scope-limited)**: Phải chỉ định rõ `owner` (`RESEARCH`, `DRAFTING`, `VISUAL`, `PUBLISHER`), `artifact`, `claim_id` (nếu có), và `scope`. Agent được giao **CHỈ SỬA ĐÚNG PHẠM VI**, cấm rewrite toàn bài nếu lỗi chỉ ở một phần tử đơn lẻ.
+- **Giới hạn tối đa 3 vòng lặp tự động (Max 3 Loops)**: Nếu sau 3 lần hiệu chỉnh tự động mà vẫn không đạt, Review Agent chuyển sang trạng thái `ESCALATED_TO_HUMAN` để Kỹ sư trưởng can thiệp trực tiếp.
 
 ---
 
-## 4. BIỂU MẪU BÁO CÁO KIỂM DUYỆT (DELIVERABLE SCHEMA)
+## 4. BIỂU MẪU GIAO PHẨM KIỂM DUYỆT (DELIVERABLE ARTIFACTS)
 
-Báo cáo kiểm duyệt phải được xuất thành file `technical_audit_report.md` tại thư mục bài viết:
+Review Agent chịu trách nhiệm xuất song song:
+1. **`audit.json`**: Bản ghi máy đọc canonical theo `02_AGENT_TEMPLATES/contracts/audit.schema.json`.
+2. **`technical_audit_report.md`**: Báo cáo tổng hợp dành cho Kỹ sư trưởng:
 
 ```markdown
-# BÁO CÁO KIỂM DUYỆT KỸ THUẬT (TECHNICAL AUDIT REPORT)
-**Mã bài viết**: [MÃ_BÀI]  
-**Ngày kiểm duyệt**: [YYYY-MM-DD]  
-**Người kiểm duyệt**: Tech Review Agent  
-**Kết quả chung**: [PASS / REVISION_REQUIRED / FAIL]
+# BÁO CÁO KIỂM ĐỊNH KỸ THUẬT & RESPONSIVE ĐA THIẾT BỊ (AUDIT REPORT)
+**Mã bài viết**: [MÃ_BÀI]
+**Ngày kiểm duyệt**: [YYYY-MM-DD]
+**Người kiểm duyệt**: Review Agent (Chief Technical Auditor)
 
-## 1. Tổng kết 4 Trụ cột
-| Trụ cột | Trạng thái | Số lỗi phát hiện | Đánh giá Laptop | Đánh giá Mobile | Ghi chú |
-|---|---|---|---|---|---|
-| 1. Citation Audit | PASS / FAIL | 0 | Chuẩn IEEE | Chuẩn IEEE | ... |
-| 2. Formula Audit | PASS / FAIL | 0 | Đầy đủ SI | Có overflow cuộn | ... |
-| 3. Claim & Logic | PASS / FAIL | 0 | Logic chặt chẽ | Dễ lướt đọc | ... |
-| 4. Presentation & Responsive | PASS / FAIL | 0 | Bảng 100%, ảnh 16:9 | Không méo ảnh, cuộn bảng mượt, URL không tràn | ... |
+## PHẦN 1: KẾT QUẢ CỔNG 1 — TECHNICAL REVIEW GATE
+- **Trạng thái Cổng 1**: [PASS / REVISION_REQUIRED / FAIL]
+- **Trụ cột 1 (Citation Audit)**: Chuẩn IEEE, 100% trích dẫn ở CUỐI CÂU (Gate 5).
+- **Trụ cột 2 (Formula Audit)**: Thứ nguyên SI chuẩn xác, đầy đủ bảng biến số.
+- **Trụ cột 3 (Claim & Logic Audit)**: Số liệu đối chiếu khớp 100% evidence.json.
 
-## 2. Chi tiết Cửa ải Responsive Đa Thiết bị (Laptop vs. Mobile)
-- [x] Hình ảnh: Đã ép `height: auto !important;` và `margin: 0 auto;`, khóa tỷ lệ 16:9 tự nhiên.
-- [x] Bảng kỹ thuật: Đã bọc `overflow-x: auto; -webkit-overflow-scrolling: touch;`, khai báo `min-width: 680px - 720px;`, không ép nén cột trên mobile.
-- [x] Tài liệu tham khảo: Đã có `word-break: break-word;` và `word-break: break-all;`, không tràn khung màn hình điện thoại.
-- [x] Phân cấp tiêu đề: Bắt đầu từ `<h2>` và `<h3>`, tương thích hoàn hảo với CMS.
+## PHẦN 2: KẾT QUẢ CỔNG 2 — PRESENTATION & RESPONSIVE REVIEW GATE
+- **Trạng thái Cổng 2**: [PASS / REVISION_REQUIRED / FAIL]
+- **Đánh giá Laptop (>= 1200px)**: Bảng 100%, typography chuẩn CKEditor 3.6.6.2.
+- **Đánh giá Mobile (360px - 480px)**:
+  - [x] Hình ảnh: Có `height: auto !important; margin: 0 auto;`, không méo dọc.
+  - [x] Bảng kỹ thuật: Bọc `overflow-x: auto;`, `min-width: 680px - 720px;`, cuộn ngang mượt.
+  - [x] Link tham khảo: Bọc `word-break: break-all;`, không tràn màn hình điện thoại.
+- **Vệ sinh mã nguồn**: Sạch 100% ghi chú nội bộ.
 
-## 3. Chữ ký Phê duyệt Kỹ thuật
+## PHẦN 3: KẾT LUẬN & CHỮ KÝ PHÊ DUYỆT
 - [x] ĐÃ XÁC NHẬN BÀI VIẾT ĐẠT CHUẨN KỸ THUẬT VÀ HIỂN THỊ HOÀN HẢO TRÊN CẢ LAPTOP LẪN MOBILE.
 ```

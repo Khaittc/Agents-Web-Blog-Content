@@ -1,4 +1,4 @@
-{
+﻿{
   "article_id": "BLOG_01",
   "title": "Cách phát hiện động cơ điện đang chạy non tải trong nhà máy",
   "category": "BLOG-T02",
@@ -6,6 +6,8 @@
   "is_locked": true,
   "approved_by": "Engineer_Lead",
   "approved_at": "2026-09-23T21:20:00+07:00",
+  "approved_content_sha256": "B8A92357BADCEB8E961617D59EC3B362110AC14D5478984CB3FFE9840EF417DE",
+  "approved_commit_sha": "fb92e7b1c4e1ca73caea7508412ac6954596e191",
   "html_file": "bai-viet-dong-co-chay-non-tai-ckeditor.html",
   "notes": "Bài viết baseline mẫu đầu tiên đã được phê duyệt và khóa nội dung. Cấm mọi Agent tự ý chỉnh sửa khi chưa có lệnh UNLOCK."
 }
