@@ -389,6 +389,65 @@ def validate_source_exception_consistency():
 
 
 # -------------------------------------------------------------
+# Gate 10: Lifecycle Artifact Preconditions
+# -------------------------------------------------------------
+
+def validate_lifecycle_artifact_preconditions():
+    errors = []
+    print("[Gate 10] Validating Lifecycle Artifact Preconditions across 03_Articles...")
+
+    article_dirs = sorted((ROOT_DIR / "03_Articles").glob("BLOG_*"))
+    for ad in article_dirs:
+        status_file = ad / "article_status.json"
+        if not status_file.is_file():
+            continue
+        try:
+            data = json.loads(status_file.read_text(encoding="utf-8-sig"))
+        except Exception as e:
+            errors.append(f"{status_file.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+            continue
+
+        status = data.get("status")
+        article_id = data.get("article_id") or ad.name
+
+        # Invariant: TECH_REVIEW and TECH_APPROVED require drafting artifacts
+        if status in ("TECH_REVIEW", "TECH_APPROVED"):
+            draft_pkg = ad / "draft_review_package.md"
+            claim_map = ad / "claim_source_map.json"
+            if not draft_pkg.is_file():
+                errors.append(f"{article_id} is {status} but draft_review_package.md is missing")
+            if not claim_map.is_file():
+                errors.append(f"{article_id} is {status} but claim_source_map.json is missing")
+
+        # Invariant: Research Handoff Consistency
+        handoff_file = ad / "research_handoff.json"
+        if handoff_file.is_file():
+            try:
+                handoff_data = json.loads(handoff_file.read_text(encoding="utf-8-sig"))
+                if handoff_data.get("handoff_ready") is True:
+                    r_status = handoff_data.get("research_status")
+                    rp_status = handoff_data.get("research_plan_status")
+                    if r_status != "PASS":
+                        errors.append(
+                            f"{article_id}: research_handoff.json has handoff_ready=True but research_status is '{r_status}' (expected 'PASS')"
+                        )
+                    if rp_status != "COMPLETE":
+                        errors.append(
+                            f"{article_id}: research_handoff.json has handoff_ready=True but research_plan_status is '{rp_status}' (expected 'COMPLETE')"
+                        )
+            except Exception as e:
+                errors.append(f"{handoff_file.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+
+    if errors:
+        for err in errors:
+            print(f"  [FAIL] {err}", file=sys.stderr)
+        return False
+
+    print("  [PASS] Lifecycle artifact preconditions verified across all articles.")
+    return True
+
+
+# -------------------------------------------------------------
 # Main Runner
 # -------------------------------------------------------------
 
@@ -405,6 +464,7 @@ def main():
         validate_two_gate_pipeline(),
         validate_canonical_article_statuses(),
         validate_source_exception_consistency(),
+        validate_lifecycle_artifact_preconditions(),
     ]
 
     print("=" * 70)
