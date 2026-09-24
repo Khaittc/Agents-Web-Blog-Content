@@ -5,16 +5,16 @@
   "source_policy_exception": {
     "source_policy_exception": false,
     "exception_type": "NONE",
-    "reason": "Chủ đề so sánh kỹ thuật diện rộng (BLOG-T04) áp dụng chính sách mặc định 4-7 nguồn, đạt tỷ lệ Tier 1 + Tier 2 là 100% (>= 70%).",
-    "approved_by_review_gate": true,
-    "review_verdict": "APPROVE_EXCEPTION"
+    "reason": "Chủ đề so sánh kỹ thuật diện rộng (BLOG-T04) tuân thủ chính sách mặc định 4-7 nguồn, đạt tỷ lệ Tier 1 + Tier 2 là 75% (>= 70%), không yêu cầu ngoại lệ nguồn hẹp.",
+    "approved_by_review_gate": false,
+    "review_verdict": "NOT_APPLICABLE"
   },
   "evidence_summary": {
     "total_sources": 4,
-    "tier_1_count": 1,
-    "tier_2_count": 3,
-    "tier_3_count": 0,
-    "high_tier_ratio": 1.0
+    "tier_1_count": 3,
+    "tier_2_count": 0,
+    "tier_3_count": 1,
+    "high_tier_ratio": 0.75
   },
   "sources": [
     {
@@ -31,7 +31,7 @@
       "source_type": "MANUAL",
       "publisher": "ABB AB, Cewe-Control",
       "publication_year": 2011,
-      "tier": "TIER_2",
+      "tier": "TIER_1",
       "canonical_url": "https://library.abb.com/d/1SFC132060M0201",
       "retrieval_url": "https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf",
       "access_status": "OK",
@@ -76,6 +76,14 @@
           "pdf_page_index": 74,
           "verified": true,
           "excerpt": "The question of harmonic content for softstarter applications is actually in general not relevant at all."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. Different applications - Crusher and Mill, p. 37",
+          "document_page": 37,
+          "pdf_page_index": 43,
+          "verified": true,
+          "excerpt": "Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size."
         }
       ]
     },
@@ -94,7 +102,7 @@
       "source_type": "TECH_REPORT",
       "publisher": "Rockwell Automation, Inc.",
       "publication_year": 2014,
-      "tier": "TIER_2",
+      "tier": "TIER_1",
       "canonical_url": "https://rok.auto/literature",
       "retrieval_url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf",
       "access_status": "OK",
@@ -155,7 +163,7 @@
       "source_type": "WEB_ARTICLE",
       "publisher": "Schneider Electric SE",
       "publication_year": 2020,
-      "tier": "TIER_2",
+      "tier": "TIER_3",
       "canonical_url": "https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
       "retrieval_url": "https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
       "access_status": "REDIRECTED_OK",
@@ -256,7 +264,7 @@
       "evidence_id": "EVD-004",
       "rq_id": "RQ-002",
       "source_id": "SRC-003",
-      "claim": "Biến tần có khả năng tạo ra 100%-150% mô-men định mức ngay ở tốc độ 0 rpm, trong khi khởi động mềm không thể sinh đủ mô-men ở tốc độ thấp nếu hạn dòng quá sâu.",
+      "claim": "Biến tần (AC Drive) có khả năng cung cấp đầy đủ mô-men (full torque) ở tốc độ zero speed trong các ứng dụng yêu cầu, trong khi khởi động mềm (soft starter) không thể đáp ứng yêu cầu full torque tại zero speed.",
       "evidence_excerpt": "Question: Does the application need full torque at zero speed? Answer: An AC Drive can provide full torque at zero speed where a soft starter cannot.",
       "evidence_type": "COMPARISON_POINT",
       "verification_status": "VERIFIED",
@@ -278,7 +286,7 @@
       "evidence_id": "EVD-006",
       "rq_id": "RQ-004",
       "source_id": "SRC-003",
-      "claim": "Khi vận hành định mức đầy tải qua bypass contactor, Soft Starter đạt hiệu suất cao hơn (>99.5%) và chạy mát hơn VFD do triệt tiêu tổn hao chuyển mạch và sụt áp trên bán dẫn.",
+      "claim": "Khi vận hành ở tốc độ định mức đầy tải có tích hợp contactor bypass, Soft Starter đạt hiệu suất cao hơn và chạy mát hơn VFD do dòng điện chuyển qua contactor thay vì linh kiện bán dẫn công suất.",
       "evidence_excerpt": "When operating at full speed and adequately loaded, soft starters are more efficient than VFDs. With an integrated bypass, current in the soft starter is carried across the contactor, so it runs cooler, as no active solid-state components are generating heat.",
       "evidence_type": "COMPARISON_POINT",
       "verification_status": "VERIFIED",
@@ -300,7 +308,7 @@
       "evidence_id": "EVD-008",
       "rq_id": "RQ-005",
       "source_id": "SRC-002",
-      "claim": "Sóng hài của Soft Starter chỉ xuất hiện cục bộ (<10%) trong giai đoạn kích mở thyristor khởi động/dừng; khi đóng bypass, sóng hài hoàn toàn triệt tiêu về 0%.",
+      "claim": "Sóng hài của Soft Starter thường dưới 10% trong chế độ khởi động hoặc dừng khi SCR dẫn; ở trạng thái bypass, hầu như không có sóng hài nào phát sinh.",
       "evidence_excerpt": "Soft starter harmonics are typically less than 10% in starting or stopping modes when SCRs are turned on... In bypass condition, there are almost no harmonics generated.",
       "evidence_type": "THRESHOLD",
       "verification_status": "VERIFIED",
@@ -311,7 +319,7 @@
       "evidence_id": "EVD-009",
       "rq_id": "RQ-005",
       "source_id": "SRC-004",
-      "claim": "Theo chuẩn IEEE Std 519-2022, giới hạn méo dòng tổng TDD tại điểm PCC là 5% đối với tỷ số ngắn mạch nhỏ hơn 20, đòi hỏi VFD phải có giải pháp lọc hài tích cực/thụ động.",
+      "claim": "Theo IEEE Std 519-2022 (Bảng 2), giới hạn méo dòng tổng TDD tại điểm đấu nối chung (PCC) là 5.0% đối với tỷ số ngắn mạch Isc/IL < 20 cho các hệ thống điện có điện áp từ 120 V đến 69 kV.",
       "evidence_excerpt": "Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV.",
       "evidence_type": "STANDARD_REQUIREMENT",
       "verification_status": "VERIFIED",
@@ -322,7 +330,7 @@
       "evidence_id": "EVD-010",
       "rq_id": "RQ-006",
       "source_id": "SRC-002",
-      "claim": "Chi phí đầu tư ban đầu của Soft Starter thấp hơn VFD từ 2 đến 4 lần ở dải công suất vừa và lớn; đồng thời VFD đòi hỏi bảo trì quạt làm mát và kiểm tra tụ DC bus định kỳ.",
+      "claim": "Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter; ngoài ra VFD yêu cầu bảo trì định kỳ như thay quạt làm mát và kiểm tra tụ DC bus.",
       "evidence_excerpt": "At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive... in year 3, you should replace cooling fans and inspect DC bus capacitors.",
       "evidence_type": "COMPARISON_POINT",
       "verification_status": "VERIFIED",
@@ -333,7 +341,7 @@
       "evidence_id": "EVD-011",
       "rq_id": "RQ-007",
       "source_id": "SRC-001",
-      "claim": "Trong ứng dụng bơm ly tâm không điều chỉnh lưu lượng, tính năng dốc dừng êm của Soft Starter triệt tiêu hiện tượng búa nước trong đường ống một cách kinh tế nhất.",
+      "claim": "Trong ứng dụng máy bơm, hiện tượng hao mòn cơ khí và áp lực đường ống chủ yếu do sóng áp suất (búa nước) khi động cơ khởi động và đặc biệt là khi dừng quá nhanh; Soft Starter cung cấp giải pháp giảm áp lực thông qua điều khiển dốc dừng êm.",
       "evidence_excerpt": "Starting up a pump is normally not a big problem electrically. The problem is the wear and tear caused by pressure waves in the pipe system created when the motor starts but especially when it stops too quickly.",
       "evidence_type": "OEM_RECOMMENDATION",
       "verification_status": "VERIFIED",
@@ -344,7 +352,7 @@
       "evidence_id": "EVD-012",
       "rq_id": "RQ-007",
       "source_id": "SRC-001",
-      "claim": "Với tải nặng có quán tính bánh đà lớn (máy nghiền, máy khuấy), nếu dùng Soft Starter bắt buộc phải chọn tăng 1 cấp công suất để tránh nhảy rơ-le nhiệt khi khởi động dài.",
+      "claim": "Đối với các ứng dụng có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), Soft Starter thường được chọn lớn hơn một cấp công suất (one size larger) so với công suất kW của động cơ.",
       "evidence_excerpt": "Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size.",
       "evidence_type": "OEM_RECOMMENDATION",
       "verification_status": "VERIFIED",
@@ -362,7 +370,7 @@
       ],
       "description": "Khác biệt trong khuyến nghị về giới hạn dòng khởi động tối thiểu của Soft Starter và nguy cơ sụt giảm mô-men làm kẹt rotor tải nặng.",
       "status": "RESOLVED",
-      "resolution": "Rockwell chỉ ra ở 150% dòng định mức mô-men chỉ còn 6%. ABB khuyến cáo tải nặng phải cài đặt >= 300%-350% hoặc chọn vượt 1 cấp công suất (oversizing), hoặc bắt buộc dùng VFD nếu cần mô-men bứt phá cao ngay từ 0 rpm."
+      "resolution": "Nếu giới hạn dòng ở mức thấp (ví dụ 150% In theo Rockwell), mô-men khởi động của Soft Starter giảm xuống chỉ còn 6% Tn. Với các tải nặng có quán tính lớn, ABB khuyến nghị chọn Soft Starter lớn hơn một cấp công suất (oversizing) hoặc người thiết kế cần đánh giá giải pháp VFD / phương pháp khởi động khác nếu tải đòi hỏi mô-men bứt phá cao ngay tại 0 rpm."
     },
     {
       "conflict_id": "CON-002",
@@ -373,8 +381,8 @@
         "SRC-004"
       ],
       "description": "Mức độ quan ngại về phát sinh sóng hài giữa Soft Starter và VFD đối với chất lượng điện lưới.",
-      "status": "RESOLVED",
-      "resolution": "Tách bạch 2 chế độ làm việc của Soft Starter: Giai đoạn tăng tốc ngắn hạn có sóng hài cục bộ (<10%), nhưng khi đóng Bypass thì triệt tiêu hoàn toàn (THD = 0%). Ngược lại, VFD phát sinh sóng hài liên tục 100% thời gian vận hành và đòi hỏi lọc sóng hài theo chuẩn IEEE Std 519-2022."
+      "status": "REVIEW_REQUIRED",
+      "resolution": "Rockwell chỉ ra ở chế độ bypass Soft Starter hầu như không phát sinh sóng hài và ABB nhận định sóng hài ít liên quan đối với softstarter trong đa số ứng dụng, trong khi VFD tạo sóng hài liên tục khi hoạt động. Tuy nhiên, chuẩn IEEE Std 519-2022 đánh giá giới hạn biến dạng tại điểm đấu nối chung (PCC) của cả hệ thống chứ không quy định trực tiếp tại cực thiết bị riêng lẻ; do đó sự cần thiết và loại bộ lọc (thụ động/tích cực) phụ thuộc vào độ ngắn mạch của trạm (Isc/IL) và tổng phụ tải phi tuyến của nhà máy, cần tính toán kiểm tra kỹ thuật cụ thể trước khi kết luận."
     }
   ]
 }

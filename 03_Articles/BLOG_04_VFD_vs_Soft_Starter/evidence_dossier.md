@@ -1,13 +1,13 @@
 # HỒ SƠ CHỨNG CỨ KỸ THUẬT & DANH MỤC NGUỒN XÁC MINH (EVIDENCE DOSSIER) — BLOG_04
 
-**Mã bài viết**: `BLOG_04`  
-**Chủ đề**: VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng  
-**Thể loại Canonical**: `BLOG-T04` (So sánh Kỹ thuật Đa chiều — Comparison)  
-**Người thực hiện**: Kỹ sư Nghiên cứu Hệ thống (Research Agent)  
-**Ngày xác thực**: 2026-09-24  
-**Tổng số nguồn tiếp nhận**: 4 (1 Tier 1, 3 Tier 2 — Tỷ lệ Tier 1+2: 100%)  
-**Ngoại lệ nguồn hẹp (Source Policy Exception)**: `NONE` (Áp dụng chính sách mặc định 4–7 nguồn)  
-**Trạng thái Kế hoạch Nghiên cứu**: `COMPLETE` (100% câu hỏi mức HIGH đạt `ANSWERED`)  
+**Mã bài viết**: `BLOG_04`<br>
+**Chủ đề**: VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng<br>
+**Thể loại Canonical**: `BLOG-T04` (So sánh Kỹ thuật Đa chiều — Comparison)<br>
+**Người thực hiện**: Kỹ sư Nghiên cứu Hệ thống (Research Agent)<br>
+**Ngày xác thực**: 2026-09-24<br>
+**Tổng số nguồn tiếp nhận**: 4 (3 Tier 1, 1 Tier 3 — Tỷ lệ Tier 1+2: 75% >= 70%)<br>
+**Ngoại lệ nguồn hẹp (Source Policy Exception)**: `NONE` (Tuân thủ chính sách mặc định 4–7 nguồn, không yêu cầu ngoại lệ)<br>
+**Trạng thái Kế hoạch Nghiên cứu**: `REVIEW_REQUIRED` (RQ-005 đạt `PARTIALLY_ANSWERED`, CON-002 trạng thái `REVIEW_REQUIRED`)
 
 ---
 
@@ -19,7 +19,7 @@
 | `RQ-002` | **HIGH** | Đặc tính định lượng của dòng khởi động cực đại và khả năng sinh mô-men khởi động (quan hệ $T \propto U^2$) của Soft Starter so với VFD và DOL? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-003`, `EVD-004` |
 | `RQ-003` | **HIGH** | Khả năng điều chỉnh và duy trì tốc độ động cơ liên tục trong quá trình làm việc của VFD so với giới hạn tốc độ cố định của Soft Starter sau khởi động? | `ANSWERED` | `SRC-001`, `SRC-003` | `EVD-005` |
 | `RQ-004` | **HIGH** | So sánh tổn hao công suất (Power losses), sinh nhiệt và hiệu suất vận hành giữa VFD (tổn hao IGBT liên tục) và Soft Starter (Bypass contactor triệt tiêu tổn hao)? | `ANSWERED` | `SRC-002`, `SRC-003` | `EVD-006`, `EVD-007` |
-| `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004` | `EVD-008`, `EVD-009` |
+| `RQ-005` | **MEDIUM** | Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức? | `PARTIALLY_ANSWERED` | `SRC-001`, `SRC-002`, `SRC-004` | `EVD-008`, `EVD-009` |
 | `RQ-006` | **MEDIUM** | So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất? | `ANSWERED` | `SRC-002` | `EVD-010` |
 | `RQ-007` | **HIGH** | Ma trận hướng dẫn và tiêu chí lựa chọn kỹ thuật giữa VFD và Soft Starter cho các nhóm phụ tải công nghiệp điển hình (Bơm, Quạt, Băng tải, Máy nghiền)? | `ANSWERED` | `SRC-001`, `SRC-002`, `SRC-003` | `EVD-011`, `EVD-012` |
 
@@ -29,9 +29,9 @@
 
 | Source ID | Tên tài liệu / Tiêu chuẩn / Tác giả | Loại hình | Tier | Canonical URL | Retrieval URL | Trạng thái Mạng | Content ID | Claim Ver. | Locator Status | Bộ định vị kiểm chứng (Locators) |
 |:---:|:---|:---|:---:|:---|:---|:---:|:---:|:---:|:---:|:---|
-| `SRC-001` | *Softstarter Handbook* (ABB AB, Cewe-Control, Doc ID: 1SFC132060M0201) | `MANUAL` | Tier 2 | [ABB Library](https://library.abb.com/d/1SFC132060M0201) | [Direct PDF](https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. Different starting methods, pp. 12-20; Ch. Applications, pp. 26-38; Ch. Harmonics, p. 68 |
-| `SRC-002` | *When to use a Soft Starter or an AC Variable Frequency Drive* (Rockwell Automation, Pub. 150-WP007A-EN-P) | `TECH_REPORT` | Tier 2 | [Rockwell Literature](https://rok.auto/literature) | [Direct PDF](https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1, p. 6; Bypass, p. 7; Harmonics, p. 12; Initial Cost & Size, pp. 15-16; Maintenance, p. 17 |
-| `SRC-003` | *Soft starters vs. VFDs: Which one is right for your conveyor motor application?* (Mark Duncan, Schneider Electric) | `WEB_ARTICLE` | Tier 2 | [Schneider Blog](https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | [Schneider Article](https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | `REDIRECTED_OK` | `true` | `true` | `LOCATOR_VERIFIED` | Sections: Benefits, Efficiency comparisons, Harmonics, Application FAQ |
+| `SRC-001` | *Softstarter Handbook* (ABB AB, Cewe-Control, Doc ID: 1SFC132060M0201) | `MANUAL` | Tier 1 | [ABB Library](https://library.abb.com/d/1SFC132060M0201) | [Direct PDF](https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Ch. Different starting methods, pp. 12-20; Ch. Applications, pp. 26-38; Ch. Harmonics, p. 68 |
+| `SRC-002` | *When to use a Soft Starter or an AC Variable Frequency Drive* (Rockwell Automation, Pub. 150-WP007A-EN-P) | `TECH_REPORT` | Tier 1 | [Rockwell Literature](https://rok.auto/literature) | [Direct PDF](https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1, p. 6; Bypass, p. 7; Harmonics, p. 12; Initial Cost & Size, pp. 15-16; Maintenance, p. 17 |
+| `SRC-003` | *Soft starters vs. VFDs: Which one is right for your conveyor motor application?* (Mark Duncan, Schneider Electric) | `WEB_ARTICLE` | Tier 3 | [Schneider Blog](https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | [Schneider Article](https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/) | `REDIRECTED_OK` | `true` | `true` | `LOCATOR_VERIFIED` | Sections: Benefits, Efficiency comparisons, Harmonics, Application FAQ |
 | `SRC-004` | *IEEE Standard for Harmonic Control in Electric Power Systems* (IEEE Std 519-2022) | `STANDARD` | Tier 1 | [IEEE Standards](https://standards.ieee.org/ieee/519/10540/) | [IEEE Xplore](https://ieeexplore.ieee.org/document/9848440) | `OK` | `true` | `true` | `LOCATOR_VERIFIED` | Table 1: Voltage Distortion Limits; Table 2: Current Distortion Limits, p. 12 |
 
 ---
@@ -67,99 +67,99 @@
 
 ### `EVD-004`: Khả năng sinh mô-men ở tốc độ không (Zero Speed Torque)
 - **Câu hỏi giải quyết**: `RQ-002`, `RQ-007`
-- **Nguồn chứng minh**: `SRC-003` (*Soft starters vs. VFDs*, Schneider Electric)
+- **Nguồn chứng minh**: `SRC-003` (*Soft starters vs. VFDs*, Schneider Electric, Tier 3)
 - **Vị trí định vị**: Section: *Frequently asked questions: application considerations*
 - **Trích dẫn gốc**:  
   > *"Question: Does the application need full torque at zero speed? Answer: An AC Drive can provide full torque at zero speed where a soft starter cannot."*
-- **Ý nghĩa kỹ thuật**: Nhờ khả năng duy trì từ thông cực đại và điều khiển véc-tơ độc lập giữa dòng tạo từ và dòng tạo mô-men, VFD có thể cung cấp $100\% - 150\%$ mô-men định mức ngay ở $0\text{ rpm}$ mà chỉ tiêu thụ dòng điện xấp xỉ dòng định mức ($1.0 - 1.2\,I_n$). Soft Starter hoàn toàn không thể làm được điều này.
+- **Ý nghĩa kỹ thuật**: Biến tần (AC Drive) có khả năng cung cấp đầy đủ mô-men (full torque) ở tốc độ zero speed trong các ứng dụng công nghiệp đòi hỏi mô-men bứt phá tải tại chỗ, trong khi khởi động mềm (Soft Starter) chỉ điều khiển giảm áp điện áp xoay chiều nên không thể duy trì full torque tại zero speed. (Lưu ý: Không suy diễn vượt nguồn về các tỷ lệ phần trăm cụ thể).
 
 ### `EVD-005`: Giới hạn điều khiển tốc độ ổn định của Khởi động mềm
 - **Câu hỏi giải quyết**: `RQ-003`
-- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB)
+- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB, Tier 1)
 - **Vị trí định vị**: Chương "Different starting methods", Trang in: 17, Trang PDF: 23 (`document_page: 17`, `pdf_page_index: 23`)
 - **Trích dẫn gốc**:  
   > *"In many applications it is required to continuously regulate the speed of the motor, and a drive is then a very good solution. However, in many applications a drive is used only for starting and stopping the motor, even though there is no need for continuous speed regulation. This will create an unnecessarily expensive solution if comparing with, for instance a softstarter."*
-- **Ý nghĩa kỹ thuật**: Khởi động mềm chỉ kiểm soát giai đoạn quá độ. Sau khi tăng tốc xong, động cơ làm việc ở tốc độ cố định ăn khớp với lưới điện. Nếu quy trình công nghệ đòi hỏi thay đổi tốc độ để điều tiết lưu lượng bơm/quạt thì bắt buộc phải dùng VFD.
+- **Ý nghĩa kỹ thuật**: Khởi động mềm chỉ kiểm soát giai đoạn quá độ khởi động và dừng. Sau khi tăng tốc xong, động cơ làm việc ở tốc độ cố định đồng bộ/trượt với tần số lưới điện. Nếu quy trình công nghệ đòi hỏi liên tục thay đổi tốc độ thì biến tần là giải pháp kỹ thuật phù hợp.
 
 ### `EVD-006`: Hiệu suất vận hành và tổn hao nhiệt qua Bypass Contactor
 - **Câu hỏi giải quyết**: `RQ-004`
-- **Nguồn chứng minh**: `SRC-003` (*Soft starters vs. VFDs*, Schneider Electric)
+- **Nguồn chứng minh**: `SRC-003` (*Soft starters vs. VFDs*, Schneider Electric, Tier 3)
 - **Vị trí định vị**: Section: *Energy efficiency comparisons of soft starters vs. VFDs*
 - **Trích dẫn gốc**:  
   > *"When operating at full speed and adequately loaded, soft starters are more efficient than VFDs. With an integrated bypass, current in the soft starter is carried across the contactor, so it runs cooler, as no active solid-state components are generating heat. VFDs: Active components such as insulated-gate bipolar transistors (IGBTs) stay on during run and stop functions... inherently are hotter during operation."*
-- **Ý nghĩa kỹ thuật**: Ở tốc độ định mức, Soft Starter đóng tiếp điểm bypass cơ khí, triệt tiêu tổn hao sụt áp bán dẫn ($\approx 1.2\text{V} - 1.5\text{V}$ trên mỗi thyristor), đạt hiệu suất $>99.5\%$, tủ điện hầu như không sinh nhiệt. Ngược lại, 6 van IGBT của VFD liên tục đóng cắt tần số cao ($2 - 16\text{ kHz}$) gây tổn hao chuyển mạch và dẫn liên tục, hiệu suất đạt khoảng $95\% - 97\%$, tỏa nhiệt lớn bắt buộc phải giải nhiệt cưỡng bức.
+- **Ý nghĩa kỹ thuật**: Khi vận hành ở tốc độ định mức đầy tải có tích hợp bypass contactor, dòng điện chạy qua tiếp điểm tiếp xúc thay vì van bán dẫn, giúp Soft Starter đạt hiệu suất cao hơn và chạy mát hơn VFD vì không có linh kiện bán dẫn công suất chủ động sinh nhiệt liên tục.
 
 ### `EVD-007`: Cấu hình tiếp điểm Bypass AC-1 bên trong Soft Starter
 - **Câu hỏi giải quyết**: `RQ-004`
-- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation)
+- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation, Tier 1)
 - **Vị trí định vị**: Section: *Bypass Configuration*, Trang in: 7, Trang PDF: 7 (`document_page: 7`, `pdf_page_index: 7`)
 - **Trích dẫn gốc**:  
   > *"The internal bypass is typically rated AC-1, not AC-3, because the bypass contactor never makes or breaks current. If an external bypass is used for emergency run... an AC-3 utilization rating is needed."*
-- **Ý nghĩa kỹ thuật**: Giải thích tại sao kích thước của contactor bypass tích hợp trong Soft Starter lại cực kỳ nhỏ gọn: nó chỉ đóng vào khi điện áp giữa hai đầu thyristor đã về xấp xỉ 0V và mở ra trước khi thyristor dập tắt dòng điện, không bao giờ phải chịu hồ quang đóng cắt dòng cảm ứng ($AC-3$).
+- **Ý nghĩa kỹ thuật**: Contactor bypass tích hợp trong Soft Starter chỉ cần định mức AC-1 vì nó không bao giờ phải đóng hoặc cắt dòng hồ quang tải cảm ứng, giúp tối ưu hóa kích thước và chi phí linh kiện so với contactor ngoài dùng cho chạy khẩn cấp (đòi hỏi AC-3).
 
 ### `EVD-008`: Đặc tính sóng hài của Soft Starter trong chu kỳ vận hành
 - **Câu hỏi giải quyết**: `RQ-005`
-- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation)
+- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation, Tier 1)
 - **Vị trí định vị**: Section: *Harmonics, Wiring Methods and Installation Considerations*, Trang in: 12, Trang PDF: 12 (`document_page: 12`, `pdf_page_index: 12`)
 - **Trích dẫn gốc**:  
   > *"Soft starter harmonics are typically less than 10% in starting or stopping modes when SCRs are turned on and provide partial voltage amplitudes, producing partial sine waves. With the motor at full speed, the SCRs are fully conducting, there are virtually no harmonics. In bypass condition, there are almost no harmonics generated."*
-- **Ý nghĩa kỹ thuật**: Sóng hài của Soft Starter mang tính chất cục bộ, ngắn hạn ($< 10\%$ trong $5 - 30\text{ giây}$). Khi bypass được kích hoạt, THD dòng điện và điện áp hoàn toàn triệt tiêu ($\text{THD} = 0\%$).
+- **Ý nghĩa kỹ thuật**: Sóng hài của Soft Starter thường dưới 10% trong chế độ khởi động hoặc dừng khi SCR dẫn; ở trạng thái bypass, hầu như không có sóng hài nào phát sinh (almost no harmonics generated). Không khẳng định tuyệt đối THD = 0% để bảo đảm độ chính xác học thuật.
 
 ### `EVD-009`: Chuẩn mực giới hạn méo dòng sóng hài theo IEEE Std 519-2022
 - **Câu hỏi giải quyết**: `RQ-005`
-- **Nguồn chứng minh**: `SRC-004` (*IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE)
+- **Nguồn chứng minh**: `SRC-004` (*IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE, Tier 1)
 - **Vị trí định vị**: Table 2: *Current Distortion Limits for Systems Rated 120 V Through 69 kV*, Trang in: 12, Trang PDF: 16
 - **Số liệu kỹ thuật gốc**:  
-  - Với tỷ số ngắn mạch $\frac{I_{sc}}{I_L} < 20$, độ méo tổng nhu cầu dòng điện $\text{TDD} \le 5.0\%$.
-- **Ý nghĩa kỹ thuật**: VFD 6 xung tiêu chuẩn thường phát sinh sóng hài bậc 5, bậc 7 với $\text{THD-I}$ lên tới $35\% - 45\%$, vi phạm nghiêm trọng giới hạn $5\%$ của IEEE 519 tại điểm đấu nối chung PCC nếu không trang bị thêm cuộn kháng AC/DC hoặc bộ lọc tích cực AHF.
+  > *"Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV."*
+- **Ý nghĩa kỹ thuật**: Theo IEEE Std 519-2022 (Bảng 2), giới hạn méo dòng tổng TDD tại điểm đấu nối chung (PCC) là 5.0% đối với tỷ số ngắn mạch $I_{sc}/I_L < 20$ cho các hệ thống điện có điện áp từ 120 V đến 69 kV. Tiêu chuẩn đánh giá tại điểm đấu nối chung PCC của toàn trạm chứ không phải tại cực của từng thiết bị riêng lẻ; nhu cầu lắp đặt bộ lọc hài (thụ động hoặc tích cực) phụ thuộc vào độ ngắn mạch của trạm và mức độ phụ tải phi tuyến tổng thể.
 
 ### `EVD-010`: So sánh chi phí đầu tư (CAPEX), kích thước tủ điện và bảo dưỡng
 - **Câu hỏi giải quyết**: `RQ-006`
-- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation)
+- **Nguồn chứng minh**: `SRC-002` (*When to use a Soft Starter or an AC VFD*, Rockwell Automation, Tier 1)
 - **Vị trí định vị**: Section: *Initial Cost & Maintenance*, Trang in: 15-17, Trang PDF: 15-17
 - **Trích dẫn gốc**:  
   > *"At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive... on a drive operating 24 hours per day, in year 3, you should replace cooling fans and inspect DC bus capacitors."*
-- **Ý nghĩa kỹ thuật**: Ở công suất nhỏ ($< 7.5\text{ kW}$), chênh lệch giá thành không quá lớn. Nhưng ở dải công suất lớn ($> 55\text{ kW}$ đến hàng trăm kW), chi phí VFD cao gấp $2.5 - 4$ lần Soft Starter. Đồng thời, VFD chứa hệ thống quạt làm mát cơ khí và khối tụ hóa DC Bus có tuổi thọ giới hạn ($5 - 7\text{ năm}$), đòi hỏi chi phí bảo dưỡng định kỳ cao hơn cấu trúc bán dẫn tĩnh thuần túy của Soft Starter.
+- **Ý nghĩa kỹ thuật**: Ở dải dòng và công suất thấp, chi phí ban đầu giữa VFD và Soft Starter là tương đương, nhưng khi dòng điện và công suất tăng lên thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter. Ngoài ra, VFD yêu cầu quy trình bảo trì định kỳ nghiêm ngặt hơn như thay quạt làm mát ở năm thứ 3 và kiểm tra tụ DC bus.
 
 ### `EVD-011`: Triệt tiêu hiện tượng búa nước trong ứng dụng bơm ly tâm
 - **Câu hỏi giải quyết**: `RQ-007`
-- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB)
+- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB, Tier 1)
 - **Vị trí định vị**: Chương "Different applications - Centrifugal pump", Trang in: 29, Trang PDF: 35 (`document_page: 29`, `pdf_page_index: 35`)
 - **Trích dẫn gốc**:  
   > *"Starting up a pump is normally not a big problem electrically. The problem is the wear and tear caused by pressure waves in the pipe system created when the motor starts but especially when it stops too quickly."*
-- **Ý nghĩa kỹ thuật**: Bơm ly tâm không cần điều chỉnh lưu lượng thì Soft Starter là phương án kinh tế hoàn hảo. Chức năng giảm tốc theo đường dốc mô-men (torque deceleration ramp) của Soft Starter kéo dài thời gian dừng bơm từ $5 - 15\text{ giây}$, giúp van một chiều đóng êm và triệt tiêu hoàn toàn áp lực búa nước mà không cần lắp biến tần.
+- **Ý nghĩa kỹ thuật**: Trong ứng dụng máy bơm, hiện tượng hao mòn cơ khí và áp lực đường ống chủ yếu do sóng áp suất (búa nước) khi động cơ khởi động và đặc biệt là khi dừng quá nhanh; Soft Starter cung cấp giải pháp giảm áp lực đường ống thông qua tính năng điều khiển dốc dừng êm.
 
 ### `EVD-012`: Nguyên tắc định cỡ thiết bị cho tải nặng, quán tính lớn (Crusher/Mill)
 - **Câu hỏi giải quyết**: `RQ-007`
-- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB)
+- **Nguồn chứng minh**: `SRC-001` (*Softstarter Handbook*, ABB, Tier 1)
 - **Vị trí định vị**: Chương "Different applications - Crusher and Mill", Trang in: 37, Trang PDF: 43 (`document_page: 37`, `pdf_page_index: 43`)
 - **Trích dẫn gốc**:  
   > *"Crushers and mills usually have constant load curves. These applications can have a very big flywheel and can be a very heavy duty start... Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size."*
-- **Ý nghĩa kỹ thuật**: Các tải khởi động nặng (Heavy-duty start) với mô-men quán tính bánh đà lớn đòi hỏi thời gian khởi động kéo dài ($> 20 - 40\text{ giây}$). Khi dùng Soft Starter, bắt buộc phải chọn vượt 1 cấp công suất (oversizing) để tránh nhảy rơ-le nhiệt thyristor. Nếu tải yêu cầu khởi động khi buồng nghiền đầy tải (stalled load), chỉ có VFD mới đáp ứng được mô-men khởi động.
+- **Ý nghĩa kỹ thuật**: Đối với các ứng dụng có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), Soft Starter thường được chọn lớn hơn một cấp công suất (one size larger) so với công suất kW của động cơ để đáp ứng điều kiện khởi động nặng.
 
 ---
 
 ## 4. PHÂN TÍCH BẤT ĐỒNG & SẮC THÁI KỸ THUẬT (TECHNICAL NUANCE & CONFLICT ANALYSIS)
 
 ### `CON-001`: Giới hạn dòng khởi động tối thiểu của Soft Starter và nguy cơ kẹt Rotor
+* **Trạng thái**: `RESOLVED`
 * **Các bên liên quan**: Rockwell Automation (`SRC-002`, Table 1, p. 6) đối chiếu với ABB (`SRC-001`, p. 20 & p. 37).
 * **Nội dung bất đồng/sắc thái**:
-  - Rockwell Automation công bố số liệu đo đạc thực nghiệm: khi giảm giới hạn dòng khởi động của Soft Starter xuống $150\%$, mô-men khởi động chỉ còn $6\%$ mô-men định mức.
-  - ABB khuyến cáo đối với các tải nặng (băng tải dài đầy tải, máy nghiền, máy khuấy), việc cài đặt dòng khởi động thấp hơn $300\% - 350\%$ sẽ khiến động cơ không thể vượt qua mô-men cản ma sát tĩnh ban đầu ($T_{breakaway}$), dẫn đến kẹt rotor kéo dài và gây quá nhiệt phá hỏng cuộn dây động cơ nếu rơ-le nhiệt không tác động kịp thời.
+  - Rockwell Automation công bố số liệu thực nghiệm: khi giảm giới hạn dòng khởi động của Soft Starter xuống $150\%$, mô-men khởi động sụt giảm xuống chỉ còn $6\%$ mô-men định mức.
+  - ABB khuyến cáo đối với các tải nặng có quán tính lớn (băng tải tải nặng, máy nghiền, máy khuấy), việc cài đặt dòng khởi động quá thấp sẽ khiến động cơ không thể sinh đủ mô-men bứt phá ma sát tĩnh ban đầu ($T_{breakaway}$), có thể gây kẹt rotor và phát nóng.
 * **Định hướng xử lý cho Drafting Agent**:
-  - Không được đưa ra nhận định chung chung rằng "Khởi động mềm luôn có thể giảm dòng khởi động xuống $1.5 - 2$ lần mà vẫn khởi động êm mọi loại tải".
-  - Bắt buộc phải nhấn mạnh mối quan hệ phi tuyến $T \approx \left(\frac{U}{U_n}\right)^2 \cdot T_n$. Phân tách rõ: Với tải mô-men biến thiên theo hàm bậc 2 (Bơm ly tâm, Quạt gió), dòng khởi động có thể cài đặt ở $200\% - 250\%$. Nhưng với tải mô-men không đổi hoặc tải nặng (Băng tải, Máy nghiền), dòng khởi động bắt buộc phải từ $300\% - 400\%$ hoặc kích hoạt tính năng Kick-start (xung áp tức thời). Nếu lưới điện quá yếu không thể cấp quá $150\% - 200\% I_n$, giải pháp kỹ thuật duy nhất là chuyển sang dùng VFD.
+  - Không được đưa ra nhận định chung chung rằng "Khởi động mềm luôn có thể giảm dòng khởi động xuống mức rất thấp mà vẫn khởi động êm mọi loại tải".
+  - Nhấn mạnh mối quan hệ phi tuyến $T \approx \left(\frac{U}{U_n}\right)^2 \cdot T_n$. Với tải nặng hoặc tải quán tính lớn, cần đánh giá chọn Soft Starter lớn hơn một cấp công suất (oversizing) hoặc chuyển sang đánh giá VFD / phương pháp truyền động khác nếu tải đòi hỏi mô-men bứt phá cao ngay tại tốc độ $0\text{ rpm}$.
 
 ### `CON-002`: Đánh giá mức độ phát sinh sóng hài và sự cần thiết của bộ lọc hài
-* **Các bên liên quan**: ABB (`SRC-001`, p. 68) đối chiếu với Rockwell Automation (`SRC-002`, p. 12) và IEEE Std 519-2022 (`SRC-004`).
+* **Trạng thái**: `REVIEW_REQUIRED`
+* **Các bên liên quan**: ABB (`SRC-001`, p. 68), Rockwell Automation (`SRC-002`, p. 12), và IEEE Std 519-2022 (`SRC-004`, Table 2).
 * **Nội dung bất đồng/sắc thái**:
-  - ABB cho rằng vấn đề sóng hài "gần như không liên quan đối với khởi động mềm" do thời gian chạy quá độ ngắn và thiết bị đạt chuẩn phát xạ EMC.
-  - Rockwell Automation và IEEE Std 519 chỉ rõ: Trong suốt quá trình tăng tốc ($5 - 30\text{ giây}$), các thyristor cắt xén sóng sin tạo ra méo hài điện áp và dòng điện cục bộ ($\text{THD} \approx 10\%$). Nếu trên cùng thanh cái phân phối có các thiết bị đo lường điều khiển nhạy cảm (PLC, cảm biến chính xác, thiết bị y tế/phòng lab), xung cắt này vẫn có thể gây nhiễu nếu nguồn có tỷ số ngắn mạch thấp.
+  - Rockwell chỉ ra rằng ở chế độ bypass Soft Starter hầu như không phát sinh sóng hài, và ABB nhận định sóng hài ít liên quan đối với softstarter trong đa số ứng dụng. Trong khi đó, VFD tạo sóng hài liên tục trong suốt quá trình hoạt động.
+  - Tuy nhiên, chuẩn IEEE Std 519-2022 đánh giá giới hạn biến dạng dòng điện (TDD) tại điểm đấu nối chung (PCC) của toàn hệ thống/nhà máy, chứ không áp đặt trực tiếp lên từng thiết bị riêng lẻ. Do đó, sự cần thiết và loại bộ lọc sóng hài (cuộn kháng, lọc thụ động, lọc tích cực) phụ thuộc vào tỷ số ngắn mạch của trạm $I_{sc}/I_L$ và tổng phụ tải phi tuyến, không thể khẳng định mọi VFD đều vi phạm hoặc bắt buộc phải gắn lọc ngoại vi.
 * **Định hướng xử lý cho Drafting Agent**:
-  - Phân tách rạch ròi 2 trạng thái làm việc của Soft Starter:
-    1. *Giai đoạn tăng tốc/giảm tốc*: Có phát sinh sóng hài ngắn hạn ($\text{THD} < 10\%$), cần lưu ý khoảng cách cáp tín hiệu nếu thanh cái yếu.
-    2. *Giai đoạn làm việc ổn định qua Bypass*: Hoàn toàn không có sóng hài ($\text{THD} = 0\%$).
-  - Đối chiếu trực tiếp với VFD: VFD phát sinh sóng hài liên tục $100\%$ thời gian vận hành ($\text{THD-I}$ từ $35\% - 45\%$), bắt buộc phải đầu tư giải pháp xử lý sóng hài theo chuẩn IEEE Std 519-2022.
+  - Phân tách 2 trạng thái của Soft Starter: giai đoạn tăng tốc có sóng hài ngắn hạn ($< 10\%$), giai đoạn bypass hầu như không phát sinh sóng hài.
+  - Trình bày IEEE Std 519-2022 như chuẩn mực đánh giá tại PCC. Không khẳng định số liệu suy diễn chưa kiểm chứng (như 35%-45% THD-I hay THD = 0%). Chờ Technical Review Gate thẩm định thêm trước khi kết luận về yêu cầu bộ lọc.
 
 ---
 
@@ -169,10 +169,10 @@ Thực thi theo quy chuẩn Cổng tiếp nhận ứng viên nguồn (Source Acc
 
 | Mã ứng viên | Nhà xuất bản / Tiêu đề | URL truy xuất | Kết quả Thẩm định | Mã lý do loại bỏ (nếu rớt) | Ghi chú kỹ thuật |
 |:---:|:---|:---|:---:|:---:|:---|
-| `CAN-001` | ABB — *Softstarter Handbook* | Direct PDF (library.e.abb.com) | **ACCEPTED** $\rightarrow$ `SRC-001` | - | Nguồn sơ cấp Tier 2 hoàn hảo, nội dung đối chiếu trực tiếp từ file PDF 92 trang. |
-| `CAN-002` | Rockwell Automation — *When to use Soft Starter vs VFD* | Direct PDF (literature.rockwellautomation.com) | **ACCEPTED** $\rightarrow$ `SRC-002` | - | White Paper chuyên đề chuẩn mực, có bảng số liệu thực nghiệm dòng - mô-men định lượng. |
-| `CAN-003` | Schneider Electric — *Soft starters vs. VFDs Conveyor Guide* | Direct URL (blog.se.com) | **ACCEPTED** $\rightarrow$ `SRC-003` | - | Bài viết kỹ thuật của chuyên gia 37 năm kinh nghiệm Mark Duncan, phân tích sâu tổn hao bypass. |
-| `CAN-004` | IEEE — *IEEE Std 519-2022 Harmonic Control* | Canonical / IEEE Xplore | **ACCEPTED** $\rightarrow$ `SRC-004` | - | Tiêu chuẩn quốc tế Tier 1 tối cao về giới hạn sóng hài điện áp và dòng điện. |
+| `CAN-001` | ABB — *Softstarter Handbook* | Direct PDF (library.e.abb.com) | **ACCEPTED** $\rightarrow$ `SRC-001` | - | Nguồn sơ cấp Tier 1 OEM Manual, đối chiếu trực tiếp từ file PDF chính thức của ABB. |
+| `CAN-002` | Rockwell Automation — *When to use Soft Starter vs VFD* | Direct PDF (literature.rockwellautomation.com) | **ACCEPTED** $\rightarrow$ `SRC-002` | - | Báo cáo kỹ thuật Tier 1 OEM White Paper chuẩn mực, có bảng số liệu thực nghiệm dòng - mô-men định lượng. |
+| `CAN-003` | Schneider Electric — *Soft starters vs. VFDs Conveyor Guide* | Direct URL (blog.se.com) | **ACCEPTED** $\rightarrow$ `SRC-003` | - | Bài viết chuyên gia Tier 3 OEM Blog, phân tích tổn hao bypass và zero speed torque (đạt điều kiện nguồn bổ trợ thực hành). |
+| `CAN-004` | IEEE — *IEEE Std 519-2022 Harmonic Control* | Canonical / IEEE Xplore | **ACCEPTED** $\rightarrow$ `SRC-004` | - | Tiêu chuẩn quốc tế Tier 1 về giới hạn méo dòng sóng hài tại PCC. |
 | `CAN-005` | Siemens — *SIRIUS 3RW44 Soft Starters Manual* | SIOS Portal Entry 21772518 | **REJECTED** | `REJECTED_PAYWALL_OR_BOT_BLOCK` | Máy chủ Siemens kích hoạt tường lửa chống bot (WAF) trả về HTTP 403 Forbidden trên crawler tự động. |
 | `CAN-006` | Danfoss — *VLT / MCD Design Guide* | files.danfoss.com/MG90N502.pdf | **REJECTED** | `REJECTED_DEAD_LINK` | Đường dẫn máy chủ cũ trả về HTTP 404 Not Found (link chết), vi phạm ADR-015. |
 | `CAN-007` | Chint Global — *VFD vs Soft Starter Guide* | chintglobal.com blog | **REJECTED** | `REJECTED_TIER3_UNQUALIFIED` | Bài viết tổng hợp thương mại cấp 3 (Tier 3), không có số liệu kỹ thuật hoặc công thức gốc kiểm chứng. |
@@ -183,8 +183,8 @@ Thực thi theo quy chuẩn Cổng tiếp nhận ứng viên nguồn (Source Acc
 
 - [x] Sử dụng $100\%$ Stable Source ID (`SRC-001` đến `SRC-004`), tuyệt đối không cấp phát số trích dẫn IEEE `[n]` ở giai đoạn này.
 - [x] Tách biệt độc lập giữa kiểm tra mạng (`HTTP 200` / `REDIRECTED_OK`) và kiểm tra xác thực nội dung (`claim_verified: true`, `content_identity_verified: true`).
-- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB 92 trang, PDF Rockwell 22 trang, bài báo kỹ thuật Schneider Electric).
-- [x] Toàn bộ $7/7$ câu hỏi nghiên cứu (`RQ-001` đến `RQ-007`) đều đạt trạng thái `ANSWERED`.
-- [x] Đã phát hiện và lập biên bản phân tích $2$ bất đồng kỹ thuật chuyên sâu (`CON-001`, `CON-002`) để định hướng cho Drafting Agent.
+- [x] Áp dụng nghiêm ngặt nguyên tắc **"No Snippet Evidence Rule"**: $100\%$ bằng chứng kỹ thuật được đọc và trích xuất trực tiếp từ văn bản gốc đã tải về (PDF ABB, PDF Rockwell, IEEE 519-2022, bài phân tích Schneider Electric).
+- [x] Tỷ lệ nguồn Tier 1 + Tier 2 đạt $75\%$ (3/4 nguồn Tier 1, 1/4 nguồn Tier 3), thỏa mãn mục tiêu $\ge 70\%$.
+- [x] Đã phát hiện và lập biên bản phân tích $2$ bất đồng/sắc thái kỹ thuật (`CON-001: RESOLVED`, `CON-002: REVIEW_REQUIRED`) để định hướng cho Drafting Agent và Technical Review Gate.
 - [x] Đã xuất bản song song và đồng bộ 4 tệp cốt lõi: `article_status.json`, `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md` bên trong thư mục `03_Articles/BLOG_04_VFD_vs_Soft_Starter/`.
 - [x] **DỪNG KIỂM SOÁT TẠI CỬA ẢI NGHIÊN CỨU**: Tuyệt đối không tự ý viết bản thảo (`draft_review_package.md`), không tạo bảng đặc tả ảnh (`image_specifications.md`) và không sinh mã HTML cho đến khi có lệnh điều phối tiếp theo.

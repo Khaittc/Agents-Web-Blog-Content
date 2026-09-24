@@ -275,6 +275,119 @@ def validate_two_gate_pipeline():
 
 
 # -------------------------------------------------------------
+# Gate 8: Canonical Article Statuses
+# -------------------------------------------------------------
+
+CANONICAL_ARTICLE_STATUSES = {
+    "DRAFT",
+    "RESEARCHED",
+    "TECH_REVIEW",
+    "TECH_APPROVED",
+    "VISUAL_READY",
+    "PRESENTATION_REVIEW",
+    "IN_REVIEW",
+    "REVISION_REQUESTED",
+    "APPROVED",
+    "PUBLISHED",
+}
+
+def validate_canonical_article_statuses():
+    errors = []
+    print("[Gate 8] Validating Canonical Article Statuses across 03_Articles...")
+
+    article_dirs = sorted((ROOT_DIR / "03_Articles").glob("BLOG_*"))
+    for ad in article_dirs:
+        status_file = ad / "article_status.json"
+        if not status_file.is_file():
+            continue
+        try:
+            data = json.loads(status_file.read_text(encoding="utf-8-sig"))
+        except Exception as e:
+            errors.append(f"{status_file.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+            continue
+
+        status = data.get("status")
+        if not status:
+            errors.append(f"{status_file.relative_to(ROOT_DIR)} missing 'status' field")
+        elif status not in CANONICAL_ARTICLE_STATUSES:
+            errors.append(
+                f"{status_file.relative_to(ROOT_DIR)} has invalid non-canonical status '{status}'. "
+                f"Must be one of: {sorted(CANONICAL_ARTICLE_STATUSES)}"
+            )
+
+    if errors:
+        for err in errors:
+            print(f"  [FAIL] {err}", file=sys.stderr)
+        return False
+
+    print("  [PASS] Canonical article statuses verified across all articles.")
+    return True
+
+
+# -------------------------------------------------------------
+# Gate 9: Source Exception Consistency
+# -------------------------------------------------------------
+
+def validate_source_exception_consistency():
+    errors = []
+    print("[Gate 9] Validating Source Policy Exception Consistency...")
+
+    evidence_files = sorted((ROOT_DIR / "03_Articles").glob("BLOG_*/evidence.json"))
+    for ef in evidence_files:
+        try:
+            data = json.loads(ef.read_text(encoding="utf-8-sig"))
+        except Exception as e:
+            errors.append(f"{ef.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+            continue
+
+        spe = data.get("source_policy_exception")
+        if not spe or not isinstance(spe, dict):
+            errors.append(f"{ef.relative_to(ROOT_DIR)} missing 'source_policy_exception' object")
+            continue
+
+        is_exception = spe.get("source_policy_exception")
+        exc_type = spe.get("exception_type")
+        approved = spe.get("approved_by_review_gate")
+        verdict = spe.get("review_verdict")
+
+        if is_exception is False:
+            if exc_type != "NONE":
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is False but exception_type is '{exc_type}' (expected 'NONE')"
+                )
+            if approved is not False:
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is False but approved_by_review_gate is {approved} (expected False)"
+                )
+            if verdict != "NOT_APPLICABLE":
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is False but review_verdict is '{verdict}' (expected 'NOT_APPLICABLE')"
+                )
+        elif is_exception is True:
+            if exc_type == "NONE":
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is True but exception_type is 'NONE'"
+                )
+            if verdict not in ("PENDING", "APPROVE_EXCEPTION", "REJECT_EXCEPTION"):
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is True but review_verdict '{verdict}' is invalid"
+                )
+            reason = spe.get("reason", "").strip()
+            if not reason:
+                errors.append(
+                    f"{ef.relative_to(ROOT_DIR)}: source_policy_exception is True but reason is empty"
+                )
+
+    if errors:
+        for err in errors:
+            print(f"  [FAIL] {err}", file=sys.stderr)
+        return False
+
+    print("  [PASS] Source policy exception consistency verified.")
+    return True
+
+
+# -------------------------------------------------------------
 # Main Runner
 # -------------------------------------------------------------
 
@@ -289,6 +402,8 @@ def main():
         validate_stable_source_id_policy(),
         validate_human_only_publishing(),
         validate_two_gate_pipeline(),
+        validate_canonical_article_statuses(),
+        validate_source_exception_consistency(),
     ]
 
     print("=" * 70)

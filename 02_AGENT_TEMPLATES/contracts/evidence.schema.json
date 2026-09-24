@@ -59,7 +59,8 @@
           "enum": [
             "PENDING",
             "APPROVE_EXCEPTION",
-            "REJECT_EXCEPTION"
+            "REJECT_EXCEPTION",
+            "NOT_APPLICABLE"
           ]
         },
         "review_notes": {
