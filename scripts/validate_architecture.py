@@ -23,6 +23,7 @@ CONTRACTS_DIR = ROOT_DIR / "02_AGENT_TEMPLATES" / "contracts"
 
 REQUIRED_CONTRACTS = [
     "article_brief.schema.json",
+    "research_plan.schema.json",
     "evidence.schema.json",
     "claim_source_map.schema.json",
     "audit.schema.json",

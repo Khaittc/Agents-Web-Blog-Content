@@ -1,0 +1,128 @@
+{
+  "article_id": "BLOG_04",
+  "topic": "VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng",
+  "blog_type": "BLOG-T04",
+  "research_objective": "Thu thập, phân tích và thẩm định các chứng cứ kỹ thuật từ các nhà chế tạo hàng đầu (ABB, Rockwell Automation, Schneider Electric) và tiêu chuẩn IEEE để so sánh toàn diện giữa Biến tần (VFD) và Khởi động mềm (Soft Starter) về nguyên lý biến đổi điện áp/tần số, đặc tính dòng và mô-men khởi động, khả năng điều khiển tốc độ, hiệu suất - tổn hao năng lượng, sóng hài và tiêu chí chọn lựa thiết bị theo phụ tải công nghiệp.",
+  "research_questions": [
+    {
+      "rq_id": "RQ-001",
+      "question": "Nguyên lý biến đổi điện năng và cấu trúc linh kiện công suất giữa VFD (AC-DC-AC, PWM với IGBT) và Soft Starter (điều khiển góc mở pha SCR/Thyristor phản song song) khác nhau như thế nào?",
+      "priority": "HIGH",
+      "preferred_source_types": [
+        "MANUAL",
+        "TECH_REPORT",
+        "BOOK"
+      ],
+      "preferred_publishers": [
+        "ABB",
+        "Rockwell Automation",
+        "Schneider Electric"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-002",
+      "question": "Đặc tính định lượng của dòng khởi động cực đại (Inrush current) và khả năng sinh mô-men khởi động (Starting torque, quan hệ T tỉ lệ thuận với U^2) của Soft Starter so với VFD và khởi động trực tiếp DOL?",
+      "priority": "HIGH",
+      "preferred_source_types": [
+        "MANUAL",
+        "TECH_REPORT"
+      ],
+      "preferred_publishers": [
+        "Rockwell Automation",
+        "ABB"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-003",
+      "question": "Khả năng điều chỉnh và duy trì tốc độ động cơ liên tục trong quá trình làm việc của VFD so với giới hạn tốc độ cố định của Soft Starter sau khi kết thúc quá trình tăng tốc?",
+      "priority": "HIGH",
+      "preferred_source_types": [
+        "MANUAL",
+        "WEB_ARTICLE",
+        "TECH_REPORT"
+      ],
+      "preferred_publishers": [
+        "Schneider Electric",
+        "ABB",
+        "Rockwell Automation"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-004",
+      "question": "So sánh tổn hao công suất (Power losses), sinh nhiệt và hiệu suất vận hành giữa VFD (tổn hao chuyển mạch liên tục trên IGBT) và Soft Starter (chuyển mạch đóng Bypass contactor triệt tiêu tổn hao SCR)?",
+      "priority": "HIGH",
+      "preferred_source_types": [
+        "TECH_REPORT",
+        "WEB_ARTICLE",
+        "MANUAL"
+      ],
+      "preferred_publishers": [
+        "Schneider Electric",
+        "Rockwell Automation",
+        "ABB"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-005",
+      "question": "Mức độ phát sinh sóng hài (Harmonics) và tác động lên chất lượng điện lưới giữa VFD và Soft Starter trong giai đoạn khởi động và giai đoạn vận hành định mức theo chuẩn IEEE Std 519?",
+      "priority": "MEDIUM",
+      "preferred_source_types": [
+        "STANDARD",
+        "TECH_REPORT",
+        "MANUAL"
+      ],
+      "preferred_publishers": [
+        "IEEE",
+        "Rockwell Automation",
+        "ABB"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-006",
+      "question": "So sánh chi phí đầu tư ban đầu (CAPEX), kích thước lắp đặt tủ điện (Footprint) và yêu cầu bảo trì vòng đời giữa VFD và Soft Starter theo các dải công suất?",
+      "priority": "MEDIUM",
+      "preferred_source_types": [
+        "TECH_REPORT",
+        "WEB_ARTICLE",
+        "MANUAL"
+      ],
+      "preferred_publishers": [
+        "Rockwell Automation",
+        "ABB",
+        "Schneider Electric"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    },
+    {
+      "rq_id": "RQ-007",
+      "question": "Ma trận hướng dẫn và tiêu chí lựa chọn kỹ thuật giữa VFD và Soft Starter cho các nhóm phụ tải công nghiệp điển hình (Bơm ly tâm tránh hiện tượng búa nước, Quạt ly tâm, Băng tải nặng, Máy nghiền đá)?",
+      "priority": "HIGH",
+      "preferred_source_types": [
+        "MANUAL",
+        "TECH_REPORT",
+        "WEB_ARTICLE"
+      ],
+      "preferred_publishers": [
+        "ABB",
+        "Schneider Electric",
+        "Rockwell Automation"
+      ],
+      "freshness_required": false,
+      "status": "ANSWERED"
+    }
+  ],
+  "status": "COMPLETE",
+  "created_at": "2026-09-24T21:35:00+07:00",
+  "updated_at": "2026-09-24T21:45:00+07:00"
+}

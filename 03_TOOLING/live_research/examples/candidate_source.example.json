@@ -1,0 +1,11 @@
+{
+  "candidate_id": "CAN-001",
+  "rq_id": "RQ-001",
+  "title": "Technical Guide No. 1: Direct Torque Control - The World's Most Advanced AC Drive Technology",
+  "publisher": "ABB",
+  "url": "https://library.e.abb.com/public/b382cf109f654b73c12574ab0021c172/Technical_guide_No_1_3AFE64514482_Rev_B.pdf",
+  "discovered_via": "LIVE_WEB",
+  "discovery_query": "ABB direct torque control technical guide pdf",
+  "discovered_at": "2026-09-24T21:40:00Z",
+  "preliminary_notes": "Official ABB technical guide explaining DTC vs PWM frequency control principles"
+}

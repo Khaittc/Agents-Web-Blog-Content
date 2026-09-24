@@ -218,6 +218,23 @@
             "type": "string",
             "description": "Date when the source was verified (YYYY-MM-DD)"
           },
+          "research_question_ids": {
+            "type": "array",
+            "description": "Research questions (RQ-xxx) addressed by this source",
+            "items": {
+              "type": "string",
+              "pattern": "^RQ-[0-9]{3,}$"
+            }
+          },
+          "accepted_from_candidate_id": {
+            "type": "string",
+            "description": "Candidate ID (CAN-xxx) from which this source was vetted and accepted",
+            "pattern": "^CAN-[0-9]{3,}$"
+          },
+          "supersedes_source_id": {
+            "type": "string",
+            "description": "Prior source ID superseded by this revision if applicable"
+          },
           "metadata": {
             "type": "object",
             "description": "Additional bibliographic fields (authors, standard number, edition, DOI)",
@@ -249,6 +266,14 @@
                   "type": "string",
                   "description": "e.g., 'p. 45', 'Sec. 2.1', 'Tab. 4', 'Fault 2310'"
                 },
+                "document_page": {
+                  "type": "integer",
+                  "description": "Physical page number printed in document body"
+                },
+                "pdf_page_index": {
+                  "type": "integer",
+                  "description": "1-based absolute index of page within PDF file"
+                },
                 "verified": {
                   "type": "boolean"
                 },
@@ -270,6 +295,137 @@
         "additionalProperties": false
       },
       "minItems": 1
+    },
+    "evidences": {
+      "type": "array",
+      "description": "Granular technical claims and extracted evidence points linked to research questions and sources",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "rq_id",
+          "source_id",
+          "claim",
+          "evidence_type",
+          "verification_status",
+          "locator_status"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "description": "Evidence item identifier formatted as EVD-xxx",
+            "pattern": "^EVD-[0-9]{3,}$"
+          },
+          "rq_id": {
+            "type": "string",
+            "description": "Associated research question ID formatted as RQ-xxx",
+            "pattern": "^RQ-[0-9]{3,}$"
+          },
+          "source_id": {
+            "type": "string",
+            "description": "Associated Stable Source ID formatted as SRC-xxx",
+            "pattern": "^SRC-[0-9]{3,}$"
+          },
+          "claim": {
+            "type": "string",
+            "description": "Specific technical assertion or finding"
+          },
+          "evidence_excerpt": {
+            "type": "string",
+            "description": "Concise verbatim quote or data point supporting the claim"
+          },
+          "evidence_type": {
+            "type": "string",
+            "enum": [
+              "TECHNICAL_CLAIM",
+              "NUMERICAL_VALUE",
+              "FORMULA",
+              "THRESHOLD",
+              "STANDARD_REQUIREMENT",
+              "OEM_RECOMMENDATION",
+              "DEFINITION",
+              "LIMITATION",
+              "SAFETY_WARNING",
+              "COMPARISON_POINT"
+            ]
+          },
+          "verification_status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "UNVERIFIED",
+              "DISPUTED"
+            ]
+          },
+          "locator_status": {
+            "type": "string",
+            "enum": [
+              "LOCATOR_VERIFIED",
+              "LOCATOR_UNAVAILABLE",
+              "LOCATOR_NOT_CHECKED",
+              "LOCATOR_CONFLICT"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "description": "Specific locator (e.g. 'p. 15', 'Sec. 3.2', 'Tab. 2')"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "description": "Detected data conflicts or discrepancies between sources",
+      "items": {
+        "type": "object",
+        "required": [
+          "conflict_id",
+          "rq_id",
+          "source_ids",
+          "description",
+          "status"
+        ],
+        "properties": {
+          "conflict_id": {
+            "type": "string",
+            "description": "Conflict identifier formatted as CON-xxx",
+            "pattern": "^CON-[0-9]{3,}$"
+          },
+          "rq_id": {
+            "type": "string",
+            "pattern": "^RQ-[0-9]{3,}$"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^SRC-[0-9]{3,}$"
+            },
+            "minItems": 2
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed explanation of the technical discrepancy or divergent vendor approach"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "RESOLVED",
+              "REVIEW_REQUIRED"
+            ]
+          },
+          "resolution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Engineering rationale resolving or contextualizing the conflict"
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false

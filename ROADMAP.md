@@ -93,18 +93,32 @@
 
 ### Giai đoạn 3: Định nghĩa Chuyên biệt Subagent & Tích hợp Công cụ (Phase 3)
 *Trạng thái*: 🟡 **ĐANG THỰC HIỆN** (Khởi động Tháng 09/2026)
-*Mục tiêu*: Chuyển đổi các quy chuẩn lý thuyết thành các Prompt và Hợp đồng giao tiếp tự động của 5 Subagents.
+*Mục tiêu*: Chuyển đổi các quy chuẩn lý thuyết thành các Prompt và Hợp đồng giao tiếp tự động của 5 Subagents, tích hợp công cụ nghiên cứu thực địa (Live Research), tiến tới tự động hóa quy trình sản xuất nội dung kỹ thuật.
 
 - [x] **Định nghĩa 5 Subagents chuyên trách (trong `02_AGENT_TEMPLATES/`) — ĐÃ HOÀN THÀNH**:
-  - [x] `research_agent.md`: System prompt, công cụ tìm kiếm, Live URL Check 200, trích xuất locator theo `IEEE-01 v1.1` & `SOURCE_TIER v1.0`.
+  - [x] `research_agent.md` v3.0: System prompt, kế hoạch nghiên cứu `research_plan.json`, công cụ truy vấn Live Web, sàng lọc ứng viên `CAN-xxx`, Cổng tiếp nhận nguồn, trích xuất bằng chứng hạt nhân `EVD-xxx` và phân tích bất đồng kỹ thuật `CON-xxx`.
   - [x] `drafting_agent.md`: System prompt, cấu trúc `BLOG-T01`..`T05`, công thức LaTeX SI, trích dẫn bắt buộc ở cuối câu theo `IEEE-02 v1.1`.
   - [x] `visual_agent.md`: System prompt, Prompt AI 5 tầng, kích thước 808x500 px, HTML placeholder chống méo dọc theo `IMAGE_SPEC v1.2`.
   - [x] `review_agent.md`: System prompt, 4 trụ cột kiểm duyệt độc lập, Gate 5 vị trí cuối câu, kiểm tra responsive song song Laptop & Mobile theo `REVIEW_PROTOCOL v1.1` (ADR-017).
   - [x] `publisher_agent.md`: System prompt, đóng gói HTML CKEditor sạch, link `<a>` có `word-break: break-all;`, bảng `min-width`, quản lý `article_status.json` theo `ADR-005` và `ADR-016`.
-- [ ] **Tích hợp Công cụ Ngoài (Tooling Integration)**:
-  - [ ] Kết nối `notebooklm` MCP vào `01_KNOWLEDGE_BASE/` để truy xuất nguồn Tier 1/2 với locator tự động.
-  - [ ] Tích hợp công cụ `generate_image` với quy chuẩn 808x500 px tự động.
-  - [ ] Tạo template kiểm tra tự động mã HTML CKEditor không để lọt thẻ sai quy cách.
+
+- [x] **Phase 3.0 — Live Research Foundation v1 (Checkpoint: `live-research-foundation-v1`) — ĐÃ HOÀN THÀNH**:
+  - [x] **Hợp đồng Kế hoạch Nghiên cứu (`research_plan.schema.json`)**: Chuẩn hóa cấu trúc câu hỏi nghiên cứu `RQ-xxx` (ưu tiên `HIGH`/`MEDIUM`/`LOW`, trạng thái phân giải `OPEN`, `SEARCHING`, `PARTIALLY_ANSWERED`, `ANSWERED`, `BLOCKED`). Toàn bộ câu hỏi `HIGH` bắt buộc giải quyết trước khi hoàn tất kế hoạch.
+  - [x] **Mô hình Ứng viên Nguồn & Cổng Tiếp nhận (`03_TOOLING/live_research/`)**: Đặc tả hợp đồng nhà cung cấp (`provider_contract.md`), quy trình đánh mã `CAN-xxx`, 8 tiêu chí Acceptance Gate loại trừ nguồn rác/link chết/paywall/quảng cáo, và nguyên tắc bất di bất dịch **No Snippet Evidence Rule**.
+  - [x] **Hợp đồng Bằng chứng Hạt nhân & Phân tích Bất đồng (`evidence.schema.json`)**: Hỗ trợ đồng bộ `accepted_from_candidate_id`, `research_question_ids`, mảng bằng chứng `evidences` (`EVD-xxx`), và mảng bất đồng kỹ thuật `conflicts` (`CON-xxx`) giải quyết sự khác biệt thông số giữa các nhà sản xuất OEM.
+  - [x] **Thử nghiệm Thực địa Thẩm định Nghiên cứu (Pilot `BLOG_04_VFD_vs_Soft_Starter`)**:
+    - Thực thi nghiên cứu trực tiếp cho chủ đề: *"VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng"* (Thể loại `BLOG-T04`).
+    - Lập `article_brief.json`, `research_plan.json` (7 RQs, 5 HIGH RQs đều đạt `ANSWERED`), `research_log.json` (ghi nhận 7 truy vấn và 7 ứng viên).
+    - Tiếp nhận 4 nguồn kỹ thuật chuẩn mực (1 Tier 1, 3 Tier 2): ABB Softstarter Handbook (`SRC-001`), Rockwell Automation White Paper (`SRC-002`), Schneider Electric Guide (`SRC-003`), IEEE Std 519-2022 (`SRC-004`).
+    - Trích xuất 12 bằng chứng hạt nhân định lượng (`EVD-001` đến `EVD-012`) và giải quyết 2 bất đồng kỹ thuật (`CON-001`, `CON-002`).
+    - Xuất bản hồ sơ máy đọc `evidence.json` (100% hợp lệ schema) và báo cáo kỹ thuật `evidence_dossier.md`.
+    - **Dừng kiểm soát tại Cửa ải Nghiên cứu**: Không viết bản thảo, không sinh ảnh, không tạo HTML, giữ nguyên tính toàn vẹn tuyệt đối của các bài viết đã khóa (`BLOG_01`, `BLOG_02`, `BLOG_03`).
+
+- [ ] **Kế hoạch Tích hợp Công cụ Tiếp theo (Phase 3.1+)**:
+  - [ ] **Tích hợp NotebookLM MCP** (*Trạng thái*: `DEFERRED` — Tạm hoãn đến khi nền tảng Live Research và Drafting Agent đồng bộ hoàn toàn).
+  - [ ] **Tích hợp Image Generation Tool** (*Trạng thái*: `DEFERRED` — Tạm hoãn đến khi mở cổng Visual Agent).
+  - [ ] **Tạo template tự động hóa kiểm tra HTML CKEditor**.
+
 
 ---
 

@@ -51,7 +51,7 @@ flowchart TD
 ```
 
 ### Chi Tiết Nhiệm Vụ 5 Subagents ([02_AGENT_TEMPLATES/](02_AGENT_TEMPLATES/)):
-* 🔬 [**Research Agent**](02_AGENT_TEMPLATES/research_agent.md): Thu thập tài liệu Tier 1/2, gán Stable Source ID (`SRC-xxx`), tách bạch `HTTP 200` và xác thực nội dung, xuất song song `evidence.json` và `evidence_dossier.md`.
+* 🔬 [**Research Agent**](02_AGENT_TEMPLATES/research_agent.md): Lập kế hoạch nghiên cứu `research_plan.json` (`RQ-xxx`), thực thi tìm kiếm mạng trực tiếp, sàng lọc ứng viên `CAN-xxx` qua Cổng tiếp nhận nguồn (Acceptance Gate), thu thập tài liệu Tier 1/2, gán Stable Source ID (`SRC-xxx`), trích xuất bằng chứng hạt nhân `EVD-xxx`, phát hiện bất đồng kỹ thuật `CON-xxx`, xuất song song `evidence.json` và `evidence_dossier.md`.
 * ✍️ [**Drafting Agent**](02_AGENT_TEMPLATES/drafting_agent.md): Biên soạn nội dung theo [Canonical Taxonomy](00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md), tích hợp công thức LaTeX SI, lập `claim_source_map.json`, gán số IEEE `[n]` theo thứ tự xuất hiện đầu tiên và tuân thủ nguyên tắc: **100% trích dẫn IEEE đặt ở CUỐI CÂU** (`IEEE_02 v1.1`).
 * 🎨 [**Visual Agent**](02_AGENT_TEMPLATES/visual_agent.md): Thiết kế sơ đồ khối, lưu đồ thuật toán và sinh Prompt AI 5 tầng theo tỷ lệ chuẩn `808x500 px` (`IMAGE_SPECIFICATION_AND_PROMPT_SKILL_v1.2.md`). Chỉ hoàn thiện giao phẩm khi bản thảo đã đạt Cổng Kỹ thuật (TECH_APPROVED).
 * 🛡️ [**Review Agent**](02_AGENT_TEMPLATES/review_agent.md): Vận hành **2 Cổng Kiểm định Tách bạch**: Cổng 1 (Kiểm định chuyên môn toán học, trích dẫn, fact-check) và Cổng 2 (Kiểm định hiển thị song song Laptop & Mobile theo ADR-017). Quản trị vòng lặp hiệu chỉnh có cấu trúc qua `revision_request.json` (tối đa 3 vòng lặp).
@@ -86,15 +86,14 @@ Hệ thống được xây dựng trên nền tảng các tiêu chuẩn kỹ thu
 
 ---
 
-## 📚 5. CÁC BÀI VIẾT MẪU ĐÃ NGHIỆM THU (SHOWCASE ARTICLES)
-
-Toàn bộ các bài viết dưới đây đã được Kỹ sư trưởng nghiệm thu thực tế, đăng tải thành công lên website và kích hoạt cơ chế khóa an toàn bất biến (`APPROVED / LOCKED`):
+## 📚 5. CÁC BÀI VIẾT MẪU ĐÃ NGHIỆM THU & THỬ NGHIỆM (SHOWCASE ARTICLES)
 
 | Mã Bài | Chủ Đề Bài Viết | Dạng Bài Canonical | Quy Chuẩn Tiêu Biểu | Trạng Thái |
 |---|---|---|---|---|
 | [**BLOG_01**](03_Articles/BLOG_01_Dong_co_non_tai/) | **Cách phát hiện động cơ điện đang chạy non tải trong nhà máy** | `BLOG-T02` (How-to / Measurement) | Baseline, Bảng tính tải trọng, HTML CKEditor chuẩn | 🔒 `APPROVED / LOCKED` |
 | [**BLOG_02**](03_Articles/BLOG_02_He_so_cong_suat_va_Song_hai/) | **Hệ số công suất cos phi và sóng hài bậc cao trong nhà máy** | `BLOG-T01` (Technical Explanation) | Công thức LaTeX biến dạng Fourier, Bảng chuẩn IEEE 519-2022 | 🔒 `APPROVED / LOCKED` |
 | [**BLOG_03**](03_Articles/BLOG_03_Chan_doan_qua_dong_bien_tan/) | **Quy trình 4 bước chẩn đoán và khắc phục lỗi quá dòng (Overcurrent) trên biến tần công nghiệp** | `BLOG-T03` (Troubleshooting) | Cây quyết định, Quy trình đo 6 van IGBT đồng hồ vạn năng, Chuẩn Responsive Mobile & Laptop | 🔒 `APPROVED / LOCKED` |
+| [**BLOG_04**](03_Articles/BLOG_04_VFD_vs_Soft_Starter/) | **VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng** | `BLOG-T04` (Comparison) | Phase 3.0 Live Research Pilot: Research Plan, Candidate Acceptance Gate, Granular Evidence (12 EVDs), Conflict Analysis (2 CONs) | 🧪 `RESEARCH_COMPLETE` |
 
 ---
 
@@ -121,25 +120,32 @@ Agents-Web-Blog-Content/
 │   ├── REAL_GROUP_TECHNICAL_ARTICLE_MASTER_STYLE_v1.0.md
 │   ├── SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md
 │   └── TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md
-├── 01_KNOWLEDGE_BASE/             # Kho tài liệu kỹ thuật, tiêu chuẩn gốc, tích hợp NotebookLM
+├── 01_KNOWLEDGE_BASE/             # Kho tài liệu kỹ thuật, tiêu chuẩn gốc
 ├── 02_AGENT_TEMPLATES/            # Đặc tả System Prompts & Hợp đồng tương tác 5 Subagents
-│   ├── contracts/                 # Các JSON Schemas máy đọc chuẩn mực giữa các Subagent
+│   ├── contracts/                 # Các JSON Schemas máy đọc chuẩn mực giữa các Subagent (7 contracts)
 │   │   ├── article_brief.schema.json
+│   │   ├── research_plan.schema.json
 │   │   ├── evidence.schema.json
 │   │   ├── claim_source_map.schema.json
 │   │   ├── audit.schema.json
 │   │   ├── revision_request.schema.json
 │   │   └── article_manifest.schema.json
 │   ├── ARTICLE_LIFECYCLE_AND_APPROVAL_PROTOCOL.md # Vòng đời bài viết & cơ chế khóa an toàn
-│   ├── research_agent.md          # Đặc tả Subagent Nghiên cứu Nguồn
+│   ├── research_agent.md          # Đặc tả Subagent Nghiên cứu Nguồn & Lập kế hoạch (v3.0)
 │   ├── drafting_agent.md          # Đặc tả Subagent Biên soạn Kỹ thuật
 │   ├── visual_agent.md            # Đặc tả Subagent Đồ họa & Prompt AI
 │   ├── review_agent.md            # Đặc tả Subagent Phản biện & Kiểm toán 2 Cổng
 │   └── publisher_agent.md         # Đặc tả Subagent Đóng gói Ấn phẩm (Packaging Agent)
+├── 03_TOOLING/                    # Bộ công cụ kết nối và tích hợp kỹ thuật
+│   └── live_research/             # Nền tảng Live Research: Provider Contract & Acceptance Gate
+│       ├── provider_contract.md
+│       ├── README.md
+│       └── examples/
 ├── 03_Articles/                   # Các gói bài viết độc lập (dossier, draft, image, audit, html)
 │   ├── BLOG_01_Dong_co_non_tai/   # BLOG-T02 (LOCKED)
 │   ├── BLOG_02_He_so_cong_suat_va_Song_hai/ # BLOG-T01 (LOCKED)
-│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/ # BLOG-T03 (LOCKED)
+│   ├── BLOG_03_Chan_doan_qua_dong_bien_tan/ # BLOG-T03 (LOCKED)
+│   └── BLOG_04_VFD_vs_Soft_Starter/         # BLOG-T04 (Phase 3.0 Pilot - RESEARCH_COMPLETE)
 ├── 04_PLANS/                      # Kế hoạch thực thi chi tiết theo từng phiên làm việc
 ├── .github/workflows/             # GitHub Actions CI Workflows
 │   └── architecture-validation.yml # Tự động kiểm định kiến trúc & toàn vẹn SHA-256

@@ -436,40 +436,52 @@
 
 ---
 
-### Phiên làm việc: 24/09/2026 (Phiên 21 — Phase 2.5.1: Kiểm Tra Toàn Diện & Tự Động Hóa CI Kiến Trúc)
+### Phiên làm việc: 24/09/2026 (Phiên 22 — Phase 3.0: Triển Khai Live Research Foundation v1 & Thử Nghiệm Pilot BLOG_04)
 - **Người thực hiện**: Kỹ sư trưởng & AI Assistant (Antigravity).
 - **Nội dung công việc**:
-  1. **Thiết Lập Hệ Thống GitHub Actions CI (ADR-026)**:
-     - Tạo mới [.github/workflows/architecture-validation.yml](file:///d:/Agents_Tools/05_WebsiteTTC/.github/workflows/architecture-validation.yml) kích hoạt khi push và pull_request trên nhánh `main`.
-     - Chạy song song 3 chốt chặn: Kiến trúc tự động, Toàn vẹn mã băm bài viết đã khóa, và `git diff --check`.
-  2. **Xây Dựng Bộ Script Kiểm Định Độc Lập (Python Standard Library)**:
-     - [scripts/validate_architecture.py](file:///d:/Agents_Tools/05_WebsiteTTC/scripts/validate_architecture.py): Kiểm định 6 JSON Schemas máy đọc, Canonical Blog Taxonomy (`BLOG-T01`..`BLOG-T05`), Stable Source ID (`SRC-xxx`), Hợp đồng bắt buộc, Human-only Publishing và Two-Gate Pipeline consistency.
-     - [scripts/verify_locked_articles.py](file:///d:/Agents_Tools/05_WebsiteTTC/scripts/verify_locked_articles.py): Kiểm chứng mã băm SHA-256 thực tế của toàn bộ bài viết `APPROVED / LOCKED` (`BLOG_01`, `BLOG_02`, `BLOG_03`) đối chiếu với `approved_content_sha256` và xác thực commit provenance.
-  3. **Chuẩn Hóa Chính Sách Nguồn & Ngoại Lệ Thẩm Quyền Cao (ADR-024)**:
-     - Cập nhật chính sách mặc định (khuyến nghị 4–7 nguồn, Tier 1+2 $\ge 70\%$).
-     - Thiết lập cơ chế ngoại lệ thẩm quyền cao (1–3 nguồn) cho chủ đề hẹp (mã lỗi cụ thể, thông số OEM đơn lẻ, điều khoản tiêu chuẩn cụ thể) kèm cờ máy đọc `source_policy_exception` trong `evidence.schema.json`.
-     - Phân quyền cho Technical Review Gate: `APPROVE_EXCEPTION` hoặc `REJECT_EXCEPTION`. Xóa bỏ quan niệm "nhiều nguồn = bài tốt hơn".
-  4. **Chuẩn Hóa Ngữ Nghĩa Kiểm Chứng URL & Tách Bạch Đường Dẫn (ADR-025)**:
-     - Chuẩn hóa 7 trạng thái mạng: `OK`, `REDIRECTED_OK`, `ACCESS_RESTRICTED`, `AUTH_REQUIRED`, `NOT_FOUND`, `NETWORK_ERROR`, `UNKNOWN`.
-     - Bổ sung `canonical_url` (landing page chính thức cho References) và `retrieval_url` (link tải file/PDF thực tế) vào `evidence.schema.json`.
-     - Chính sách PDF: Ưu tiên landing page chính thức ổn định, cho phép kết hợp link PDF trực tiếp tải về nếu đã xác minh danh tính tài liệu.
-     - Tách bạch 4 cấp độ: `URL access ≠ Content identity ≠ Claim verified ≠ Locator status`.
-  5. **Cập Nhật Đồng Bộ Tài Liệu**:
-     - Cập nhật `00_SKILL/SOURCE_TIER_EVIDENCE_WORKFLOW_v1.0.md`, `00_SKILL/TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1.md`, `02_AGENT_TEMPLATES/research_agent.md`, `02_AGENT_TEMPLATES/review_agent.md`, `README.md`, `ROADMAP.md`, `AGENT_GUIDE.md`.
-     - Bảo đảm nguyên vẹn 100% nội dung HTML và assets của `BLOG_01`, `BLOG_02`, `BLOG_03`.
-- **Trạng thái kết thúc phiên**: Toàn bộ các tiêu chí nghiệm thu của Phase 2.5 và Phase 2.5.1 đều đạt kết quả PASS 100%. Phase 2.5 chính thức KHÓA ĐÓNG HOÀN TOÀN (FULLY CLOSED). Hệ thống sẵn sàng tuyệt đối để bước vào Phase 3 (Tooling Integration).
+  1. **Ban Hành Quyết Định Kiến Trúc ADR-027 (Kế Hoạch Nghiên Cứu Có Cấu Trúc & Mô Hình Ứng Viên Nguồn)**:
+     - Xây dựng hợp đồng máy đọc [02_AGENT_TEMPLATES/contracts/research_plan.schema.json](file:///d:/Agents_Tools/05_WebsiteTTC/02_AGENT_TEMPLATES/contracts/research_plan.schema.json): Phân rã đề bài thành các câu hỏi nghiên cứu định danh `RQ-xxx` (`HIGH`, `MEDIUM`, `LOW`), bắt buộc 100% câu hỏi mức `HIGH` phải đạt `ANSWERED` trước khi hoàn tất khâu nghiên cứu.
+     - Thiết lập thư mục [03_TOOLING/live_research/](file:///d:/Agents_Tools/05_WebsiteTTC/03_TOOLING/live_research/) kèm đặc tả [provider_contract.md](file:///d:/Agents_Tools/05_WebsiteTTC/03_TOOLING/live_research/provider_contract.md), [README.md](file:///d:/Agents_Tools/05_WebsiteTTC/03_TOOLING/live_research/README.md) và các tệp ví dụ mẫu máy đọc.
+     - Chuẩn hóa mô hình ứng viên nguồn định danh `CAN-xxx` và quy trình Cổng tiếp nhận nguồn (Source Acceptance Gate — 8 tiêu chí). Toàn bộ ứng viên bị loại phải có mã `REJECTED_*` và ghi nhật ký trong `research_log.json`.
+     - Thể chế hóa nguyên tắc tối cao **No Snippet Evidence Rule**: Tuyệt đối cấm suy diễn bằng chứng từ Google snippet hoặc tên file; bắt buộc phải đọc trực tiếp văn bản nguồn đã tải về.
+  2. **Ban Hành Quyết Định Kiến Trúc ADR-028 (Trích Xuất Bằng Chứng Hạt Nhân & Phân Tích Bất Đồng Kỹ Thuật)**:
+     - Nâng cấp hợp đồng máy đọc [02_AGENT_TEMPLATES/contracts/evidence.schema.json](file:///d:/Agents_Tools/05_WebsiteTTC/02_AGENT_TEMPLATES/contracts/evidence.schema.json): Hỗ trợ mảng bằng chứng hạt nhân `evidences` (`EVD-xxx`) gắn chặt với `rq_id`, `source_id`, `locator`, số trang in (`document_page`) và trang PDF (`pdf_page_index`).
+     - Tích hợp mảng bất đồng kỹ thuật `conflicts` (`CON-xxx`) giải quyết sự khác biệt thông số, thuật ngữ, phương pháp giữa các nhà sản xuất OEM và đưa ra định hướng cho Drafting Agent.
+  3. **Nâng Cấp Đặc Tả Subagent [02_AGENT_TEMPLATES/research_agent.md](file:///d:/Agents_Tools/05_WebsiteTTC/02_AGENT_TEMPLATES/research_agent.md) Lên Phiên Bản 3.0**:
+     - Mở rộng phạm vi quyền hạn và sở hữu đơn nhất (Sole Ownership) của Research Agent gồm 4 tệp: `research_plan.json`, `research_log.json`, `evidence.json`, và `evidence_dossier.md`.
+     - Chuẩn hóa quy trình 7 bước từ nhận đề bài đến bàn giao cho Drafting Agent.
+  4. **Triển Khai Thử Nghiệm Thực Địa Nghiên Cứu Pilot BLOG_04**:
+     - Khởi tạo thư mục bài viết thử nghiệm: `03_Articles/BLOG_04_VFD_vs_Soft_Starter/`.
+     - Ban hành `article_brief.json` (chủ đề: *"VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng"*, canonical type `BLOG-T04`).
+     - Thiết lập `article_status.json` (`status: "RESEARCH_COMPLETE"`, `is_locked: false`).
+     - Xây dựng `research_plan.json` gồm 7 câu hỏi nghiên cứu (`RQ-001` đến `RQ-007`), giải quyết thành công 100% câu hỏi mức `HIGH` (`ANSWERED`).
+     - Thực thi truy vấn mạng trực tiếp và ghi nhật ký trong `research_log.json`: Đánh giá 7 ứng viên (`CAN-001` đến `CAN-007`), loại bỏ 3 ứng viên vi phạm (Siemens SIOS bị tường lửa WAF chặn HTTP 403 `REJECTED_PAYWALL_OR_BOT_BLOCK`, link Danfoss cũ bị HTTP 404 `REJECTED_DEAD_LINK`, blog Chint Tier 3 `REJECTED_TIER3_UNQUALIFIED`).
+     - Tiếp nhận 4 nguồn kỹ thuật chuẩn mực (1 Tier 1, 3 Tier 2 — Tỷ lệ Tier 1+2: 100%): ABB Softstarter Handbook (`SRC-001`), Rockwell Automation White Paper (`SRC-002`), Schneider Electric Guide (`SRC-003`), IEEE Std 519-2022 (`SRC-004`).
+     - Trích xuất 12 bằng chứng hạt nhân định lượng (`EVD-001` đến `EVD-012`) và lập biên bản phân tích 2 bất đồng kỹ thuật chuyên sâu (`CON-001` về giới hạn dòng khởi động và sụt giảm mô-men, `CON-002` về sóng hài).
+     - Xuất bản tệp máy đọc canonical `evidence.json` (vượt qua 100% JSON Schema validation) và báo cáo kỹ thuật `evidence_dossier.md`.
+  5. **Bảo Vệ Tính Toàn Vẹn Tuyệt Đối Của Toàn Bộ Bài Viết Đã Khóa**:
+     - Giữ nguyên trạng 100% mã băm SHA-256 của `BLOG_01`, `BLOG_02`, `BLOG_03`.
+     - Script `scripts/verify_locked_articles.py` xác thực thành công cả 3 bài viết đã khóa (PASS).
+     - Script `scripts/validate_architecture.py` xác thực thành công toàn bộ 7 JSON Schemas hợp đồng và các quy tắc kiểm định kiến trúc (PASS).
+  6. **Tuân Thủ Tuyệt Đối Cửa Ải Dừng Kiểm Soát (Stop Gate)**:
+     - Dừng nghiêm ngặt tại khâu Research, không tự ý viết bản thảo (`draft_review_package.md`), không tạo ảnh (`image_specifications.md`) và không sinh mã HTML.
+     - Đánh dấu công cụ ngoài NotebookLM MCP và Image Generation Tool là `DEFERRED` theo đúng yêu cầu kiểm soát rủi ro.
+- **Trạng thái kết thúc phiên**: Hoàn thành xuất sắc 100% mục tiêu của Phase 3.0 Live Research Foundation v1. Checkpoint `live-research-foundation-v1` chính thức được xác lập vững chắc.
 
 ---
 
 ## 4. DANH SÁCH HÀNH ĐỘNG TIẾP THEO (NEXT ACTION ITEMS)
 
-Ưu tiên thực hiện tiếp theo (Phase 3):
+Ưu tiên thực hiện tiếp theo (Phase 3.1+):
 1. [x] **Phase 2.5: Multi-Agent Architecture Hardening**:
    - ĐÃ HOÀN THÀNH: Canonical Taxonomy, Stable Source IDs, 6 JSON Schemas, 2-Gate Pipeline, Packaging role, Content Hash SHA-256.
 2. [x] **Phase 2.5.1: Final Architecture Validation & CI Hardening**:
    - ĐÃ HOÀN THÀNH: GitHub Actions CI workflow, Python validation scripts, Source policy exception, URL verification semantics, Content Hash SHA-256 verified.
-3. [ ] **Tích hợp Công cụ Ngoài & Trợ năng MCP (Phase 3 Tooling Integration)**:
-   - Khảo sát và kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn nguồn tài liệu Tier 1/2 với số trang và bảng tự động.
-   - Chuẩn hóa luồng sử dụng tool `invoke_subagent` và `define_subagent` để điều phối tự động 5 agents trực tiếp trong Antigravity.
-4. [ ] **Thử nghiệm Bài viết Đầu tiên bằng Pipeline Tự động Hóa Khép Kín (Pilot Run Phase 4)**:
-   - Ra đề bài mẫu mới thông qua khung chat Antigravity và cho 5 Subagents tự động thực thi khép kín từ nghiên cứu đến đóng gói xuất bản HTML.
+3. [x] **Phase 3.0: Live Research Foundation v1 (Checkpoint: `live-research-foundation-v1`)**:
+   - ĐÃ HOÀN THÀNH: Kế hoạch nghiên cứu có cấu trúc (`research_plan.schema.json`), Cổng tiếp nhận ứng viên nguồn (`provider_contract.md`), Bằng chứng hạt nhân & Phân tích bất đồng (`evidence.schema.json`), Thử nghiệm Pilot `BLOG_04` hoàn tất trọn vẹn khâu Research (dừng kiểm soát trước Drafting).
+4. [ ] **Phase 3.1: Drafting Subagent Modernization & Claim-Source Mapping**:
+   - Cập nhật Drafting Agent chuyển hóa bằng chứng hạt nhân `EVD-xxx` và `conflicts` thành dàn ý `BLOG-T04` và bản thảo hoàn chỉnh.
+   - Ban hành hợp đồng `claim_source_map.json` liên kết in-text citations IEEE `[n]` với `EVD-xxx` và `SRC-xxx`.
+5. [ ] **Phase 3.2+: Tooling Integration (NotebookLM MCP & Image Tooling)**:
+   - Tích hợp NotebookLM MCP cho kho tài liệu nội bộ khi quy trình Drafting Agent đã sẵn sàng.
+   - Tích hợp Image Generation Tool cho Visual Agent.

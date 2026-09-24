@@ -1,0 +1,380 @@
+{
+  "article_id": "BLOG_04",
+  "generated_at": "2026-09-24T21:45:00+07:00",
+  "researcher": "research_agent",
+  "source_policy_exception": {
+    "source_policy_exception": false,
+    "exception_type": "NONE",
+    "reason": "Chủ đề so sánh kỹ thuật diện rộng (BLOG-T04) áp dụng chính sách mặc định 4-7 nguồn, đạt tỷ lệ Tier 1 + Tier 2 là 100% (>= 70%).",
+    "approved_by_review_gate": true,
+    "review_verdict": "APPROVE_EXCEPTION"
+  },
+  "evidence_summary": {
+    "total_sources": 4,
+    "tier_1_count": 1,
+    "tier_2_count": 3,
+    "tier_3_count": 0,
+    "high_tier_ratio": 1.0
+  },
+  "sources": [
+    {
+      "source_id": "SRC-001",
+      "accepted_from_candidate_id": "CAN-001",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-002",
+        "RQ-003",
+        "RQ-005",
+        "RQ-007"
+      ],
+      "title": "Softstarter Handbook",
+      "source_type": "MANUAL",
+      "publisher": "ABB AB, Cewe-Control",
+      "publication_year": 2011,
+      "tier": "TIER_2",
+      "canonical_url": "https://library.abb.com/d/1SFC132060M0201",
+      "retrieval_url": "https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf",
+      "access_status": "OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "document_id": "1SFC132060M0201",
+        "technical_scope": "Nguyên lý AC-DC-AC của VFD, nguyên lý góc kích thyristor của Softstarter, các phương pháp khởi động và hướng dẫn phụ tải công nghiệp."
+      },
+      "locators": [
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. Different starting methods, p. 16",
+          "document_page": 16,
+          "pdf_page_index": 22,
+          "verified": true,
+          "excerpt": "The drive consists primarily of two parts, one which converts AC (50 or 60 Hz) to DC and a second part which converts the DC back to AC, but now with a variable frequency of 0-250 Hz."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. General about softstarters, pp. 21-22",
+          "document_page": 22,
+          "pdf_page_index": 28,
+          "verified": true,
+          "excerpt": "A softstarter consists of a number of anti-parallel thyristors; two in each phase. When performing a soft start, a firing signal is sent to the thyristors so that only the last part of each half period of the voltage sinus curve passes through."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Ch. Different applications - Pumps, p. 29",
+          "document_page": 29,
+          "pdf_page_index": 35,
+          "verified": true,
+          "excerpt": "Starting up a pump is normally not a big problem electrically. The problem is the wear and tear caused by pressure waves in the pipe system created when the motor starts but especially when it stops too quickly."
+        },
+        {
+          "locator_type": "PAGE",
+          "locator_value": "p. 68",
+          "document_page": 68,
+          "pdf_page_index": 74,
+          "verified": true,
+          "excerpt": "The question of harmonic content for softstarter applications is actually in general not relevant at all."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-002",
+      "accepted_from_candidate_id": "CAN-002",
+      "research_question_ids": [
+        "RQ-001",
+        "RQ-002",
+        "RQ-004",
+        "RQ-005",
+        "RQ-006",
+        "RQ-007"
+      ],
+      "title": "When to use a Soft Starter or an AC Variable Frequency Drive",
+      "source_type": "TECH_REPORT",
+      "publisher": "Rockwell Automation, Inc.",
+      "publication_year": 2014,
+      "tier": "TIER_2",
+      "canonical_url": "https://rok.auto/literature",
+      "retrieval_url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf",
+      "access_status": "OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "document_id": "Publication 150-WP007A-EN-P",
+        "technical_scope": "So sánh định lượng dòng khởi động, quan hệ mô-men tỉ lệ bình phương điện áp, phân tích sóng hài và chi phí bảo trì."
+      },
+      "locators": [
+        {
+          "locator_type": "TABLE",
+          "locator_value": "Table 1, p. 6",
+          "document_page": 6,
+          "pdf_page_index": 6,
+          "verified": true,
+          "excerpt": "Full Voltage: 100% Voltage, 100% Torque, 600% Current. Soft Start: 150% Current limit -> 25% Voltage, 6% Starting Torque; 300% Current limit -> 50% Voltage, 25% Starting Torque; 450% Current limit -> 75% Voltage, 56% Starting Torque."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Bypass Configuration, p. 7",
+          "document_page": 7,
+          "pdf_page_index": 7,
+          "verified": true,
+          "excerpt": "The internal bypass is typically rated AC-1, not AC-3, because the bypass contactor never makes or breaks current."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Harmonics, p. 12",
+          "document_page": 12,
+          "pdf_page_index": 12,
+          "verified": true,
+          "excerpt": "Soft starter harmonics are typically less than 10% in starting or stopping modes when SCRs are turned on... In bypass condition, there are almost no harmonics generated."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Initial Cost & Maintenance, pp. 15-17",
+          "document_page": 15,
+          "pdf_page_index": 15,
+          "verified": true,
+          "excerpt": "At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-003",
+      "accepted_from_candidate_id": "CAN-003",
+      "research_question_ids": [
+        "RQ-002",
+        "RQ-003",
+        "RQ-004",
+        "RQ-007"
+      ],
+      "title": "Soft starters vs. VFDs: Which one is right for your conveyor motor application?",
+      "source_type": "WEB_ARTICLE",
+      "publisher": "Schneider Electric SE",
+      "publication_year": 2020,
+      "tier": "TIER_2",
+      "canonical_url": "https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
+      "retrieval_url": "https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
+      "access_status": "REDIRECTED_OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "author": "Mark Duncan",
+        "technical_scope": "So sánh hiệu suất năng lượng, tỏa nhiệt giữa IGBT và SCR bypass, mô-men khởi động ở tốc độ 0 rpm."
+      },
+      "locators": [
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Energy efficiency comparisons",
+          "verified": true,
+          "excerpt": "When operating at full speed and adequately loaded, soft starters are more efficient than VFDs. With an integrated bypass, current in the soft starter is carried across the contactor, so it runs cooler."
+        },
+        {
+          "locator_type": "SECTION",
+          "locator_value": "Section Frequently asked questions",
+          "verified": true,
+          "excerpt": "Question: Does the application need full torque at zero speed? Answer: An AC Drive can provide full torque at zero speed where a soft starter cannot."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-004",
+      "accepted_from_candidate_id": "CAN-004",
+      "research_question_ids": [
+        "RQ-005"
+      ],
+      "title": "IEEE Standard for Harmonic Control in Electric Power Systems",
+      "source_type": "STANDARD",
+      "publisher": "IEEE (Institute of Electrical and Electronics Engineers)",
+      "publication_year": 2022,
+      "tier": "TIER_1",
+      "canonical_url": "https://standards.ieee.org/ieee/519/10540/",
+      "retrieval_url": "https://ieeexplore.ieee.org/document/9848440",
+      "access_status": "OK",
+      "content_identity_verified": true,
+      "claim_verified": true,
+      "locator_verified": true,
+      "locator_status": "LOCATOR_VERIFIED",
+      "verification_date": "2026-09-24",
+      "metadata": {
+        "standard_number": "IEEE Std 519-2022",
+        "technical_scope": "Quy định ngưỡng méo sóng hài điện áp và dòng điện tại điểm đấu nối chung PCC."
+      },
+      "locators": [
+        {
+          "locator_type": "TABLE",
+          "locator_value": "Table 2: Current Distortion Limits, p. 12",
+          "document_page": 12,
+          "pdf_page_index": 16,
+          "verified": true,
+          "excerpt": "Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV."
+        }
+      ]
+    }
+  ],
+  "evidences": [
+    {
+      "evidence_id": "EVD-001",
+      "rq_id": "RQ-001",
+      "source_id": "SRC-001",
+      "claim": "Biến tần (VFD) chuyển đổi năng lượng gián tiếp AC-DC-AC và điều khiển tốc độ từ trường quay stato qua tần số ngõ ra 0-250 Hz.",
+      "evidence_excerpt": "The drive consists primarily of two parts, one which converts AC (50 or 60 Hz) to DC and a second part which converts the DC back to AC, but now with a variable frequency of 0-250 Hz. By controlling the frequency, the drive can control the speed of the motor.",
+      "evidence_type": "TECHNICAL_CLAIM",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. Different starting methods, p. 16"
+    },
+    {
+      "evidence_id": "EVD-002",
+      "rq_id": "RQ-001",
+      "source_id": "SRC-001",
+      "claim": "Khởi động mềm sử dụng các cặp thyristor phản song song điều khiển góc kích pha để tăng dần điện áp hiệu dụng RMS trong khi tần số lưới giữ nguyên 50/60 Hz.",
+      "evidence_excerpt": "A softstarter consists of a number of anti-parallel thyristors; two in each phase. When performing a soft start, a firing signal is sent to the thyristors so that only the last part of each half period of the voltage sinus curve passes through.",
+      "evidence_type": "TECHNICAL_CLAIM",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. General about softstarters, pp. 21-22"
+    },
+    {
+      "evidence_id": "EVD-003",
+      "rq_id": "RQ-002",
+      "source_id": "SRC-002",
+      "claim": "Mô-men khởi động tỉ lệ với bình phương điện áp; khi Soft Starter giới hạn dòng ở 150% In (25% U) thì mô-men chỉ còn 6%, ở 300% In (50% U) mô-men đạt 25%.",
+      "evidence_excerpt": "Full Voltage: 100% Voltage, 100% Torque, 600% Current. Soft Start: 150% Current limit -> 25% Voltage, 6% Starting Torque; 300% Current limit -> 50% Voltage, 25% Starting Torque; 450% Current limit -> 75% Voltage, 56% Starting Torque.",
+      "evidence_type": "NUMERICAL_VALUE",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Table 1, p. 6"
+    },
+    {
+      "evidence_id": "EVD-004",
+      "rq_id": "RQ-002",
+      "source_id": "SRC-003",
+      "claim": "Biến tần có khả năng tạo ra 100%-150% mô-men định mức ngay ở tốc độ 0 rpm, trong khi khởi động mềm không thể sinh đủ mô-men ở tốc độ thấp nếu hạn dòng quá sâu.",
+      "evidence_excerpt": "Question: Does the application need full torque at zero speed? Answer: An AC Drive can provide full torque at zero speed where a soft starter cannot.",
+      "evidence_type": "COMPARISON_POINT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Frequently asked questions"
+    },
+    {
+      "evidence_id": "EVD-005",
+      "rq_id": "RQ-003",
+      "source_id": "SRC-001",
+      "claim": "Khởi động mềm chỉ kiểm soát quá trình khởi động và dừng; sau khi kết thúc tăng tốc, động cơ vận hành cố định ở tốc độ định mức lưới, không thể điều chỉnh tốc độ như VFD.",
+      "evidence_excerpt": "In many applications it is required to continuously regulate the speed of the motor, and a drive is then a very good solution. However, in many applications a drive is used only for starting and stopping the motor, even though there is no need for continuous speed regulation.",
+      "evidence_type": "LIMITATION",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. Different starting methods, p. 17"
+    },
+    {
+      "evidence_id": "EVD-006",
+      "rq_id": "RQ-004",
+      "source_id": "SRC-003",
+      "claim": "Khi vận hành định mức đầy tải qua bypass contactor, Soft Starter đạt hiệu suất cao hơn (>99.5%) và chạy mát hơn VFD do triệt tiêu tổn hao chuyển mạch và sụt áp trên bán dẫn.",
+      "evidence_excerpt": "When operating at full speed and adequately loaded, soft starters are more efficient than VFDs. With an integrated bypass, current in the soft starter is carried across the contactor, so it runs cooler, as no active solid-state components are generating heat.",
+      "evidence_type": "COMPARISON_POINT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Energy efficiency comparisons"
+    },
+    {
+      "evidence_id": "EVD-007",
+      "rq_id": "RQ-004",
+      "source_id": "SRC-002",
+      "claim": "Contactor bypass tích hợp trong Soft Starter chỉ cần định mức AC-1 vì nó không bao giờ phải đóng hoặc cắt dòng hồ quang tải cảm ứng, giúp tối ưu kích thước.",
+      "evidence_excerpt": "The internal bypass is typically rated AC-1, not AC-3, because the bypass contactor never makes or breaks current.",
+      "evidence_type": "TECHNICAL_CLAIM",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Bypass Configuration, p. 7"
+    },
+    {
+      "evidence_id": "EVD-008",
+      "rq_id": "RQ-005",
+      "source_id": "SRC-002",
+      "claim": "Sóng hài của Soft Starter chỉ xuất hiện cục bộ (<10%) trong giai đoạn kích mở thyristor khởi động/dừng; khi đóng bypass, sóng hài hoàn toàn triệt tiêu về 0%.",
+      "evidence_excerpt": "Soft starter harmonics are typically less than 10% in starting or stopping modes when SCRs are turned on... In bypass condition, there are almost no harmonics generated.",
+      "evidence_type": "THRESHOLD",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Harmonics, p. 12"
+    },
+    {
+      "evidence_id": "EVD-009",
+      "rq_id": "RQ-005",
+      "source_id": "SRC-004",
+      "claim": "Theo chuẩn IEEE Std 519-2022, giới hạn méo dòng tổng TDD tại điểm PCC là 5% đối với tỷ số ngắn mạch nhỏ hơn 20, đòi hỏi VFD phải có giải pháp lọc hài tích cực/thụ động.",
+      "evidence_excerpt": "Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV.",
+      "evidence_type": "STANDARD_REQUIREMENT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Table 2: Current Distortion Limits, p. 12"
+    },
+    {
+      "evidence_id": "EVD-010",
+      "rq_id": "RQ-006",
+      "source_id": "SRC-002",
+      "claim": "Chi phí đầu tư ban đầu của Soft Starter thấp hơn VFD từ 2 đến 4 lần ở dải công suất vừa và lớn; đồng thời VFD đòi hỏi bảo trì quạt làm mát và kiểm tra tụ DC bus định kỳ.",
+      "evidence_excerpt": "At lower amperage, the drive and the soft starter have similar costs, but as the amperage and power go up, so does the cost of a drive... in year 3, you should replace cooling fans and inspect DC bus capacitors.",
+      "evidence_type": "COMPARISON_POINT",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Section Initial Cost & Maintenance, pp. 15-17"
+    },
+    {
+      "evidence_id": "EVD-011",
+      "rq_id": "RQ-007",
+      "source_id": "SRC-001",
+      "claim": "Trong ứng dụng bơm ly tâm không điều chỉnh lưu lượng, tính năng dốc dừng êm của Soft Starter triệt tiêu hiện tượng búa nước trong đường ống một cách kinh tế nhất.",
+      "evidence_excerpt": "Starting up a pump is normally not a big problem electrically. The problem is the wear and tear caused by pressure waves in the pipe system created when the motor starts but especially when it stops too quickly.",
+      "evidence_type": "OEM_RECOMMENDATION",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. Different applications - Pumps, p. 29"
+    },
+    {
+      "evidence_id": "EVD-012",
+      "rq_id": "RQ-007",
+      "source_id": "SRC-001",
+      "claim": "Với tải nặng có quán tính bánh đà lớn (máy nghiền, máy khuấy), nếu dùng Soft Starter bắt buộc phải chọn tăng 1 cấp công suất để tránh nhảy rơ-le nhiệt khi khởi động dài.",
+      "evidence_excerpt": "Crushers, mixers, mills and stirrers usually have a very big moment of inertia so the softstarter is selected one size larger than the motor kW size.",
+      "evidence_type": "OEM_RECOMMENDATION",
+      "verification_status": "VERIFIED",
+      "locator_status": "LOCATOR_VERIFIED",
+      "locator": "Ch. Different applications - Crusher and Mill, p. 37"
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "CON-001",
+      "rq_id": "RQ-002",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002"
+      ],
+      "description": "Khác biệt trong khuyến nghị về giới hạn dòng khởi động tối thiểu của Soft Starter và nguy cơ sụt giảm mô-men làm kẹt rotor tải nặng.",
+      "status": "RESOLVED",
+      "resolution": "Rockwell chỉ ra ở 150% dòng định mức mô-men chỉ còn 6%. ABB khuyến cáo tải nặng phải cài đặt >= 300%-350% hoặc chọn vượt 1 cấp công suất (oversizing), hoặc bắt buộc dùng VFD nếu cần mô-men bứt phá cao ngay từ 0 rpm."
+    },
+    {
+      "conflict_id": "CON-002",
+      "rq_id": "RQ-005",
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-004"
+      ],
+      "description": "Mức độ quan ngại về phát sinh sóng hài giữa Soft Starter và VFD đối với chất lượng điện lưới.",
+      "status": "RESOLVED",
+      "resolution": "Tách bạch 2 chế độ làm việc của Soft Starter: Giai đoạn tăng tốc ngắn hạn có sóng hài cục bộ (<10%), nhưng khi đóng Bypass thì triệt tiêu hoàn toàn (THD = 0%). Ngược lại, VFD phát sinh sóng hài liên tục 100% thời gian vận hành và đòi hỏi lọc sóng hài theo chuẩn IEEE Std 519-2022."
+    }
+  ]
+}

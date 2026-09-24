@@ -1,0 +1,12 @@
+{
+  "query_id": "Q-001",
+  "rq_id": "RQ-001",
+  "query": "ABB variable speed drives vs softstarters motor control technical comparison",
+  "provider": "LIVE_WEB",
+  "executed_at": "2026-09-24T21:42:00Z",
+  "result_count": 8,
+  "top_candidates_discovered": [
+    "CAN-001",
+    "CAN-002"
+  ]
+}

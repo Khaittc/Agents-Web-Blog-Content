@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ResearchPlanSchema",
+  "description": "Contract for structured research planning before live web or knowledge retrieval (ADR-027)",
+  "type": "object",
+  "required": [
+    "article_id",
+    "topic",
+    "blog_type",
+    "research_objective",
+    "research_questions",
+    "status"
+  ],
+  "properties": {
+    "article_id": {
+      "type": "string",
+      "description": "Article identifier, e.g., BLOG_04",
+      "pattern": "^BLOG_[0-9]{2}(_[A-Za-z0-9_]+)?$"
+    },
+    "topic": {
+      "type": "string",
+      "description": "Full topic or title assignment of the technical article"
+    },
+    "blog_type": {
+      "type": "string",
+      "description": "Canonical blog type strictly referenced from 00_SKILL/BLOG_TAXONOMY_CANONICAL_v1.0.md",
+      "enum": [
+        "BLOG-T01",
+        "BLOG-T02",
+        "BLOG-T03",
+        "BLOG-T04",
+        "BLOG-T05"
+      ]
+    },
+    "research_objective": {
+      "type": "string",
+      "description": "Primary engineering objective and technical scope of this research plan"
+    },
+    "research_questions": {
+      "type": "array",
+      "description": "Granular technical questions that decompose the overall topic into verifiable sub-problems",
+      "items": {
+        "type": "object",
+        "required": [
+          "rq_id",
+          "question",
+          "priority",
+          "preferred_source_types",
+          "status"
+        ],
+        "properties": {
+          "rq_id": {
+            "type": "string",
+            "description": "Unique research question identifier formatted as RQ-xxx",
+            "pattern": "^RQ-[0-9]{3,}$"
+          },
+          "question": {
+            "type": "string",
+            "description": "Specific technical question to be answered by authoritative sources"
+          },
+          "priority": {
+            "type": "string",
+            "description": "Priority level; HIGH questions must be ANSWERED or explicitly BLOCKED for plan completion",
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ]
+          },
+          "preferred_source_types": {
+            "type": "array",
+            "description": "Target source types (e.g., MANUAL, STANDARD, DATASHEET)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "preferred_publishers": {
+            "type": "array",
+            "description": "Target manufacturers, standards bodies or institutions (e.g., ABB, Siemens, IEEE)",
+            "items": {
+              "type": "string"
+            }
+          },
+          "freshness_required": {
+            "type": "boolean",
+            "description": "Whether latest edition/firmware/standard is required (true) or stable fundamentals suffice (false)",
+            "default": false
+          },
+          "status": {
+            "type": "string",
+            "description": "Current resolution status of this research question",
+            "enum": [
+              "OPEN",
+              "SEARCHING",
+              "PARTIALLY_ANSWERED",
+              "ANSWERED",
+              "BLOCKED"
+            ]
+          },
+          "block_reason": {
+            "type": "string",
+            "description": "Required rationale if status is BLOCKED"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "status": {
+      "type": "string",
+      "description": "Overall research plan completion status",
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

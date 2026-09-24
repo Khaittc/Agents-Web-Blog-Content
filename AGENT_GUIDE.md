@@ -81,21 +81,28 @@ BƯỚC 3: Tra cứu 00_SKILL/ và 02_AGENT_TEMPLATES/
 ├── 02_AGENT_TEMPLATES/        # System prompts & Hợp đồng giao tiếp giữa 5 Subagents
 │   ├── contracts/             # Các JSON Schemas máy đọc chuẩn mực giữa các Subagents
 │   │   ├── article_brief.schema.json
+│   │   ├── research_plan.schema.json
 │   │   ├── evidence.schema.json
 │   │   ├── claim_source_map.schema.json
 │   │   ├── audit.schema.json
 │   │   ├── revision_request.schema.json
 │   │   └── article_manifest.schema.json
 │   ├── ARTICLE_LIFECYCLE_AND_APPROVAL_PROTOCOL.md    # Vòng đời 10 bước, khóa mã băm toàn vẹn SHA-256
-│   ├── research_agent.md      # Đặc tả Subagent Nghiên cứu Nguồn
+│   ├── research_agent.md      # Đặc tả Subagent Nghiên cứu Nguồn & Lập kế hoạch
 │   ├── drafting_agent.md      # Đặc tả Subagent Biên soạn Kỹ thuật
 │   ├── visual_agent.md        # Đặc tả Subagent Đồ họa & Prompt AI
 │   ├── review_agent.md        # Đặc tả Subagent Phản biện & Kiểm toán 2 Cổng
 │   └── publisher_agent.md     # Đặc tả Subagent Đóng gói Ấn phẩm (Packaging Agent)
+├── 03_TOOLING/                # Các công cụ và chuẩn kết nối dịch vụ
+│   └── live_research/         # Bộ công cụ Live Web Research, Provider Contract & Acceptance Gate
+│       ├── provider_contract.md
+│       ├── README.md
+│       └── examples/
 ├── 03_Articles/               # Lưu trữ các bài viết (bản thảo, audit report, HTML cuối)
 │   ├── BLOG_01_Dong_co_non_tai/                      # BLOG-T02 (LOCKED)
 │   ├── BLOG_02_He_so_cong_suat_va_Song_hai/          # BLOG-T01 (LOCKED)
-│   └── BLOG_03_Chan_doan_qua_dong_bien_tan/          # BLOG-T03 (LOCKED)
+│   ├── BLOG_03_Chan_doan_qua_dong_bien_tan/          # BLOG-T03 (LOCKED)
+│   └── BLOG_04_VFD_vs_Soft_Starter/                  # BLOG-T04 (Phase 3.0 Pilot - RESEARCH_COMPLETE)
 └── 04_PLANS/                  # Lưu trữ các bản kế hoạch thực thi [yymmdd]_implementation_plan.md
 ```
 

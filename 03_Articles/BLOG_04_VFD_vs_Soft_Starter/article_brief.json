@@ -1,0 +1,28 @@
+{
+  "article_id": "BLOG_04",
+  "article_slug": "vfd-vs-soft-starter-so-sanh-nguyen-ly-dong-khoi-dong-va-ung-dung",
+  "topic": "VFD và Soft Starter: Khác nhau về nguyên lý, dòng khởi động, điều khiển tốc độ và phạm vi ứng dụng",
+  "blog_type": "BLOG-T04",
+  "technical_focus": [
+    "Nguyên lý biến đổi tần số/điện áp (VFD) vs điều khiển góc kích thyristor (Soft Starter)",
+    "Đặc tính dòng khởi động (Inrush current) và mô-men khởi động (Starting torque)",
+    "Khả năng điều chỉnh tốc độ liên tục và điều khiển quá trình",
+    "Tổn hao năng lượng, hiệu suất và phương thức bypass contactor",
+    "Sóng hài (Harmonics) và tác động lên chất lượng điện lưới",
+    "Tiêu chí lựa chọn kỹ thuật theo loại tải công nghiệp (Bơm, Quạt, Băng tải, Máy nghiền)"
+  ],
+  "target_audience": [
+    "Kỹ sư cơ điện (M&E), kỹ sư vận hành nhà máy",
+    "Kỹ sư tự động hóa, kỹ thuật viên bảo trì hệ thống truyền động điện",
+    "Sinh viên ngành Kỹ thuật Điện - Tự động hóa"
+  ],
+  "required_components": [
+    "Bảng so sánh đa chiều chi tiết giữa VFD và Soft Starter (nguyên lý, linh kiện công suất, dòng khởi động, sóng hài, chi phí)",
+    "Đồ thị/Mô tả định lượng dòng khởi động và mô-men khởi động theo thời gian",
+    "Ma trận hướng dẫn chọn lựa thiết bị theo đặc tính tải cơ học (Tải mô-men biến thiên vs Tải mô-men không đổi)",
+    "Dẫn chứng từ tài liệu kỹ thuật chính hãng (ABB, Siemens, Schneider Electric, Danfoss)"
+  ],
+  "status": "DRAFT",
+  "created_at": "2026-09-24T21:30:00+07:00",
+  "created_by": "Lead Engineer"
+}

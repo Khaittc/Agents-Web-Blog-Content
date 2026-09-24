@@ -1,0 +1,258 @@
+{
+  "article_id": "BLOG_04",
+  "log_version": "1.0",
+  "executed_by": "research_agent",
+  "execution_window": {
+    "started_at": "2026-09-24T21:21:00+07:00",
+    "completed_at": "2026-09-24T21:45:00+07:00"
+  },
+  "queries": [
+    {
+      "query_id": "Q-001",
+      "rq_id": "RQ-001",
+      "query": "ABB softstarter vs variable speed drive technical guide pdf",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:21:24+07:00",
+      "result_count": 8,
+      "top_candidates_discovered": [
+        "CAN-001"
+      ]
+    },
+    {
+      "query_id": "Q-002",
+      "rq_id": "RQ-002",
+      "query": "Rockwell Automation soft starter vs variable frequency drive application guide OR white paper",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:22:02+07:00",
+      "result_count": 10,
+      "top_candidates_discovered": [
+        "CAN-002"
+      ]
+    },
+    {
+      "query_id": "Q-003",
+      "rq_id": "RQ-003",
+      "query": "Schneider Electric white paper soft starter variable speed drive OR VFD pdf",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:41:27+07:00",
+      "result_count": 8,
+      "top_candidates_discovered": [
+        "CAN-003"
+      ]
+    },
+    {
+      "query_id": "Q-004",
+      "rq_id": "RQ-005",
+      "query": "IEEE Std 519-2022 harmonic control electric power systems",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:22:15+07:00",
+      "result_count": 6,
+      "top_candidates_discovered": [
+        "CAN-004"
+      ]
+    },
+    {
+      "query_id": "Q-005",
+      "rq_id": "RQ-001",
+      "query": "support.industry.siemens.com SIRIUS 3RW manual pdf System Manual Entry ID 21772518",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:28:26+07:00",
+      "result_count": 12,
+      "top_candidates_discovered": [
+        "CAN-005"
+      ]
+    },
+    {
+      "query_id": "Q-006",
+      "rq_id": "RQ-007",
+      "query": "files.danfoss.com MG Design Guide MCD VLT pdf",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:27:47+07:00",
+      "result_count": 4,
+      "top_candidates_discovered": [
+        "CAN-006"
+      ]
+    },
+    {
+      "query_id": "Q-007",
+      "rq_id": "RQ-006",
+      "query": "chintglobal vfd vs soft starter guide",
+      "provider": "LIVE_WEB",
+      "executed_at": "2026-09-24T21:21:37+07:00",
+      "result_count": 5,
+      "top_candidates_discovered": [
+        "CAN-007"
+      ]
+    }
+  ],
+  "candidate_sources_evaluated": [
+    {
+      "candidate_id": "CAN-001",
+      "rq_id": "RQ-001",
+      "title": "Softstarter Handbook",
+      "publisher": "ABB AB, Cewe-Control",
+      "url": "https://library.e.abb.com/public/6b4e1a3530814df0c12579bb0030e58b/1SFC132060M0201.pdf",
+      "canonical_url": "https://library.abb.com/d/1SFC132060M0201",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "1SFC132060M0201",
+      "source_tier": "Tier 2",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-001",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Tài liệu kỹ thuật gốc chuẩn mực của ABB, đầy đủ lý thuyết biến đổi điện áp bằng thyristor, so sánh với VFD và hướng dẫn chuyên sâu cho các tải công nghiệp."
+    },
+    {
+      "candidate_id": "CAN-002",
+      "rq_id": "RQ-002",
+      "title": "When to use a Soft Starter or an AC Variable Frequency Drive",
+      "publisher": "Rockwell Automation, Inc.",
+      "url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/150-wp007_-en-p.pdf",
+      "canonical_url": "https://rok.auto/literature",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "Publication 150-WP007A-EN-P",
+      "source_tier": "Tier 2",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-002",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Báo cáo kỹ thuật chuyên đề của Rockwell Automation (Allen-Bradley) cung cấp bảng số liệu định lượng về dòng khởi động, quan hệ mô-men - điện áp và phân tích sóng hài."
+    },
+    {
+      "candidate_id": "CAN-003",
+      "rq_id": "RQ-003",
+      "title": "Soft starters vs. VFDs: Which one is right for your conveyor motor application?",
+      "publisher": "Schneider Electric Blog (Expert Analysis by Mark Duncan)",
+      "url": "https://blog.se.com/industrial-automation/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
+      "canonical_url": "https://blog.se.com/industry/machine-and-process-management/2020/08/03/soft-starters-vs-vfds-which-one-is-right-for-your-conveyor-motor-application/",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "Blog Post by Segment Manager Mark Duncan",
+      "source_tier": "Tier 2",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-003",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Bài viết kỹ thuật từ chuyên gia 37 năm kinh nghiệm của Schneider Electric, phân tích so sánh tổn hao nhiệt, hiệu suất bypass và ứng dụng băng tải thực tế."
+    },
+    {
+      "candidate_id": "CAN-004",
+      "rq_id": "RQ-005",
+      "title": "IEEE Standard for Harmonic Control in Electric Power Systems",
+      "publisher": "IEEE (Institute of Electrical and Electronics Engineers)",
+      "url": "https://ieeexplore.ieee.org/document/9848440",
+      "canonical_url": "https://standards.ieee.org/ieee/519/10540/",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "IEEE Std 519-2022",
+      "source_tier": "Tier 1",
+      "acceptance_status": "ACCEPTED",
+      "accepted_as_source_id": "SRC-004",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": true,
+        "no_snippet_verified": true,
+        "stable_locators_present": true,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Tiêu chuẩn quốc tế tối cao (Tier 1) về kiểm soát và giới hạn độ méo sóng hài trong hệ thống điện công nghiệp."
+    },
+    {
+      "candidate_id": "CAN-005",
+      "rq_id": "RQ-001",
+      "title": "SIRIUS 3RW44 Soft Starters System Manual",
+      "publisher": "Siemens AG",
+      "url": "https://support.industry.siemens.com/cs/document/21772518/",
+      "canonical_url": "https://support.industry.siemens.com/cs/document/21772518/",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "Entry ID: 21772518",
+      "source_tier": "Tier 2",
+      "acceptance_status": "REJECTED",
+      "rejection_reason": "REJECTED_PAYWALL_OR_BOT_BLOCK",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": true,
+        "direct_access_ok": false,
+        "no_snippet_verified": false,
+        "stable_locators_present": false,
+        "freshness_valid": true,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Truy xuất tự động trả về mã lỗi HTTP 403 Forbidden do tường lửa chặn bot (WAF) của cổng SIOS Siemens, không thể tự động xác minh nội dung trực tiếp."
+    },
+    {
+      "candidate_id": "CAN-006",
+      "rq_id": "RQ-007",
+      "title": "Danfoss VLT AutomationDrive / MCD Design Guide",
+      "publisher": "Danfoss Drives A/S",
+      "url": "http://files.danfoss.com/download/documents/MG90N502.pdf",
+      "canonical_url": "https://www.danfoss.com",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "MG90N502",
+      "source_tier": "Tier 2",
+      "acceptance_status": "REJECTED",
+      "rejection_reason": "REJECTED_DEAD_LINK",
+      "gate_evaluation": {
+        "tier_qualified": true,
+        "content_identity_verified": false,
+        "direct_access_ok": false,
+        "no_snippet_verified": false,
+        "stable_locators_present": false,
+        "freshness_valid": false,
+        "vendor_bias_managed": true,
+        "no_dead_or_generic_link": false
+      },
+      "evaluation_notes": "Đường dẫn máy chủ files.danfoss.com trả về lỗi HTTP 404 Not Found (link chết), vi phạm tiêu chuẩn ADR-015."
+    },
+    {
+      "candidate_id": "CAN-007",
+      "rq_id": "RQ-006",
+      "title": "VFD vs Soft Starter Guide",
+      "publisher": "Chint Global",
+      "url": "https://chintglobal.com/blog/vfd-vs-soft-starter",
+      "canonical_url": "https://chintglobal.com",
+      "discovered_via": "LIVE_WEB",
+      "document_id": "CHINT-BLOG-01",
+      "source_tier": "Tier 3",
+      "acceptance_status": "REJECTED",
+      "rejection_reason": "REJECTED_TIER3_UNQUALIFIED",
+      "gate_evaluation": {
+        "tier_qualified": false,
+        "content_identity_verified": false,
+        "direct_access_ok": true,
+        "no_snippet_verified": false,
+        "stable_locators_present": false,
+        "freshness_valid": true,
+        "vendor_bias_managed": false,
+        "no_dead_or_generic_link": true
+      },
+      "evaluation_notes": "Nguồn tiếp thị thương mại cấp 3 (Tier 3) không có dữ liệu thí nghiệm định lượng hoặc dẫn chứng kỹ thuật chuyên sâu, không đạt chuẩn chất lượng."
+    }
+  ]
+}
