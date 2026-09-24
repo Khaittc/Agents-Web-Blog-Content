@@ -64,11 +64,24 @@ Stage 3: VISUAL AGENT                     Stage 4: REVIEW AGENT (Supreme Gatekee
 
 ---
 
-## 4. Kế hoạch Hành động Tiếp theo
+## 4. Khởi Tạo Git & Đóng Gói Root README.md Lên GitHub (Session 18 & 19)
 
-Mục tiêu trọng tâm đầu tiên của **Phase 3** đã hoàn thành xuất sắc. Bước tiếp theo đề xuất:
+Theo yêu cầu của Kỹ sư trưởng, toàn bộ dự án đã được khởi tạo Git và đẩy lên GitHub:
+- **Remote GitHub URL**: [https://github.com/Khaittc/Agents-Web-Blog-Content.git](https://github.com/Khaittc/Agents-Web-Blog-Content.git)
+- **Tạo [.gitignore](file:///d:/Agents_Tools/05_WebsiteTTC/.gitignore)**: Loại bỏ các file rác OS, IDE và logs.
+- **Xây dựng [README.md](file:///d:/Agents_Tools/05_WebsiteTTC/README.md) cấp cao**:
+  - Giới thiệu tổng quan hệ thống AI đa tác tử sản xuất nội dung kỹ thuật theo chuẩn IEEE và Real Group.
+  - Sơ đồ Mermaid luồng phối hợp 5 Subagents.
+  - Bảng tổng hợp các Master Skills trong `00_SKILL/` và chi tiết tiêu chuẩn Responsive Đa thiết bị (Laptop & Mobile).
+  - Bảng Showcase 3 bài viết mẫu đã nghiệm thu và khóa an toàn (`BLOG_01`, `BLOG_02`, `BLOG_03`).
+  - Toàn bộ commit đã được push an toàn lên nhánh `main`.
+
+---
+
+## 5. Kế hoạch Hành động Tiếp theo (Phase 3 Next Steps)
+
 1. **Tích hợp Công cụ Ngoài (Tooling Integration)**:
-   - Kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn kho tài liệu Tier 1/2 với số trang và số bảng tự động.
+   - Khảo sát và kết nối MCP Server `notebooklm` để hỗ trợ Research Agent truy vấn kho tài liệu Tier 1/2 với số trang và số bảng tự động.
    - Chuẩn hóa luồng lệnh gọi `invoke_subagent` tự động kích hoạt 5 agents trong Antigravity.
 2. **Chạy Thử nghiệm Bài viết Đầu tiên bằng Pipeline Khép kín (Pilot Run Phase 4)**:
-   - Kỹ sư trưởng có thể ra đề bài một chủ đề kỹ thuật mới (ví dụ: về giải pháp tụ bù, biến tần, cảm biến hoặc an toàn điện) để kích hoạt toàn bộ 5 Subagents tự động thực thi từ đầu đến cuối.
+   - Kỹ sư trưởng ra đề bài một chủ đề kỹ thuật mới để kích hoạt toàn bộ 5 Subagents tự động thực thi từ đầu đến cuối.
