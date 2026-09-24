@@ -2,9 +2,9 @@
   "article_id": "BLOG_04",
   "title": "VFD và Soft Starter: So sánh Nguyên lý, Dòng khởi động, Điều khiển Tốc độ và Phạm vi Ứng dụng",
   "category": "BLOG-T04",
-  "status": "RESEARCHED",
+  "status": "TECH_REVIEW",
   "is_locked": false,
   "created_at": "2026-09-24T21:30:00+07:00",
   "evidence_dossier_file": "evidence_dossier.md",
-  "notes": "Research Phase đã hoàn thành. Final Research Gate PASS. research_handoff.json đã được tạo và handoff_ready = true. BLOG_04 hiện sẵn sàng cho Drafting Agent. Chưa có draft_review_package.md hoặc claim_source_map.json, vì vậy chưa được chuyển sang TECH_REVIEW."
+  "notes": "Drafting artifacts created. Research package consumed without modification. Article is now ready for Technical Review Gate."
 }
