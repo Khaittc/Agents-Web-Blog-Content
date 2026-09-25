@@ -1,7 +1,7 @@
 {
   "$schema": "../../02_AGENT_TEMPLATES/contracts/claim_source_map.schema.json",
   "article_id": "BLOG_04",
-  "generated_at": "2026-09-25T16:30:00+07:00",
+  "generated_at": "2026-09-25T16:36:00+07:00",
   "source_to_ieee_map": {
     "SRC-001": 1,
     "SRC-002": 2,
@@ -50,7 +50,7 @@
     {
       "claim_id": "CLM-003",
       "section_target": "Section 3.2",
-      "claim_text": "Mô-men khởi động của động cơ không đồng bộ tỉ lệ với bình phương điện áp; khi Soft Starter giới hạn dòng ở 150% dòng định mức (25% điện áp), mô-men khởi động sụt giảm xuống chỉ còn 6% mô-men định mức, và ở mức giới hạn dòng 300% (50% điện áp) mô-men đạt 25%.",
+      "claim_text": "Mô-men khởi động của động cơ không đồng bộ tỉ lệ với bình phương điện áp; theo Bảng 1 của Rockwell Automation, khi giới hạn dòng ở mức 150% dòng định mức (25% điện áp), mô-men khởi động sụt giảm xuống còn 6% mô-men định mức, và ở mức giới hạn dòng 300% (50% điện áp) mô-men đạt 25%.",
       "source_ids": [
         "SRC-002"
       ],
