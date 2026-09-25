@@ -101,18 +101,27 @@ Bản thảo đã tuân thủ triệt để 7 ràng buộc kỹ thuật bắt bu
 
 ---
 
-## 7. KIỂM TOÁN CÁC LUẬN ĐIỂM KHÔNG CÓ CĂN CỨ (UNSUPPORTED CLAIMS AUDIT)
+## 7. KIỂM TOÁN CÁC LUẬN ĐIỂM VÀ RANH GIỚI BẰNG CHỨNG (DRAFT EVIDENCE BOUNDARY AUDIT)
 
-- **Số lượng luận điểm không có căn cứ được phát hiện**: **0**.
-- Mọi thông số định lượng (điện áp, tần số, dòng khởi động, tỷ số mô-men, phần trăm sóng hài, chu kỳ bảo trì, chỉ số chi phí) đều có trích dẫn nguồn và số trang/mục chính xác (`LOCATOR_VERIFIED`).
-- Không có hiện tượng "ảo giác" (zero hallucination).
+- **Kết quả Kiểm toán Bản thảo Ban đầu (Initial Drafting Audit)**: **`REVISION_REQUIRED`**.
+- **Các phát hiện vượt ranh giới bằng chứng trong bản thảo ban đầu**:
+  1. *Hiệu suất & Tổn hao*: Các con số phần trăm cụ thể (Soft Starter bypass $>99.5\%$, VFD $96\%-98\%$, tổn hao dẫn/chuyển mạch $2\%-4\%$, $0.5\%-1.0\%$, điện áp rơi thuận $V_F, V_T$) không có trong hồ sơ `evidence.json` (EVD-006 chỉ so sánh định tính hiệu suất).
+  2. *Dòng khởi động DOL*: Bảng 1 của Rockwell (EVD-003) chỉ xác nhận $600\% I_n$, phát biểu "đến $800\%$" là suy diễn thêm ngoài bằng chứng.
+  3. *Ngôn ngữ áp đặt*: Cụm từ "bắt buộc chọn VFD" vượt quá khuyến nghị trung lập của hồ sơ nghiên cứu.
+  4. *Định cỡ Soft Starter*: ABB (EVD-012) khuyến nghị "usually selected one size larger", không phải "quy định bắt buộc phải chọn lớn hơn ít nhất một cấp".
+  5. *Búa nước đường ống*: ABB (EVD-011) chỉ xác nhận giải pháp giảm áp lực sóng áp suất, không hỗ trợ tuyên bố "giải quyết hoàn hảo / triệt tiêu hoàn toàn".
+  6. *Mở rộng lý thuyết ngoài hồ sơ*: Các thuật ngữ SVPWM, Sensorless Vector Control, công thức $n_s = 60f/p$ và ví dụ PLC/SCADA không nằm trong phạm vi trích xuất bằng chứng đã phê duyệt.
+  7. *Dải công suất RQ-006*: Các mốc "dưới vài chục kW", "100 kW đến 710 kW", "cấp số nhân" không có căn cứ từ EVD-010.
+  8. *Năm xuất bản SRC-005*: Tài liệu `3AFE64292714 Rev F` có năm xuất bản chính thức là 2017 (trong danh mục tham khảo ban đầu ghi 2011).
+  9. *Thứ tự trích dẫn CLM-010*: Cần đồng bộ thứ tự `source_ids` và `assigned_ieee_numbers` giữa `[4]` (SRC-005) và `[5]` (SRC-004).
+- **Hành động khắc phục**: Mở task riêng **`260925_blog_04_drafting_evidence_boundary_patch`** để chuẩn hóa và thu gọn toàn bộ bản thảo và bản đồ luận điểm về đúng ranh giới bằng chứng đã phê duyệt (`DRAFT CLAIM <= APPROVED EVIDENCE <= VERIFIED SOURCE`).
 
 ---
 
-## 8. KHOẢNG TRỐNG NGHIÊN CỨU PHÁT HIỆN TRONG KHI SOẠN THẢO (RESEARCH GAPS)
+## 8. KHOẢNG TRỐNG VÀ XỬ LÝ RANH GIỚI BẰNG CHỨNG (EVIDENCE BOUNDARY RESOLUTION)
 
-- **Số lượng khoảng trống nghiên cứu (Research Gaps)**: **0**.
-- Hồ sơ nghiên cứu kỹ thuật với 6 nguồn Tier 1+3 và 17 bằng chứng đã cung cấp đầy đủ dữ liệu định lượng và nguyên lý để soạn thảo trọn vẹn mọi yêu cầu của đề tài `BLOG_04`.
+- Không cần bổ sung Live Research mới do hồ sơ nghiên cứu đã đủ bao quát toàn bộ 7 Research Questions.
+- Quy tắc xử lý: Thu gọn phát biểu bản thảo về đúng nội hàm của bằng chứng đã được phê duyệt, loại bỏ các con số suy diễn ngoài hồ sơ và trung lập hóa văn phong kỹ thuật.
 
 ---
 
@@ -120,7 +129,7 @@ Bản thảo đã tuân thủ triệt để 7 ràng buộc kỹ thuật bắt bu
 
 Đã chạy kiểm tra tự động toàn diện:
 1. **Schema Validation (`claim_source_map.json`)**: **`PASS`** (Hợp lệ $100\%$ với `claim_source_map.schema.json`).
-2. **Architecture Validation (`python scripts/validate_architecture.py`)**: **`PASS`** (10/10 gates xanh, bao gồm Gate 10 xác nhận sự hiện diện đầy đủ của `draft_review_package.md` và `claim_source_map.json`).
+2. **Architecture Validation (`python scripts/validate_architecture.py`)**: **`PASS`** (Bao gồm Gate 10 và Gate 11 Draft Claim Traceability).
 3. **Locked Article Integrity (`python scripts/verify_locked_articles.py`)**: **`PASS`** (Bảo toàn tuyệt đối mã băm SHA-256 của `BLOG_01`, `BLOG_02`, `BLOG_03`).
 4. **Git Diff Check (`git diff --check`)**: **`PASS`** (Không có lỗi khoảng trắng hay ký tự lạ).
 
@@ -128,8 +137,8 @@ Bản thảo đã tuân thủ triệt để 7 ràng buộc kỹ thuật bắt bu
 
 ## 10. CHUYỂN GIAO TRẠNG THÁI VÒNG ĐỜI (LIFECYCLE TRANSITION)
 
-Sau khi hoàn tất khởi tạo cả hai tệp thành phẩm bản thảo và vượt qua mọi kiểm thử kiểm định:
-- **Trạng thái bài viết (`article_status.json`)**: Được chuyển từ `RESEARCHED` sang **`TECH_REVIEW`**.
+Sau khi hoàn tất khởi tạo và áp dụng bản vá ranh giới bằng chứng (`260925_blog_04_drafting_evidence_boundary_patch`):
+- **Trạng thái bài viết (`article_status.json`)**: Duy trì **`TECH_REVIEW`**.
 - **Ghi chú vòng đời**:
-  > *"Drafting artifacts created. Research package consumed without modification. Article is now ready for Technical Review Gate."*
-- **Ý nghĩa hiện tại**: Bài viết `BLOG_04` hiện đã sẵn sàng để Review Agent thực hiện quy trình kiểm định độc lập tại **Cổng Kiểm duyệt Kỹ thuật (Technical Review Gate)**.
+  > *"Draft evidence-boundary patch completed. Draft and claim map are ready for independent Technical Review Gate."*
+- **Ý nghĩa hiện tại**: Bản thảo `draft_review_package.md` và bản đồ luận điểm `claim_source_map.json` đã đạt tính chuẩn xác và khả năng truy vết $100\%$, sẵn sàng cho **Cổng Kiểm duyệt Kỹ thuật (Technical Review Gate)**.

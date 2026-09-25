@@ -1,6 +1,7 @@
 {
+  "$schema": "../../02_AGENT_TEMPLATES/contracts/claim_source_map.schema.json",
   "article_id": "BLOG_04",
-  "generated_at": "2026-09-24T23:45:00+07:00",
+  "generated_at": "2026-09-25T16:15:00+07:00",
   "source_to_ieee_map": {
     "SRC-001": 1,
     "SRC-002": 2,
@@ -17,6 +18,9 @@
       "source_ids": [
         "SRC-001"
       ],
+      "evidence_ids": [
+        "EVD-001"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -31,6 +35,9 @@
       "claim_text": "Khởi động mềm (Soft Starter) sử dụng các cặp thyristor (SCR) mắc phản song song trên từng pha để điều khiển góc kích pha, tăng dần điện áp hiệu dụng RMS trong khi tần số lưới giữ nguyên 50/60 Hz.",
       "source_ids": [
         "SRC-001"
+      ],
+      "evidence_ids": [
+        "EVD-002"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -47,6 +54,9 @@
       "source_ids": [
         "SRC-002"
       ],
+      "evidence_ids": [
+        "EVD-003"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -61,6 +71,9 @@
       "claim_text": "Biến tần có khả năng cung cấp đầy đủ 100% mô-men định mức ở tốc độ zero speed (0 rpm) cho các tải khởi động nặng, trong khi khởi động mềm không thể đáp ứng được khả năng sinh mô-men này tại tốc độ 0 rpm.",
       "source_ids": [
         "SRC-003"
+      ],
+      "evidence_ids": [
+        "EVD-004"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -77,6 +90,9 @@
       "source_ids": [
         "SRC-001"
       ],
+      "evidence_ids": [
+        "EVD-005"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -91,6 +107,9 @@
       "claim_text": "Khi động cơ vận hành ở tốc độ định mức đầy tải có tích hợp contactor bypass, khởi động mềm đạt hiệu suất vận hành cao hơn và tỏa nhiệt ít hơn biến tần do toàn bộ dòng tải chuyển qua tiếp điểm cơ khí thay vì linh kiện bán dẫn công suất.",
       "source_ids": [
         "SRC-003"
+      ],
+      "evidence_ids": [
+        "EVD-006"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -107,6 +126,9 @@
       "source_ids": [
         "SRC-002"
       ],
+      "evidence_ids": [
+        "EVD-007"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -121,6 +143,9 @@
       "claim_text": "Sóng hài dòng điện phát sinh từ khởi động mềm mang tính cục bộ ngắn hạn với độ méo THDi thường dưới 10% trong thời gian tăng tốc/giảm tốc khi SCR kích dẫn; ở chế độ vận hành bypass xác lập, thiết bị hầu như không phát sinh sóng hài lên lưới điện.",
       "source_ids": [
         "SRC-002"
+      ],
+      "evidence_ids": [
+        "EVD-008"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -137,6 +162,9 @@
       "source_ids": [
         "SRC-005"
       ],
+      "evidence_ids": [
+        "EVD-013"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -150,8 +178,12 @@
       "section_target": "Section 6.3",
       "claim_text": "Tiêu chuẩn IEEE Std 519-2022 không quy định ngưỡng phát xạ sóng hài cho từng thiết bị đơn lẻ mà quy định giới hạn méo dòng tổng TDD tại Điểm Đấu Nối Chung (PCC) của toàn bộ cơ sở phụ thuộc vào tỷ số ngắn mạch Isc/IL, trong đó giới hạn TDD là 5.0% đối với tỷ số Isc/IL < 20 ở cấp điện áp 120 V đến 69 kV.",
       "source_ids": [
-        "SRC-004",
-        "SRC-005"
+        "SRC-005",
+        "SRC-004"
+      ],
+      "evidence_ids": [
+        "EVD-014",
+        "EVD-009"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -169,6 +201,9 @@
       "source_ids": [
         "SRC-005"
       ],
+      "evidence_ids": [
+        "EVD-014"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -183,6 +218,9 @@
       "claim_text": "Về mặt chi phí đầu tư ban đầu theo bối cảnh lịch sử công nghệ, ở dải công suất và dòng điện thấp thì chi phí giữa VFD và Soft Starter có mức chênh lệch tương đối nhỏ, nhưng khi công suất và dòng điện tăng cao thì đường cong chi phí của VFD dốc đứng hơn rất nhiều so với Soft Starter.",
       "source_ids": [
         "SRC-002"
+      ],
+      "evidence_ids": [
+        "EVD-010"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -199,6 +237,9 @@
       "source_ids": [
         "SRC-001"
       ],
+      "evidence_ids": [
+        "EVD-016"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -213,6 +254,9 @@
       "claim_text": "Khởi động mềm có thể tích vật lý và kích thước bao ngoài nhỏ hơn đáng kể so với biến tần trên toàn dải công suất; đối với các biến tần công suất lớn, kích thước thiết bị tăng mạnh và đòi hỏi bố trí không gian tủ điện kiểu MCC để chứa thêm các thiết bị phụ trợ đồng bộ như thiết bị cách ly, cuộn kháng và bộ hạn chế nhiễu EMC.",
       "source_ids": [
         "SRC-002"
+      ],
+      "evidence_ids": [
+        "EVD-015"
       ],
       "citation_required": true,
       "locator_required": true,
@@ -229,6 +273,9 @@
       "source_ids": [
         "SRC-006"
       ],
+      "evidence_ids": [
+        "EVD-017"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -244,6 +291,9 @@
       "source_ids": [
         "SRC-001"
       ],
+      "evidence_ids": [
+        "EVD-011"
+      ],
       "citation_required": true,
       "locator_required": true,
       "verification_status": "VERIFIED",
@@ -258,6 +308,9 @@
       "claim_text": "Đối với các phụ tải có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), khởi động mềm thường được khuyến nghị chọn tăng lớn hơn một cấp công suất (oversizing) so với công suất động cơ để tránh hiện tượng sụt áp và quá nhiệt trong thời gian khởi động kéo dài.",
       "source_ids": [
         "SRC-001"
+      ],
+      "evidence_ids": [
+        "EVD-012"
       ],
       "citation_required": true,
       "locator_required": true,

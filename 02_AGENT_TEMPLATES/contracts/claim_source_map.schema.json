@@ -10,6 +10,9 @@
     "claims"
   ],
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "article_id": {
       "type": "string",
       "description": "Article identifier, e.g., BLOG_04"
@@ -35,6 +38,7 @@
           "claim_id",
           "claim_text",
           "source_ids",
+          "evidence_ids",
           "citation_required",
           "locator_required",
           "verification_status",
@@ -62,6 +66,16 @@
               "pattern": "^SRC-[0-9]{3,}$"
             },
             "minItems": 1
+          },
+          "evidence_ids": {
+            "type": "array",
+            "description": "Associated Evidence IDs from evidence.json backing this claim",
+            "items": {
+              "type": "string",
+              "pattern": "^EVD-[0-9]{3,}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
           },
           "citation_required": {
             "type": "boolean",

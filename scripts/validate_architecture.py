@@ -448,6 +448,135 @@ def validate_lifecycle_artifact_preconditions():
 
 
 # -------------------------------------------------------------
+# Gate 11: Draft Claim Traceability
+# -------------------------------------------------------------
+
+def validate_draft_claim_traceability():
+    errors = []
+    print("[Gate 11] Validating Draft Claim Traceability across 03_Articles...")
+
+    article_dirs = sorted((ROOT_DIR / "03_Articles").glob("BLOG_*"))
+    for ad in article_dirs:
+        claim_map_file = ad / "claim_source_map.json"
+        if not claim_map_file.is_file():
+            continue
+
+        evidence_file = ad / "evidence.json"
+        article_id = ad.name
+        if not evidence_file.is_file():
+            errors.append(f"{article_id}: claim_source_map.json exists but evidence.json is missing")
+            continue
+
+        try:
+            claim_map = json.loads(claim_map_file.read_text(encoding="utf-8-sig"))
+        except Exception as e:
+            errors.append(f"{claim_map_file.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+            continue
+
+        try:
+            evidence_data = json.loads(evidence_file.read_text(encoding="utf-8-sig"))
+        except Exception as e:
+            errors.append(f"{evidence_file.relative_to(ROOT_DIR)} failed to parse JSON: {e}")
+            continue
+
+        # 6. Check source_to_ieee_map values are unique positive integers
+        source_to_ieee_map = claim_map.get("source_to_ieee_map")
+        if not isinstance(source_to_ieee_map, dict):
+            errors.append(f"{claim_map_file.relative_to(ROOT_DIR)}: source_to_ieee_map must be an object")
+            continue
+
+        seen_numbers = set()
+        for src_id, ieee_num in source_to_ieee_map.items():
+            if not isinstance(ieee_num, int) or ieee_num < 1:
+                errors.append(
+                    f"{claim_map_file.relative_to(ROOT_DIR)}: source_to_ieee_map[{src_id}]={ieee_num} is not a positive integer"
+                )
+            elif ieee_num in seen_numbers:
+                errors.append(
+                    f"{claim_map_file.relative_to(ROOT_DIR)}: duplicate IEEE number {ieee_num} in source_to_ieee_map"
+                )
+            else:
+                seen_numbers.add(ieee_num)
+
+        known_sources = {s.get("source_id") for s in evidence_data.get("sources", []) if s.get("source_id")}
+        evd_to_source = {
+            e.get("evidence_id"): e.get("source_id")
+            for e in evidence_data.get("evidences", [])
+            if e.get("evidence_id")
+        }
+
+        claims = claim_map.get("claims")
+        if not isinstance(claims, list) or len(claims) == 0:
+            errors.append(f"{claim_map_file.relative_to(ROOT_DIR)}: claims must be a non-empty list")
+            continue
+
+        for idx, claim in enumerate(claims):
+            cid = claim.get("claim_id", f"claim[{idx}]")
+            evd_ids = claim.get("evidence_ids")
+            src_ids = claim.get("source_ids")
+            assigned_ieee = claim.get("assigned_ieee_numbers")
+
+            # Validate evidence_ids
+            if not isinstance(evd_ids, list) or len(evd_ids) == 0:
+                errors.append(f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} missing or empty evidence_ids")
+                continue
+            if not isinstance(src_ids, list) or len(src_ids) == 0:
+                errors.append(f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} missing or empty source_ids")
+                continue
+
+            # 1. Every evidence_id in claim_source_map.json exists in evidence.json
+            for eid in evd_ids:
+                if eid not in evd_to_source:
+                    errors.append(
+                        f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} references unknown evidence_id '{eid}'"
+                    )
+                else:
+                    # 3. For every evidence_id, its owning source_id in evidence.json belongs to the claim's source_ids
+                    owning_src = evd_to_source[eid]
+                    if owning_src not in src_ids:
+                        errors.append(
+                            f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} evidence '{eid}' belongs to source '{owning_src}' which is not in claim source_ids {src_ids}"
+                        )
+
+            # 2. Every source_id in claim_source_map.json exists in evidence.json
+            for sid in src_ids:
+                if sid not in known_sources:
+                    errors.append(
+                        f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} references unknown source_id '{sid}'"
+                    )
+
+            # 4. len(assigned_ieee_numbers) == len(source_ids)
+            if not isinstance(assigned_ieee, list):
+                errors.append(
+                    f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} missing or invalid assigned_ieee_numbers"
+                )
+            elif len(assigned_ieee) != len(src_ids):
+                errors.append(
+                    f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} assigned_ieee_numbers length ({len(assigned_ieee)}) does not match source_ids length ({len(src_ids)})"
+                )
+            else:
+                # 5. For each index i: assigned_ieee_numbers[i] == source_to_ieee_map[source_ids[i]]
+                for i, sid in enumerate(src_ids):
+                    expected_num = source_to_ieee_map.get(sid)
+                    if expected_num is None:
+                        errors.append(
+                            f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} source_id '{sid}' not found in source_to_ieee_map"
+                        )
+                    elif assigned_ieee[i] != expected_num:
+                        errors.append(
+                            f"{claim_map_file.relative_to(ROOT_DIR)}: {cid} assigned_ieee_numbers[{i}]={assigned_ieee[i]} does not match source_to_ieee_map[{sid}]={expected_num}"
+                        )
+
+    if errors:
+        for err in errors:
+            print(f"  [FAIL] {err}", file=sys.stderr)
+        return False
+
+    print("  [PASS] Draft claim traceability verified across all articles.")
+    return True
+
+
+# -------------------------------------------------------------
 # Main Runner
 # -------------------------------------------------------------
 
@@ -465,6 +594,7 @@ def main():
         validate_canonical_article_statuses(),
         validate_source_exception_consistency(),
         validate_lifecycle_artifact_preconditions(),
+        validate_draft_claim_traceability(),
     ]
 
     print("=" * 70)
