@@ -197,7 +197,7 @@
     {
       "claim_id": "CLM-011",
       "section_target": "Section 6.3",
-      "claim_text": "Tiêu chuẩn IEEE Std 519 không bắt buộc mọi biến tần phải lắp đặt bộ lọc sóng hài riêng lẻ; việc trang bị cuộn kháng, bộ lọc thụ động hoặc bộ lọc tích cực AHF là bài toán phân tích chất lượng điện ở cấp hệ thống phụ thuộc vào độ cứng của trạm biến áp và tổng phụ tải phi tuyến tại điểm PCC.",
+      "claim_text": "Tiêu chuẩn IEEE Std 519 không bắt buộc mọi biến tần phải lắp đặt bộ lọc sóng hài riêng lẻ; việc đánh giá sóng hài và lựa chọn biện pháp giảm thiểu phải được thực hiện ở cấp hệ thống tại Điểm Đấu Nối Chung (PCC) dựa trên tỷ số Isc/IL và điều kiện tổng thể của cơ sở.",
       "source_ids": [
         "SRC-005"
       ],
@@ -233,7 +233,7 @@
     {
       "claim_id": "CLM-013",
       "section_target": "Section 7.1",
-      "claim_text": "Theo bảng đối chiếu phương thức khởi động của ABB (2011), chỉ số chi phí lắp đặt bình quân ước tính theo trọng số tương đối (DOL = 1, Star-Delta = 3, Softstarter = 6, Drives > 12) phản ánh tương quan cấu trúc phần cứng của biến tần cao gấp đôi khởi động mềm, đóng vai trò tham chiếu so sánh định tính lịch sử chứ không phản ánh đơn giá thương mại cố định năm 2026.",
+      "claim_text": "Theo bảng đối chiếu lịch sử của ABB (2011), chỉ số chi phí lắp đặt bình quân ước tính là DOL = 1, Star-Delta = 3, Softstarter = 6, Drives > 12; các giá trị này chỉ dùng như tham chiếu định tính lịch sử, không phản ánh đơn giá thương mại hiện hành năm 2026.",
       "source_ids": [
         "SRC-001"
       ],

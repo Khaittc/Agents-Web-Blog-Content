@@ -2,7 +2,7 @@
 
 ## Tóm tắt Kỹ thuật Dành cho Kỹ sư Vận hành (Executive Technical Summary)
 
-Trong kỹ thuật truyền động điện công nghiệp, Biến tần (Variable Frequency Drive — VFD) và Khởi động mềm (Soft Starter) là hai giải pháp được sử dụng phổ biến trong việc kiểm soát quá trình khởi động của động cơ không đồng bộ ba pha rô-to lồng sóc. Khởi động mềm sử dụng các cặp thyristor điều khiển góc kích pha nhằm thay đổi điện áp hiệu dụng trong khi giữ nguyên tần số lưới $50/60\text{ Hz}$; sau khi kết thúc quá trình khởi động, thiết bị thường được chuyển sang chế độ đóng mạch bypass và động cơ quay cố định theo tần số nguồn lưới [1, pp. 21–22]. Ngược lại, biến tần chuyển đổi điện năng qua cấu trúc AC-DC-AC, cho phép điều khiển tốc độ động cơ thông qua việc thay đổi tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$ [1, p. 16] và cung cấp đầy đủ mô-men định mức tại tốc độ zero speed ($0\text{ rpm}$) cho các tải khởi động nặng [3]. Việc lựa chọn giải pháp phù hợp phụ thuộc vào yêu cầu điều chỉnh tốc độ liên tục của quy trình [1, p. 17], mô-men khởi động tại $0\text{ rpm}$ [3], mức độ phát sinh sóng hài đối chiếu với chuẩn IEEE Std 519 tại Điểm Đấu Nối Chung (PCC) [4, p. 10], [5, p. 12], không gian lắp đặt [2, pp. 15–16] và chi phí đầu tư ban đầu [1, p. 20], [2, p. 15].
+Trong kỹ thuật truyền động điện công nghiệp, Biến tần (Variable Frequency Drive — VFD) và Khởi động mềm (Soft Starter) là hai giải pháp được sử dụng phổ biến trong việc kiểm soát quá trình khởi động của động cơ không đồng bộ ba pha rô-to lồng sóc. Khởi động mềm sử dụng các cặp thyristor điều khiển góc kích pha nhằm thay đổi điện áp hiệu dụng trong khi giữ nguyên tần số lưới $50/60\text{ Hz}$; sau khi kết thúc quá trình khởi động, thiết bị thường được chuyển sang chế độ đóng mạch bypass và động cơ quay cố định theo tần số nguồn lưới [1, pp. 21–22]. Ngược lại, biến tần chuyển đổi điện năng qua cấu trúc AC-DC-AC, cho phép kiểm soát quá trình khởi động và điều khiển tốc độ động cơ thông qua việc thay đổi tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$ [1, p. 16]. Việc lựa chọn giải pháp tối ưu cho hệ thống đòi hỏi kỹ sư phải phân tích toàn diện nhiều yếu tố kỹ thuật, bao gồm yêu cầu điều chỉnh tốc độ liên tục của quy trình, mô-men khởi động tại tốc độ zero speed, mức độ phát sinh sóng hài tại Điểm Đấu Nối Chung (PCC), không gian bố trí tủ điện cũng như bài toán chi phí đầu tư ban đầu [1, p. 17].
 
 ---
 
@@ -27,7 +27,7 @@ Biến tần hạ thế hoạt động dựa trên nguyên lý chuyển đổi n
 2. **Khối trung gian DC (DC Bus Stage)**: San phẳng và tích trữ năng lượng điện áp một chiều [1, p. 16].
 3. **Khối nghịch lưu (Inverter Stage)**: Chuyển đổi điện áp một chiều trở lại thành điện áp xoay chiều ba pha với tần số ngõ ra biến thiên liên tục trong dải từ $0\text{ Hz}$ đến $250\text{ Hz}$ [1, p. 16].
 
-Thông qua việc thay đổi và điều khiển tần số ngõ ra, biến tần trực tiếp kiểm soát tốc độ quay của từ trường stato và tốc độ của động cơ [1, p. 16]. Đồng thời, theo tài liệu kỹ thuật của Schneider Electric, biến tần có thể cung cấp đầy đủ $100\%$ mô-men định mức (full torque) ngay tại tốc độ zero speed ($0\text{ rpm}$) cho các ứng dụng đòi hỏi mô-men bứt phá [3].
+Thông qua việc thay đổi và điều khiển tần số ngõ ra, biến tần trực tiếp kiểm soát tốc độ quay của từ trường stato và tốc độ của động cơ [1, p. 16].
 
 ### 2.2. Khởi động mềm (Soft Starter): Điều khiển Góc Kích pha Thyristor (SCR)
 
@@ -98,7 +98,7 @@ Khi vận hành ở tốc độ định mức đầy tải có tích hợp conta
 
 ### 5.2. Định mức AC-1 của Contactor Bypass Tích hợp
 
-Contactor bypass tích hợp bên trong bộ khởi động mềm thông thường chỉ cần chọn theo định mức tiêu chuẩn **AC-1** (không yêu cầu định mức tải cảm động cơ **AC-3**) vì contactor bypass không bao giờ phải đóng hoặc cắt dòng điện trong quá trình vận hành bypass thông thường [2, p. 7]. Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7].
+Contactor bypass tích hợp bên trong bộ khởi động mềm thông thường chỉ cần chọn theo định mức tiêu chuẩn **AC-1** (không yêu cầu định mức tải cảm động cơ **AC-3**) vì contactor bypass không bao giờ phải đóng hoặc cắt dòng điện trong quá trình vận hành bypass thông thường [2, p. 7].
 
 ---
 
@@ -108,7 +108,7 @@ Contactor bypass tích hợp bên trong bộ khởi động mềm thông thườ
 
 Mức độ phát sinh sóng hài của khởi động mềm mang tính chất cục bộ và ngắn hạn [1, p. 68], [2, p. 12]:
 
-- Trong giai đoạn tăng tốc hoặc giảm tốc (thường kéo dài từ $5$ đến $30$ giây), các thyristor cắt xén dạng sóng điện áp hình sin, làm phát sinh méo dạng dòng điện [1, pp. 21–22], [2, p. 12]. Tuy nhiên, theo các kết quả đo đạc thực nghiệm của Rockwell Automation, độ méo sóng hài dòng điện ($THD_i$) của Soft Starter trong giai đoạn quá độ này thường nằm dưới ngưỡng $10\%$ [2, p. 12].
+- Trong giai đoạn tăng tốc hoặc giảm tốc, các thyristor cắt xén dạng sóng điện áp hình sin, làm phát sinh méo dạng dòng điện [1, pp. 21–22], [2, p. 12]. Tuy nhiên, theo các kết quả đo đạc thực nghiệm của Rockwell Automation, độ méo sóng hài dòng điện ($THD_i$) của Soft Starter trong giai đoạn quá độ này thường nằm dưới ngưỡng $10\%$ [2, p. 12].
 - Khi chuyển sang chế độ vận hành xác lập đóng contactor bypass, dòng điện hình sin được nối trực tiếp vào lưới nên bản thân thiết bị **hầu như không phát sinh sóng hài** lên hệ thống phân phối [1, p. 68], [2, p. 12].
 
 ### 6.2. Sóng Hài Liên tục của VFD theo Cấu trúc Chỉnh lưu
@@ -138,7 +138,7 @@ Một ngộ nhận kỹ thuật phổ biến trong ngành điện là cho rằng
 Cách diễn giải này không đúng với nguyên lý và phạm vi của tiêu chuẩn [4, p. 10], [5, p. 12]:
 
 1. **Ranh giới điểm PCC**: Tiêu chuẩn IEEE Std 519-2022 quy định rõ ràng rằng các giới hạn méo dòng tổng ($TDD$ — Total Demand Distortion) chỉ áp dụng tại **Điểm Đấu Nối Chung (PCC — Point of Common Coupling)** giữa khách hàng tiêu thụ điện và đơn vị điện lực (thường là phía thứ cấp hoặc sơ cấp của máy biến áp phân phối trạm), áp dụng cho tổng phụ tải của toàn bộ cơ sở chứ không áp dụng riêng rẽ cho từng thiết bị đơn lẻ [4, p. 10], [5, p. 12].
-2. **Quy luật tỷ số ngắn mạch $I_{sc}/I_L$**: Giới hạn méo dòng cho phép được phân tầng dựa trên tỷ số dòng ngắn mạch khả dụng của hệ thống trên dòng phụ tải tổng cực đại của cơ sở ($I_{sc}/I_L$) [4, p. 10], [5, p. 12]. Theo Bảng 2 của IEEE Std 519-2022, đối với các hệ thống điện hạ thế và trung thế từ $120\text{ V}$ đến $69\text{ kV}$, giới hạn méo dòng tổng $TDD$ được quy định ở mức $5.0\%$ khi $I_{sc}/I_L < 20$, và được nới lỏng dần lên $8.0\%$, $12.0\%$, $15.0\%$ và $20.0\%$ khi độ cứng của lưới điện tăng cao ($I_{sc}/I_L > 1000$) [5, p. 12].
+2. **Quy luật tỷ số ngắn mạch $I_{sc}/I_L$**: Giới hạn méo dòng cho phép được phân tầng dựa trên tỷ số dòng ngắn mạch khả dụng của hệ thống trên dòng phụ tải tổng cực đại của cơ sở ($I_{sc}/I_L$) [4, p. 10], [5, p. 12]. Theo Bảng 2 của IEEE Std 519-2022, đối với các hệ thống điện hạ thế và trung thế từ $120\text{ V}$ đến $69\text{ kV}$, giới hạn méo dòng tổng $TDD$ được quy định ở mức $5.0\%$ khi $I_{sc}/I_L < 20$ [5, p. 12].
 3. **Đánh giá sóng hài là bài toán cấp hệ thống tại điểm PCC**: Tiêu chuẩn IEEE Std 519 không bắt buộc mọi biến tần phải lắp đặt bộ lọc sóng hài riêng lẻ; việc lựa chọn biện pháp giảm sóng hài phải dựa trên đánh giá tổng thể toàn bộ cơ sở tại điểm PCC phụ thuộc vào tỷ số $I_{sc}/I_L$ [4, p. 10], [5, p. 12]. Hồ sơ bằng chứng hiện tại không thiết lập một quy tắc áp đặt việc bắt buộc trang bị bộ lọc cho mọi biến tần [4, p. 10].
 
 ---
@@ -162,7 +162,7 @@ Khi đánh giá bài toán kinh tế giữa VFD và Soft Starter, kỹ sư cần
 | **Biến tần (Drives)** | **> 12** | Gấp trên 12 lần chuẩn cơ sở (Khối AC-DC-AC, lọc tụ, vi xử lý PWM) |
 
 > [!NOTE]
-> Bảng chỉ số trên là dữ liệu đối chiếu cấu trúc chi phí lắp đặt bình quân định tính trong tài liệu kỹ thuật của ABB [1, p. 20], không phải là bảng giá thương mại hay tỷ lệ cố định cho thị trường năm 2026. Cấu trúc phần cứng phức tạp của biến tần thường đặt ra mức chi phí đầu tư ban đầu cao hơn so với khởi động mềm khi công suất tăng lên [1, p. 20], [2, p. 15].
+> Bảng chỉ số trên phản ánh dữ liệu đối chiếu cấu trúc chi phí lắp đặt bình quân định tính trong tài liệu kỹ thuật của ABB, không phải là bảng giá thương mại hay tỷ lệ cố định cho thị trường năm 2026 [1, p. 20]. Cấu trúc phần cứng phức tạp của biến tần thường đặt ra mức chi phí đầu tư ban đầu cao hơn so với khởi động mềm khi công suất tăng lên [1, p. 20], [2, p. 15].
 
 ### 7.2. Thể tích Lắp đặt và Không gian Tủ điện (Panel Footprint)
 
@@ -239,11 +239,11 @@ Nhóm phụ tải này có đặc tính khởi động khắc nghiệt do mô-me
    - *Có*: **Cân nhắc chọn VFD** [1, p. 16], [1, p. 17]. Khởi động mềm hoàn toàn không đáp ứng được yêu cầu điều chỉnh tốc độ liên tục [1, p. 17].
    - *Không*: Chuyển sang Câu hỏi 2.
 2. **Câu hỏi 2: Phụ tải có đòi hỏi đầy đủ mô-men bứt phá tại tốc độ zero speed ($0\text{ rpm}$) không?**
-   - *Có*: **Cân nhắc chọn VFD**. Biến tần có khả năng cung cấp đầy đủ $100\%$ mô-men định mức tại tốc độ $0\text{ rpm}$ [3], trong khi khởi động mềm bị sụt giảm mô-men nghiêm trọng khi giảm điện áp [2, Tab. 1, p. 6] và không đáp ứng được yêu cầu này [3].
+   - *Có*: **Cân nhắc chọn VFD**. Biến tần có khả năng cung cấp đầy đủ $100\%$ mô-men định mức ngay tại tốc độ zero speed ($0\text{ rpm}$) [3]. Trong khi đó, khởi động mềm bị sụt giảm mô-men nghiêm trọng khi giảm điện áp theo đặc tính bình phương điện áp [2, Tab. 1, p. 6]. Do đó, khởi động mềm không đáp ứng được yêu cầu cung cấp đầy đủ mô-men tại tốc độ $0\text{ rpm}$ [3].
    - *Không*: Chuyển sang Câu hỏi 3.
 3. **Câu hỏi 3: Có các yêu cầu về dòng khởi động, chi phí ban đầu, không gian lắp đặt hoặc tuân thủ giới hạn sóng hài cần đánh giá không?**
    - *Giới hạn dòng khởi động*: Nếu lưới điện có giới hạn nghiêm ngặt về dòng khởi động, kỹ sư cần đối chiếu yêu cầu dòng/mô-men của tải với khả năng của từng phương án và dữ liệu của nhà sản xuất [1], [2].
-   - *Chi phí ban đầu & Không gian lắp đặt*: Ở dải công suất thấp chi phí ban đầu giữa VFD và Soft Starter có thể tương đương; khi dòng điện và công suất tăng lên thì chi phí của biến tần tăng cao hơn [2, p. 15]. Khởi động mềm chiếm không gian nhỏ hơn [2, pp. 15–16] và vận hành mát hơn khi đóng bypass [3].
+   - *Chi phí ban đầu & Không gian lắp đặt*: Ở dải công suất thấp, chi phí ban đầu giữa VFD và Soft Starter có thể tương đương; khi dòng điện và công suất tăng lên thì chi phí của biến tần tăng cao hơn đáng kể [2, p. 15]. Về không gian lắp đặt, khởi động mềm có thể tích nhỏ hơn trên toàn dải công suất [2, pp. 15–16]. Đồng thời, khởi động mềm vận hành mát hơn và đạt hiệu suất cao hơn khi đóng mạch bypass [3].
    - *Tuân thủ chuẩn IEEE Std 519*: Đánh giá tổng thể độ méo dòng TDD tại Điểm Đấu Nối Chung (PCC) của toàn bộ cơ sở dựa trên tỷ số ngắn mạch $I_{sc}/I_L$ [4, p. 10], [5, p. 12].
 
 ---
@@ -253,7 +253,7 @@ Nhóm phụ tải này có đặc tính khởi động khắc nghiệt do mô-me
 Trong kỹ thuật truyền động điện công nghiệp, việc lựa chọn giữa Biến tần (VFD) và Khởi động mềm (Soft Starter) cần căn cứ chặt chẽ vào yêu cầu công nghệ của phụ tải:
 
 - **Khởi động mềm (Soft Starter)**: Là giải pháp phù hợp khi yêu cầu cốt lõi là kiểm soát quá trình khởi động êm và dừng êm nhằm giảm xung dòng và giảm ứng suất cơ học, đồng thời hệ thống không đòi hỏi điều chỉnh tốc độ liên tục trong quá trình vận hành [1, p. 17].
-- **Biến tần (VFD)**: Là giải pháp phù hợp khi hệ thống đòi hỏi khả năng điều chỉnh tốc độ liên tục thông qua thay đổi tần số ngõ ra [1, p. 16] hoặc phụ tải yêu cầu cung cấp đầy đủ mô-men định mức ngay tại tốc độ zero speed ($0\text{ rpm}$) [3].
+- **Biến tần (VFD)**: Là giải pháp phù hợp khi hệ thống đòi hỏi khả năng điều chỉnh tốc độ liên tục thông qua việc thay đổi tần số ngõ ra [1, p. 16]. Thiết bị cũng là lựa chọn cần thiết khi phụ tải yêu cầu cung cấp đầy đủ mô-men định mức ngay tại tốc độ zero speed ($0\text{ rpm}$) [3].
 
 Việc nắm vững các nguyên lý điều khiển, quan hệ dòng - mô-men và ranh giới đánh giá sóng hài tại điểm PCC theo chuẩn IEEE Std 519 sẽ giúp kỹ sư đưa ra quyết định thiết kế phù hợp với yêu cầu thực tế của từng ứng dụng.
 

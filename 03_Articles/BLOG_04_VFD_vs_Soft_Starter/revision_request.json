@@ -16,7 +16,7 @@
       "required_action": "Remove the unapproved TDD percentages (8.0%, 12.0%, 15.0%, 20.0%) and the threshold (Isc/IL > 1000) from line 141, restricting the claim strictly to the approved EVD-009 boundary (TDD = 5.0% when Isc/IL < 20).",
       "scope": "Section 6.3 line 141 only; do not rewrite unrelated sections.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-002",
@@ -28,7 +28,7 @@
       "required_action": "Synchronize CLM-011 claim_text with the actual supported draft statement in Section 6.3 and EVD-014.",
       "scope": "CLM-011 entry in claim_source_map.json only.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-003",
@@ -40,7 +40,7 @@
       "required_action": "Remove the unsupported duration phrase '(thường kéo dài từ 5 đến 30 giây)' from Section 6.1 line 111.",
       "scope": "Section 6.1 line 111 only.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-004",
@@ -52,7 +52,7 @@
       "required_action": "Remove the unapproved sentence 'Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7].' or restrict phrasing strictly to EVD-007.",
       "scope": "Section 5.2 line 101 only.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-005",
@@ -64,7 +64,7 @@
       "required_action": "Reword CLM-013 claim_text to strictly reflect EVD-016 (ABB index Softstarter 6, Drives >12) without stating an unqualified 'cao gấp đôi'.",
       "scope": "CLM-013 entry in claim_source_map.json only.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-006",
@@ -76,7 +76,7 @@
       "required_action": "Move all mid-sentence citations in Lines 5, 165, 242, 246, 256 to sentence ends or restructure the sentences into distinct clauses terminating with the respective citations before the period or colon.",
       "scope": "Sentences containing mid-sentence citations in Lines 5, 165, 242, 246, 256 only.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     },
     {
       "issue_id": "REV-007",
@@ -88,7 +88,7 @@
       "required_action": "Remove citation [3] from Section 2.1 line 30 (preserving full torque discussion in Section 3.3 under CLM-004), and in Executive Summary line 5 ensure citations appear in sequential order [1], [2], [3]... or cite at paragraph end in proper order.",
       "scope": "Line 5 and Section 2.1 line 30 in draft_review_package.md.",
       "retry_count": 0,
-      "status": "OPEN"
+      "status": "RESOLVED"
     }
   ]
 }
