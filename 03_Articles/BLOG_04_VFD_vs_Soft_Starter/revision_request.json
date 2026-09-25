@@ -1,0 +1,94 @@
+{
+  "article_id": "BLOG_04",
+  "revision_loop": 1,
+  "max_retries": 3,
+  "overall_status": "REVISION_REQUIRED",
+  "gate": "TECHNICAL_REVIEW_GATE",
+  "created_at": "2026-09-25T17:00:00+07:00",
+  "issues": [
+    {
+      "issue_id": "REV-001",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": "CLM-010",
+      "description": "Section 6.3 (line 141) contains unapproved numerical TDD distortion limits and grid stiffness ratio thresholds ('và được nới lỏng dần lên 8.0%, 12.0%, 15.0% và 20.0% khi độ cứng của lưới điện tăng cao (Isc/IL > 1000) [5, p. 12]'). Approved EVD-009 only specifies: 'TDD 5.0% for Isc/IL < 20 for systems rated 120 V through 69 kV'. The values 8.0%, 12.0%, 15.0%, 20.0% and Isc/IL > 1000 are not present in approved EVD-009.",
+      "required_action": "Remove the unapproved TDD percentages (8.0%, 12.0%, 15.0%, 20.0%) and the threshold (Isc/IL > 1000) from line 141, restricting the claim strictly to the approved EVD-009 boundary (TDD = 5.0% when Isc/IL < 20).",
+      "scope": "Section 6.3 line 141 only; do not rewrite unrelated sections.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-002",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "claim_source_map.json",
+      "claim_id": "CLM-011",
+      "description": "claim_text of CLM-011 in claim_source_map.json is out of sync with actual draft Section 6.3 (line 142) and exceeds approved EVD-014. The claim map states: 'việc trang bị cuộn kháng, bộ lọc thụ động hoặc bộ lọc tích cực AHF là bài toán phân tích chất lượng điện ở cấp hệ thống phụ thuộc vào độ cứng của trạm biến áp và tổng phụ tải phi tuyến tại điểm PCC', whereas actual draft Section 6.3 line 142 was scoped down to: 'việc lựa chọn biện pháp giảm sóng hài phải dựa trên đánh giá tổng thể toàn bộ cơ sở tại điểm PCC phụ thuộc vào tỷ số Isc/IL'.",
+      "required_action": "Synchronize CLM-011 claim_text with the actual supported draft statement in Section 6.3 and EVD-014.",
+      "scope": "CLM-011 entry in claim_source_map.json only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-003",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": "CLM-008",
+      "description": "Section 6.1 (line 111) includes an unsupported numerical factual claim regarding transient duration: '(thường kéo dài từ 5 đến 30 giây)'. Neither EVD-002 nor EVD-008 nor any other approved EVD specifies the '5 đến 30 giây' duration.",
+      "required_action": "Remove the unsupported duration phrase '(thường kéo dài từ 5 đến 30 giây)' from Section 6.1 line 111.",
+      "scope": "Section 6.1 line 111 only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-004",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": "CLM-007",
+      "description": "Section 5.2 (line 101) contains an ungrounded expansion statement attributed to [2, p. 7]: 'Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7].' Approved EVD-007 only supports that the internal bypass contactor is typically rated AC-1 because it never makes or breaks current under normal bypass operation; it does not contain evidence regarding physical size optimization or electromechanical durability.",
+      "required_action": "Remove the unapproved sentence 'Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7].' or restrict phrasing strictly to EVD-007.",
+      "scope": "Section 5.2 line 101 only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-005",
+      "severity": "MINOR",
+      "owner": "DRAFTING",
+      "artifact": "claim_source_map.json",
+      "claim_id": "CLM-013",
+      "description": "claim_text of CLM-013 asserts that the ABB installation cost index 'phản ánh tương quan cấu trúc phần cứng của biến tần cao gấp đôi khởi động mềm'. This assertion interprets index >12 versus 6 as an unqualified 'cao gấp đôi', which is unapproved semantic extrapolation.",
+      "required_action": "Reword CLM-013 claim_text to strictly reflect EVD-016 (ABB index Softstarter 6, Drives >12) without stating an unqualified 'cao gấp đôi'.",
+      "scope": "CLM-013 entry in claim_source_map.json only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-006",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": null,
+      "description": "In-text citations [n] are placed in the middle of sentences instead of strictly at the sentence end before terminal punctuation ('.' or ':'), violating ADR-013 and Gate 5 of TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1. Violations detected at: Line 5 (Executive Summary): [1, p. 16], [1, p. 17], [3], [5, p. 12], [2, pp. 15–16]; Line 165 (Note in Section 7.1): [1, p. 20]; Line 242 (Decision Framework Q2): [3], [2, Tab. 1, p. 6]; Line 246 (Decision Framework Q3): [2, pp. 15–16]; Line 256 (Conclusion): [1, p. 16].",
+      "required_action": "Move all mid-sentence citations in Lines 5, 165, 242, 246, 256 to sentence ends or restructure the sentences into distinct clauses terminating with the respective citations before the period or colon.",
+      "scope": "Sentences containing mid-sentence citations in Lines 5, 165, 242, 246, 256 only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-007",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": "CLM-004",
+      "description": "Citation [3] appears before [2] in reading order (both in Executive Summary line 5 and in Section 2.1 line 30 vs Section 3.1 line 46), violating the IEEE First Appearance monotonically increasing numbering rule ([1], [2], [3], [4], [5], [6]). Furthermore, citation [3] in Section 2.1 line 30 is not mapped in claim_source_map.json for Section 2.1 (CLM-004 only targets Section 3.3).",
+      "required_action": "Remove citation [3] from Section 2.1 line 30 (preserving full torque discussion in Section 3.3 under CLM-004), and in Executive Summary line 5 ensure citations appear in sequential order [1], [2], [3]... or cite at paragraph end in proper order.",
+      "scope": "Line 5 and Section 2.1 line 30 in draft_review_package.md.",
+      "retry_count": 0,
+      "status": "OPEN"
+    }
+  ]
+}

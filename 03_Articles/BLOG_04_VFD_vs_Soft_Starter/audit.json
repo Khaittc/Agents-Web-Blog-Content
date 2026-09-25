@@ -1,0 +1,71 @@
+{
+  "article_id": "BLOG_04",
+  "gate": "TECHNICAL_REVIEW_GATE",
+  "verdict": "REVISION_REQUIRED",
+  "audited_at": "2026-09-25T17:00:00+07:00",
+  "auditor": "review_agent",
+  "summary": "Technical Review Gate completed with independent adversarial audit. Identified 7 scoped revision issues (6 MAJOR, 1 MINOR) spanning unapproved numerical thresholds in IEEE 519 (Section 6.3), claim map synchronization discrepancies (CLM-011, CLM-013), unsupported transient duration (Section 6.1), ungrounded bypass contactor durability claim (Section 5.2), mid-sentence citation placement violations under ADR-013 Gate 5, and citation first-appearance sequence anomalies.",
+  "checks": [
+    {
+      "check_id": "CHK-001",
+      "name": "Research Package Consistency & Preconditions",
+      "result": "PASS",
+      "details": "Preconditions verified: 7/7 RQs answered, 17 approved EVDs intact, no research conflicts."
+    },
+    {
+      "check_id": "CHK-002",
+      "name": "Claim-to-Evidence Traceability",
+      "result": "FAIL",
+      "details": "CLM-011 and CLM-013 claim_text exceed approved EVD boundaries (EVD-014 and EVD-016). See REV-002 and REV-005."
+    },
+    {
+      "check_id": "CHK-003",
+      "name": "Full Prose Evidence Boundary",
+      "result": "FAIL",
+      "details": "Section 6.3 contains unapproved TDD percentages (8%, 12%, 15%, 20%); Section 6.1 contains unsupported duration (5-30s); Section 5.2 contains ungrounded bypass durability claim. See REV-001, REV-003, REV-004."
+    },
+    {
+      "check_id": "CHK-004",
+      "name": "Numerical Claim Verification",
+      "result": "FAIL",
+      "details": "Unapproved numbers in Section 6.3 (8%, 12%, 15%, 20%, Isc/IL > 1000) and Section 6.1 (5-30s) fail traceability to approved EVDs."
+    },
+    {
+      "check_id": "CHK-005",
+      "name": "Formula & SI Dimensional Analysis",
+      "result": "PASS",
+      "details": "Starting torque Eq (1) and THDi Eq (2) are dimensionally consistent with defined SI units and KaTeX syntax."
+    },
+    {
+      "check_id": "CHK-006",
+      "name": "IEEE In-Text Citation Placement (ADR-013 Gate 5)",
+      "result": "FAIL",
+      "details": "Multiple in-text citations located mid-sentence (Lines 5, 165, 242, 246, 256) violating Gate 5. See REV-006."
+    },
+    {
+      "check_id": "CHK-007",
+      "name": "IEEE Citation Numbering & Appearance Order",
+      "result": "FAIL",
+      "details": "Citation [3] appears before [2] in Executive Summary and Section 2.1; [3] in Section 2.1 is unmapped in claim map. See REV-007."
+    },
+    {
+      "check_id": "CHK-008",
+      "name": "Locator Verification",
+      "result": "PASS",
+      "details": "All verified citations point to verified locators (pages, sections, tables) in evidence.json."
+    },
+    {
+      "check_id": "CHK-009",
+      "name": "Source Policy & Quality (ADR-024)",
+      "result": "PASS",
+      "details": "6 accepted sources (5 Tier 1, 1 Tier 3 supplementary), high-tier ratio 83.3% >= 70%."
+    },
+    {
+      "check_id": "CHK-010",
+      "name": "Canonical Blog Taxonomy (BLOG-T04 Comparison)",
+      "result": "PASS",
+      "details": "Structural comparison logic, balanced trade-offs, conditional selection framework intact."
+    }
+  ],
+  "revision_request_file": "revision_request.json"
+}

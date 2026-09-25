@@ -2,9 +2,9 @@
   "article_id": "BLOG_04",
   "title": "VFD và Soft Starter: So sánh Nguyên lý, Dòng khởi động, Điều khiển Tốc độ và Phạm vi Ứng dụng",
   "category": "BLOG-T04",
-  "status": "TECH_REVIEW",
+  "status": "REVISION_REQUESTED",
   "is_locked": false,
   "created_at": "2026-09-24T21:30:00+07:00",
   "evidence_dossier_file": "evidence_dossier.md",
-  "notes": "Pre-review semantic micro-patch completed. All remaining substantive factual claims are bounded by approved evidence. Draft is ready for independent Technical Review Gate."
+  "notes": "Technical Review Gate requires scoped revision. See revision_request.json."
 }
