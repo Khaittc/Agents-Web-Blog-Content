@@ -6,5 +6,5 @@
   "is_locked": false,
   "created_at": "2026-09-24T21:30:00+07:00",
   "evidence_dossier_file": "evidence_dossier.md",
-  "notes": "Draft evidence-boundary patch completed. Draft and claim map are ready for independent Technical Review Gate."
+  "notes": "Final semantic evidence cleanup completed. Draft is ready for independent Technical Review Gate."
 }

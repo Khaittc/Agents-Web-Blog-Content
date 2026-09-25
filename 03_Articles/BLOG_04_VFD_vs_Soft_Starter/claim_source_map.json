@@ -1,7 +1,7 @@
 {
   "$schema": "../../02_AGENT_TEMPLATES/contracts/claim_source_map.schema.json",
   "article_id": "BLOG_04",
-  "generated_at": "2026-09-25T16:15:00+07:00",
+  "generated_at": "2026-09-25T16:30:00+07:00",
   "source_to_ieee_map": {
     "SRC-001": 1,
     "SRC-002": 2,
@@ -103,8 +103,8 @@
     },
     {
       "claim_id": "CLM-006",
-      "section_target": "Section 5.2",
-      "claim_text": "Khi động cơ vận hành ở tốc độ định mức đầy tải có tích hợp contactor bypass, khởi động mềm đạt hiệu suất vận hành cao hơn và tỏa nhiệt ít hơn biến tần do toàn bộ dòng tải chuyển qua tiếp điểm cơ khí thay vì linh kiện bán dẫn công suất.",
+      "section_target": "Section 5.1",
+      "claim_text": "Khi động cơ vận hành ở tốc độ định mức đầy tải có tích hợp contactor bypass, khởi động mềm đạt hiệu suất vận hành cao hơn và chạy mát hơn biến tần do toàn bộ dòng tải chuyển qua tiếp điểm cơ khí thay vì linh kiện bán dẫn công suất.",
       "source_ids": [
         "SRC-003"
       ],
@@ -121,8 +121,8 @@
     },
     {
       "claim_id": "CLM-007",
-      "section_target": "Section 5.3",
-      "claim_text": "Contactor bypass tích hợp bên trong bộ khởi động mềm chỉ cần định mức tiêu chuẩn AC-1 vì nó chỉ đóng cắt khi điện áp hai đầu SCR gần như bằng 0, không bao giờ phải đóng hoặc cắt hồ quang dòng cảm ứng ngắt mạch.",
+      "section_target": "Section 5.2",
+      "claim_text": "Contactor bypass tích hợp bên trong bộ khởi động mềm thông thường chỉ cần định mức tiêu chuẩn AC-1 (không yêu cầu AC-3) vì contactor bypass không bao giờ phải đóng hoặc cắt dòng điện trong quá trình vận hành bypass thông thường.",
       "source_ids": [
         "SRC-002"
       ],
@@ -215,7 +215,7 @@
     {
       "claim_id": "CLM-012",
       "section_target": "Section 7.1",
-      "claim_text": "Về mặt chi phí đầu tư ban đầu theo bối cảnh lịch sử công nghệ, ở dải công suất và dòng điện thấp thì chi phí giữa VFD và Soft Starter có mức chênh lệch tương đối nhỏ, nhưng khi công suất và dòng điện tăng cao thì đường cong chi phí của VFD dốc đứng hơn rất nhiều so với Soft Starter.",
+      "claim_text": "Về mặt chi phí đầu tư ban đầu theo bối cảnh lịch sử công nghệ, ở dải công suất và dòng điện thấp thì chi phí giữa VFD và Soft Starter có mức tương đương hoặc chênh lệch không quá lớn, nhưng khi công suất và dòng điện tăng cao thì chi phí của VFD tăng cao hơn đáng kể so với Soft Starter.",
       "source_ids": [
         "SRC-002"
       ],
@@ -305,7 +305,7 @@
     {
       "claim_id": "CLM-017",
       "section_target": "Section 8.4",
-      "claim_text": "Đối với các phụ tải có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), khởi động mềm thường được khuyến nghị chọn tăng lớn hơn một cấp công suất (oversizing) so với công suất động cơ để tránh hiện tượng sụt áp và quá nhiệt trong thời gian khởi động kéo dài.",
+      "claim_text": "Đối với các phụ tải có mô-men quán tính rất lớn như máy nghiền (crushers, mills) hoặc máy khuấy (mixers, stirrers), khởi động mềm thường được chọn lớn hơn một cấp công suất (oversizing: one size larger) so với công suất động cơ theo tài liệu kỹ thuật của ABB.",
       "source_ids": [
         "SRC-001"
       ],
