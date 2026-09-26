@@ -1,10 +1,10 @@
 {
   "article_id": "BLOG_04",
-  "revision_loop": 1,
+  "revision_loop": 2,
   "max_retries": 3,
   "overall_status": "REVISION_REQUIRED",
   "gate": "TECHNICAL_REVIEW_GATE",
-  "created_at": "2026-09-25T17:00:00+07:00",
+  "created_at": "2026-09-26T08:55:00+07:00",
   "issues": [
     {
       "issue_id": "REV-001",
@@ -89,6 +89,30 @@
       "scope": "Line 5 and Section 2.1 line 30 in draft_review_package.md.",
       "retry_count": 0,
       "status": "RESOLVED"
+    },
+    {
+      "issue_id": "REV-008",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": null,
+      "description": "Section 3.1 (line 48) contains an in-text citation placed immediately before a semicolon with the sentence continuing into another clause: '- **Biến tần (VFD)**: Biến tần có khả năng kiểm soát gia tốc và quá trình khởi động của động cơ thông qua điều khiển tần số và điện áp ngõ ra [1, p. 16]; tuy nhiên, trong gói hồ sơ bằng chứng hiện tại không xác lập một dải số liệu định lượng cụ thể cho dòng khởi động của VFD.' This violates ADR-013 and Gate 5 of TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1 (all citations must be placed at sentence end before terminal punctuation '.' or ':').",
+      "required_action": "Split the compound sentence into two distinct sentences or restructure the sentence so that citation [1, p. 16] is placed at the end of the sentence before the terminal period (e.g., '- **Biến tần (VFD)**: Biến tần có khả năng kiểm soát gia tốc và quá trình khởi động của động cơ thông qua việc điều khiển tần số và điện áp ngõ ra [1, p. 16]. Trong gói hồ sơ bằng chứng hiện tại, chưa xác lập một dải số liệu định lượng cụ thể cho dòng khởi động của VFD.').",
+      "scope": "Section 3.1 line 48 in draft_review_package.md only.",
+      "retry_count": 0,
+      "status": "OPEN"
+    },
+    {
+      "issue_id": "REV-009",
+      "severity": "MAJOR",
+      "owner": "DRAFTING",
+      "artifact": "draft_review_package.md",
+      "claim_id": null,
+      "description": "The fourth sentence of Executive Summary (line 5) enumerates multiple technical comparison dimensions across multiple independent domains ('bao gồm yêu cầu điều chỉnh tốc độ liên tục của quy trình, mô-men khởi động tại tốc độ zero speed, mức độ phát sinh sóng hài tại Điểm Đấu Nối Chung (PCC), không gian bố trí tủ điện cũng như bài toán chi phí đầu tư ban đầu [1, p. 17].'), but is backed solely by citation [1, p. 17]. Source [1, p. 17] (ABB Softstarter Handbook p. 17 / EVD-005) only discusses continuous speed regulation versus fixed-speed starting/stopping; it does not support zero-speed torque (EVD-004), PCC harmonics (EVD-009, EVD-014), panel footprint (EVD-015), or initial CAPEX (EVD-010, EVD-016). This creates an invalid citation scope where a narrow single-source locator is attributed to multi-source technical claims.",
+      "required_action": "Reframe the sentence into general introductory overview prose that does not assert unsupported factual specifics under a single narrow locator, or split and cite all relevant supporting sources in compliant sentence-end positions without violating IEEE first appearance monotonicity.",
+      "scope": "Executive Summary (line 5) in draft_review_package.md only.",
+      "retry_count": 0,
+      "status": "OPEN"
     }
   ]
 }

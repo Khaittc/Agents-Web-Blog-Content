@@ -2,9 +2,9 @@
   "article_id": "BLOG_04",
   "gate": "TECHNICAL_REVIEW_GATE",
   "verdict": "REVISION_REQUIRED",
-  "audited_at": "2026-09-25T17:00:00+07:00",
+  "audited_at": "2026-09-26T08:55:00+07:00",
   "auditor": "review_agent",
-  "summary": "Technical Review Gate completed with independent adversarial audit. Identified 7 scoped revision issues (6 MAJOR, 1 MINOR) spanning unapproved numerical thresholds in IEEE 519 (Section 6.3), claim map synchronization discrepancies (CLM-011, CLM-013), unsupported transient duration (Section 6.1), ungrounded bypass contactor durability claim (Section 5.2), mid-sentence citation placement violations under ADR-013 Gate 5, and citation first-appearance sequence anomalies.",
+  "summary": "Technical Re-Review after Revision Loop 1 completed with independent adversarial re-audit. Verified 7/7 Loop 1 issues resolved (REV-001 to REV-007). However, re-examination identified 2 MAJOR issues requiring Revision Loop 2: (1) REV-008: residual mid-sentence citation before semicolon in Section 3.1 line 48 violating ADR-013 Gate 5; (2) REV-009: overextended citation scope in Executive Summary line 5 where [1, p. 17] is improperly cited for multi-domain comparison claims (zero-speed torque, PCC harmonics, panel space, CAPEX) beyond its verified boundary.",
   "checks": [
     {
       "check_id": "CHK-001",
@@ -15,20 +15,20 @@
     {
       "check_id": "CHK-002",
       "name": "Claim-to-Evidence Traceability",
-      "result": "FAIL",
-      "details": "CLM-011 and CLM-013 claim_text exceed approved EVD boundaries (EVD-014 and EVD-016). See REV-002 and REV-005."
+      "result": "PASS",
+      "details": "All 17 claims in claim_source_map.json trace to verified EVDs and sources. CLM-011 and CLM-013 wording synchronized."
     },
     {
       "check_id": "CHK-003",
       "name": "Full Prose Evidence Boundary",
       "result": "FAIL",
-      "details": "Section 6.3 contains unapproved TDD percentages (8%, 12%, 15%, 20%); Section 6.1 contains unsupported duration (5-30s); Section 5.2 contains ungrounded bypass durability claim. See REV-001, REV-003, REV-004."
+      "details": "Executive Summary line 5 overextends citation [1, p. 17] across multi-domain technical comparison claims (zero-speed torque, PCC harmonics, panel space, CAPEX). See REV-009."
     },
     {
       "check_id": "CHK-004",
       "name": "Numerical Claim Verification",
-      "result": "FAIL",
-      "details": "Unapproved numbers in Section 6.3 (8%, 12%, 15%, 20%, Isc/IL > 1000) and Section 6.1 (5-30s) fail traceability to approved EVDs."
+      "result": "PASS",
+      "details": "All numbers trace to approved EVDs. Unapproved TDD percentages (8-20%) and 5-30s duration verified removed."
     },
     {
       "check_id": "CHK-005",
@@ -40,19 +40,19 @@
       "check_id": "CHK-006",
       "name": "IEEE In-Text Citation Placement (ADR-013 Gate 5)",
       "result": "FAIL",
-      "details": "Multiple in-text citations located mid-sentence (Lines 5, 165, 242, 246, 256) violating Gate 5. See REV-006."
+      "details": "Section 3.1 line 48 contains citation [1, p. 16] placed before a semicolon continuing into another clause. See REV-008."
     },
     {
       "check_id": "CHK-007",
       "name": "IEEE Citation Numbering & Appearance Order",
-      "result": "FAIL",
-      "details": "Citation [3] appears before [2] in Executive Summary and Section 2.1; [3] in Section 2.1 is unmapped in claim map. See REV-007."
+      "result": "PASS",
+      "details": "First appearance order strictly monotonic: [1] (Line 5) -> [2] (Line 46) -> [3] (Line 79) -> [4] (Line 116) -> [5] (Line 138) -> [6] (Line 176)."
     },
     {
       "check_id": "CHK-008",
       "name": "Locator Verification",
       "result": "PASS",
-      "details": "All verified citations point to verified locators (pages, sections, tables) in evidence.json."
+      "details": "All citations point to verified locators in evidence.json."
     },
     {
       "check_id": "CHK-009",
@@ -64,7 +64,7 @@
       "check_id": "CHK-010",
       "name": "Canonical Blog Taxonomy (BLOG-T04 Comparison)",
       "result": "PASS",
-      "details": "Structural comparison logic, balanced trade-offs, conditional selection framework intact."
+      "details": "Comparison logic, trade-off balance, and conditional decision framework verified."
     }
   ],
   "revision_request_file": "revision_request.json"

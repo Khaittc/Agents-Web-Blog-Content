@@ -1,11 +1,11 @@
 # BÁO CÁO KIỂM ĐỊNH KỸ THUẬT (TECHNICAL AUDIT REPORT) — BLOG_04
 
-**Mã bài viết**: `BLOG_04`  
-**Tiêu đề bài viết**: *VFD và Soft Starter: So sánh Toàn diện về Nguyên lý, Dòng khởi động, Điều khiển Tốc độ và Tiêu chí Lựa chọn Phụ tải*  
-**Thể loại phân loại (Canonical Taxonomy)**: `BLOG-T04` — Comparison  
-**Ngày kiểm định**: 2026-09-25  
-**Người kiểm định (Auditor)**: Review Agent (`review_agent`) — Kỹ sư trưởng Phản biện & Đảm bảo Chất lượng Kỹ thuật  
-**Cổng kiểm định**: **CỔNG 1: TECHNICAL REVIEW GATE** (Gate 1)  
+**Mã bài viết**: `BLOG_04`
+**Tiêu đề bài viết**: *VFD và Soft Starter: So sánh Toàn diện về Nguyên lý, Dòng khởi động, Điều khiển Tốc độ và Tiêu chí Lựa chọn Phụ tải*
+**Thể loại phân loại (Canonical Taxonomy)**: `BLOG-T04` — Comparison
+**Ngày kiểm định**: 2026-09-25
+**Người kiểm định (Auditor)**: Review Agent (`review_agent`) — Kỹ sư trưởng Phản biện & Đảm bảo Chất lượng Kỹ thuật
+**Cổng kiểm định**: **CỔNG 1: TECHNICAL REVIEW GATE** (Gate 1)
 **Quy chuẩn áp dụng**:
 - `02_AGENT_TEMPLATES/review_agent.md` (v2.0)
 - `02_AGENT_TEMPLATES/ARTICLE_LIFECYCLE_AND_APPROVAL_PROTOCOL.md`
@@ -26,15 +26,15 @@
 | **Trụ cột 3: Claim & Evidence Traceability** | `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1` | ⚠️ **FAIL** | Phát hiện 4 điểm vượt biên bằng chứng: TDD 8-20% tại Mục 6.3 không có trong EVD-009; thời gian quá độ "5-30 giây" tại Mục 6.1 không có trong EVD-002/008; luận điểm độ bền contactor tại Mục 5.2 không có trong EVD-007; CLM-011 và CLM-013 trong claim map chưa đồng bộ chặt với draft. |
 | **Trụ cột 4: Blog Taxonomy & Structure** | `BLOG_TAXONOMY_CANONICAL_v1.0` (BLOG-T04) | ✅ **PASS** | Cấu trúc bài viết chuẩn so sánh đa chiều, phân tích trade-off rõ ràng, khung ra quyết định logic có điều kiện, không thiên vị thương mại. |
 
-**PHÁN QUYẾT CỔNG 1 (GATE 1 VERDICT)**: ⚠️ **REVISION_REQUIRED**  
+**PHÁN QUYẾT CỔNG 1 (GATE 1 VERDICT)**: ⚠️ **REVISION_REQUIRED**
 *(Phát hành tệp yêu cầu hiệu chỉnh có cấu trúc `revision_request.json` (Vòng 1/3) gửi Drafting Agent xử lý các phạm vi khoanh vùng cụ thể).*
 
 ---
 
 ## 1. PHẠM VI KIỂM ĐỊNH (REVIEW SCOPE)
 
-Kiểm định độc lập toàn diện Cổng 1 (Technical Review Gate) đối với gói tài liệu bản thảo kỹ thuật của bài viết `BLOG_04`.  
-Review Agent hoạt động với tư duy phản biện độc lập (adversarial mindset): *Verify, Challenge, Trace, Reject if Unsupported*.  
+Kiểm định độc lập toàn diện Cổng 1 (Technical Review Gate) đối với gói tài liệu bản thảo kỹ thuật của bài viết `BLOG_04`.
+Review Agent hoạt động với tư duy phản biện độc lập (adversarial mindset): *Verify, Challenge, Trace, Reject if Unsupported*.
 Tuân thủ ranh giới chỉ đọc: Review Agent tuyệt đối không chỉnh sửa `draft_review_package.md`, `claim_source_map.json` hay hồ sơ `evidence.json`. Mọi sai lệch kỹ thuật được chuyển hóa thành các issue hiệu chỉnh có cấu trúc.
 
 *Lưu ý kiến trúc 2 cổng*: Cổng 2 (Presentation & Responsive Review Gate) **chưa kích hoạt** tại giai đoạn này; không kiểm tra layout hiển thị đa thiết bị cho đến khi hoàn thành khâu Visual và HTML Packaging.
@@ -81,11 +81,11 @@ Review Agent đã đối chiếu từng mục trong `claim_source_map.json` vớ
 
 Rà soát từng câu trong toàn bộ văn bản `draft_review_package.md` để phát hiện các xác nhận thực tế không có trong hồ sơ chứng cứ:
 
-1. **Mục 6.3 (Dòng 141)**: Bản thảo nêu: *"và được nới lỏng dần lên $8.0\%$, $12.0\%$, $15.0\%$ và $20.0\%$ khi độ cứng của lưới điện tăng cao ($I_{sc}/I_L > 1000$) [5, p. 12]"*.  
+1. **Mục 6.3 (Dòng 141)**: Bản thảo nêu: *"và được nới lỏng dần lên $8.0\%$, $12.0\%$, $15.0\%$ và $20.0\%$ khi độ cứng của lưới điện tăng cao ($I_{sc}/I_L > 1000$) [5, p. 12]"*.
    *Đánh giá*: Trong `EVD-009`, trích xuất được phê duyệt duy nhất từ Table 2 là: *"Maximum harmonic current distortion in percent of IL for Isc/IL < 20 is TDD 5.0% for systems rated 120 V through 69 kV"*. Các con số 8%, 12%, 15%, 20% và ngưỡng $I_{sc}/I_L > 1000$ không tồn tại trong `EVD-009`. Mặc dù các con số này có trong tiêu chuẩn gốc IEEE Std 519-2022, quy chuẩn kiểm định nghiêm ngặt yêu cầu nội dung bản thảo phải được bao bọc tuyệt đối bởi approved EVD. *(Ghi nhận: REV-001)*.
-2. **Mục 6.1 (Dòng 111)**: Bản thảo nêu: *"Trong giai đoạn tăng tốc hoặc giảm tốc (thường kéo dài từ $5$ đến $30$ giây)..."*.  
+2. **Mục 6.1 (Dòng 111)**: Bản thảo nêu: *"Trong giai đoạn tăng tốc hoặc giảm tốc (thường kéo dài từ $5$ đến $30$ giây)..."*.
    *Đánh giá*: Không có tài liệu nào trong `EVD-002` (ABB) hay `EVD-008` (Rockwell) quy định khoảng thời gian quá độ cụ thể từ 5 đến 30 giây. Đây là chi tiết số liệu thực tế chưa được chứng thực. *(Ghi nhận: REV-003)*.
-3. **Mục 5.2 (Dòng 101)**: Bản thảo nêu: *"Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7]"*.  
+3. **Mục 5.2 (Dòng 101)**: Bản thảo nêu: *"Nhờ đó, kích thước vật lý của contactor được tối ưu hóa mà vẫn đảm bảo độ bền cơ điện [2, p. 7]"*.
    *Đánh giá*: `EVD-007` chỉ xác thực contactor bypass thường định mức AC-1 vì không bao giờ phải đóng cắt dòng điện trong quá trình bypass. Mệnh đề suy diễn về "kích thước vật lý tối ưu hóa và độ bền cơ điện" không có trong trích dẫn bằng chứng. *(Ghi nhận: REV-004)*.
 4. **Mục 8.1 - 8.4 (Phụ tải)**: Tuân thủ đúng bằng chứng; Bơm ly tâm dùng `EVD-011`, Quạt/Blower dùng cách diễn đạt Option A (giới hạn nguyên lý cơ bản, không bịa đặt quán tính hay đường cong $P \propto n^3$), Băng tải bám sát nguyên lý, Máy nghiền dùng `EVD-012` (tăng một cấp công suất).
 
@@ -232,7 +232,7 @@ VÒNG LẶP HIỆU CHỈNH: 1 / 3
 TRẠNG THÁI BÀI VIẾT: REVISION_REQUESTED
 ```
 
-Bài viết **CHƯA ĐƯỢC CHUYỂN SANG TECH_APPROVED**.  
+Bài viết **CHƯA ĐƯỢC CHUYỂN SANG TECH_APPROVED**.
 Tệp hợp đồng hiệu chỉnh chi tiết `revision_request.json` đã được tạo lập với đầy đủ phạm vi khoanh vùng (scope-limited) cho từng lỗi.
 
 ---
@@ -241,10 +241,121 @@ Tệp hợp đồng hiệu chỉnh chi tiết `revision_request.json` đã đư�
 
 1. Review Agent **DỪNG LẠI TẠI ĐÂY** và báo cáo kết quả kiểm định cho Kỹ sư trưởng.
 2. Tuyệt đối không tự ý gọi Drafting Agent, Research Agent hay Visual Agent.
-3. Chờ lệnh từ người dùng để kích hoạt:  
-   `BLOG_04 — Technical Review Revision Loop 1`  
+3. Chờ lệnh từ người dùng để kích hoạt:
+   `BLOG_04 — Technical Review Revision Loop 1`
    nhằm giao Drafting Agent khắc phục chính xác 7 issue định danh trong `revision_request.json`.
 
 ---
-*Báo cáo được lập bởi: Review Agent (Chief Technical Auditor) — Real Group*  
+*Báo cáo được lập bởi: Review Agent (Chief Technical Auditor) — Real Group*
 *Chữ ký điện tử: `review_agent:gate_1:blog_04:rev_loop_1`*
+
+---
+
+# PHẦN II: TÁI KIỂM ĐỊNH KỸ THUẬT SAU VÒNG HIỆU CHỈNH 1 (TECHNICAL RE-REVIEW AFTER REVISION LOOP 1)
+
+**Mã bài viết**: `BLOG_04`
+**Ngày tái kiểm định**: 2026-09-26
+**Người kiểm định (Auditor)**: Review Agent (`review_agent`) — Kỹ sư trưởng Phản biện & Đảm bảo Chất lượng Kỹ thuật
+**Kết quả kiểm định lần trước (Previous Verdict)**: `REVISION_REQUIRED` (Vòng 1 / 3)
+**Vòng lặp được thẩm định (Revision Loop Reviewed)**: 1 / 3
+**Phán quyết tái kiểm định (Re-Review Verdict)**: ⚠️ **REVISION_REQUIRED** (Kích hoạt Vòng 2 / 3)
+
+---
+
+## 1. THẨM TRA ĐỘC LẬP KẾT QUẢ KHẮC PHỤC CỦA DRAFTING AGENT (VERIFICATION OF LOOP 1 ISSUES)
+
+Review Agent không dựa trên báo cáo tự khai của Drafting Agent mà đối chiếu trực tiếp trên mã nguồn và bản thảo thực tế:
+
+| Mã Issue | Phân loại | Nội dung thẩm định | Kết quả Re-check | Đánh giá chi tiết của Review Agent |
+|:---|:---:|:---|:---:|:---|
+| **REV-001** | `MAJOR` | Xóa các giá trị méo dòng TDD 8.0%, 12.0%, 15.0%, 20.0% và $I_{sc}/I_L > 1000$ tại Mục 6.3 dòng 141 | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra dòng 141: Các giá trị ngoài approved EVD đã được loại bỏ hoàn toàn. Câu văn chỉ giữ duy nhất giới hạn $TDD = 5.0\%$ cho $I_{sc}/I_L < 20$ cấp điện áp $120\text{ V} - 69\text{ kV}$ khớp chính xác `EVD-009`. |
+| **REV-002** | `MAJOR` | Đồng bộ hóa `claim_text` của `CLM-011` trong `claim_source_map.json` với draft và `EVD-014` | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra `claim_source_map.json`: `claim_text` của `CLM-011` đã được thu hẹp về nguyên lý đánh giá cấp hệ thống tại điểm PCC, loại bỏ các cụm từ mở rộng về cuộn kháng, lọc thụ động, AHF. Khớp hoàn toàn $\le$ `EVD-014`. |
+| **REV-003** | `MAJOR` | Xóa số liệu thời gian quá độ "5 đến 30 giây" tại Mục 6.1 dòng 111 | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra dòng 111: Cụm từ `(thường kéo dài từ $5$ đến $30$ giây)` đã được xóa bỏ, không thay thế bằng bất kỳ khoảng thời gian vô căn cứ nào khác. |
+| **REV-004** | `MAJOR` | Xóa mệnh đề mở rộng về độ bền và kích thước contactor AC-1 tại Mục 5.2 dòng 101 | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra dòng 101: Câu suy diễn về tối ưu kích thước vật lý và đảm bảo độ bền cơ điện đã được xóa. Đoạn văn dừng chính xác tại ranh giới `EVD-007`. |
+| **REV-005** | `MINOR` | Bỏ cụm từ "cao gấp đôi" trong `claim_text` của `CLM-013` | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra `CLM-013`: `claim_text` đã bỏ nhận định "cao gấp đôi", chỉ nêu khách quan các chỉ số 1, 3, 6, >12 theo bảng đối chiếu lịch sử của ABB (2011) khớp `EVD-016`. |
+| **REV-006** | `MAJOR` | Sửa vi phạm trích dẫn giữa câu (Gate 5 / ADR-013) tại 5 vị trí được chỉ định | ✅ **VERIFIED_RESOLVED** *(Line-specific)* | Các vị trí Dòng 5, 165, 242, 246, 256 đã được tách câu và đặt trích dẫn ở cuối câu. *(Lưu ý: Quét toàn bài phát hiện vị trí tồn đọng khác tại Mục 3.1 Dòng 48, được lập mã REV-008)*. |
+| **REV-007** | `MAJOR` | Khắc phục trật tự xuất hiện lần đầu của trích dẫn `[3]` trước `[2]` và bỏ `[3]` ở Mục 2.1 | ✅ **VERIFIED_RESOLVED** | Đã kiểm tra: Thảo luận full torque tại Dòng 30 Mục 2.1 đã được xóa. Thứ tự xuất hiện lần đầu của 6 nguồn từ đầu đến cuối bài đạt tính đơn điệu tăng dần nghiêm ngặt: `[1]` (Line 5) $\rightarrow$ `[2]` (Line 46) $\rightarrow$ `[3]` (Line 79) $\rightarrow$ `[4]` (Line 116) $\rightarrow$ `[5]` (Line 138) $\rightarrow$ `[6]` (Line 176). |
+
+---
+
+## 2. KẾT QUẢ QUÉT TOÀN BỘ BẢN THẢO VÀ CÁC ĐIỂM RỦI RO CAO (HIGH-RISK RE-AUDIT)
+
+Review Agent đã tái kiểm định toàn diện văn phong, số liệu, công thức và trích dẫn trên toàn bộ 274 dòng của `draft_review_package.md`. Quá trình kiểm tra đã phát hiện **2 sai sót nghiêm trọng mới (2 MAJOR ISSUES)**:
+
+### 2.1. Điểm rủi ro A: Trích dẫn đặt trước dấu chấm phẩy tại Mục 3.1 Dòng 48 (Vi phạm ADR-013 Gate 5)
+- **Vị trí**: `draft_review_package.md`, Mục 3.1, Dòng 48:
+  ```markdown
+  - **Biến tần (VFD)**: Biến tần có khả năng kiểm soát gia tốc và quá trình khởi động của động cơ thông qua điều khiển tần số và điện áp ngõ ra [1, p. 16]; tuy nhiên, trong gói hồ sơ bằng chứng hiện tại không xác lập một dải số liệu định lượng cụ thể cho dòng khởi động của VFD.
+  ```
+- **Phân tích sai phạm**: Trích dẫn `[1, p. 16]` được đặt ngay trước dấu chấm phẩy `;` và câu văn vẫn tiếp tục kéo dài với vế đối lập (`tuy nhiên, trong gói hồ sơ bằng chứng...`). Đây là hành vi đặt trích dẫn ở giữa câu ghép phức (mid-sentence citation), vi phạm trực tiếp quy chuẩn Gate 5 của `TECHNICAL_REVIEW_AUDIT_PROTOCOL_v1.1` và `ADR-013` (mọi trích dẫn `[n]` bắt buộc phải nằm ở CUỐI CÂU, ngay trước dấu chấm câu `.` hoặc dấu hai chấm `:`).
+- **Hành động khắc phục bắt buộc**: Tách câu ghép thành 2 câu độc lập hoặc tái cấu trúc câu để đưa trích dẫn về cuối câu trước dấu chấm câu.
+- **Mã định danh issue mới**: **`REV-008`** (Mức độ: `MAJOR`, Đơn vị: `DRAFTING`).
+
+### 2.2. Điểm rủi ro B: Vượt phạm vi bảo chứng trích dẫn tại Tóm tắt Kỹ thuật Dòng 5 (Citation Scope Overextension)
+- **Vị trí**: `draft_review_package.md`, Tóm tắt Kỹ thuật, Dòng 5:
+  ```markdown
+  Việc lựa chọn giải pháp tối ưu cho hệ thống đòi hỏi kỹ sư phải phân tích toàn diện nhiều yếu tố kỹ thuật, bao gồm yêu cầu điều chỉnh tốc độ liên tục của quy trình, mô-men khởi động tại tốc độ zero speed, mức độ phát sinh sóng hài tại Điểm Đấu Nối Chung (PCC), không gian bố trí tủ điện cũng như bài toán chi phí đầu tư ban đầu [1, p. 17].
+  ```
+- **Phân tích sai phạm**: Câu văn liệt kê hàng loạt tiêu chí kỹ thuật chuyên biệt thuộc nhiều miền kiến thức khác nhau:
+  - *Điều chỉnh tốc độ liên tục*: Được bảo chứng bởi `[1, p. 17]` (`EVD-005` - ABB Handbook).
+  - *Mô-men khởi động tại tốc độ zero speed*: Thuộc phạm vi `[3]` (`EVD-004` - Schneider Electric Blog).
+  - *Mức độ phát sinh sóng hài tại điểm PCC*: Thuộc phạm vi `[5, p. 12]` (`EVD-009` - IEEE Std 519) và `[4, p. 10]` (`EVD-014` - ABB Guide 6).
+  - *Không gian bố trí tủ điện*: Thuộc phạm vi `[2, pp. 15–16]` (`EVD-015` - Rockwell White Paper).
+  - *Chi phí đầu tư ban đầu*: Thuộc phạm vi `[1, p. 20]` (`EVD-016`) và `[2, p. 15]` (`EVD-010`).
+  Tuy nhiên, Drafting Agent gom toàn bộ các tiêu chí này vào một câu đơn nhất và gán duy nhất trích dẫn `[1, p. 17]` ở cuối câu. Trang 17 trong cẩm nang của ABB (`SRC-001`) hoàn toàn không chứa các chứng cứ về mô-men zero speed, sóng hài PCC, thể tích tủ điện hay CAPEX. Việc gán một trích dẫn cục bộ cho một câu liệt kê đa miền kiến thức cấu thành lỗi **vượt biên phạm vi trích dẫn (overextended citation scope)**.
+- **Hành động khắc phục bắt buộc**: Tái cấu trúc câu tóm tắt thành văn phong tổng quan định hướng không khẳng định các chi tiết kỹ thuật cụ thể dưới một trích dẫn hẹp, hoặc tách câu và trích dẫn đầy đủ các nguồn tương ứng tuân thủ vị trí cuối câu mà không vi phạm tính đơn điệu của trật tự trích dẫn IEEE.
+- **Mã định danh issue mới**: **`REV-009`** (Mức độ: `MAJOR`, Đơn vị: `DRAFTING`).
+
+---
+
+## 3. TÁI KIỂM ĐỊNH CÁC TRỤ CỘT KỸ THUẬT KHÁC
+
+- **Trụ cột Toán học & Thứ nguyên SI**: Cả 2 công thức (Mô-men khởi động và $THD_i$) duy trì tính chuẩn xác tuyệt đối, thứ nguyên SI đồng nhất, không phát sinh lỗi mới (`PASS`).
+- **Trụ cột Số liệu Định lượng**: Toàn bộ các con số kỹ thuật ($50/60\text{ Hz}$, $0-250\text{ Hz}$, $0\text{ rpm}$, $600\%$, $150\% \rightarrow 25\% \rightarrow 6\%$, $300\% \rightarrow 50\% \rightarrow 25\%$, $450\% \rightarrow 75\% \rightarrow 56\%$, $100\%$, $<10\%$, $40\%$, $10\%$, $4\%$, $30^\circ$, $5.0\%$, chỉ số 1, 3, 6, >12, chu kỳ 3-4 tháng) đều khớp 100% với các approved EVDs (`PASS`).
+- **Trụ cột Bảng ánh xạ Claim Map**: 17/17 claims hợp lệ, khớp schema `claim_source_map.schema.json` (`PASS`).
+- **Trụ cột Bộ định vị (Locators)**: 100% locators đã được kiểm chứng khớp `evidence.json` (`PASS`).
+- **Trụ cột Thể loại Blog Taxonomy**: Duy trì đúng chuẩn `BLOG-T04` Comparison (`PASS`).
+
+---
+
+## 4. TỔNG HỢP DANH MỤC LỖI TỒN ĐỌNG CHO VÒNG HIỆU CHỈNH 2 (REVISION LOOP 2 FINDINGS)
+
+### BLOCKER: 0 lỗi
+### MAJOR: 2 lỗi mới
+1. **REV-008 (Section 3.1, Line 48 - draft_review_package.md)**: Trích dẫn `[1, p. 16]` đặt trước dấu chấm phẩy trong câu ghép tiếp diễn, vi phạm ADR-013 Gate 5.
+2. **REV-009 (Executive Summary, Line 5 - draft_review_package.md)**: Vượt biên phạm vi trích dẫn khi gán duy nhất `[1, p. 17]` cho câu liệt kê đa miền kiến thức (zero-speed torque, PCC harmonics, panel space, CAPEX).
+### MINOR: 0 lỗi
+
+---
+
+## 5. PHÁN QUYẾT TÁI KIỂM ĐỊNH VÀ HỢP ĐỒNG VÒNG 2 (RE-REVIEW VERDICT)
+
+Áp dụng nguyên tắc phản biện độc lập và phương châm *Fail-Closed*:
+
+```text
+PHÁN QUYẾT TÁI KIỂM ĐỊNH: REVISION_REQUIRED
+VÒNG LẶP HIỆU CHỈNH: 2 / 3 (KÍCH HOẠT REVISION LOOP 2)
+TRẠNG THÁI BÀI VIẾT: REVISION_REQUESTED
+TRẠNG THÁI TECH_APPROVED: NO (CHƯA ĐƯỢC PHÊ DUYỆT)
+VISUAL AGENT: NOT ALLOWED (NGHIÊM CẤM KÍCH HOẠT)
+```
+
+Tệp hợp đồng hiệu chỉnh [`revision_request.json`](file:///d:/Agents_Tools/05_WebsiteTTC/03_Articles/BLOG_04_VFD_vs_Soft_Starter/revision_request.json) đã được cập nhật:
+- Nâng số vòng lặp: `revision_loop: 2` (tối đa 3 vòng).
+- Bảo lưu 7 issue cũ (`REV-001` đến `REV-007`) ở trạng thái `RESOLVED`.
+- Bổ sung 2 issue mới khoanh vùng chính xác: `REV-008` và `REV-009` ở trạng thái `OPEN`.
+
+---
+
+## 6. HÀNH ĐỘNG YÊU CẦU TIẾP THEO (REQUIRED NEXT ACTION)
+
+1. Review Agent **DỪNG LẠI TẠI ĐÂY** và bàn giao hồ sơ kiểm định cho Kỹ sư trưởng.
+2. Tuyệt đối không tự sửa bản thảo hay claim map.
+3. Không gọi Drafting Agent, Visual Agent hay Packaging Agent.
+4. Chờ lệnh từ người dùng để kích hoạt:
+   `BLOG_04 — Technical Review Revision Loop 2`
+   nhằm giao Drafting Agent xử lý triệt để `REV-008` và `REV-009`.
+
+---
+*Báo cáo được lập bởi: Review Agent (Chief Technical Auditor) — Real Group*
+*Chữ ký điện tử: `review_agent:gate_1:blog_04:rev_loop_2`*
