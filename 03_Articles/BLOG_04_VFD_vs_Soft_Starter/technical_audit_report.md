@@ -359,3 +359,110 @@ Tệp hợp đồng hiệu chỉnh [`revision_request.json`](file:///d:/Agents_T
 ---
 *Báo cáo được lập bởi: Review Agent (Chief Technical Auditor) — Real Group*
 *Chữ ký điện tử: `review_agent:gate_1:blog_04:rev_loop_2`*
+
+---
+
+# PHẦN III: TÁI KIỂM ĐỊNH KỸ THUẬT SAU VÒNG HIỆU CHỈNH 2 (TECHNICAL RE-REVIEW AFTER REVISION LOOP 2)
+
+**Mã bài viết**: `BLOG_04`
+**Ngày tái kiểm định**: 2026-09-28
+**Người kiểm định (Auditor)**: Review Agent (`review_agent`) — Kỹ sư trưởng Phản biện & Đảm bảo Chất lượng Kỹ thuật
+**Kết quả kiểm định lần trước (Previous Verdict)**: `REVISION_REQUIRED` (Vòng 2 / 3)
+**Vòng lặp được thẩm định (Revision Loop Reviewed)**: 2 / 3
+**Phán quyết tái kiểm định (Re-Review Verdict)**: ✅ **PASS** (Cổng 1 Phê duyệt Kỹ thuật thành công)
+
+---
+
+## 1. THẨM TRA ĐỘC LẬP KẾT QUẢ KHẮC PHỤC CỦA DRAFTING AGENT (VERIFICATION OF ALL 9 ISSUES)
+
+Review Agent đã đối chiếu trực tiếp trên toàn bộ 275 dòng của `draft_review_package.md` và mã nguồn các artifact liên quan:
+
+| Mã Issue | Phân loại | Nội dung thẩm định | Kết quả Re-check | Đánh giá chi tiết của Review Agent |
+|:---|:---:|:---|:---:|:---|
+| **REV-001** | `MAJOR` | Xóa các giá trị méo dòng TDD 8.0%, 12.0%, 15.0%, 20.0% và $I_{sc}/I_L > 1000$ tại Mục 6.3 dòng 141 | ✅ **VERIFIED_RESOLVED** | Mục 6.3 dòng 141 chỉ giữ duy nhất giới hạn $TDD = 5.0\%$ cho $I_{sc}/I_L < 20$ cấp điện áp $120\text{ V} - 69\text{ kV}$ khớp chính xác `EVD-009`. Không phát sinh hồi quy. |
+| **REV-002** | `MAJOR` | Đồng bộ hóa `claim_text` của `CLM-011` trong `claim_source_map.json` với draft và `EVD-014` | ✅ **VERIFIED_RESOLVED** | `CLM-011` trong `claim_source_map.json` phản ánh trung thực nguyên lý đánh giá sóng hài tại điểm PCC dựa trên tỷ số $I_{sc}/I_L$, không áp đặt quy định lọc cho từng biến tần đơn lẻ. Khớp $\le$ `EVD-014`. |
+| **REV-003** | `MAJOR` | Xóa số liệu thời gian quá độ "5 đến 30 giây" tại Mục 6.1 dòng 111 | ✅ **VERIFIED_RESOLVED** | Mục 6.1 dòng 111 hoàn toàn không còn cụm từ "5 đến 30 giây", không thay thế bằng bất kỳ khoảng thời gian vô căn cứ nào khác. |
+| **REV-004** | `MAJOR` | Xóa mệnh đề mở rộng về độ bền và kích thước contactor AC-1 tại Mục 5.2 dòng 101 | ✅ **VERIFIED_RESOLVED** | Mục 5.2 dòng 101 dừng chính xác tại ranh giới `EVD-007`: contactor bypass định mức AC-1 vì không bao giờ đóng/cắt dòng điện trong vận hành bypass thông thường. |
+| **REV-005** | `MINOR` | Bỏ cụm từ "cao gấp đôi" trong `claim_text` của `CLM-013` | ✅ **VERIFIED_RESOLVED** | `CLM-013` phản ánh khách quan bảng chỉ số chi phí lắp đặt bình quân định tính lịch sử của ABB (2011) với các chỉ số 1, 3, 6, >12, có ghi chú rõ ràng về tính tham chiếu định tính lịch sử. Khớp `EVD-016`. |
+| **REV-006** | `MAJOR` | Sửa vi phạm trích dẫn giữa câu (Gate 5 / ADR-013) tại các vị trí Dòng 5, 165, 242, 246, 256 | ✅ **VERIFIED_RESOLVED** | Toàn bộ các vị trí chỉ định đều đã đưa trích dẫn về cuối câu trước dấu chấm câu. |
+| **REV-007** | `MAJOR` | Khắc phục trật tự xuất hiện lần đầu của trích dẫn `[3]` trước `[2]` và bỏ `[3]` ở Mục 2.1 | ✅ **VERIFIED_RESOLVED** | Trật tự xuất hiện lần đầu của 6 nguồn tài liệu từ đầu đến cuối bài đơn điệu tăng dần nghiêm ngặt: `[1]` (L5) $\rightarrow$ `[2]` (L46) $\rightarrow$ `[3]` (L79) $\rightarrow$ `[4]` (L116) $\rightarrow$ `[5]` (L138) $\rightarrow$ `[6]` (L176). |
+| **REV-008** | `MAJOR` | Tách câu ghép chứa dấu chấm phẩy tại Mục 3.1 Dòng 48 đưa `[1, p. 16]` về cuối câu | ✅ **VERIFIED_RESOLVED** | Dòng 48 đã được tách thành 2 câu độc lập. Trích dẫn `[1, p. 16]` nằm ở cuối câu thứ nhất trước dấu chấm câu. Câu thứ hai là tuyên bố ranh giới chứng cứ không bổ sung dữ liệu giả định. Triệt tiêu hoàn toàn vi phạm ADR-013 Gate 5. |
+| **REV-009** | `MAJOR` | Khắc phục vượt biên phạm vi trích dẫn `[1, p. 17]` tại Tóm tắt Kỹ thuật Dòng 5 | ✅ **VERIFIED_RESOLVED** | Dòng 5 câu thứ tư đã được thay bằng câu framing định hướng cấu trúc chung cho bài viết, không khẳng định các chi tiết kỹ thuật chuyên biệt (zero-speed torque, PCC harmonics, panel space, CAPEX) dưới một nguồn hẹp. Không yêu cầu trích dẫn. |
+
+---
+
+## 2. KẾT QUẢ TÁI KIỂM ĐỊNH TOÀN DIỆN VĂN PHONG VÀ CÁC TRỤ CỘT KỸ THUẬT (FULL PROSE RE-AUDIT)
+
+1. **Quét toàn văn vị trí trích dẫn (ADR-013 Gate 5)**:
+   - Quét toàn bộ 275 dòng bản thảo ghi nhận **0 trích dẫn nằm giữa câu**, 0 trích dẫn trước dấu chấm phẩy `;`, 0 trích dẫn trước dấu phẩy `,` có từ ngữ tiếp diễn.
+   - 100% trích dẫn nằm ở cuối câu/mệnh đề trước dấu chấm `.` hoặc hai chấm `:`, hoặc nằm trong ô bảng kết thúc bằng `|`.
+   - Kết quả: **PASS**.
+
+2. **Kiểm tra trật tự xuất hiện lần đầu (IEEE First-Appearance)**:
+   - `[1]` (SRC-001 ABB Handbook): Xuất hiện lần đầu tại Dòng 5 (Executive Summary)
+   - `[2]` (SRC-002 Rockwell White Paper): Xuất hiện lần đầu tại Dòng 46 (Mục 3.1)
+   - `[3]` (SRC-003 Schneider Electric Blog): Xuất hiện lần đầu tại Dòng 79 (Mục 3.3)
+   - `[4]` (SRC-005 ABB Guide No. 6): Xuất hiện lần đầu tại Dòng 116 (Mục 6.2)
+   - `[5]` (SRC-004 IEEE Std 519-2022): Xuất hiện lần đầu tại Dòng 138 (Mục 6.3)
+   - `[6]` (SRC-006 Rockwell Maintenance Guide): Xuất hiện lần đầu tại Dòng 176 (Mục 7.3)
+   - Chuỗi $1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5 \rightarrow 6$ tăng dần đơn điệu tuyệt đối.
+   - Kết quả: **PASS**.
+
+3. **Kiểm tra định lượng số liệu kỹ thuật (Numerical Audit)**:
+   - Toàn bộ các giá trị định lượng: $50/60\text{ Hz}$, $0-250\text{ Hz}$, $0\text{ rpm}$, $600\%$, $150\% \rightarrow 25\% \rightarrow 6\%$, $300\% \rightarrow 50\% \rightarrow 25\%$, $450\% \rightarrow 75\% \rightarrow 56\%$, $100\%$, $<10\%$, $40\%$, $10\%$, $4\%$, $30^\circ$, $5.0\%$, chu kỳ 3-4 tháng, chỉ số 1, 3, 6, >12 đều khớp 100% với approved EVDs và verified locators.
+   - Không tồn tại số liệu ngoại suy hay unapproved range.
+   - Kết quả: **PASS**.
+
+4. **Kiểm tra công thức và thứ nguyên SI (Formula Audit)**:
+   - Công thức mô-men khởi động $T_{\text{start}} \approx (U_{\text{start}}/U_n)^2 \cdot T_n$ (Eq 1) và độ méo dòng $THD_i = \frac{\sqrt{\sum I_h^2}}{I_1} \times 100\%$ (Eq 2) chuẩn xác về toán học, tương thích KaTeX và định nghĩa đầy đủ thứ nguyên SI ($\text{N}\cdot\text{m}$, $\text{V}$, $\text{A}$).
+   - Kết quả: **PASS**.
+
+5. **Kiểm tra Bảng ánh xạ Luận điểm (Claim Map Audit)**:
+   - Toàn bộ 17/17 claims (`CLM-001` đến `CLM-017`) khớp chính xác nội dung bản thảo, có đầy đủ evidence_ids, source_ids, assigned_ieee_numbers, đạt chuẩn schema `claim_source_map.schema.json`.
+   - Kết quả: **PASS**.
+
+6. **Chính sách nguồn (Source Policy - ADR-024)**:
+   - 6 nguồn được chấp nhận (5 Tier 1, 1 Tier 3 supplementary), tỷ lệ nguồn cao cấp đạt 83.3% >= 70%.
+   - Kết quả: **PASS**.
+
+7. **Thể loại Blog Taxonomy**:
+   - Bài viết tuân thủ chặt chẽ thể loại `BLOG-T04` Comparison: phân tích so sánh đa chiều, lập luận đối chiếu công bằng, cung cấp khung quyết định có điều kiện (conditional decision framework), không áp đặt giải pháp duy nhất.
+   - Kết quả: **PASS**.
+
+---
+
+## 3. TỔNG HỢP DANH MỤC LỖI TỒN ĐỌNG (RE-REVIEW FINDINGS)
+
+- **BLOCKER**: 0
+- **MAJOR**: 0
+- **MINOR**: 0
+- **Tổng số lỗi phát hiện mới**: 0
+
+---
+
+## 4. PHÁN QUYẾT CHÍNH THỨC CỦA CỔNG KIỂM ĐỊNH KỸ THUẬT (OFFICIAL GATE 1 VERDICT)
+
+```text
+PHÁN QUYẾT CHÍNH THỨC: PASS
+TRẠNG THÁI BÀI VIẾT: TECH_APPROVED
+CỔNG 1 (TECHNICAL REVIEW GATE): PHÊ DUYỆT THÀNH CÔNG
+SẴN SÀNG CHO CỔNG 2 (PRESENTATION / VISUAL GATE): YES
+VISUAL AGENT: SẴN SÀNG BÀN GIAO (CHỜ LỆNH NGƯỜI DÙNG)
+```
+
+---
+
+## 5. HÀNH ĐỘNG TIẾP THEO (NEXT ACTION)
+
+1. Cập nhật hồ sơ kiểm định:
+   - `audit.json`: `verdict = "PASS"`, `revision_request_file = null`.
+   - `article_status.json`: `status = "TECH_APPROVED"`.
+   - `revision_request.json`: Lưu trữ lịch sử với toàn bộ 9 issue `RESOLVED`.
+2. Review Agent hoàn tất nhiệm vụ Cổng 1, **DỪNG LẠI TẠI ĐÂY**.
+3. Không tự ý gọi Visual Agent.
+4. Chờ lệnh từ người dùng để kích hoạt:
+   `BLOG_04 — Visual Handoff`
+
+---
+*Báo cáo được lập bởi: Review Agent (Chief Technical Auditor) — Real Group*
+*Chữ ký điện tử: `review_agent:gate_1:blog_04:approved`*
