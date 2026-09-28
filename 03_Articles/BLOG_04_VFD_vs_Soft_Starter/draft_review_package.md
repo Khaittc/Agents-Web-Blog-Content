@@ -2,7 +2,7 @@
 
 ## Tóm tắt Kỹ thuật Dành cho Kỹ sư Vận hành (Executive Technical Summary)
 
-Trong kỹ thuật truyền động điện công nghiệp, Biến tần (Variable Frequency Drive — VFD) và Khởi động mềm (Soft Starter) là hai giải pháp được sử dụng phổ biến trong việc kiểm soát quá trình khởi động của động cơ không đồng bộ ba pha rô-to lồng sóc. Khởi động mềm sử dụng các cặp thyristor điều khiển góc kích pha nhằm thay đổi điện áp hiệu dụng trong khi giữ nguyên tần số lưới $50/60\text{ Hz}$; sau khi kết thúc quá trình khởi động, thiết bị thường được chuyển sang chế độ đóng mạch bypass và động cơ quay cố định theo tần số nguồn lưới [1, pp. 21–22]. Ngược lại, biến tần chuyển đổi điện năng qua cấu trúc AC-DC-AC, cho phép kiểm soát quá trình khởi động và điều khiển tốc độ động cơ thông qua việc thay đổi tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$ [1, p. 16]. Việc lựa chọn giải pháp tối ưu cho hệ thống đòi hỏi kỹ sư phải phân tích toàn diện nhiều yếu tố kỹ thuật, bao gồm yêu cầu điều chỉnh tốc độ liên tục của quy trình, mô-men khởi động tại tốc độ zero speed, mức độ phát sinh sóng hài tại Điểm Đấu Nối Chung (PCC), không gian bố trí tủ điện cũng như bài toán chi phí đầu tư ban đầu [1, p. 17].
+Trong kỹ thuật truyền động điện công nghiệp, Biến tần (Variable Frequency Drive — VFD) và Khởi động mềm (Soft Starter) là hai giải pháp được sử dụng phổ biến trong việc kiểm soát quá trình khởi động của động cơ không đồng bộ ba pha rô-to lồng sóc. Khởi động mềm sử dụng các cặp thyristor điều khiển góc kích pha nhằm thay đổi điện áp hiệu dụng trong khi giữ nguyên tần số lưới $50/60\text{ Hz}$; sau khi kết thúc quá trình khởi động, thiết bị thường được chuyển sang chế độ đóng mạch bypass và động cơ quay cố định theo tần số nguồn lưới [1, pp. 21–22]. Ngược lại, biến tần chuyển đổi điện năng qua cấu trúc AC-DC-AC, cho phép kiểm soát quá trình khởi động và điều khiển tốc độ động cơ thông qua việc thay đổi tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$ [1, p. 16]. Việc lựa chọn giữa VFD và Soft Starter cần dựa trên các yêu cầu kỹ thuật cụ thể của từng ứng dụng và được đánh giá theo các tiêu chí trình bày trong các phần tiếp theo.
 
 ---
 
@@ -45,7 +45,7 @@ Dòng khởi động cực đại là một chỉ tiêu kỹ thuật quan trọn
 
 - **Khởi động Trực tiếp (DOL)**: Dữ liệu thực nghiệm của Rockwell Automation ghi nhận trường hợp khởi động trực tiếp tương ứng với dòng khởi động khoảng $600\%$ dòng định mức ($6.0 \cdot I_n$) [2, Tab. 1, p. 6].
 - **Khởi động Mềm (Soft Starter)**: Bảng 1 của Rockwell Automation đưa ra các điểm khảo sát giới hạn dòng ở mức $150\%$, $300\%$ và $450\%$ dòng định mức ($I_n$) với các mức điện áp và mô-men khởi động tương ứng [2, Tab. 1, p. 6].
-- **Biến tần (VFD)**: Biến tần có khả năng kiểm soát gia tốc và quá trình khởi động của động cơ thông qua điều khiển tần số và điện áp ngõ ra [1, p. 16]; tuy nhiên, trong gói hồ sơ bằng chứng hiện tại không xác lập một dải số liệu định lượng cụ thể cho dòng khởi động của VFD.
+- **Biến tần (VFD)**: Biến tần có khả năng kiểm soát quá trình khởi động của động cơ thông qua việc điều khiển tần số và điện áp ngõ ra [1, p. 16]. Trong gói hồ sơ bằng chứng hiện tại, chưa xác lập một dải số liệu định lượng cụ thể cho dòng khởi động của VFD.
 
 ### 3.2. Quan hệ Phi tuyến Giữa Mô-men Khởi động và Điện áp ($T \propto U^2$)
 
