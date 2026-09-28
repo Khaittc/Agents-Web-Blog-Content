@@ -50,7 +50,7 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Tiêu đề hình ảnh (Title)**: So sánh Công nghệ Điều khiển Động cơ Ba pha: Biến tần (VFD) vs Khởi động Mềm (Soft Starter)
 - **Mục tiêu kỹ thuật (Purpose)**: Thiết lập bối cảnh so sánh kỹ thuật công nghiệp hiện đại giữa VFD và Soft Starter trong môi trường điều khiển động cơ không đồng bộ ba pha, truyền tải sự tương phản giữa cấu trúc biến đổi tần số phức hợp và bộ điều khiển điện áp nhỏ gọn.
 - **Vị trí chèn trong bài (Insertion Point)**: Đầu bài viết (Header Featured Image) và OpenGraph metadata.
-- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-001`, `EVD-002`, `EVD-005` (Bối cảnh chung về hai công nghệ truyền động điện).
+- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-001`, `EVD-002`, `EVD-005`, `EVD-015` (Bối cảnh chung và tương quan kích thước bao ngoài giữa hai công nghệ).
 - **Kích thước chuẩn (Dimensions)**: `808 × 500 px`
 - **Tỷ lệ khung hình (Aspect Ratio)**: `16:10` (xấp xỉ 1.618 : 1 — tỷ lệ vàng cho banner kỹ thuật)
 - **Phương pháp tạo ảnh khuyến nghị (Rendering Method)**: Nhiếp ảnh tư liệu kỹ thuật công nghiệp kết hợp đồ họa 3D isometric hiện đại (Midjourney v6.1 / DALL-E 3 / Studio 3D render).
@@ -59,7 +59,7 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Lời bình / Chú thích (Caption)**: *Ảnh đại diện: Tương quan công nghệ giữa Biến tần (VFD) và Khởi động Mềm (Soft Starter) trong hệ thống truyền động điện công nghiệp ba pha.*
 - **Khung kỹ nghệ Prompt AI 5 tầng (5-Tier AI Prompt)**:
   ```text
-  Professional industrial technical comparison photograph showing a modern Variable Frequency Drive (VFD) unit on the left and a compact solid-state Soft Starter unit on the right, neatly mounted inside a clean industrial electrical control cabinet (MCC). In the lower center, a heavy-duty 3-phase squirrel-cage induction motor is positioned with high-grade industrial cable routing. Balanced side-by-side composition highlighting the difference in hardware complexity and physical size between the two motor control technologies. Clean industrial engineering aesthetic, crisp technical lighting with cool corporate navy blue (#0f2b46), technical cyan (#0284c7), and subtle neutral gray (#f8fafc) accents, clean wiring ducts, sharp focus, technical realism, no fake brand logos, no text distortion, 8k resolution, shot on 50mm lens --ar 16:10 --style raw --v 6.1
+  Professional industrial technical comparison photograph showing a modern Variable Frequency Drive (VFD) unit on the left and a compact solid-state Soft Starter unit on the right, neatly mounted inside a clean industrial electrical control cabinet (MCC). In the lower center, a heavy-duty 3-phase squirrel-cage induction motor is positioned with high-grade industrial cable routing. Balanced side-by-side composition providing a clear visual distinction and relative physical size comparison between the two motor-control technologies. Clean industrial engineering aesthetic, crisp technical lighting with cool corporate navy blue (#0f2b46), technical cyan (#0284c7), and subtle neutral gray (#f8fafc) accents, clean wiring ducts, sharp focus, technical realism, no fake brand logos, no text distortion, 8k resolution, shot on 50mm lens --ar 16:10 --style raw --v 6.1
   ```
 - **Negative Prompt (Khống chế chống ảo giác)**:
   ```text
@@ -79,31 +79,31 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Mã định danh (Asset ID)**: `IMG-001`
 - **Vai trò (Role)**: Hình ảnh nội dung 1 (Content Image 1).
 - **Tiêu đề hình ảnh (Title)**: So sánh Cấu trúc Công suất và Nguyên lý Biến đổi Năng lượng Giữa VFD và Soft Starter
-- **Mục tiêu kỹ thuật (Purpose)**: Làm rõ sự khác biệt bản chất về mặt cấu trúc điện lực: VFD chuyển đổi năng lượng gián tiếp qua chuỗi AC-DC-AC (chỉnh lưu, DC bus, nghịch lưu IGBT) để thay đổi tần số $0-250\text{ Hz}$; Soft Starter điều khiển góc kích pha của 3 cặp thyristor phản song song để tăng dần điện áp hiệu dụng RMS trong khi tần số giữ nguyên $50/60\text{ Hz}$, kết hợp nhánh contactor bypass xác lập.
+- **Mục tiêu kỹ thuật (Purpose)**: Làm rõ sự khác biệt bản chất về mặt cấu trúc điện lực: VFD chuyển đổi năng lượng gián tiếp qua chuỗi AC-DC-AC (khối chuyển đổi AC-sang-DC, khối trung gian DC, khối chuyển đổi DC-sang-AC) để thay đổi tần số $0-250\text{ Hz}$; Soft Starter điều khiển góc kích pha của 3 cặp thyristor phản song song để tăng dần điện áp hiệu dụng RMS đến điện áp nguồn định mức trong khi tần số giữ nguyên $50/60\text{ Hz}$, kết hợp nhánh contactor bypass dùng trong chế độ vận hành xác lập.
 - **Vị trí chèn trong bài (Insertion Point)**: Đặt ngay sau **Mục 2** (*## 2. Khác biệt Cốt lõi về Nguyên lý Biến đổi Điện năng và Cấu trúc Công suất*).
-- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-001`, `EVD-002`, `EVD-005`, `EVD-007` (Gốc: ABB Softstarter Handbook p. 16, pp. 21-22; Rockwell White Paper p. 7).
+- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-001`, `EVD-002`, `EVD-005`, `EVD-006`, `EVD-007` (Gốc: ABB Softstarter Handbook p. 16, pp. 21–22; Rockwell White Paper p. 7; Schneider Blog).
 - **Kích thước chuẩn (Dimensions)**: `1200 × 675 px`
 - **Tỷ lệ khung hình (Aspect Ratio)**: `16:9`
 - **Phương pháp tạo ảnh khuyến nghị (Rendering Method)**: Sơ đồ khối kỹ thuật vector có kiểm soát (Controlled Vector Block Diagram / CAD Infographic) được thiết kế qua phần mềm đồ họa kỹ thuật (Figma / Adobe Illustrator / Draw.io). **Cảnh báo**: Không dùng Generative AI tạo sơ đồ mạch ngẫu nhiên vì nguy cơ vẽ sai linh kiện bán dẫn.
 - **Tên tệp xuất bản đề xuất (Filename)**: `hinh-1-nguyen-ly-vfd-vs-soft-starter.webp`
 - **Thẻ ALT Text chuẩn SEO**: `So sánh sơ đồ cấu trúc chuyển đổi điện năng AC-DC-AC của biến tần VFD và điều khiển góc kích pha SCR của khởi động mềm Soft Starter`
 - **Lời bình / Chú thích (Caption)**:
-  *Hình 1: So sánh sơ đồ khối công suất giữa Biến tần VFD (chuyển đổi gián tiếp AC-DC-AC để biến thiên tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$) và Khởi động mềm Soft Starter (cặp thyristor phản song song điều khiển điện áp hiệu dụng RMS ở tần số lưới cố định $50/60\text{ Hz}$ kèm contactor bypass).*
+  *Hình 1: So sánh sơ đồ khối chuyển đổi năng lượng giữa Biến tần VFD (chuyển đổi gián tiếp AC-DC-AC để thay đổi tần số ngõ ra từ $0\text{ Hz}$ đến $250\text{ Hz}$) và Khởi động mềm Soft Starter (cặp thyristor phản song song điều khiển điện áp hiệu dụng RMS tăng dần ở tần số lưới cố định $50/60\text{ Hz}$ kèm nhánh bypass trong vận hành xác lập).*
 - **Đặc tả bố cục kỹ thuật (Diagram Specification)**:
   - **Khung bên trái (VFD Topology)**:
-    `Nguồn lưới 3 pha (50/60 Hz)` $\rightarrow$ `[Khối Chỉnh lưu Rectifier]` $\rightarrow$ `[Khối DC Bus tụ điện phẳng]` $\rightarrow$ `[Khối Nghịch lưu Inverter IGBT]` $\rightarrow$ `Động cơ 3 pha (f = 0 - 250 Hz, U biến thiên)`.
+    `Nguồn lưới 3 pha (50/60 Hz)` $\rightarrow$ `[Khối Chuyển đổi AC-sang-DC (AC-to-DC Stage)]` $\rightarrow$ `[Khối Trung gian DC (DC Intermediate Stage)]` $\rightarrow$ `[Khối Chuyển đổi DC-sang-AC (DC-to-AC Stage)]` $\rightarrow$ `Động cơ 3 pha (tần số ngõ ra biến thiên 0 - 250 Hz)`.
   - **Khung bên phải (Soft Starter Topology)**:
-    `Nguồn lưới 3 pha (50/60 Hz)` $\rightarrow$ `[3 cặp Thyristor SCR phản song song (anti-parallel)]` $\rightarrow$ `Động cơ 3 pha (f = 50/60 Hz cố định, U tăng dần 0 - 100%)`.
-    Song song với khối SCR là `[Nhánh Contactor Bypass AC-1]` đóng mạch khi kết thúc dốc khởi động.
+    `Nguồn lưới 3 pha (50/60 Hz)` $\rightarrow$ `[3 cặp Thyristor SCR phản song song (anti-parallel)]` $\rightarrow$ `Động cơ 3 pha (tần số nguồn giữ nguyên 50/60 Hz, điện áp RMS tăng dần đến định mức)`.
+    Song song với khối SCR là `[Nhánh Contactor Bypass AC-1]` sử dụng trong chế độ vận hành xác lập (steady-state operation).
   - **Bảng màu**: Nền trắng ngà (`#f8fafc`), khối chức năng viền xanh navy (`#0f2b46`), đường dẫn tín hiệu xanh cyan (`#0284c7`), nhãn phụ trợ xám kỹ thuật (`#64748b`).
 - **Prompt hỗ trợ tạo phôi đồ họa (Drafting Prompt for AI Concept)**:
   ```text
-  Clean technical engineering infographic comparing two electrical motor control power topologies side-by-side on an off-white grid background (#f8fafc). Left panel labeled 'Variable Frequency Drive (VFD)': sequential functional block diagram showing 3-phase AC input (50/60 Hz) flowing into a Diode Rectifier stage, then a DC Bus smoothing capacitor stage, then an IGBT Inverter stage outputting variable frequency (0-250 Hz) AC to a 3-phase motor. Right panel labeled 'Soft Starter': 3-phase AC input flowing through anti-parallel Thyristor (SCR) pairs controlling RMS voltage at constant grid frequency (50/60 Hz), with an integrated Bypass Contactor in parallel across the SCR stage. Crisp vector lines, high-contrast engineering schematic aesthetic, professional electrical engineering textbook quality, Real Group palette (#0f2b46 navy, #0284c7 cyan), ultra-clear typography, no chaotic wiring, no blurry text --ar 16:9 --v 6.1
+  Clean technical engineering infographic comparing two electrical motor control power topologies side-by-side on an off-white grid background (#f8fafc). Left panel labeled 'Variable Frequency Drive (VFD)': sequential functional block diagram showing 3-phase AC input (50/60 Hz) flowing into an AC-to-DC conversion stage, then a DC intermediate stage, then a DC-to-AC conversion stage outputting variable frequency (0-250 Hz) AC to a 3-phase motor. Right panel labeled 'Soft Starter': 3-phase AC input flowing through anti-parallel Thyristor (SCR) pairs providing progressively increasing RMS output voltage at constant 50/60 Hz grid frequency, with an integrated Bypass Contactor in parallel across the SCR stage for steady-state operation. Crisp vector lines, high-contrast engineering schematic aesthetic, professional electrical engineering textbook quality, Real Group palette (#0f2b46 navy, #0284c7 cyan), ultra-clear typography, no chaotic wiring, no blurry text --ar 16:9 --v 6.1
   ```
 - **Ràng buộc kỹ thuật & Tiêu chí nghiệm thu (Acceptance Checks)**:
-  - [x] Khối VFD bắt buộc thể hiện đủ 3 tầng: Chỉnh lưu $\rightarrow$ DC Bus $\rightarrow$ Nghịch lưu; ngõ ra ghi rõ tần số biến thiên $0-250\text{ Hz}$.
-  - [x] Khối Soft Starter bắt buộc thể hiện cặp thyristor phản song song; ngõ ra ghi rõ giữ nguyên tần số lưới $50/60\text{ Hz}$.
-  - [x] Nhánh contactor bypass phải mắc song song với khối thyristor.
+  - [x] Khối VFD thể hiện đúng cấu trúc 3 tầng: Chuyển đổi AC-DC $\rightarrow$ Trung gian DC $\rightarrow$ Chuyển đổi DC-AC; ngõ ra ghi rõ tần số biến thiên $0-250\text{ Hz}$.
+  - [x] Khối Soft Starter thể hiện cặp thyristor phản song song; ngõ ra ghi rõ điện áp RMS tăng dần ở tần số lưới cố định $50/60\text{ Hz}$.
+  - [x] Nhánh contactor bypass mắc song song với khối thyristor phục vụ chế độ xác lập.
   - [x] Không phát sinh linh kiện lạ hay dây nối giả định ngoài cấu trúc chuẩn.
 - **Trạng thái tài sản (Asset Status)**: `ASSET_REQUIRES_CONTROLLED_RENDERING`
 
@@ -114,7 +114,7 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Mã định danh (Asset ID)**: `IMG-002`
 - **Vai trò (Role)**: Hình ảnh nội dung 2 (Content Image 2).
 - **Tiêu đề hình ảnh (Title)**: So sánh Định lượng Dòng Khởi động và Quan hệ Mô-men theo Dữ liệu Thực nghiệm Rockwell Automation
-- **Mục tiêu kỹ thuật (Purpose)**: Trực quan hóa các điểm khảo sát thực nghiệm rời rạc từ Bảng 1 của Rockwell Automation (`EVD-003`), minh họa quy luật phi tuyến $T_{\text{start}} \propto U^2$: khi giới hạn dòng khởi động ở mức thấp để bảo vệ lưới điện thì mô-men sinh ra sụt giảm nghiêm trọng (mức giới hạn $150\%$ dòng chỉ sinh ra $6\%$ mô-men).
+- **Mục tiêu kỹ thuật (Purpose)**: Trực quan hóa các điểm khảo sát thực nghiệm rời rạc từ Bảng 1 của Rockwell Automation (`EVD-003`) về quan hệ giữa mức giới hạn dòng, điện áp tương ứng và mô-men khởi động theo quy luật phi tuyến $T_{\text{start}} \propto U^2$ (trong đó mức giới hạn dòng $150\%$ dòng định mức tương ứng với $25\%$ điện áp và $6\%$ mô-men).
 - **Vị trí chèn trong bài (Insertion Point)**: Đặt ngay sau **Bảng số liệu thực nghiệm tại Mục 3.2** (*### 3.2. Quan hệ Phi tuyến Giữa Mô-men Khởi động và Điện áp ($T \propto U^2$)*).
 - **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-003` (Rockwell White Paper 150-WP007A-EN-P, Table 1, p. 6).
 - **Kích thước chuẩn (Dimensions)**: `1200 × 675 px`
@@ -166,7 +166,7 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
          │
          ▼
   {Câu hỏi 2: Phụ tải có đòi hỏi ĐẦY ĐỦ MÔ-MEN BỨT PHÁ tại 0 rpm (Zero Speed) không?}
-         ├── [CÓ] ──> [CÂN NHẮC CHỌN VFD] (VFD đáp ứng 100% Tn tại 0 rpm; Soft Starter sụt mô-men)
+         ├── [CÓ] ──> [CÂN NHẮC CHỌN VFD] (VFD cung cấp đầy đủ mô-men tại 0 rpm; Soft Starter không đáp ứng)
          │
        [KHÔNG]
          │
@@ -207,7 +207,7 @@ Packaging Agent sẽ sử dụng nguyên văn các đoạn mã HTML dưới đâ
 <div style="margin:28px 0;text-align:center;">
     <img src="[URL_HINH_ANH_1]" alt="So sánh sơ đồ cấu trúc chuyển đổi điện năng AC-DC-AC của biến tần VFD và điều khiển góc kích pha SCR của khởi động mềm Soft Starter" style="display:block;margin:0 auto;max-width:100%;width:100%;height:auto!important;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid #e2e8f0;" />
     <p style="font-size:14px;color:#64748b;margin:8px 0 0 0;font-style:italic;">
-        <strong>Hình 1:</strong> So sánh sơ đồ khối công suất giữa Biến tần VFD (chuyển đổi gián tiếp AC-DC-AC để biến thiên tần số ngõ ra từ 0 Hz đến 250 Hz) và Khởi động mềm Soft Starter (cặp thyristor phản song song điều khiển điện áp hiệu dụng RMS ở tần số lưới cố định 50/60 Hz kèm contactor bypass).
+        <strong>Hình 1:</strong> So sánh sơ đồ khối chuyển đổi năng lượng giữa Biến tần VFD (chuyển đổi gián tiếp AC-DC-AC để thay đổi tần số ngõ ra từ 0 Hz đến 250 Hz) và Khởi động mềm Soft Starter (cặp thyristor phản song song điều khiển điện áp hiệu dụng RMS tăng dần ở tần số lưới cố định 50/60 Hz kèm nhánh bypass trong vận hành xác lập).
     </p>
 </div>
 ```
@@ -275,7 +275,7 @@ Danh mục tệp:
 - [x] **Số lượng hình ảnh**: Đúng 01 Featured Image + 03 Content Images ($1 \le n \le 3$, tổng cộng 4 tài sản).
 - [x] **Kích thước Featured Image**: Đúng `808 × 500 px` (tỷ lệ 16:10).
 - [x] **Kích thước Content Images**: Đúng tỷ lệ `16:9` (`1200 × 675 px`).
-- [x] **Căn cứ chứng cứ**: 100% hình ảnh nội dung đều có truy xuất nguồn gốc (`EVD-001`, `EVD-002`, `EVD-003`, `EVD-004`, `EVD-005`, `EVD-007`, `EVD-009`, `EVD-010`, `EVD-014`, `EVD-015`).
+- [x] **Căn cứ chứng cứ**: 100% hình ảnh nội dung đều có truy xuất nguồn gốc (`EVD-001`, `EVD-002`, `EVD-003`, `EVD-004`, `EVD-005`, `EVD-006`, `EVD-007`, `EVD-009`, `EVD-010`, `EVD-014`, `EVD-015`).
 - [x] **Chuẩn Responsive ADR-016**: 100% khung HTML có `display:block; margin:0 auto; max-width:100%; width:100%; height:auto!important;`.
 - [x] **Bảo toàn bản thảo**: Không chèn mã vẽ thô hay thẻ `<img>` trực tiếp vào `draft_review_package.md`.
 - [x] **An toàn thương hiệu**: Không phát sinh logo giả mạo, dây nối nguy hiểm hay ảo giác kỹ thuật.
