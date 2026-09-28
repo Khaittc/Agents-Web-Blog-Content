@@ -71,6 +71,14 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
   - [x] Không xuất hiện logo hãng giả mạo hay nhãn hiệu vi phạm bản quyền.
   - [x] Hệ thống dây cáp đi gọn gàng trong máng cáp công nghiệp, không có dây nối lơ lửng hay phóng điện nguy hiểm.
   - [x] Bố cục rõ nét, nhận diện tốt ở cả kích thước thu nhỏ (thumbnail).
+- **Trạng thái tài sản (Asset Status)**: `GENERATED_QA_PASS`
+- **Thông tin tệp thực tế (Actual Asset Metadata)**:
+  - Tên tệp: `featured-vfd-vs-soft-starter-808x500.webp`
+  - Kích thước thực tế: `808 × 500 px`
+  - Định dạng tệp: `WEBP`
+  - Dung lượng: `116,250 bytes (~113.5 KB)`
+  - Trạng thái kiểm định (QA Status): `PASS`
+  - SHA-256: `871dac5b0eeda11b3e7ca284718937efbe2d503c85fa7d0cab0eda3a18473444`
 
 ---
 
@@ -105,7 +113,14 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
   - [x] Khối Soft Starter thể hiện cặp thyristor phản song song; ngõ ra ghi rõ điện áp RMS tăng dần ở tần số lưới cố định $50/60\text{ Hz}$.
   - [x] Nhánh contactor bypass mắc song song với khối thyristor phục vụ chế độ xác lập.
   - [x] Không phát sinh linh kiện lạ hay dây nối giả định ngoài cấu trúc chuẩn.
-- **Trạng thái tài sản (Asset Status)**: `ASSET_REQUIRES_CONTROLLED_RENDERING`
+- **Trạng thái tài sản (Asset Status)**: `GENERATED_QA_PASS`
+- **Thông tin tệp thực tế (Actual Asset Metadata)**:
+  - Tên tệp: `hinh-1-nguyen-ly-vfd-vs-soft-starter.webp`
+  - Kích thước thực tế: `1200 × 675 px`
+  - Định dạng tệp: `WEBP`
+  - Dung lượng: `127,364 bytes (~124.4 KB)`
+  - Trạng thái kiểm định (QA Status): `PASS`
+  - SHA-256: `1f32a3daf4fe4d3171080619ace3a46551100788bf3c4ae434301cbb3f2a814e`
 
 ---
 
@@ -135,7 +150,14 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
   - **KHÔNG** vẽ đường cong cong nối liền các điểm (không biểu diễn như dải liên tục phổ quát).
   - **KHÔNG** bịa đặt dải số liệu định lượng hay cột phần trăm dòng khởi động cho VFD (hồ sơ bằng chứng `EVD-001` không xác lập số liệu định lượng dải dòng cho VFD).
   - Trình bày dưới dạng cột nhóm so sánh đa trục (Grouped Bar Chart) hoặc ma trận thẻ kỹ thuật (Metric Comparison Matrix) với 4 trường hợp khảo sát độc lập.
-- **Trạng thái tài sản (Asset Status)**: `DATA_FIGURE_REQUIRES_DETERMINISTIC_RENDERING`
+- **Trạng thái tài sản (Asset Status)**: `GENERATED_QA_PASS`
+- **Thông tin tệp thực tế (Actual Asset Metadata)**:
+  - Tên tệp: `hinh-2-dong-va-mo-men-khoi-dong.webp`
+  - Kích thước thực tế: `1200 × 675 px`
+  - Định dạng tệp: `WEBP`
+  - Dung lượng: `96,550 bytes (~94.3 KB)`
+  - Trạng thái kiểm định (QA Status): `PASS`
+  - SHA-256: `68191013571424e3ec08258ffd9e915ea2f6b6c78a0d2802f7358465b9a822ca`
 
 ---
 
@@ -183,7 +205,14 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Ràng buộc văn phong kỹ thuật (Wording Discipline)**:
   - Sử dụng văn phong có điều kiện: *"Cân nhắc chọn VFD"*, *"Đánh giá tùy theo tải"*, *"Đối chiếu dữ liệu"*.
   - **TUYỆT ĐỐI KHÔNG** dùng văn phong áp đặt tuyệt đối: *"Bắt buộc phải chọn"*, *"Luôn luôn tốt hơn"*, *"Giải pháp duy nhất"*.
-- **Trạng thái tài sản (Asset Status)**: `ASSET_REQUIRES_CONTROLLED_RENDERING`
+- **Trạng thái tài sản (Asset Status)**: `GENERATED_QA_PASS`
+- **Thông tin tệp thực tế (Actual Asset Metadata)**:
+  - Tên tệp: `hinh-3-khung-lua-chon-vfd-soft-starter.webp`
+  - Kích thước thực tế: `1200 × 675 px`
+  - Định dạng tệp: `WEBP`
+  - Dung lượng: `121,754 bytes (~118.9 KB)`
+  - Trạng thái kiểm định (QA Status): `PASS`
+  - SHA-256: `53e0367d9f622d85c54ec59b2dd64eac4fc65daa9ceb33c746200821a5565927`
 
 ---
 
@@ -294,13 +323,13 @@ Danh mục tệp:
 ## 14. PACKAGING HANDOFF NOTES (GHI CHÚ BÀN GIAO CHO PACKAGING AGENT)
 
 1. **Về phía Visual Agent**:
-   - Hồ sơ quy cách hình ảnh và câu lệnh Prompt AI đã hoàn tất 100% tại tệp này.
-   - Do các hình ảnh nội dung (`IMG-001`, `IMG-002`, `IMG-003`) đòi hỏi đồ họa vector và biểu đồ số liệu thực nghiệm có kiểm soát (deterministic rendering), các tài sản hình ảnh thực tế cần được kết xuất qua công cụ đồ họa/chart chính xác trước khi xuất bản bản thảo HTML cuối cùng.
-   - Trạng thái bài viết duy trì: `TECH_APPROVED` (không gán sớm `VISUAL_READY` khi các tệp ảnh nhị phân chưa được kết xuất vật lý, tuân thủ nguyên tắc fail-closed).
+   - Toàn bộ 04 tài sản hình ảnh (`IMG-FEATURED`, `IMG-001`, `IMG-002`, `IMG-003`) đã được kết xuất vật lý hoàn chỉnh ở định dạng `.webp`.
+   - Tất cả 4 tệp ảnh đều đã vượt qua quy trình kiểm định QA nghiêm ngặt về kích thước pixel thực tế, ranh giới chứng cứ kỹ thuật và tính tương thích responsive.
+   - Trạng thái bài viết nâng cấp: `VISUAL_READY` (sẵn sàng chuyển giao cho Packaging Agent để đóng gói mã nguồn HTML xuất bản).
 2. **Quy trình tiếp theo cho Packaging Agent**:
-   - Khi Kỹ sư trưởng / Người dùng kết xuất các tệp ảnh `.webp` theo đặc tả tại Mục 4, 5, 6, 7 và tải lên hệ thống lưu trữ, Packaging Agent sẽ thay thế chuỗi `[URL_HINH_ANH_n]` bằng URL thực tế vào tệp HTML CKEditor.
+   - Packaging Agent sẽ sử dụng 4 tệp ảnh `.webp` đã tạo tại thư mục bài viết để tải lên CMS / CDN và nhúng vào mã nguồn HTML theo đúng khung thẻ responsive đã chuẩn hóa tại Mục 9.
    - Packaging Agent không được tự ý thay đổi cấu trúc khung thẻ HTML đã được chuẩn hóa tại Mục 9.
 
 ---
 *Hồ sơ được lập bởi: Visual Agent — Real Group*  
-*Chữ ký điện tử: `visual_agent:blog_04:specs_ready`*
+*Chữ ký điện tử: `visual_agent:blog_04:assets_generated_pass`*
