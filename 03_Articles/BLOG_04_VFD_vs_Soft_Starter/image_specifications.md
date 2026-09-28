@@ -146,7 +146,7 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 - **Tiêu đề hình ảnh (Title)**: Khung Quyết định Tuần tự Lựa chọn Giữa VFD và Soft Starter (Decision Framework Flowchart)
 - **Mục tiêu kỹ thuật (Purpose)**: Trực quan hóa quy trình tư duy kỹ thuật 3 bước tại Mục 10 của bài viết, cung cấp công cụ hướng dẫn ra quyết định khách quan, có điều kiện dựa trên yêu cầu điều khiển tốc độ, mô-men zero speed, dòng khởi động, sóng hài PCC và chi phí đầu tư.
 - **Vị trí chèn trong bài (Insertion Point)**: Đặt tại đầu **Mục 10** (*## 10. Tiêu chí Lựa chọn Kỹ thuật Tối ưu (Decision Framework)*) ngay trước các câu hỏi chi tiết.
-- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-003`, `EVD-004`, `EVD-005`, `EVD-009`, `EVD-010`, `EVD-014`, `EVD-015`.
+- **Căn cứ chứng cứ kỹ thuật (Approved Technical Basis)**: `EVD-003`, `EVD-004`, `EVD-005`, `EVD-006`, `EVD-007`, `EVD-009`, `EVD-010`, `EVD-014`, `EVD-015`.
 - **Kích thước chuẩn (Dimensions)**: `1200 × 675 px`
 - **Tỷ lệ khung hình (Aspect Ratio)**: `16:9`
 - **Phương pháp tạo ảnh khuyến nghị (Rendering Method)**: Sơ đồ lưu đồ vector có kiểm soát (Controlled Vector Flowchart via Figma / Draw.io / Mermaid SVG export).
@@ -195,6 +195,15 @@ Thể loại `BLOG-T04` đòi hỏi phong cách minh họa kỹ thuật chuẩn 
 | **`IMG-001`** | `hinh-1-nguyen-ly-vfd-vs-soft-starter.webp` | Ngay sau Mục 2 (dưới Dòng 37) | 16:9 (`1200 × 675 px`) | Nhúng placeholder `[URL_HINH_ANH_1]` |
 | **`IMG-002`** | `hinh-2-dong-va-mo-men-khoi-dong.webp` | Sau Bảng số liệu Mục 3.2 (dưới Dòng 74) | 16:9 (`1200 × 675 px`) | Nhúng placeholder `[URL_HINH_ANH_2]` |
 | **`IMG-003`** | `hinh-3-khung-lua-chon-vfd-soft-starter.webp` | Đầu Mục 10 (dưới Dòng 237) | 16:9 (`1200 × 675 px`) | Nhúng placeholder `[URL_HINH_ANH_3]` |
+
+### Visual Evidence Traceability Matrix (Ma trận Truy xuất Chứng cứ Thị giác)
+
+| Mã Tài sản | Căn cứ Chứng cứ đã Phê duyệt (Approved Technical Basis) | Tóm tắt Ranh giới Nội dung Kỹ thuật |
+|:---|:---|:---|
+| **`IMG-FEATURED`** | `EVD-001`, `EVD-002`, `EVD-005`, `EVD-015` | So sánh kích thước bao ngoài và bối cảnh lắp đặt tủ điện công nghiệp giữa VFD và Soft Starter |
+| **`IMG-001`** | `EVD-001`, `EVD-002`, `EVD-005`, `EVD-006`, `EVD-007` | Chuỗi chuyển đổi AC-DC-AC (0-250 Hz); 3 cặp SCR phản song song điều khiển RMS (50/60 Hz); Contactor bypass xác lập |
+| **`IMG-002`** | `EVD-003` | 4 điểm khảo sát thực nghiệm Bảng 1 Rockwell (600%, 150%, 300%, 450%) minh họa $T \propto U^2$ |
+| **`IMG-003`** | `EVD-003`, `EVD-004`, `EVD-005`, `EVD-006`, `EVD-007`, `EVD-009`, `EVD-010`, `EVD-014`, `EVD-015` | Lưu đồ 3 câu hỏi tuần tự: điều chỉnh tốc độ $\rightarrow$ mô-men zero speed $\rightarrow$ đánh giá tổng hợp ràng buộc & kinh tế |
 
 ---
 
